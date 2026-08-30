@@ -1,0 +1,40 @@
+.button {
+  box-sizing: border-box;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none; cursor: pointer; font-family: var(--iris-font-family);
+  background: none; white-space: nowrap; text-decoration: none;
+  transition: background-color .12s ease, border-color .12s ease;
+}
+.button:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 1px; }
+.button:disabled { cursor: not-allowed; }
+
+/* Size — 높이 고정 · 너비 자유 (Figma: L 48 / M 42 / S 34) */
+.l { height: 48px; padding-inline: var(--iris-space-32); gap: var(--iris-space-6); border-radius: var(--iris-radius-md);
+     font-size: var(--iris-font-size-body-1); line-height: var(--iris-line-height-body-1); letter-spacing: var(--iris-letter-spacing-body-1); }
+.m { height: 42px; padding-inline: var(--iris-space-20); gap: var(--iris-space-4); border-radius: var(--iris-radius-sm);
+     font-size: var(--iris-font-size-body-2); line-height: var(--iris-line-height-body-2); letter-spacing: var(--iris-letter-spacing-body-2); }
+.s { height: 34px; padding-inline: var(--iris-space-14); gap: var(--iris-space-4); border-radius: var(--iris-radius-xs);
+     font-size: var(--iris-font-size-label-2); line-height: var(--iris-line-height-label-2); letter-spacing: var(--iris-letter-spacing-label-2); }
+
+/* Solid Primary */
+.solid.primary { background: var(--iris-semantic-primary-normal); color: var(--iris-semantic-static-white); font-weight: 700; }
+.solid.primary:hover:not(:disabled) { background: var(--iris-semantic-primary-strong); }
+.solid.primary:active:not(:disabled) { background: var(--iris-semantic-primary-heavy); }
+/* Solid Assistive */
+.solid.assistive { background: var(--iris-semantic-fill-normal); color: var(--iris-semantic-label-normal); font-weight: 500; }
+.solid.assistive:hover:not(:disabled) { background: var(--iris-semantic-interaction-hover); }
+.solid.assistive:active:not(:disabled) { background: var(--iris-semantic-interaction-pressed); }
+/* Outlined */
+.outlined { background: transparent; border: 1px solid; }
+.outlined.primary { color: var(--iris-semantic-label-primary); border-color: var(--iris-semantic-line-primary-normal); font-weight: 700; }
+.outlined.assistive { color: var(--iris-semantic-label-normal); border-color: var(--iris-semantic-line-normal-normal); font-weight: 500; }
+.outlined:hover:not(:disabled) { background: var(--iris-semantic-interaction-hover); }
+.outlined:active:not(:disabled) { background: var(--iris-semantic-interaction-pressed); }
+/* Disabled */
+.solid:disabled { background: var(--iris-semantic-interaction-disable); color: var(--iris-semantic-label-disable); }
+.outlined:disabled { border-color: var(--iris-semantic-line-solid-normal); color: var(--iris-semantic-label-disable); background: transparent; }
+
+.spinner { width: 1em; height: 1em; border-radius: 999px; border: 2px solid currentColor; border-top-color: transparent;
+  animation: iris-spin 1s linear infinite; opacity: .8; }
+@keyframes iris-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2.5s; } }

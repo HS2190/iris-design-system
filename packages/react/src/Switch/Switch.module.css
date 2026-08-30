@@ -1,0 +1,16 @@
+.root { display: inline-flex; align-items: center; gap: var(--iris-space-8); cursor: pointer;
+  font-family: var(--iris-font-family); font-size: var(--iris-font-size-body-2);
+  letter-spacing: var(--iris-letter-spacing-body-2); color: var(--iris-semantic-label-normal); }
+.root[data-disabled] { cursor: not-allowed; color: var(--iris-semantic-label-disable); }
+.input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.track { box-sizing: border-box; width: 52px; height: 32px; border-radius: var(--iris-radius-full);
+  background: var(--iris-semantic-interaction-inactive); padding: 2px; flex: none;
+  transition: background-color .15s ease; }
+.knob { display: block; width: 28px; height: 28px; border-radius: 999px;
+  background: var(--iris-semantic-static-white); box-shadow: var(--iris-elevation-normal-xsmall);
+  transition: transform .15s ease; }
+.input:checked + .track { background: var(--iris-semantic-primary-normal); }
+.input:checked + .track .knob { transform: translateX(20px); }
+.input:focus-visible + .track { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 1px; }
+.input:disabled + .track { background: var(--iris-semantic-interaction-disable); }
+@media (prefers-reduced-motion: reduce) { .track, .knob { transition: none; } }

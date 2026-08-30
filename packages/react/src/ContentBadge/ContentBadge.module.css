@@ -1,0 +1,15 @@
+.badge { box-sizing: border-box; display: inline-flex; align-items: center; height: 20px;
+  padding-inline: var(--iris-space-8); border-radius: var(--iris-radius-xs);
+  font-family: var(--iris-font-family); font-size: var(--iris-font-size-caption-1);
+  letter-spacing: var(--iris-letter-spacing-caption-1); font-weight: 500; white-space: nowrap; }
+.solid.neutral { background: var(--iris-semantic-status-neutral); }
+.solid.info { background: var(--iris-semantic-status-info); }
+.solid.positive { background: var(--iris-semantic-status-positive); }
+.solid.cautionary { background: var(--iris-semantic-status-cautionary); }
+.solid.negative { background: var(--iris-semantic-status-negative); }
+.solid { color: var(--iris-semantic-static-white); }
+.subtle.neutral { background: var(--iris-semantic-background-status-neutral); color: var(--iris-semantic-status-neutral); }
+.subtle.info { background: var(--iris-semantic-background-status-info); color: var(--iris-semantic-status-info); }
+.subtle.positive { background: var(--iris-semantic-background-status-positive); color: var(--iris-semantic-status-positive); }
+.subtle.cautionary { background: var(--iris-semantic-background-status-cautionary); color: var(--iris-semantic-status-cautionary); }
+.subtle.negative { background: var(--iris-semantic-background-status-negative); color: var(--iris-semantic-status-negative); }

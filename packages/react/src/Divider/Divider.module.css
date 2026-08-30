@@ -1,0 +1,4 @@
+.h { border: none; height: var(--iris-stroke-hairline); width: 100%; margin: 0; }
+.v { border: none; width: var(--iris-stroke-hairline); align-self: stretch; margin: 0; display: inline-block; }
+.normal { background: var(--iris-semantic-line-solid-neutral); }
+.strong { background: var(--iris-semantic-line-solid-normal); }
