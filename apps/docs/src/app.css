@@ -5,7 +5,7 @@ a { color: inherit; text-decoration: none; }
 code, .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
 code { font-size: 12.5px; background: var(--iris-semantic-fill-normal); padding: 1px 6px; border-radius: 4px; }
 
-.layout { display: grid; grid-template-columns: 248px minmax(0, 1fr) 208px; min-height: 100vh; }
+.layout { display: grid; grid-template-columns: 248px minmax(0, 920px) 220px; min-height: 100vh; }
 .sidebar { border-right: 1px solid var(--iris-semantic-line-solid-neutral); padding: 24px 16px; position: sticky; top: 0;
   height: 100vh; overflow-y: auto; background: var(--iris-semantic-background-normal-normal); }
 .brand { display: flex; align-items: center; gap: 10px; padding: 4px 8px 20px; }
@@ -21,7 +21,7 @@ code { font-size: 12.5px; background: var(--iris-semantic-fill-normal); padding:
 .nav a.active { background: var(--iris-semantic-fill-primary); color: var(--iris-semantic-label-primary); font-weight: 700; }
 .nav a.soon { color: var(--iris-semantic-label-disable); pointer-events: none; }
 .nav a.soon::after { content: " ·"; }
-.main { padding: 48px 56px 120px; max-width: 880px; }
+.main { padding: 48px 56px 120px; }
 
 .page-kicker { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
   color: var(--iris-semantic-label-primary); margin: 0 0 10px; }
@@ -103,7 +103,7 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 .size-slot { height: 48px; display: flex; align-items: center; } /* L 기준 높이로 칩 라인 정렬 */
 
 /* ── On this page (우측 목차) ── */
-.toc { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 48px 20px 24px 4px; font-size: 12.5px; }
+.toc { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 48px 16px 24px 0; font-size: 12.5px; }
 .toc-title { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
   color: var(--iris-semantic-label-assistive); margin-bottom: 10px; }
 .toc a { display: block; padding: 4px 10px; border-left: 2px solid var(--iris-semantic-line-solid-neutral);
