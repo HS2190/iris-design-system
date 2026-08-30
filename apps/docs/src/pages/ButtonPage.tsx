@@ -85,6 +85,7 @@ export default function ButtonPage() {
               <span className="size-num" style={{ left: '50%', top: -14, transform: 'translateX(-50%)' }}>10</span>
               <span className="size-num" style={{ left: '50%', bottom: -14, transform: 'translateX(-50%)' }}>10</span>
               <span className="size-num gapnum" style={{ left: 40, bottom: -14, transform: 'translateX(-50%)' }}>4</span>
+            </div>
           </div>
           <div className="size-hero-caption">
             <b>M · 기본</b>
