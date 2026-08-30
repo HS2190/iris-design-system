@@ -77,3 +77,26 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 .theme-toggle { margin-top: auto; }
 @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; }
   .playground { grid-template-columns: 1fr; } .playground-panel { border-left: none; border-top: 1px solid var(--iris-semantic-line-solid-neutral); } }
+
+/* ── Size spec (Figma ComponentDoc A+C 형식) ── */
+.size-hero-wrap { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+.size-hero { position: relative; display: inline-block; background: var(--iris-semantic-background-normal-alternative);
+  border-radius: var(--iris-radius-md); padding: 48px 64px; }
+.size-hero .stage { position: relative; display: inline-block; transform: scale(1.8); transform-origin: center; }
+.size-zone { position: absolute; pointer-events: none; display: flex; align-items: center; justify-content: center;
+  font-family: "IBM Plex Mono", monospace; font-size: 7px; color: var(--iris-semantic-label-normal); }
+.size-zone.pad { background: rgba(249, 115, 22, .25); }
+.size-zone.gap { background: rgba(6, 182, 212, .3); }
+.size-zone .above { position: absolute; top: -11px; }
+.size-zone .below { position: absolute; bottom: -12px; color: rgb(6,182,212); font-weight: 700; }
+.size-hero-caption { display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+.size-hero-caption b { font-size: 14px; }
+.size-hero-caption .sub { color: var(--iris-semantic-label-neutral); }
+.size-hero-caption .legend { color: var(--iris-semantic-label-assistive); font-size: 12px; }
+.size-hero-caption .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+.spec-chips { display: flex; gap: 4px; flex-wrap: wrap; }
+.spec-chip { font-family: "IBM Plex Mono", monospace; font-size: 11px; padding: 2px 6px; border-radius: 4px;
+  background: var(--iris-semantic-fill-normal); color: var(--iris-semantic-label-neutral); }
+.spec-chip.primary { background: var(--iris-semantic-fill-primary); color: var(--iris-semantic-label-primary); font-weight: 700; }
+.size-row { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.size-item { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }

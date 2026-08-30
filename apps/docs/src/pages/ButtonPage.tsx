@@ -68,11 +68,35 @@ export default function ButtonPage() {
       </div>
 
       <h2 className="section">Size</h2>
-      <p className="section-desc">L 48px(body-1) · M 42px(body-2) · S 34px(label-2). 패딩·라디우스·타이포는 전부 토큰입니다.</p>
-      <div className="canvas">
-        <div className="spec"><Button size="l">Button L</Button><small>L · 48 · r-md · p-32</small></div>
-        <div className="spec"><Button size="m">Button M</Button><small>M · 42 · r-sm · p-20</small></div>
-        <div className="spec"><Button size="s">Button S</Button><small>S · 34 · r-xs · p-14</small></div>
+      <p className="section-desc">높이 고정 · 너비 자유. 주황 = 패딩, 청록 = 아이콘–라벨 간격(px). 수치는 전부 토큰입니다.</p>
+      <div className="size-hero-wrap">
+        <div className="size-hero">
+          <div className="stage">
+            <Button size="m" leadingIcon="plus">버튼</Button>
+            {/* M: h42 · pad-inline 20 · pad-block 10 · icon 18 → gap 4 (x 38~42) */}
+            <span className="size-zone pad" style={{ left: 0, top: 0, width: 20, height: 42 }}>20</span>
+            <span className="size-zone pad" style={{ right: 0, top: 0, width: 20, height: 42 }}>20</span>
+            <span className="size-zone pad" style={{ left: 20, right: 20, top: 0, height: 10 }}>10</span>
+            <span className="size-zone pad" style={{ left: 20, right: 20, bottom: 0, height: 10 }}>10</span>
+            <span className="size-zone gap" style={{ left: 38, top: 10, width: 4, bottom: 10 }}><span className="below">4</span></span>
+          </div>
+        </div>
+        <div className="size-hero-caption">
+          <b>M · 기본</b>
+          <span className="sub">높이 42 · radius-sm 10 · body-2 700</span>
+          <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
+        </div>
+      </div>
+      <div className="size-row" style={{ marginTop: 28 }}>
+        {([['l', 'H 48', 'P 12 \u00b7 32', 'G 6', 'R 12', 'body-1'], ['m', 'H 42', 'P 10 \u00b7 20', 'G 4', 'R 10', 'body-2'], ['s', 'H 34', 'P 8 \u00b7 14', 'G 4', 'R 8', 'label-2']] as const).map(([sz, ...chips]) => (
+          <div className="size-item" key={sz}>
+            <Button size={sz}>Button {sz.toUpperCase()}</Button>
+            <div className="spec-chips">
+              <span className="spec-chip primary">{sz.toUpperCase()}</span>
+              {chips.map(c => <span className="spec-chip" key={c}>{c}</span>)}
+            </div>
+          </div>
+        ))}
       </div>
 
       <h2 className="section">Icon</h2>
