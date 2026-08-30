@@ -1,6 +1,7 @@
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Home from './pages/Home';
+import Toc from './components/Toc';
 import ButtonPage from './pages/ButtonPage';
 
 const components = [
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="/components/button" element={<ButtonPage />} />
         </Routes>
       </main>
+      <Toc />
     </div>
   );
 }
