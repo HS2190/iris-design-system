@@ -1,0 +1,9 @@
+{
+  "name": "@hs/tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/tokens.js",
+  "exports": { ".": "./dist/tokens.js", "./css": "./dist/hs.css", "./tokens.json": "./dist/tokens.json" },
+  "files": ["dist"],
+  "scripts": { "build": "node build.mjs" }
+}
