@@ -80,8 +80,7 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 
 /* ── Size spec (Figma ComponentDoc A+C 형식) ── */
 .size-hero-wrap { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
-.size-hero { position: relative; display: inline-block; background: var(--iris-semantic-background-normal-alternative);
-  border-radius: var(--iris-radius-md); padding: 48px 64px; }
+.size-hero { position: relative; display: inline-block; padding: 40px 56px 44px; }
 .size-hero .stage { position: relative; display: inline-block; transform: scale(1.8); transform-origin: center; }
 .size-zone { position: absolute; pointer-events: none; display: flex; align-items: center; justify-content: center;
   font-family: "IBM Plex Mono", monospace; font-size: 7px; color: var(--iris-semantic-label-normal); }
@@ -98,5 +97,5 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 .spec-chip { font-family: "IBM Plex Mono", monospace; font-size: 11px; padding: 2px 6px; border-radius: 4px;
   background: var(--iris-semantic-fill-normal); color: var(--iris-semantic-label-neutral); }
 .spec-chip.primary { background: var(--iris-semantic-fill-primary); color: var(--iris-semantic-label-primary); font-weight: 700; }
-.size-row { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
+.size-row { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; padding-top: 16px; border-top: 1px solid var(--iris-semantic-line-solid-neutral); width: 100%; }
 .size-item { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
