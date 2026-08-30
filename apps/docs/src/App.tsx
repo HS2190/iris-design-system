@@ -3,11 +3,23 @@ import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import Toc from './components/Toc';
 import ButtonPage from './pages/ButtonPage';
+import IconPage from './pages/IconPage';
+import ChipPage from './pages/ChipPage';
+import ContentBadgePage from './pages/ContentBadgePage';
+import TextFieldPage from './pages/TextFieldPage';
+import CheckboxPage from './pages/CheckboxPage';
+import SwitchPage from './pages/SwitchPage';
+import DividerPage from './pages/DividerPage';
 
 const components = [
   { path: '/components/button', name: 'Button', ready: true },
-  { name: 'Icon', ready: false }, { name: 'Chip', ready: false }, { name: 'Content badge', ready: false },
-  { name: 'Text field', ready: false }, { name: 'Checkbox', ready: false }, { name: 'Switch', ready: false }, { name: 'Divider', ready: false },
+  { path: '/components/icon', name: 'Icon', ready: true },
+  { path: '/components/chip', name: 'Chip', ready: true },
+  { path: '/components/content-badge', name: 'Content badge', ready: true },
+  { path: '/components/text-field', name: 'Text field', ready: true },
+  { path: '/components/checkbox', name: 'Checkbox', ready: true },
+  { path: '/components/switch', name: 'Switch', ready: true },
+  { path: '/components/divider', name: 'Divider', ready: true },
 ];
 
 function ThemeToggle() {
@@ -52,6 +64,13 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/components/button" element={<ButtonPage />} />
+          <Route path="/components/icon" element={<IconPage />} />
+          <Route path="/components/chip" element={<ChipPage />} />
+          <Route path="/components/content-badge" element={<ContentBadgePage />} />
+          <Route path="/components/text-field" element={<TextFieldPage />} />
+          <Route path="/components/checkbox" element={<CheckboxPage />} />
+          <Route path="/components/switch" element={<SwitchPage />} />
+          <Route path="/components/divider" element={<DividerPage />} />
         </Routes>
       </main>
       <Toc />
