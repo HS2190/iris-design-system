@@ -91,7 +91,7 @@ export default function ButtonPage() {
         <div className="size-row">
           {([['l', 'H 48', 'P 12 \u00b7 32', 'G 6', 'R 12', 'body-1'], ['m', 'H 42', 'P 10 \u00b7 20', 'G 4', 'R 10', 'body-2'], ['s', 'H 34', 'P 8 \u00b7 14', 'G 4', 'R 8', 'label-2']] as const).map(([sz, ...chips]) => (
             <div className="size-item" key={sz}>
-              <Button size={sz}>Button {sz.toUpperCase()}</Button>
+              <div className="size-slot"><Button size={sz}>Button {sz.toUpperCase()}</Button></div>
               <div className="spec-chips">
                 <span className="spec-chip primary">{sz.toUpperCase()}</span>
                 {chips.map(c => <span className="spec-chip" key={c}>{c}</span>)}

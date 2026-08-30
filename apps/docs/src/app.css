@@ -99,3 +99,4 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 .spec-chip.primary { background: var(--iris-semantic-fill-primary); color: var(--iris-semantic-label-primary); font-weight: 700; }
 .size-row { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; padding-top: 16px; border-top: 1px solid var(--iris-semantic-line-solid-neutral); width: 100%; }
 .size-item { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.size-slot { height: 48px; display: flex; align-items: center; } /* L 기준 높이로 칩 라인 정렬 */
