@@ -74,13 +74,17 @@ export default function ButtonPage() {
           <div className="size-hero">
             <div className="stage">
               <Button size="m" leadingIcon="plus">버튼</Button>
-              {/* M: h42 · pad-inline 20 · pad-block 10 · icon 18 → gap 4 (x 38~42) */}
-              <span className="size-zone pad" style={{ left: 0, top: 0, width: 20, height: 42 }}>20</span>
-              <span className="size-zone pad" style={{ right: 0, top: 0, width: 20, height: 42 }}>20</span>
-              <span className="size-zone pad" style={{ left: 20, right: 20, top: 0, height: 10 }}>10</span>
-              <span className="size-zone pad" style={{ left: 20, right: 20, bottom: 0, height: 10 }}>10</span>
-              <span className="size-zone gap" style={{ left: 38, top: 10, width: 4, bottom: 10 }}><span className="below">4</span></span>
-            </div>
+              {/* M: h42 · pad-inline 20 · pad-block 10 · icon 18 → gap 4 (x 38~42). 수치는 전부 존 밖에 표기 */}
+              <span className="size-zone pad" style={{ left: 0, top: 0, width: 20, height: 42 }} />
+              <span className="size-zone pad" style={{ right: 0, top: 0, width: 20, height: 42 }} />
+              <span className="size-zone pad" style={{ left: 20, right: 20, top: 0, height: 10 }} />
+              <span className="size-zone pad" style={{ left: 20, right: 20, bottom: 0, height: 10 }} />
+              <span className="size-zone gap" style={{ left: 38, top: 10, width: 4, bottom: 10 }} />
+              <span className="size-num" style={{ left: -20, top: '50%', transform: 'translateY(-50%)' }}>20</span>
+              <span className="size-num" style={{ right: -20, top: '50%', transform: 'translateY(-50%)' }}>20</span>
+              <span className="size-num" style={{ left: '50%', top: -14, transform: 'translateX(-50%)' }}>10</span>
+              <span className="size-num" style={{ left: '50%', bottom: -14, transform: 'translateX(-50%)' }}>10</span>
+              <span className="size-num gapnum" style={{ left: 40, bottom: -14, transform: 'translateX(-50%)' }}>4</span>
           </div>
           <div className="size-hero-caption">
             <b>M · 기본</b>
