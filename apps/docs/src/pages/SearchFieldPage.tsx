@@ -25,8 +25,10 @@ export default function SearchFieldPage() {
             <div className="size-hero">
               <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
                 <SearchField defaultValue="디자인 시스템" style={{ width: 230 }} />
-                <span className="size-zone pad" style={{ left: 0, top: 0, width: 40, height: 48 }}>40</span>
-                <span className="size-zone pad" style={{ right: 0, top: 0, width: 40, height: 48 }}>40</span>
+                <span className="size-zone pad" style={{ left: 0, top: 0, width: 40, height: 48 }} />
+                <span className="size-zone pad" style={{ right: 0, top: 0, width: 40, height: 48 }} />
+                <span className="size-num" style={{ left: 20, top: -11, transform: 'translateX(-50%)' }}>40</span>
+                <span className="size-num" style={{ right: 20, top: -11, transform: 'translateX(50%)' }}>40</span>
               </div>
             </div>
             <div className="size-hero-caption">

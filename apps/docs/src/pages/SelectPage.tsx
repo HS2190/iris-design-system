@@ -53,7 +53,8 @@ export default function SelectPage() {
                 <Select label="직무" placeholder="선택하세요" options={jobs} helper="하나만 선택할 수 있어요" style={{ width: 210 }} />
                 <span className="size-zone gap" style={{ left: 0, right: 0, top: 14, height: 6 }} />
                 <span className="size-zone pad" style={{ left: 0, top: 20, width: 16, height: 48 }}>16</span>
-                <span className="size-zone pad" style={{ right: 0, top: 20, width: 40, height: 48 }}>40</span>
+                <span className="size-zone pad" style={{ right: 0, top: 20, width: 40, height: 48 }} />
+                <span className="size-num" style={{ right: 20, top: 9, transform: 'translateX(50%)' }}>40</span>
                 <span className="size-zone gap" style={{ left: 0, right: 0, top: 68, height: 6 }} />
                 <span className="size-num gapnum" style={{ right: -16, top: 13 }}>6</span>
                 <span className="size-num gapnum" style={{ right: -16, top: 67 }}>6</span>
