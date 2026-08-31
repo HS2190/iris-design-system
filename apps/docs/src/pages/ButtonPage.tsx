@@ -82,9 +82,9 @@ export default function ButtonPage() {
               <span className="size-zone gap" style={{ left: 38, top: 10, width: 4, bottom: 10 }} />
               <span className="size-num" style={{ left: -20, top: '50%', transform: 'translateY(-50%)' }}>20</span>
               <span className="size-num" style={{ right: -20, top: '50%', transform: 'translateY(-50%)' }}>20</span>
-              <span className="size-num" style={{ left: '50%', top: -14, transform: 'translateX(-50%)' }}>10</span>
+              <span className="size-num" style={{ left: '68%', top: -14, transform: 'translateX(-50%)' }}>10</span>
               <span className="size-num" style={{ left: '50%', bottom: -14, transform: 'translateX(-50%)' }}>10</span>
-              <span className="size-num gapnum" style={{ left: 40, bottom: -14, transform: 'translateX(-50%)' }}>4</span>
+              <span className="size-num gapnum" style={{ left: 40, top: -14, transform: 'translateX(-50%)' }}>4</span>
             </div>
           </div>
           <div className="size-hero-caption">
