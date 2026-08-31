@@ -157,3 +157,32 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
   border-radius: 10px; font-size: 13.5px; color: var(--iris-semantic-label-normal); }
 .home-link small { display: block; font-size: 11px; color: var(--iris-semantic-label-assistive); margin-top: 2px; }
 .home-link:hover { background: var(--iris-semantic-interaction-hover); }
+
+/* ── Foundations 개편: 라이트/다크 비교 스와치·다이어그램·데모 ── */
+.fnd-diagram { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 20px;
+  border: 1px solid var(--iris-semantic-line-solid-neutral); border-radius: 12px; }
+.fnd-node { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.fnd-node .chip { width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--iris-semantic-line-normal-alternative); }
+.fnd-node small { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: var(--iris-semantic-label-assistive); }
+.fnd-arrow { color: var(--iris-semantic-label-assistive); display: flex; align-items: center; }
+.sw2-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 4px; }
+.sw2 { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border: none; background: none;
+  border-radius: 10px; cursor: pointer; text-align: left; font-family: inherit; }
+.sw2:hover { background: var(--iris-semantic-interaction-hover); }
+.sw2-chip { display: flex; border-radius: 10px; overflow: hidden; flex: none;
+  border: 1px solid var(--iris-semantic-line-normal-alternative); }
+.sw2-chip i { display: block; width: 21px; height: 38px; }
+.sw2-chip .tl { background: #FFFFFF; } .sw2-chip .td { background: #1B1C1E; }
+.sw2-chip .tl, .sw2-chip .td { display: flex; align-items: center; justify-content: center; }
+.sw2-meta { min-width: 0; }
+.sw2-name { display: block; font-family: "IBM Plex Mono", monospace; font-size: 11.5px;
+  color: var(--iris-semantic-label-normal); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sw2-refs { display: block; font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  color: var(--iris-semantic-label-assistive); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fnd-demo { border: 1px dashed var(--iris-semantic-line-solid-normal); border-radius: 10px;
+  padding: 12px 14px; margin-top: 10px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.op-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+.op-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.op-chip { width: 44px; height: 32px; border-radius: 8px; border: 1px solid var(--iris-semantic-line-normal-alternative);
+  background: #FFFFFF; position: relative; overflow: hidden; }
+.op-chip i { position: absolute; inset: 0; background: #171719; }
