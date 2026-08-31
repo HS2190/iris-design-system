@@ -52,51 +52,14 @@ import SpacingPage from './pages/SpacingPage';
 import ElevationPage from './pages/ElevationPage';
 import PlatformPage from './pages/PlatformPage';
 
-const components = [
-  { path: '/components/button', name: 'Button', ready: true },
-  { path: '/components/text-button', name: 'Text button', ready: true },
-  { path: '/components/icon-button', name: 'Icon button', ready: true },
-  { path: '/components/action-area', name: 'Action area', ready: true },
-  { path: '/components/icon', name: 'Icon', ready: true },
-  { path: '/components/chip', name: 'Chip', ready: true },
-  { path: '/components/content-badge', name: 'Content badge', ready: true },
-  { path: '/components/text-field', name: 'Text field', ready: true },
-  { path: '/components/checkbox', name: 'Checkbox', ready: true },
-  { path: '/components/switch', name: 'Switch', ready: true },
-  { path: '/components/divider', name: 'Divider', ready: true },
-  { path: '/components/radio', name: 'Radio', ready: true },
-  { path: '/components/select', name: 'Select', ready: true },
-  { path: '/components/search-field', name: 'Search field', ready: true },
-  { path: '/components/segmented-control', name: 'Segmented control', ready: true },
-  { path: '/components/text-area', name: 'Text area', ready: true },
-  { path: '/components/slider', name: 'Slider', ready: true },
-  { path: '/components/filter-button', name: 'Filter button', ready: true },
-  { path: '/components/avatar', name: 'Avatar', ready: true },
-  { path: '/components/list-cell', name: 'List cell', ready: true },
-  { path: '/components/card', name: 'Card', ready: true },
-  { path: '/components/section-header', name: 'Section header', ready: true },
-  { path: '/components/accordion', name: 'Accordion', ready: true },
-  { path: '/components/table', name: 'Table', ready: true },
-  { path: '/components/alert', name: 'Alert', ready: true },
-  { path: '/components/toast', name: 'Toast', ready: true },
-  { path: '/components/snackbar', name: 'Snackbar', ready: true },
-  { path: '/components/section-message', name: 'Section message', ready: true },
-  { path: '/components/fallback-view', name: 'Fallback view', ready: true },
-  { path: '/components/push-badge', name: 'Push badge', ready: true },
-  { path: '/components/top-navigation', name: 'Top navigation', ready: true },
-  { path: '/components/bottom-navigation', name: 'Bottom navigation', ready: true },
-  { path: '/components/tab', name: 'Tab', ready: true },
-  { path: '/components/pagination', name: 'Pagination', ready: true },
-  { path: '/components/progress', name: 'Progress', ready: true },
-  { path: '/components/progress-tracker', name: 'Progress tracker', ready: true },
-  { path: '/components/tooltip', name: 'Tooltip', ready: true },
-  { path: '/components/popover', name: 'Popover', ready: true },
-  { path: '/components/menu', name: 'Menu', ready: true },
-  { path: '/components/popup', name: 'Popup', ready: true },
-  { path: '/components/bottom-sheet', name: 'Bottom sheet', ready: true },
-  { path: '/components/skeleton', name: 'Skeleton', ready: true },
-  { path: '/components/scrim', name: 'Scrim', ready: true },
-  { path: '/components/grid', name: 'Grid', ready: true },
+const componentGroups: [string, [string, string][]][] = [
+  ['Actions', [['Button', 'button'], ['Text button', 'text-button'], ['Icon button', 'icon-button'], ['Chip', 'chip'], ['Filter button', 'filter-button'], ['Action area', 'action-area']]],
+  ['Selection & Input', [['Text field', 'text-field'], ['Text area', 'text-area'], ['Select', 'select'], ['Search field', 'search-field'], ['Checkbox', 'checkbox'], ['Radio', 'radio'], ['Switch', 'switch'], ['Segmented control', 'segmented-control'], ['Slider', 'slider']]],
+  ['Contents', [['Content badge', 'content-badge'], ['Avatar', 'avatar'], ['List cell', 'list-cell'], ['Card', 'card'], ['Section header', 'section-header'], ['Accordion', 'accordion'], ['Table', 'table']]],
+  ['Feedback', [['Alert', 'alert'], ['Toast', 'toast'], ['Snackbar', 'snackbar'], ['Section message', 'section-message'], ['Fallback view', 'fallback-view'], ['Push badge', 'push-badge']]],
+  ['Navigations', [['Top navigation', 'top-navigation'], ['Bottom navigation', 'bottom-navigation'], ['Tab', 'tab'], ['Pagination', 'pagination'], ['Progress', 'progress'], ['Progress tracker', 'progress-tracker']]],
+  ['Presentation', [['Tooltip', 'tooltip'], ['Popover', 'popover'], ['Menu', 'menu'], ['Popup', 'popup'], ['Bottom sheet', 'bottom-sheet']]],
+  ['Loading & Utilities', [['Skeleton', 'skeleton'], ['Scrim', 'scrim'], ['Grid', 'grid'], ['Divider', 'divider'], ['Icon', 'icon']]],
 ];
 
 function ThemeToggle() {
@@ -132,10 +95,14 @@ export default function App() {
           {[['Color', '/foundations/color'], ['Typography', '/foundations/typography'], ['Spacing', '/foundations/spacing'], ['Elevation', '/foundations/elevation'], ['Platform', '/foundations/platform']].map(([n, p]) => (
             <NavLink key={p} to={p} className={({ isActive }) => isActive ? 'active' : ''}>{n}</NavLink>
           ))}
-          <div className="nav-group">Components</div>
-          {components.map(c => c.ready
-            ? <NavLink key={c.name} to={c.path!} className={({ isActive }) => isActive ? 'active' : ''}>{c.name}</NavLink>
-            : <a key={c.name} className="soon">{c.name}</a>)}
+          {componentGroups.map(([cat, items]) => (
+            <span key={cat} style={{ display: 'contents' }}>
+              <div className="nav-group">{cat}</div>
+              {items.map(([name, slug]) => (
+                <NavLink key={slug} to={`/components/${slug}`} className={({ isActive }) => isActive ? 'active' : ''}>{name}</NavLink>
+              ))}
+            </span>
+          ))}
         </nav>
         <ThemeToggle />
       </aside>
