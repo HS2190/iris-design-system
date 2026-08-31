@@ -28,7 +28,9 @@ export default function SelectPage() {
             <Select label="직무" placeholder="선택하세요" options={jobs} helper="하나만 선택할 수 있어요" style={{ width: 220 }} />
           </Spec>
           <Spec label="인라인 필터형 · 라벨 없음 (aria-label 필수)">
-            <Select aria-label="정렬 기준" options={[{ value: 'new', label: '최신순' }, { value: 'pop', label: '인기순' }]} defaultValue="new" style={{ width: 140 }} />
+            <div style={{ paddingTop: 23 }}>{/* 라벨(17) + 간격(6)만큼 내려 직무 필드 입력부와 정렬 */}
+              <Select aria-label="정렬 기준" options={[{ value: 'new', label: '최신순' }, { value: 'pop', label: '인기순' }]} defaultValue="new" style={{ width: 140 }} />
+            </div>
           </Spec>
           <Spec label="설정값형 · 기본값 선택 (placeholder 없음)">
             <Select label="언어" options={[{ value: 'ko', label: '한국어' }, { value: 'en', label: 'English' }]} defaultValue="ko" style={{ width: 180 }} />
