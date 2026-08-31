@@ -1,5 +1,5 @@
 import { ContentBadge, Chip } from '@iris/react';
-import { Page, Section, Canvas, Spec, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, DoDont, Props } from '../components/Doc';
 
 const tones = ['neutral', 'info', 'positive', 'cautionary', 'negative'] as const;
 
@@ -13,6 +13,32 @@ export default function ContentBadgePage() {
           </div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {tones.map(t => <ContentBadge key={t} tone={t} variant="subtle">{t}</ContentBadge>)}
+          </div>
+        </Canvas>
+      </Section>
+      <Section title="Size" desc="단일 크기. 주황 = 패딩(px), 상하는 2px라 수치만 밖에 표기.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage">
+                <ContentBadge tone="info" variant="subtle">안내</ContentBadge>
+                {/* H20 · pad-inline 8 · pad-block (20-16)/2 = 2 */}
+                <span className="size-zone pad" style={{ left: 0, top: 0, width: 8, height: 20 }}>8</span>
+                <span className="size-zone pad" style={{ right: 0, top: 0, width: 8, height: 20 }}>8</span>
+                <span className="size-zone pad" style={{ left: 8, right: 8, top: 0, height: 2 }} />
+                <span className="size-zone pad" style={{ left: 8, right: 8, bottom: 0, height: 2 }} />
+                <span className="size-num" style={{ left: '50%', top: -13, transform: 'translateX(-50%)' }}>2</span>
+                <span className="size-num" style={{ left: '50%', bottom: -13, transform: 'translateX(-50%)' }}>2</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>단일 크기</b>
+              <span className="sub">높이 20 · radius-xs 8 · caption-1 500</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item"><div className="size-slot" style={{ height: 20 }}><ContentBadge tone="positive">완료</ContentBadge></div><Chips primary="기본" items={['H 20', 'P 8', 'R 8', 'caption-1']} /></div>
           </div>
         </Canvas>
       </Section>
