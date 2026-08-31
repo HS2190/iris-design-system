@@ -1,9 +1,14 @@
-import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
+import { Routes, Route, NavLink, Navigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import ComponentsIndexPage from './pages/ComponentsIndexPage';
 import UtilitiesIndexPage from './pages/UtilitiesIndexPage';
 import Toc from './components/Toc';
+import { componentGroups, utilityItems, utilSlugs } from './nav';
+import { posts } from './pages/behind/posts';
+import TwoLayerTokens from './pages/behind/TwoLayerTokens';
+import PhosphorIcons from './pages/behind/PhosphorIcons';
+import PlatformTokens from './pages/behind/PlatformTokens';
 import ButtonPage from './pages/ButtonPage';
 import TextButtonPage from './pages/TextButtonPage';
 import IconButtonPage from './pages/IconButtonPage';
@@ -55,16 +60,7 @@ import SpacingPage from './pages/SpacingPage';
 import ElevationPage from './pages/ElevationPage';
 import PlatformPage from './pages/PlatformPage';
 
-const componentGroups: [string, [string, string][]][] = [
-  ['Actions', [['Button', 'button'], ['Text button', 'text-button'], ['Icon button', 'icon-button'], ['Chip', 'chip'], ['Filter button', 'filter-button'], ['Action area', 'action-area']]],
-  ['Selection & Input', [['Text field', 'text-field'], ['Text area', 'text-area'], ['Select', 'select'], ['Search field', 'search-field'], ['Checkbox', 'checkbox'], ['Radio', 'radio'], ['Switch', 'switch'], ['Segmented control', 'segmented-control'], ['Slider', 'slider']]],
-  ['Contents', [['Content badge', 'content-badge'], ['Avatar', 'avatar'], ['List cell', 'list-cell'], ['Card', 'card'], ['Section header', 'section-header'], ['Accordion', 'accordion'], ['Table', 'table']]],
-  ['Feedback', [['Alert', 'alert'], ['Toast', 'toast'], ['Snackbar', 'snackbar'], ['Section message', 'section-message'], ['Fallback view', 'fallback-view'], ['Push badge', 'push-badge']]],
-  ['Navigations', [['Top navigation', 'top-navigation'], ['Bottom navigation', 'bottom-navigation'], ['Tab', 'tab'], ['Pagination', 'pagination'], ['Progress', 'progress'], ['Progress tracker', 'progress-tracker']]],
-  ['Presentation', [['Tooltip', 'tooltip'], ['Popover', 'popover'], ['Menu', 'menu'], ['Popup', 'popup'], ['Bottom sheet', 'bottom-sheet']]],
-];
-const utilityItems: [string, string][] = [['Skeleton', 'skeleton'], ['Scrim', 'scrim'], ['Grid', 'grid'], ['Divider', 'divider']];
-const utilSlugs = utilityItems.map(([, s]) => s);
+// 컴포넌트 목록은 nav.ts가 단일 소스 (랜딩 인덱스와 공유)
 
 function ThemeToggle() {
   const [theme, setTheme] = useState<string>(() => localStorage.getItem('iris-theme') ?? 'system');
@@ -87,7 +83,8 @@ function ThemeToggle() {
 export default function App() {
   const { pathname } = useLocation();
   const isHome = pathname === '/';
-  const section = pathname.startsWith('/foundations') || pathname === '/components/icon' ? 'foundations'
+  const section = pathname.startsWith('/behind') ? 'behind'
+    : pathname.startsWith('/foundations') || pathname === '/components/icon' ? 'foundations'
     : pathname === '/utilities' || utilSlugs.some(sl => pathname === `/components/${sl}`) ? 'utilities'
     : 'components';
   return (
@@ -101,6 +98,7 @@ export default function App() {
           <NavLink to="/foundations" className={() => !isHome && section === 'foundations' ? 'active' : ''}>Foundations</NavLink>
           <NavLink to="/components" className={() => !isHome && section === 'components' ? 'active' : ''}>Components</NavLink>
           <NavLink to="/utilities" className={() => !isHome && section === 'utilities' ? 'active' : ''}>Utilities</NavLink>
+          <NavLink to="/behind" className={() => !isHome && section === 'behind' ? 'active' : ''}>Behind</NavLink>
         </nav>
         <div className="gnb-right"><ThemeToggle /></div>
       </header>
@@ -129,6 +127,12 @@ export default function App() {
                   ))}
                 </span>
               ))}
+              {section === 'behind' && <>
+                <div className="nav-group">Behind</div>
+                {posts.map(post => (
+                  <NavLink key={post.slug} to={`/behind/${post.slug}`} className={({ isActive }) => isActive ? 'active' : ''}>{post.title}</NavLink>
+                ))}
+              </>}
               {section === 'utilities' && <>
                 <div className="nav-group">Utilities</div>
                 <NavLink to="/utilities" end className={({ isActive }) => isActive ? 'active' : ''}>개요</NavLink>
@@ -192,6 +196,10 @@ export default function App() {
               <Route path="/foundations/spacing" element={<SpacingPage />} />
               <Route path="/foundations/elevation" element={<ElevationPage />} />
               <Route path="/foundations/platform" element={<PlatformPage />} />
+              <Route path="/behind" element={<Navigate to={`/behind/${posts[0].slug}`} replace />} />
+              <Route path="/behind/two-layer-tokens" element={<TwoLayerTokens />} />
+              <Route path="/behind/phosphor-icons" element={<PhosphorIcons />} />
+              <Route path="/behind/platform-tokens" element={<PlatformTokens />} />
             </Routes>
           </main>
           <Toc />

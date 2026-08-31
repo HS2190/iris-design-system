@@ -140,11 +140,24 @@
 
 /* ── 제작기 ── */
 .lp-posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
-.lp-post-thumb { height: 132px; border-radius: 12px; overflow: hidden;
-  border: 1px solid var(--iris-semantic-line-solid-neutral);
-  background-image: url("/band-ink.jpg"); background-size: 300% auto; background-position: 0 50%; }
-.lp-post:nth-child(2) .lp-post-thumb { background-position: 50% 50%; }
-.lp-post:nth-child(3) .lp-post-thumb { background-position: 100% 50%; }
+.lp-post { display: block; }
+.lp-post-thumb { position: relative; height: 132px; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--iris-semantic-line-solid-neutral); }
+/* 이미지는 의사요소에 둔다 — 테두리·라운드는 그대로 두고 그림만 확대하기 위해 */
+.lp-post-thumb::after { content: ""; position: absolute; inset: 0;
+  background-image: url("/band-ink.jpg"); background-size: 300% auto; background-position: 0 50%;
+  transition: transform 320ms var(--ease-out); }
+.lp-post:nth-child(2) .lp-post-thumb::after { background-position: 50% 50%; }
+.lp-post:nth-child(3) .lp-post-thumb::after { background-position: 100% 50%; }
+.lp-post h3 { transition: color 200ms var(--ease-out); }
+.lp-post small { transition: color 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .lp-post:hover .lp-post-thumb::after { transform: scale(1.06); }
+  .lp-post:hover h3 { color: var(--iris-semantic-label-primary); }
+  .lp-post:hover small { color: var(--iris-semantic-label-neutral); }
+}
+.lp-post:focus-visible { outline: 2px solid var(--iris-semantic-primary-normal); outline-offset: 6px;
+  border-radius: 14px; }
 .lp-post h3 { font-size: 18px; font-weight: 700; letter-spacing: -.02em; margin: 16px 0 0;
   color: var(--iris-semantic-label-normal); }
 .lp-post p { font-size: 14px; line-height: 1.65; color: var(--iris-semantic-label-neutral); margin: 8px 0 0; }
@@ -199,5 +212,6 @@
   .lp-band-img.scrub, .lp-band-img.io.in { animation: none; }
   .lp-band-img.io { clip-path: none; }
   .lp-catlist a, .lp-row, .lp-row i, .lp-faq-q button { transition: none; }
+  .lp-post-thumb::after, .lp-post h3, .lp-post small { transition: none; }
   .lp-faq-a { animation: none; }
 }

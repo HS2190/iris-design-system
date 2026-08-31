@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { iconNames } from '@iris/react';
+import tokens from '@iris/tokens';
+import { componentGroups, utilityItems, componentCount } from '../nav';
+import { posts } from './behind/posts';
 import '../landing.css';
 
 const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -64,24 +67,17 @@ const PRINCIPLES: [string, string, string][] = [
   ['02', '역할로 부른다', '보라색이 아니라 primary/normal. 이름이 곧 쓰임이라 테마가 바뀌어도 코드는 그대로입니다.'],
   ['03', '플랫폼을 모른다', '컴포넌트는 분기하지 않습니다. 높이도 마진도 값은 플랫폼 토큰이 정합니다.'],
 ];
-const CATS: [string, string, string][] = [
-  ['Actions', '6', '/components'],
-  ['Selection & Input', '9', '/components'],
-  ['Contents', '7', '/components'],
-  ['Feedback', '6', '/components'],
-  ['Navigations', '6', '/components'],
-  ['Presentation', '5', '/components'],
-  ['Utilities', '4', '/utilities'],
+const CATS: [string, number, string][] = [
+  ...componentGroups.map(([name, items]) => [name, items.length, '/components'] as [string, number, string]),
+  ['Utilities', utilityItems.length, '/utilities'],
 ];
+/* 랜딩이 자기 숫자를 틀리지 않게 — 토큰 소스에서 직접 센다. */
+const tokenCount = Object.keys(tokens.atomic).length + Object.keys(tokens.semantic).length
+  + tokens.typography.length + Object.keys(tokens.elevation).length;
 const TOKENS: [string, string, string, string][] = [
   ['input-height', '48', '48', '56'],
   ['nav-top-height', '64', '44', '56'],
   ['page-margin', '24', '20', '16'],
-];
-const POSTS: [string, string, string][] = [
-  ['토큰을 2층으로 나눈 이유', '아토믹과 시멘틱을 분리해 다크 모드를 재매핑 한 번으로 끝낸 구조.', '2026.08'],
-  ['아이콘 72종을 Phosphor로', 'line과 fill 두 축을 만든 이유, 기존 30종을 이름 그대로 흡수한 방법.', '2026.08'],
-  ['컴포넌트가 플랫폼을 모르게', '분기를 코드가 아니라 토큰 층이 흡수하도록 만든 설계.', '2026.08'],
 ];
 const FAQ: [string, string, string?][] = [
   ['상업 프로젝트에 그대로 써도 되나요?',
@@ -133,8 +129,8 @@ export default function Home() {
         <h2 className="lp-h2">What’s Inside</h2>
         <div className="lp-inside">
           <div>
-            <div className="lp-stat"><b>44</b><span>Components</span></div>
-            <div className="lp-stat"><b>200</b><span>Design tokens</span></div>
+            <div className="lp-stat"><b>{componentCount}</b><span>Components</span></div>
+            <div className="lp-stat"><b>{tokenCount}</b><span>Design tokens</span></div>
             <div className="lp-stat"><b>{iconNames.length}×2</b><span>Icons · line·fill</span></div>
             <Link to="/components" className="lp-inline-link">컴포넌트 문서 보기 ↗</Link>
           </div>
@@ -195,11 +191,12 @@ export default function Home() {
         <p className="lp-kicker">Behind</p>
         <h2 className="lp-h2 lp-h2-kr">제작기</h2>
         <div className="lp-posts">
-          {POSTS.map(([t, d, date]) => (
-            <div className="lp-post" key={t}>
+          {posts.map(post => (
+            <Link className="lp-post" to={`/behind/${post.slug}`} key={post.slug}>
               <div className="lp-post-thumb" />
-              <h3>{t}</h3><p>{d}</p><small>{date}</small>
-            </div>
+              <h3>{post.title}</h3><p>{post.desc}</p>
+              <small>{post.date} · {post.read}</small>
+            </Link>
           ))}
         </div>
       </section>
