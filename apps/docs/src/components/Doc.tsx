@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 /** 문서 페이지 공용 빌딩블록 — 모든 컴포넌트 페이지가 같은 형식을 쓰게 한다. */
 
@@ -83,3 +83,24 @@ export function Playground({ stage, panel, code }:
 }
 
 export function useSeg<T extends string>(initial: T) { return useState<T>(initial); }
+
+/** CSS 변수 실값 구독 — 테마 전환에 반응 */
+export function useCssVars(names: readonly string[]): Record<string, string> {
+  const [vals, setVals] = useState<Record<string, string>>({});
+  const key = names.join('|');
+  useEffect(() => {
+    const read = () => {
+      const cs = getComputedStyle(document.documentElement);
+      const next: Record<string, string> = {};
+      key.split('|').forEach(n => { if (n) next[n] = cs.getPropertyValue(n).trim(); });
+      setVals(next);
+    };
+    read();
+    const mo = new MutationObserver(read);
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    mq.addEventListener('change', read);
+    return () => { mo.disconnect(); mq.removeEventListener('change', read); };
+  }, [key]);
+  return vals;
+}
