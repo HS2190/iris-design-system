@@ -2,3 +2,4 @@ node_modules/
 dist/
 apps/docs/dist/
 .DS_Store
+*.tsbuildinfo

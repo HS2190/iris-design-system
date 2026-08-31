@@ -1,276 +1,235 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import {
-  Button, Chip, ContentBadge, Switch, TextField, Checkbox, Radio, Slider, Progress,
-  SegmentedControl, Avatar, AvatarGroup, Toast, FilterButton, Skeleton, Pagination,
-  Icon, ListCell, iconNames,
-} from '@iris/react';
+import { Link } from 'react-router-dom';
+import { iconNames } from '@iris/react';
 import '../landing.css';
 
-const prefersReduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-/* ── 숫자 카운트업 — 뷰에 들어올 때 1회 ── */
-function CountUp({ to, suffix = '' }: { to: number; suffix?: string }) {
-  const [n, setN] = useState(0);
-  const ref = useRef<HTMLElement>(null);
+/* ── 히어로: 커서가 조리개가 되어 반대 테마를 드러낸다 ── */
+function HeroMedia() {
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    if (prefersReduced() || !('IntersectionObserver' in window)) { setN(to); return; }
-    const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
-      const t0 = performance.now(), dur = 900;
-      const tick = (t: number) => {
-        const p = Math.min(1, (t - t0) / dur);
-        setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }, { threshold: 0.6 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, [to]);
-  return <b ref={ref}>{n}{suffix}</b>;
-}
-
-/* ── 히어로 스테이지 — 실컴포넌트 + 포인터 시차 ── */
-function HeroStage() {
-  const wrap = useRef<HTMLDivElement>(null);
-  const [view, setView] = useState<'전체' | '완료'>('전체');
-  useEffect(() => {
-    const el = wrap.current;
-    if (!el) return;
-    if (prefersReduced() || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    const layers = Array.from(el.querySelectorAll<HTMLElement>('.lp-depth'));
-    const onMove = (e: PointerEvent) => {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      layers.forEach(l => {
-        const d = Number(l.dataset.depth || 1);
-        l.style.transform = `translate3d(${(-x * 14 * d).toFixed(2)}px, ${(-y * 10 * d).toFixed(2)}px, 0)`;
+    if (!el || reduceMotion() || !finePointer()) return;
+    let frame = 0;
+    const move = (e: PointerEvent) => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        el.style.setProperty('--my', `${e.clientY - r.top}px`);
+        el.style.setProperty('--reveal', '1');
       });
     };
-    const onLeave = () => layers.forEach(l => { l.style.transform = 'translate3d(0,0,0)'; });
-    el.addEventListener('pointermove', onMove);
-    el.addEventListener('pointerleave', onLeave);
-    return () => { el.removeEventListener('pointermove', onMove); el.removeEventListener('pointerleave', onLeave); };
+    const leave = () => { el.style.setProperty('--reveal', '0'); };
+    el.addEventListener('pointermove', move);
+    el.addEventListener('pointerleave', leave);
+    return () => {
+      cancelAnimationFrame(frame);
+      el.removeEventListener('pointermove', move);
+      el.removeEventListener('pointerleave', leave);
+    };
   }, []);
   return (
-    <div className="lp-stage" ref={wrap}>
-      <div className="lp-depth lp-rise" data-depth="0.6" style={{ animationDelay: '260ms' }}>
-        <div className="lp-card">
-          <span className="lp-card-label">Actions</span>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            <Button size="s">저장</Button>
-            <Button size="s" variant="outlined" color="assistive">취소</Button>
-          </div>
-        </div>
-        <div className="lp-card">
-          <span className="lp-card-label">Selection</span>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <Switch label="알림 받기" defaultChecked />
-            <Checkbox label="이메일 수신" defaultChecked />
-          </div>
-        </div>
-        <div className="lp-card">
-          <span className="lp-card-label">Feedback</span>
-          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-            <ContentBadge tone="positive">완료</ContentBadge>
-            <ContentBadge tone="cautionary">주의</ContentBadge>
-          </div>
-        </div>
-      </div>
-      <div className="lp-depth lp-rise" data-depth="1.35" style={{ animationDelay: '340ms', marginTop: 34 }}>
-        <div className="lp-card">
-          <span className="lp-card-label">Navigation</span>
-          <SegmentedControl options={['전체', '완료'] as const} value={view} onChange={setView} aria-label="보기" />
-        </div>
-        <div className="lp-card">
-          <span className="lp-card-label">Input</span>
-          <Slider label="가격대" defaultValue={38} formatValue={v => `${v}만`} />
-        </div>
-        <div className="lp-card">
-          <span className="lp-card-label">Contents</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <AvatarGroup max={3} size="m">
-              <Avatar size="m" name="안" /><Avatar size="m" name="김" /><Avatar size="m" name="이" /><Avatar size="m" name="박" />
-            </AvatarGroup>
-            <span style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)' }}>외 1명</span>
-          </div>
-        </div>
-      </div>
+    <div className="lp-hero-media" ref={ref} aria-hidden>
+      <div className="lp-hero-layer lp-hero-base" />
+      <div className="lp-hero-layer lp-hero-reveal" />
+      <span className="lp-hero-hint">MOVE TO OPEN THE APERTURE</span>
     </div>
   );
 }
 
-/* ── 테마 분할 쇼케이스 ── */
-function Mock() {
-  return (
-    <div className="lp-mock">
-      <div className="lp-mock-bar">
-        <span className="lp-mock-title">오늘의 채용</span>
-        <div style={{ display: 'flex', gap: 6 }}>
-          <Icon name="search" size={20} style={{ color: 'var(--iris-semantic-label-neutral)' }} />
-          <Icon name="bell" size={20} style={{ color: 'var(--iris-semantic-label-neutral)' }} />
-        </div>
-      </div>
-      <div style={{ display: 'flex', gap: 6 }}>
-        <Chip size="s" selected>재택</Chip><Chip size="s">신입</Chip><Chip size="s">정규직</Chip>
-      </div>
-      <div className="lp-mock-card">
-        <div className="lp-mock-row" style={{ justifyContent: 'space-between' }}>
-          <span className="lp-mock-t1">프로덕트 디자이너</span>
-          <ContentBadge tone="positive">신규</ContentBadge>
-        </div>
-        <span className="lp-mock-t2">Iris팀 · 서울 · 경력 5년+</span>
-        <Progress value={68} label="지원 진행" showValue />
-      </div>
-      <ListCell title="UX 라이터" description="Iris팀 · 어제" style={{ padding: '8px 0' }}
-        leading={<Avatar size="m" name="라" />} trailing={<Icon name="chevron-right" size={20} />} />
-      <div style={{ display: 'flex', gap: 8, marginTop: 'auto' }}>
-        <Button size="s" variant="outlined" color="assistive" style={{ flex: 1 }}>나중에</Button>
-        <Button size="s" style={{ flex: 1 }}>지원하기</Button>
-      </div>
-    </div>
-  );
+/* ── 잉크 밴드: 스크롤에 따라 번진다 ── */
+function InkBand() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || reduceMotion()) return;
+    const supportsScrub = typeof CSS !== 'undefined' && !!CSS.supports && CSS.supports('animation-timeline: view()');
+    if (supportsScrub) { el.classList.add('scrub'); return; }
+    el.classList.add('io');
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { el.classList.add('in'); io.disconnect(); }
+    }, { threshold: 0.2 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return <div className="lp-band"><div className="lp-band-img" ref={ref} /></div>;
 }
 
-function ThemeSplit() {
-  const box = useRef<HTMLDivElement>(null);
-  const [pct, setPct] = useState(52);
-  const set = (clientX: number) => {
-    const r = box.current?.getBoundingClientRect();
-    if (!r) return;
-    setPct(Math.min(94, Math.max(6, ((clientX - r.left) / r.width) * 100)));
-  };
-  return (
-    <div className="lp-split" ref={box} style={{ ['--split' as string]: `${pct}%` }}
-      onPointerDown={e => { (e.target as HTMLElement).setPointerCapture?.(e.pointerId); set(e.clientX); }}
-      onPointerMove={e => { if (e.buttons === 1) set(e.clientX); }}>
-      <div className="lp-split-layer" data-theme="light"><Mock /></div>
-      <div className="lp-split-layer lp-split-top" data-theme="dark"><Mock /></div>
-      <span className="lp-split-tag l">data-theme="light"</span>
-      <span className="lp-split-tag d">data-theme="dark"</span>
-      <button className="lp-split-handle" aria-label="테마 경계 이동" role="slider"
-        aria-valuemin={6} aria-valuemax={94} aria-valuenow={Math.round(pct)}
-        onKeyDown={e => {
-          if (e.key === 'ArrowLeft') setPct(p => Math.max(6, p - 4));
-          if (e.key === 'ArrowRight') setPct(p => Math.min(94, p + 4));
-        }} />
-    </div>
-  );
-}
-
-/* ── 컴포넌트 마키 ── */
-type MarqItem = [string, string, React.ReactNode];
-const ROW1: MarqItem[] = [
-  ['Button', 'button', <Button size="s">버튼</Button>],
-  ['Switch', 'switch', <Switch defaultChecked aria-label="s" />],
-  ['Chip', 'chip', <><Chip size="s" selected>선택</Chip><Chip size="s">칩</Chip></>],
-  ['Content badge', 'content-badge', <ContentBadge tone="positive">완료</ContentBadge>],
-  ['Progress', 'progress', <span style={{ width: 96, display: 'block' }}><Progress value={62} /></span>],
-  ['Avatar', 'avatar', <AvatarGroup max={3} size="s"><Avatar size="s" name="안" /><Avatar size="s" name="김" /><Avatar size="s" name="이" /><Avatar size="s" name="박" /></AvatarGroup>],
-  ['Segmented control', 'segmented-control', <SegmentedControl options={['월', '주'] as const} value="월" onChange={() => {}} aria-label="m" />],
-  ['Filter button', 'filter-button', <FilterButton active count={2}>직무</FilterButton>],
+const PRINCIPLES: [string, string, string][] = [
+  ['01', '하나의 소스', 'Figma Variables가 원본이고, 코드는 그 빌드 결과입니다. 둘이 어긋날 수 없습니다.'],
+  ['02', '역할로 부른다', '보라색이 아니라 primary/normal. 이름이 곧 쓰임이라 테마가 바뀌어도 코드는 그대로입니다.'],
+  ['03', '플랫폼을 모른다', '컴포넌트는 분기하지 않습니다. 높이도 마진도 값은 플랫폼 토큰이 정합니다.'],
 ];
-const ROW2: MarqItem[] = [
-  ['Text field', 'text-field', <span style={{ width: 150, display: 'block' }}><TextField placeholder="이메일" /></span>],
-  ['Checkbox', 'checkbox', <Checkbox label="동의" defaultChecked />],
-  ['Radio', 'radio', <Radio name="mq" label="카드" defaultChecked />],
-  ['Toast', 'toast', <Toast tone="positive">저장되었습니다</Toast>],
-  ['Pagination', 'pagination', <Pagination variant="dot" page={2} total={4} />],
-  ['Skeleton', 'skeleton', <span style={{ width: 110, display: 'flex', gap: 8, alignItems: 'center' }}><Skeleton variant="circle" width={28} /><Skeleton width={70} /></span>],
-  ['Slider', 'slider', <span style={{ width: 120, display: 'block' }}><Slider defaultValue={45} aria-label="s" /></span>],
-  ['Icon', 'icon', <span style={{ display: 'flex', gap: 8, color: 'var(--iris-semantic-label-neutral)' }}><Icon name="star" variant="fill" size={20} /><Icon name="heart" size={20} /><Icon name="bell" size={20} /></span>],
+const CATS: [string, string, string][] = [
+  ['Actions', '6', '/components'],
+  ['Selection & Input', '9', '/components'],
+  ['Contents', '7', '/components'],
+  ['Feedback', '6', '/components'],
+  ['Navigations', '6', '/components'],
+  ['Presentation', '5', '/components'],
+  ['Utilities', '4', '/utilities'],
 ];
-
-function Marquee({ items, reverse }: { items: MarqItem[]; reverse?: boolean }) {
-  const row = [...items, ...items];
-  return (
-    <div className="lp-marq">
-      <div className={`lp-marq-track${reverse ? ' rev' : ''}`}>
-        {row.map(([name, slug, node], i) => (
-          <Link key={`${slug}-${i}`} to={`/components/${slug}`} className="lp-chipcard" aria-label={name}>
-            <span className="demo">{node}</span>
-            <span className="n">{name}</span>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
+const TOKENS: [string, string, string, string][] = [
+  ['input-height', '48', '48', '56'],
+  ['nav-top-height', '64', '44', '56'],
+  ['page-margin', '24', '20', '16'],
+];
+const POSTS: [string, string, string][] = [
+  ['토큰을 2층으로 나눈 이유', '아토믹과 시멘틱을 분리해 다크 모드를 재매핑 한 번으로 끝낸 구조.', '2026.08'],
+  ['아이콘 72종을 Phosphor로', 'line과 fill 두 축을 만든 이유, 기존 30종을 이름 그대로 흡수한 방법.', '2026.08'],
+  ['컴포넌트가 플랫폼을 모르게', '분기를 코드가 아니라 토큰 층이 흡수하도록 만든 설계.', '2026.08'],
+];
+const FAQ: [string, string, string?][] = [
+  ['상업 프로젝트에 그대로 써도 되나요?',
+   'MIT 라이선스입니다. 상업·비상업 모두 제한 없이 쓸 수 있고, 수정해서 자신의 시스템으로 만들어도 됩니다. 출처 표기는 의무가 아니지만 남겨주시면 감사합니다.',
+   'MIT · Phosphor Icons (MIT) · Noto Sans KR (OFL)'],
+  ['폰트를 Pretendard로 바꿀 수 있나요?',
+   '--iris-font-family 한 줄만 바꾸면 전 컴포넌트에 적용됩니다. 폰트 패밀리를 타이포 토큰에서 분리해 둔 이유가 이것입니다.',
+   '--iris-font-family: "Pretendard", …'],
+  ['아이콘 라이선스는 어떻게 되나요?',
+   'Phosphor Icons(MIT)에서 72종을 발췌해 line·fill 두 변형으로 씁니다. 상업적 사용과 수정이 자유롭고, 필요한 아이콘은 매핑 한 줄로 더 가져올 수 있습니다.'],
+  ['iOS·Android 코드도 제공되나요?',
+   '현재 제공되는 코드는 웹(React + CSS 변수)입니다. 토큰은 이미 세 플랫폼 값을 모두 갖고 있어서, 네이티브 빌드는 같은 소스에서 내보내는 것이 다음 단계입니다.'],
+  ['기여하거나 이슈를 남기려면?',
+   'GitHub 저장소에 이슈나 PR을 남겨주세요. 토큰 변경은 Figma Variables가 원본이라, 값 수정은 파일에서 시작해 빌드로 반영됩니다.'],
+];
 
 export default function Home() {
-  const nav = useNavigate();
+  const [faq, setFaq] = useState(0);
   useEffect(() => { document.title = 'Iris Design System'; }, []);
+
   return (
     <>
-      <section className="lp-wrap lp-hero">
-        <div>
-          <span className="lp-eyebrow lp-rise" style={{ animationDelay: '40ms' }}><i />v0.1 · 웹 · iOS · Android</span>
-          <h1 className="lp-h1 lp-rise" style={{ animationDelay: '100ms' }}>From screens<br />to <em>systems.</em></h1>
-          <p className="lp-lede lp-rise" style={{ animationDelay: '170ms' }}>
-            보라색 붓꽃, 빛을 조절하는 홍채, 플랫폼 사이를 오가는 전령 — 세 은유에서 이름을 얻은 범용 디자인 시스템입니다.
-            색·간격·타이포가 Figma Variables 단일 소스에서 빌드되고, 그대로 설치해 쓰는 코드가 됩니다.
-          </p>
-          <div className="lp-cta lp-rise" style={{ animationDelay: '230ms' }}>
-            <Button size="l" onClick={() => nav('/components')}>컴포넌트 보기</Button>
-            <Button size="l" variant="outlined" color="assistive" onClick={() => nav('/foundations')}>Foundations</Button>
-          </div>
-          <div className="lp-stats lp-rise" style={{ animationDelay: '300ms' }}>
-            <span><CountUp to={44} /><small>Components</small></span>
-            <span><CountUp to={200} /><small>Design tokens</small></span>
-            <span><CountUp to={iconNames.length} suffix="×2" /><small>Icons · line·fill</small></span>
-            <span><CountUp to={3} /><small>Platforms, one source</small></span>
-          </div>
-        </div>
-        <HeroStage />
-      </section>
-
-      <section className="lp-wrap lp-section">
-        <p className="lp-kicker">Themeable</p>
-        <h2 className="lp-h2">다크 모드는 속성 하나입니다</h2>
-        <p className="lp-sub">
-          컴포넌트는 역할(시멘틱) 토큰만 참조합니다. 테마가 바뀌면 가운데 토큰 층이 재매핑될 뿐, 코드는 그대로예요.
-          경계를 잡고 끌어보세요 — 같은 화면, 같은 마크업입니다.
-        </p>
-        <ThemeSplit />
-        <div className="codeline" style={{ marginTop: 14 }}>{'<html data-theme="dark">  /* 이 한 줄이 전부입니다 */'}</div>
-      </section>
-
-      <section className="lp-section">
+      <section className="lp-hero">
+        <HeroMedia />
         <div className="lp-wrap">
-          <p className="lp-kicker">Components</p>
-          <h2 className="lp-h2">44개, 전부 살아 있습니다</h2>
-          <p className="lp-sub">
-            아래는 스크린샷이 아니라 실제로 렌더된 컴포넌트입니다. 하나를 눌러 문서로 들어가면
-            Playground · 수치 스펙 · Do/Don&apos;t가 기다립니다.
-          </p>
+          <h1 className="lp-wordmark">Iris</h1>
+          <p className="lp-sub-en">A Universal Design System.</p>
+          <p className="lp-sub-kr">하나의 근원에서 모두를 위한 디자인.</p>
         </div>
-        <Marquee items={ROW1} />
-        <div style={{ height: 12 }} />
-        <Marquee items={ROW2} reverse />
       </section>
 
-      <section className="lp-wrap lp-section">
-        <p className="lp-kicker">Get started</p>
-        <h2 className="lp-h2">설치하고 바로 쓰기</h2>
-        <p className="lp-sub">토큰 CSS를 한 번 불러오면 모든 컴포넌트가 라이트/다크에 반응합니다.</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div className="codeline">npm i @iris/tokens @iris/react</div>
-          <div className="codeline">{`import '@iris/tokens/css';  // 앱 진입점에서 1회`}</div>
-          <div className="codeline">{`import { Button } from '@iris/react';`}</div>
-        </div>
-        <div className="home-grid" style={{ marginTop: 32 }}>
-          {([['Foundations', '/foundations', '색·글자·간격·그림자·플랫폼'],
-            ['Components', '/components', '44개 · 카테고리별'],
-            ['Utilities', '/utilities', 'Skeleton · Scrim · Grid · Divider']] as const).map(([n, p, d]) => (
-            <Link key={p} to={p} className="home-link">{n}<small>{d}</small></Link>
+      <section className="lp-sec lp-wrap">
+        <p className="lp-kicker">Principles</p>
+        <h2 className="lp-h2 lp-h2-kr">매번 처음부터<br />정하지 않기 위해.</h2>
+        <div className="lp-principles">
+          {PRINCIPLES.map(([n, t, d]) => (
+            <div className="lp-principle" key={n}>
+              <span className="n">{n}</span>
+              <div><h3>{t}</h3><p>{d}</p></div>
+            </div>
           ))}
         </div>
       </section>
+
+      <InkBand />
+
+      <section className="lp-sec lp-wrap">
+        <p className="lp-kicker">What’s Inside</p>
+        <h2 className="lp-h2">What’s Inside</h2>
+        <div className="lp-inside">
+          <div>
+            <div className="lp-stat"><b>44</b><span>Components</span></div>
+            <div className="lp-stat"><b>200</b><span>Design tokens</span></div>
+            <div className="lp-stat"><b>{iconNames.length}×2</b><span>Icons · line·fill</span></div>
+            <Link to="/components" className="lp-inline-link">컴포넌트 문서 보기 ↗</Link>
+          </div>
+          <div className="lp-catlist">
+            {CATS.map(([n, c, to]) => <Link key={n} to={to}>{n}<small>{c}</small></Link>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="lp-sec--alt">
+        <div className="lp-wrap lp-center">
+          <p className="lp-kicker">One Source</p>
+          <h2 className="lp-h2">One Source, Every Platform</h2>
+          <p className="lp-lede">컴포넌트는 플랫폼을 모릅니다. 높이도 마진도, 값은 토큰이 정합니다.</p>
+          <div className="lp-table">
+            <div className="lp-trow head"><span>TOKEN</span><span>WEB</span><span>iOS</span><span>ANDROID</span></div>
+            {TOKENS.map(([t, w, i, a]) => (
+              <div className="lp-trow" key={t}><code>{t}</code><b>{w}</b><b>{i}</b><b>{a}</b></div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="lp-sec lp-wrap lp-center">
+        <p className="lp-kicker">Themeable</p>
+        <h2 className="lp-h2">Light, Dark, and Yours</h2>
+        <p className="lp-lede">컴포넌트는 역할 토큰만 참조합니다. 테마가 바뀌면 가운데 층이 재매핑될 뿐입니다.</p>
+        <div className="lp-themes">
+          {(['light', 'dark'] as const).map(mode => (
+            <div className="lp-theme-pane" data-theme={mode} key={mode}>
+              <h4>오늘의 채용</h4>
+              <div className="lp-theme-card">
+                <span className="t1">프로덕트 디자이너</span>
+                <span className="t2">Iris팀 · 서울 · 경력 5년+</span>
+                <span style={{ height: 4, borderRadius: 2, background: 'var(--iris-semantic-fill-strong)', display: 'block' }}>
+                  <span style={{ display: 'block', width: '68%', height: '100%', borderRadius: 2, background: 'var(--iris-semantic-primary-normal)' }} />
+                </span>
+              </div>
+              <span className="lp-theme-tag">data-theme="{mode}"</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="lp-sec lp-wrap">
+        <p className="lp-kicker">Get Started</p>
+        <h2 className="lp-h2">Get Started</h2>
+        <div className="lp-rows">
+          <a className="lp-row" href="https://www.figma.com/design/k6EMzf6Q9nM7J1gkAt4ZYo/" target="_blank" rel="noreferrer">
+            <b>Figma</b><span>UI 킷 파일 · 컴포넌트 44종 · 변수 8컬렉션</span><i>↗</i>
+          </a>
+          <div className="lp-row"><b>npm</b><span>npm i @iris/tokens @iris/react</span><i>↗</i></div>
+          <div className="lp-row"><b>GitHub</b><span>소스와 이슈 · MIT</span><i>↗</i></div>
+        </div>
+      </section>
+
+      <section className="lp-sec lp-wrap">
+        <p className="lp-kicker">Behind</p>
+        <h2 className="lp-h2 lp-h2-kr">제작기</h2>
+        <div className="lp-posts">
+          {POSTS.map(([t, d, date]) => (
+            <div className="lp-post" key={t}>
+              <div className="lp-post-thumb" />
+              <h3>{t}</h3><p>{d}</p><small>{date}</small>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="lp-sec lp-wrap">
+        <p className="lp-kicker">FAQ</p>
+        <h2 className="lp-h2">Frequently Asked</h2>
+        <div className="lp-faq">
+          <div className="lp-faq-q" role="tablist" aria-orientation="vertical">
+            {FAQ.map(([q], i) => (
+              <button key={q} role="tab" aria-selected={faq === i} onClick={() => setFaq(i)}>{q}</button>
+            ))}
+          </div>
+          <div className="lp-faq-divider" aria-hidden />
+          <div className="lp-faq-a" key={faq} role="tabpanel">
+            {FAQ[faq][1]}
+            {FAQ[faq][2] && <small>{FAQ[faq][2]}</small>}
+          </div>
+        </div>
+      </section>
+
+      <footer className="lp-footer lp-wrap">
+        <b>Iris</b>
+        <span>© 2026 안현서</span>
+        <nav>
+          <a href="https://www.figma.com/design/k6EMzf6Q9nM7J1gkAt4ZYo/" target="_blank" rel="noreferrer">Figma</a>
+          <a href="#/components">Components</a>
+          <span>MIT</span>
+        </nav>
+      </footer>
     </>
   );
 }

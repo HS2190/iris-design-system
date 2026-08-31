@@ -10,7 +10,7 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
 /** 다중 선택. 하나만 골라야 하면 Radio(예정)를 쓴다. */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
   { label, indeterminate, disabled, className, ...rest }, ref) {
-  const inner = useRef<HTMLInputElement>(null);
+  const inner = useRef<HTMLInputElement | null>(null);
   useEffect(() => { if (inner.current) inner.current.indeterminate = !!indeterminate; }, [indeterminate]);
   return (
     <label className={[s.root, className].filter(Boolean).join(' ')} data-disabled={disabled || undefined}>

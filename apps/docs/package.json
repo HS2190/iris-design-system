@@ -2,7 +2,7 @@
   "name": "@iris/docs",
   "private": true,
   "type": "module",
-  "scripts": { "dev": "vite", "build": "tsc -b --noCheck || true && vite build", "preview": "vite preview" },
+  "scripts": { "dev": "vite", "build": "tsc -b && vite build", "preview": "vite preview" },
   "dependencies": {
     "@iris/react": "*",
     "@iris/tokens": "*",

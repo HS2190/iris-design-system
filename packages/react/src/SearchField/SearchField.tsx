@@ -10,7 +10,7 @@ export interface SearchFieldProps extends React.InputHTMLAttributes<HTMLInputEle
 /** 검색 전용 입력. radius-full로 일반 폼 입력과 구분한다. 화면당 하나. */
 export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(function SearchField(
   { onClear, className, onChange, disabled, ...rest }, ref) {
-  const inner = useRef<HTMLInputElement>(null);
+  const inner = useRef<HTMLInputElement | null>(null);
   const [hasValue, setHasValue] = useState(!!(rest.value ?? rest.defaultValue));
   return (
     <div className={[s.wrap, className].filter(Boolean).join(' ')}>
