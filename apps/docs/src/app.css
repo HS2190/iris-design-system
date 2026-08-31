@@ -82,7 +82,7 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 /* ── Size spec (Figma ComponentDoc A+C 형식) ── */
 .size-hero-wrap { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
 .size-hero { position: relative; display: inline-block; padding: 40px 56px 44px; }
-.size-hero .stage { position: relative; display: inline-block; transform: scale(1.8); transform-origin: center; }
+.size-hero .stage { position: relative; display: inline-block; transform: scale(1.8); transform-origin: center; line-height: 0; }
 .size-zone { position: absolute; pointer-events: none; }
 .size-zone.pad { display: flex; align-items: center; justify-content: center; font-family: "IBM Plex Mono", monospace;
   font-size: 7px; color: var(--iris-semantic-label-normal); }

@@ -23,7 +23,7 @@ export default function ContentBadgePage() {
               {/* 배지 44×20을 2.5배 — 칩 히어로와 비슷한 체급. 상하 2px 밴드 수치는 바로 밖에 */}
               <div style={{ position: 'relative', width: 110, height: 50 }}>
                 <div style={{ transform: 'scale(2.5)', transformOrigin: 'top left', position: 'absolute', left: 0, top: 0, width: 44, height: 20 }}>
-                  <ContentBadge tone="info" variant="subtle" style={{ width: 44, justifyContent: 'center' }}>안내</ContentBadge>
+                  <ContentBadge tone="info" variant="subtle" style={{ position: 'absolute', inset: 0, justifyContent: 'center' }}>안내</ContentBadge>
                   <span className="size-zone pad" style={{ left: 0, top: 0, width: 8, height: 20 }} />
                   <span className="size-zone pad" style={{ right: 0, top: 0, width: 8, height: 20 }} />
                   <span className="size-zone pad" style={{ left: 8, right: 8, top: 0, height: 2 }} />
