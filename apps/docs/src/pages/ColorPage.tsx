@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import tokens from '@iris/tokens';
-import { Button, ContentBadge, Icon, Chip, Toast } from '@iris/react';
+import { Button, Icon } from '@iris/react';
 import { Page, Section, DoDont } from '../components/Doc';
 
 const hexToRgba = (h: string) => {
@@ -29,22 +29,6 @@ const GROUPS: [string, string, string[]][] = [
   ['Static', '테마 불변 — 흰 글자·검정처럼 라이트/다크가 같아야 하는 색.', ['static/white', 'static/black']],
 ];
 
-const DEMOS: Record<string, React.ReactNode> = {
-  Primary: <><Button size="s">주 행동</Button><Button size="s" variant="outlined" color="assistive">보조</Button></>,
-  Label: <div style={{ display: 'flex', flexDirection: 'column', gap: 2, fontSize: 14 }}>
-    <span style={{ color: 'var(--iris-semantic-label-normal)' }}>normal — 본문·제목</span>
-    <span style={{ color: 'var(--iris-semantic-label-neutral)' }}>neutral — 보조 본문</span>
-    <span style={{ color: 'var(--iris-semantic-label-alternative)' }}>alternative — 설명</span>
-    <span style={{ color: 'var(--iris-semantic-label-assistive)' }}>assistive — 힌트</span>
-    <span style={{ color: 'var(--iris-semantic-label-disable)' }}>disable — 비활성</span>
-  </div>,
-  Status: <><ContentBadge tone="info">안내</ContentBadge><ContentBadge tone="positive">완료</ContentBadge><ContentBadge tone="cautionary">주의</ContentBadge><ContentBadge tone="negative">오류</ContentBadge><ContentBadge tone="neutral">보류</ContentBadge></>,
-  Fill: <><Chip selected>선택됨</Chip><Chip>칩</Chip><span style={{ width: 120, height: 6, borderRadius: 999, background: 'var(--iris-semantic-fill-strong)', overflow: 'hidden', display: 'inline-block' }}><span style={{ display: 'block', width: '55%', height: '100%', background: 'var(--iris-semantic-fill-primary)' }} /></span></>,
-  Inverse: <Toast tone="positive">저장되었습니다</Toast>,
-  Accent: <>{(['violet', 'blue', 'teal', 'green', 'orange', 'red'] as const).map(c => (
-    <span key={c} style={{ fontSize: 12, fontWeight: 500, padding: '3px 8px', borderRadius: 6, background: `var(--iris-semantic-accent-${c}-subtle)`, color: `var(--iris-semantic-accent-${c}-foreground)` }}>{c}</span>
-  ))}</>,
-};
 
 const famOf = (k: string) => k.split('/')[0];
 const FAMS = [...new Set(Object.keys(tokens.atomic).map(famOf))];
@@ -68,30 +52,24 @@ export default function ColorPage() {
           </span>
         </div>
       </Section>
-      <Section title="Semantic" desc="스와치 왼쪽 = 라이트, 오른쪽 = 다크. 클릭하면 var(--iris-semantic-…)가 복사됩니다.">
+      <Section title="Semantic" desc="타일은 현재 테마의 실제 색 — 좌측 하단 토글로 다크 값을 확인하세요. 클릭 = var() 복사, 호버 = 원료(atomic) 확인.">
         {GROUPS.map(([t, d, names]) => (
           <div className="fnd-group" key={t}>
             <div className="fnd-group-title">{t}</div>
             <div className="fnd-group-desc">{d}</div>
-            <div className="sw2-grid">
+            <div className="swt-grid">
               {names.map(n => {
                 const s = sem(n);
-                const nm = n.replace(/\//g, '-');
+                const last = n.split('/').slice(1).join('/') || n;
                 return (
-                  <button key={n} className="sw2" onClick={() => copy(n)} title={copied === n ? '복사됨!' : `L ${s.light} · D ${s.dark}`}>
-                    <span className="sw2-chip">
-                      <span className="tl"><i style={{ background: s.light }} /></span>
-                      <span className="td"><i style={{ background: s.dark }} /></span>
-                    </span>
-                    <span className="sw2-meta">
-                      <span className="sw2-name">{nm}</span>
-                      <span className="sw2-refs">{copied === n ? '복사됨!' : `${s.lightRef} → ${s.darkRef}`}</span>
-                    </span>
+                  <button key={n} className="swt" onClick={() => copy(n)}
+                    title={`${n} · L ${s.lightRef} → D ${s.darkRef}`}>
+                    <span className="swt-tile" style={{ background: `var(${cssVar(n)})` }} />
+                    <span className="swt-name">{copied === n ? '복사됨!' : <b>{last}</b>}</span>
                   </button>
                 );
               })}
             </div>
-            {DEMOS[t] && <div className="fnd-demo">{DEMOS[t]}</div>}
           </div>
         ))}
       </Section>

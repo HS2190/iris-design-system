@@ -186,3 +186,12 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 .op-chip { width: 44px; height: 32px; border-radius: 8px; border: 1px solid var(--iris-semantic-line-normal-alternative);
   background: #FFFFFF; position: relative; overflow: hidden; }
 .op-chip i { position: absolute; inset: 0; background: #171719; }
+
+/* Color 단순화 — 원티드식 큰 타일 */
+.swt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.swt { display: flex; flex-direction: column; gap: 7px; border: none; background: none; padding: 0;
+  cursor: pointer; text-align: left; font-family: inherit; }
+.swt-tile { height: 56px; border-radius: 10px; border: 1px solid var(--iris-semantic-line-normal-alternative); }
+.swt:hover .swt-tile { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 1px; }
+.swt-name { font-size: 12.5px; color: var(--iris-semantic-label-neutral); }
+.swt-name b { font-weight: 500; color: var(--iris-semantic-label-normal); }
