@@ -47,7 +47,7 @@ export default function ListCellPage() {
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">
             <div className="size-hero">
-              <div className="stage" style={{ transform: 'scale(1.5)', lineHeight: 1 }}>
+              <div className="stage" style={{ transform: 'scale(1.25)', lineHeight: 1 }}>
                 <ListCell title="알림 설정" description="푸시·이메일 수신 관리" leading={<Icon name="settings" />}
                   trailing={<Icon name="chevron-right" size={20} />} style={{ width: 280 }} />
                 {/* H 56 · padL 16 · 리딩 24 (x16~40) · gap 12 (x40~52) · padR 16 · 트레일링 20 (right 16~36) · gap 8 (right 36~44) */}

@@ -40,7 +40,7 @@ export default function SnackbarPage() {
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">
             <div className="size-hero">
-              <div className="stage" style={{ transform: 'scale(1.5)', lineHeight: 1 }}>
+              <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
                 <Snackbar actionLabel="실행 취소" style={{ whiteSpace: 'nowrap' }}>메모를 삭제했습니다</Snackbar>
                 {/* H48 · padL 16 · padR 8 (+액션 자체 P8) */}
                 <span className="size-zone pad" style={{ left: 0, top: 0, width: 16, height: 48 }}>16</span>
