@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Radio, Select } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function RadioPage() {
   const [rd, setRd] = useState<'default' | 'disabled'>('default');
@@ -15,6 +15,25 @@ export default function RadioPage() {
           </div>}
           panel={<Seg label="state" value={rd} options={['default', 'disabled'] as const} onChange={setRd} />}
           code={`<Radio name="pay" label="카드 결제" defaultChecked${rd === 'disabled' ? ' disabled' : ''} />`} />
+      </Section>
+      <Section title="Variants" desc="시각 변형은 단일형 — 쓰임에 따라 배치만 달라집니다.">
+        <Canvas style={{ gap: 40 }}>
+          <Spec label="세로 그룹 · 기본">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <Radio name="v1" label="카드 결제" defaultChecked />
+              <Radio name="v1" label="계좌 이체" />
+            </div>
+          </Spec>
+          <Spec label="가로 그룹 · 짧은 라벨 2~3개">
+            <div style={{ display: 'flex', gap: 16 }}>
+              <Radio name="v2" label="예" defaultChecked />
+              <Radio name="v2" label="아니요" />
+            </div>
+          </Spec>
+          <Spec label="라벨 없음 · 행 선택용 (aria-label 필수)">
+            <Radio name="v3" aria-label="이 행 선택" defaultChecked />
+          </Spec>
+        </Canvas>
       </Section>
       <Section title="States" desc="눌러보세요 — 같은 그룹에서 하나만 선택됩니다.">
         <Canvas col style={{ gap: 10 }}>
