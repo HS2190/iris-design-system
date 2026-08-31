@@ -13,7 +13,7 @@
 .region { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .2s ease; }
 .region[data-open] { grid-template-rows: 1fr; }
 .inner { overflow: hidden; min-height: 0; }
-.content { padding: 0 var(--iris-space-16) var(--iris-space-16);
+.content { padding: var(--iris-space-8) var(--iris-space-16) var(--iris-space-16);
   font-size: var(--iris-font-size-body-2, 15px); line-height: var(--iris-line-height-body-2, 1.5);
   color: var(--iris-semantic-label-neutral); }
 @media (prefers-reduced-motion: reduce) { .region, .chevron { transition: none; } }

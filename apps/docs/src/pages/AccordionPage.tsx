@@ -41,23 +41,25 @@ export default function AccordionPage() {
             <div className="size-hero">
               <div className="stage" style={{ transform: 'scale(1.4)', lineHeight: 1 }}>
                 <Accordion style={{ width: 250 }} defaultOpen={['x']} items={[{ id: 'x', title: '헤더 56', content: '콘텐츠 영역' }]} />
-                {/* 헤더 0~56 · 콘텐츠 56~78 (lh22) · padB 78~94 */}
-                <span className="size-zone pad" style={{ left: 0, top: 0, width: 16, height: 94 }}>16</span>
-                <span className="size-zone pad" style={{ right: 0, top: 0, width: 16, height: 94 }}>16</span>
-                <span className="size-zone pad" style={{ left: 16, right: 16, top: 78, height: 16 }}>16</span>
+                {/* 헤더 0~56 · G8 (56~64) · 콘텐츠 64~86 (lh22) · padB 86~102 */}
+                <span className="size-zone pad" style={{ left: 0, top: 0, width: 16, height: 102 }}>16</span>
+                <span className="size-zone pad" style={{ right: 0, top: 0, width: 16, height: 102 }}>16</span>
+                <span className="size-zone gap" style={{ left: 16, right: 16, top: 56, height: 8 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 55 }}>8</span>
+                <span className="size-zone pad" style={{ left: 16, right: 16, top: 86, height: 16 }}>16</span>
                 <span className="size-num" style={{ left: -24, top: 26 }}>56</span>
               </div>
             </div>
             <div className="size-hero-caption">
               <b>펼침 · 1항목</b>
               <span className="sub">헤더 min-H 56 · P 좌우 16 · 셰브론 20</span>
-              <span className="sub">콘텐츠 P 좌우·하 16 · body-2 · 항목 간 구분선 1</span>
-              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩 · px</span>
+              <span className="sub">헤더↔콘텐츠 8 · 콘텐츠 P 좌우·하 16 · body-2 · 구분선 1</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
             </div>
           </div>
           <div className="size-row">
             <div className="size-item">
-              <Chips primary="고정" items={['헤더 H 56', 'P 16', '콘텐츠 P 16', '구분선 1', 'body-1 / body-2']} />
+              <Chips primary="고정" items={['헤더 H 56', 'P 16', 'G 8', '콘텐츠 P 16', '구분선 1', 'body-1 / body-2']} />
             </div>
           </div>
         </Canvas>
