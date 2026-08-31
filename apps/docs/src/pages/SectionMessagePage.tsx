@@ -58,16 +58,32 @@ export default function SectionMessagePage() {
                 <span className="size-num gapnum" style={{ left: 40, top: -12, transform: 'translateX(-50%)' }}>8</span>
               </div>
             </div>
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.5)', lineHeight: 1 }}>
+                <SectionMessage tone="info" title="알아두세요" onClose={() => {}} style={{ width: 260 }}>초안은 30일 보관됩니다</SectionMessage>
+                {/* 실측: H63 · 제목 13~27 · 간격 2 · 본문 29~51 · 닫기 20×20 @224 (본문↔닫기 8 · 우측 16) */}
+                <span className="size-zone gap" style={{ left: 216, top: 12, width: 8, height: 20 }} />
+                <span className="size-num gapnum" style={{ left: 220, top: -12, transform: 'translateX(-50%)' }}>8</span>
+                <span className="size-zone pad" style={{ right: 0, top: 12, width: 16, height: 20 }}>16</span>
+                <span className="size-num" style={{ left: 234, top: 34, transform: 'translateX(-50%)' }}>20</span>
+                <span className="size-zone gap" style={{ left: 44, width: 120, top: 27, height: 2 }} />
+                <span className="size-num gapnum" style={{ left: 170, top: 23 }}>2</span>
+              </div>
+            </div>
             <div className="size-hero-caption">
-              <b>info · 본문만</b>
+              <b>info · 본문만 / 닫기 포함</b>
               <span className="sub">P 12 · 16 · R 10 · 아이콘 20 · 간격 8</span>
-              <span className="sub">틴트 = status 8% · 제목 label-1 700 · 본문 body-2</span>
+              <span className="sub">틴트 = status 8% · 제목 label-1 700 · 본문 body-2 · 제목↔본문 2</span>
+              <span className="sub">닫기 버튼 20 (아이콘 16) · 본문↔닫기 8 · 우측 16 · 상단 12 정렬</span>
               <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
             </div>
           </div>
           <div className="size-row">
             <div className="size-item">
               <Chips primary="고정" items={['P 12 · 16', 'G 8', 'R 10', '아이콘 20', 'label-1 / body-2']} />
+            </div>
+            <div className="size-item">
+              <Chips primary="닫기" items={['버튼 20 · 아이콘 16', 'G 8', '우측 16 · 상단 12']} />
             </div>
           </div>
         </Canvas>
