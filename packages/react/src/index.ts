@@ -35,3 +35,6 @@ export { Popover } from './Popover/Popover';
 export { Menu, type MenuItem } from './Menu/Menu';
 export { Popup } from './Popup/Popup';
 export { BottomSheet } from './BottomSheet/BottomSheet';
+export { Skeleton } from './Skeleton/Skeleton';
+export { Scrim } from './Scrim/Scrim';
+export { Grid, GridItem } from './Grid/Grid';

@@ -39,6 +39,9 @@ import PopoverPage from './pages/PopoverPage';
 import MenuPage from './pages/MenuPage';
 import PopupPage from './pages/PopupPage';
 import BottomSheetPage from './pages/BottomSheetPage';
+import SkeletonPage from './pages/SkeletonPage';
+import ScrimPage from './pages/ScrimPage';
+import GridPage from './pages/GridPage';
 
 const components = [
   { path: '/components/button', name: 'Button', ready: true },
@@ -78,6 +81,9 @@ const components = [
   { path: '/components/menu', name: 'Menu', ready: true },
   { path: '/components/popup', name: 'Popup', ready: true },
   { path: '/components/bottom-sheet', name: 'Bottom sheet', ready: true },
+  { path: '/components/skeleton', name: 'Skeleton', ready: true },
+  { path: '/components/scrim', name: 'Scrim', ready: true },
+  { path: '/components/grid', name: 'Grid', ready: true },
 ];
 
 function ThemeToggle() {
@@ -158,6 +164,9 @@ export default function App() {
           <Route path="/components/menu" element={<MenuPage />} />
           <Route path="/components/popup" element={<PopupPage />} />
           <Route path="/components/bottom-sheet" element={<BottomSheetPage />} />
+          <Route path="/components/skeleton" element={<SkeletonPage />} />
+          <Route path="/components/scrim" element={<ScrimPage />} />
+          <Route path="/components/grid" element={<GridPage />} />
         </Routes>
       </main>
       <Toc />
