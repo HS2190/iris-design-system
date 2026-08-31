@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Select, Radio } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 const jobs = [
   { value: 'pd', label: '프로덕트 디자이너' }, { value: 'ux', label: 'UX 리서처' },
@@ -21,6 +21,19 @@ export default function SelectPage() {
             disabled={st === 'disabled'} />}
           panel={<Seg label="state" value={st} options={['default', 'selected', 'error', 'disabled'] as const} onChange={setSt} />}
           code={`<Select label="직무" options={jobs}${st === 'selected' ? ' defaultValue="pd"' : ' placeholder="선택하세요"'}${st === 'error' ? ' error="직무를 선택해 주세요"' : ''}${st === 'disabled' ? ' disabled' : ''} />`} />
+      </Section>
+      <Section title="Variants" desc="시각 변형은 단일형 — 쓰임에 따라 구성이 달라집니다.">
+        <Canvas style={{ gap: 40 }}>
+          <Spec label="폼 필드형 · 라벨 + 헬퍼 (기본)">
+            <Select label="직무" placeholder="선택하세요" options={jobs} helper="하나만 선택할 수 있어요" style={{ width: 220 }} />
+          </Spec>
+          <Spec label="인라인 필터형 · 라벨 없음 (aria-label 필수)">
+            <Select aria-label="정렬 기준" options={[{ value: 'new', label: '최신순' }, { value: 'pop', label: '인기순' }]} defaultValue="new" style={{ width: 140 }} />
+          </Spec>
+          <Spec label="설정값형 · 기본값 선택 (placeholder 없음)">
+            <Select label="언어" options={[{ value: 'ko', label: '한국어' }, { value: 'en', label: 'English' }]} defaultValue="ko" style={{ width: 180 }} />
+          </Spec>
+        </Canvas>
       </Section>
       <Section title="States" desc="열어 보세요.">
         <Canvas>
