@@ -43,8 +43,17 @@ export default function TooltipPage() {
                 <span className="size-num" style={{ left: -24, top: -22 }}>24</span>
               </div>
             </div>
+            <div className="size-hero" style={{ paddingBottom: 76 }}>
+              <div className="stage" style={{ transform: 'scale(1.8)', lineHeight: 1 }}>
+                <Tooltip open content="아래에 표시" placement="bottom"><Button size="s" variant="outlined" color="assistive">저장</Button></Tooltip>
+                {/* 앵커 34 · 오프셋 8 (34~42) · 팁 24 (42~66) */}
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 34, height: 8 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 33 }}>8</span>
+                <span className="size-num" style={{ left: -24, top: 46 }}>24</span>
+              </div>
+            </div>
             <div className="size-hero-caption">
-              <b>top · 강제 표시</b>
+              <b>top / bottom</b>
               <span className="sub">팁 H 24 · P 6 · 10 · R 8 · caption-1 한 줄</span>
               <span className="sub">앵커 오프셋 8 · inverse 배경 · 앵커 중앙 정렬</span>
               <span className="legend"><i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>

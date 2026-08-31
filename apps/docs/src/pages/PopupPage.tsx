@@ -54,8 +54,17 @@ export default function PopupPage() {
                 <span className="size-num" style={{ right: 30, top: 8, transform: 'translateX(50%)' }}>24</span>
               </div>
             </div>
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.1)', lineHeight: 1 }}>
+                <Popup title="점검 안내" onClose={() => {}} style={{ width: 300 }}
+                  footer={<><Button size="s" variant="outlined" color="assistive">취소</Button><Button size="s">확인</Button></>}>오늘 밤 30분간 점검합니다</Popup>
+                {/* 본문 56~78 · 본문 padB 20 (78~98) · 푸터 버튼 34 (98~132) · padB 132~152 */}
+                <span className="size-zone pad" style={{ left: 20, right: 20, top: 78, height: 20 }}>20</span>
+                <span className="size-zone pad" style={{ left: 0, right: 0, top: 132, height: 20 }}>20</span>
+              </div>
+            </div>
             <div className="size-hero-caption">
-              <b>닫기 포함</b>
+              <b>닫기 포함 / + 푸터</b>
               <span className="sub">W 360 · P 20 · R 16 · elevation large</span>
               <span className="sub">제목 heading-2 18 · 닫기 24 · 헤더↔본문 12 · 푸터 버튼 간 8</span>
               <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>

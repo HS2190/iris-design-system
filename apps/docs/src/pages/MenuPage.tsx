@@ -64,8 +64,17 @@ export default function MenuPage() {
                 <span className="size-num" style={{ right: -24, top: 22 }}>40</span>
               </div>
             </div>
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
+                <Menu items={[{ id: 'a', label: '수정' }, { id: 'b', label: '공유' }]} style={{ width: 180 }} />
+                {/* 아이콘 없음 — 라벨 시작 = 외곽 6 + 항목 P 10 = 16 */}
+                <span className="size-zone pad" style={{ left: 6, top: 6, width: 10, height: 40 }} />
+                <span className="size-num" style={{ left: -10, top: 22 }}>10</span>
+                <span className="size-num" style={{ right: -24, top: 22 }}>40</span>
+              </div>
+            </div>
             <div className="size-hero-caption">
-              <b>아이콘 + 구분선</b>
+              <b>아이콘 + 구분선 / 아이콘 없음</b>
               <span className="sub">min-W 180 · 외곽 P 6 · R 12 · elevation medium</span>
               <span className="sub">항목 H 40 · P 10 · R 8 · 아이콘 20 · 간격 8 · body-2</span>
               <span className="sub">구분선 1 · 상하 6</span>

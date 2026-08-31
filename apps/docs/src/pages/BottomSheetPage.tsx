@@ -59,8 +59,18 @@ export default function BottomSheetPage() {
                 <span className="size-zone pad" style={{ left: 0, right: 0, top: 72, height: 20 }}>20</span>
               </div>
             </div>
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
+                <BottomSheet style={{ width: 260, borderRadius: 16 }}>사진 3장을 업로드할까요?</BottomSheet>
+                {/* 본문만 — 그래버 8~12 · G8 (12~20) · 본문 20~42 · padB 42~62 */}
+                <span className="size-zone pad" style={{ left: 0, right: 0, top: 0, height: 8 }}>8</span>
+                <span className="size-zone gap" style={{ left: 20, right: 20, top: 12, height: 8 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 10 }}>8</span>
+                <span className="size-zone pad" style={{ left: 0, right: 0, top: 42, height: 20 }}>20</span>
+              </div>
+            </div>
             <div className="size-hero-caption">
-              <b>제목 + 본문</b>
+              <b>제목 + 본문 / 본문만</b>
               <span className="sub">상단 R radius-sheet (웹 16) · P 상 8 · 좌우·하 20</span>
               <span className="sub">그래버 36 × 4 중앙 · 그래버↔제목 12 · 제목↔본문 8</span>
               <span className="sub">제목 heading-2 18 · 본문 body-2</span>

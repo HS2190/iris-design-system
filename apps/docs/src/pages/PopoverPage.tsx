@@ -52,8 +52,17 @@ export default function PopoverPage() {
                 <span className="size-zone pad" style={{ left: 0, right: 0, top: 60, height: 16 }}>16</span>
               </div>
             </div>
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
+                <Popover title="새로운 필터" action={<Button size="s">확인</Button>}>직무·경력을 한 번에 걸어요</Popover>
+                {/* 본문 38~60 · 액션 위 12 (60~72) · 버튼 34 (72~106) · padB 106~122 */}
+                <span className="size-zone gap" style={{ left: 16, right: 16, top: 60, height: 12 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 62 }}>12</span>
+                <span className="size-zone pad" style={{ left: 0, right: 0, top: 106, height: 16 }}>16</span>
+              </div>
+            </div>
             <div className="size-hero-caption">
-              <b>제목 + 본문</b>
+              <b>제목 + 본문 / + 액션</b>
               <span className="sub">W 260 · P 16 · R 12 · elevation medium</span>
               <span className="sub">제목 label-1 700 · 본문 body-2 · 간격 8 · 액션 위 12</span>
               <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
