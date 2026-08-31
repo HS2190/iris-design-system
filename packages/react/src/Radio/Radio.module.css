@@ -1,0 +1,17 @@
+.root { display: inline-flex; align-items: center; gap: var(--iris-space-8);
+  font-family: var(--iris-font-family); cursor: pointer; min-height: 28px;
+  font-size: var(--iris-font-size-body-2); letter-spacing: var(--iris-letter-spacing-body-2);
+  color: var(--iris-semantic-label-normal); }
+.root[data-disabled] { cursor: not-allowed; color: var(--iris-semantic-label-disable); }
+.input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.circle { box-sizing: border-box; width: 20px; height: 20px; border-radius: 999px;
+  border: 1.5px solid var(--iris-semantic-line-normal-normal);
+  background: var(--iris-semantic-background-normal-normal);
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  transition: background-color .12s ease, border-color .12s ease; }
+.dot { width: 8px; height: 8px; border-radius: 999px; background: var(--iris-semantic-static-white); opacity: 0; }
+.input:checked + .circle { background: var(--iris-semantic-primary-normal); border-color: transparent; }
+.input:checked + .circle .dot { opacity: 1; }
+.input:focus-visible + .circle { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 1px; }
+.input:disabled + .circle { background: var(--iris-semantic-interaction-disable); border-color: var(--iris-semantic-line-solid-normal); }
+.input:disabled:checked + .circle .dot { background: var(--iris-semantic-label-disable); }

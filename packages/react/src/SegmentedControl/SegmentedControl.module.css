@@ -1,0 +1,11 @@
+.track { box-sizing: border-box; display: inline-flex; padding: var(--iris-space-4); gap: var(--iris-space-2);
+  background: var(--iris-semantic-fill-normal); border-radius: var(--iris-radius-sm);
+  font-family: var(--iris-font-family); }
+.item { box-sizing: border-box; flex: 1; border: none; background: none; cursor: pointer; white-space: nowrap;
+  height: 32px; padding-inline: var(--iris-space-12); border-radius: var(--iris-radius-xs);
+  font-family: inherit; font-size: var(--iris-font-size-label-1); letter-spacing: var(--iris-letter-spacing-label-1);
+  font-weight: 500; color: var(--iris-semantic-label-alternative); transition: color .12s ease; }
+.item:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: -1px; }
+.item[aria-pressed="true"] { background: var(--iris-semantic-background-elevated-normal);
+  color: var(--iris-semantic-label-normal); font-weight: 700; box-shadow: var(--iris-elevation-normal-xsmall); }
+.track[data-disabled] .item { color: var(--iris-semantic-label-disable); cursor: not-allowed; }

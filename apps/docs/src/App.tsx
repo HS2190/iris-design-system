@@ -10,6 +10,13 @@ import TextFieldPage from './pages/TextFieldPage';
 import CheckboxPage from './pages/CheckboxPage';
 import SwitchPage from './pages/SwitchPage';
 import DividerPage from './pages/DividerPage';
+import RadioPage from './pages/RadioPage';
+import SelectPage from './pages/SelectPage';
+import SearchFieldPage from './pages/SearchFieldPage';
+import SegmentedControlPage from './pages/SegmentedControlPage';
+import TextAreaPage from './pages/TextAreaPage';
+import SliderPage from './pages/SliderPage';
+import FilterButtonPage from './pages/FilterButtonPage';
 
 const components = [
   { path: '/components/button', name: 'Button', ready: true },
@@ -20,6 +27,13 @@ const components = [
   { path: '/components/checkbox', name: 'Checkbox', ready: true },
   { path: '/components/switch', name: 'Switch', ready: true },
   { path: '/components/divider', name: 'Divider', ready: true },
+  { path: '/components/radio', name: 'Radio', ready: true },
+  { path: '/components/select', name: 'Select', ready: true },
+  { path: '/components/search-field', name: 'Search field', ready: true },
+  { path: '/components/segmented-control', name: 'Segmented control', ready: true },
+  { path: '/components/text-area', name: 'Text area', ready: true },
+  { path: '/components/slider', name: 'Slider', ready: true },
+  { path: '/components/filter-button', name: 'Filter button', ready: true },
 ];
 
 function ThemeToggle() {
@@ -71,6 +85,13 @@ export default function App() {
           <Route path="/components/checkbox" element={<CheckboxPage />} />
           <Route path="/components/switch" element={<SwitchPage />} />
           <Route path="/components/divider" element={<DividerPage />} />
+          <Route path="/components/radio" element={<RadioPage />} />
+          <Route path="/components/select" element={<SelectPage />} />
+          <Route path="/components/search-field" element={<SearchFieldPage />} />
+          <Route path="/components/segmented-control" element={<SegmentedControlPage />} />
+          <Route path="/components/text-area" element={<TextAreaPage />} />
+          <Route path="/components/slider" element={<SliderPage />} />
+          <Route path="/components/filter-button" element={<FilterButtonPage />} />
         </Routes>
       </main>
       <Toc />

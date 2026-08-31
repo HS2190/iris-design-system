@@ -1,0 +1,21 @@
+.root { display: flex; flex-direction: column; gap: var(--iris-space-6); font-family: var(--iris-font-family); }
+.label { font-size: var(--iris-font-size-label-1); letter-spacing: var(--iris-letter-spacing-label-1);
+  font-weight: 500; color: var(--iris-semantic-label-neutral); }
+.root[data-disabled] .label { color: var(--iris-semantic-label-disable); }
+.wrap { position: relative; display: flex; align-items: center; }
+.select { box-sizing: border-box; appearance: none; height: var(--iris-input-height); width: 100%;
+  padding-inline: var(--iris-space-16) var(--iris-space-40); border-radius: var(--iris-radius-sm);
+  border: 1px solid var(--iris-semantic-line-normal-normal);
+  background: var(--iris-semantic-background-normal-normal); color: var(--iris-semantic-label-normal);
+  font-family: inherit; font-size: var(--iris-font-size-body-1); letter-spacing: var(--iris-letter-spacing-body-1);
+  cursor: pointer; transition: border-color .12s ease, box-shadow .12s ease; }
+.select[data-placeholder="true"] { color: var(--iris-semantic-label-assistive); }
+.select:focus { outline: none; border-color: var(--iris-semantic-line-primary-strong);
+  box-shadow: 0 0 0 1px var(--iris-semantic-line-primary-strong); }
+.error .select { border-color: var(--iris-semantic-line-status-negative); }
+.select:disabled { background: var(--iris-semantic-interaction-disable); color: var(--iris-semantic-label-disable); cursor: not-allowed; }
+.chevron { position: absolute; right: var(--iris-space-12); pointer-events: none; color: var(--iris-semantic-label-neutral); display: flex; }
+.root[data-disabled] .chevron { color: var(--iris-semantic-label-disable); }
+.helper { font-size: var(--iris-font-size-caption-1); letter-spacing: var(--iris-letter-spacing-caption-1);
+  color: var(--iris-semantic-label-alternative); margin: 0; }
+.error .helper { color: var(--iris-semantic-status-negative); }

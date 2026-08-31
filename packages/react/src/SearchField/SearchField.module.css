@@ -1,0 +1,16 @@
+.wrap { position: relative; display: flex; align-items: center; font-family: var(--iris-font-family); }
+.icon { position: absolute; left: var(--iris-space-14); color: var(--iris-semantic-label-alternative); display: flex; pointer-events: none; }
+.input { box-sizing: border-box; height: var(--iris-input-height); width: 100%;
+  padding-inline: var(--iris-space-40); border-radius: var(--iris-radius-full); border: 1px solid transparent;
+  background: var(--iris-semantic-fill-alternative); color: var(--iris-semantic-label-normal);
+  font-family: inherit; font-size: var(--iris-font-size-body-1); letter-spacing: var(--iris-letter-spacing-body-1);
+  transition: background-color .12s ease, border-color .12s ease, box-shadow .12s ease; }
+.input::placeholder { color: var(--iris-semantic-label-assistive); }
+.input::-webkit-search-cancel-button { display: none; }
+.input:focus { outline: none; background: var(--iris-semantic-background-normal-normal);
+  border-color: var(--iris-semantic-line-primary-strong); box-shadow: 0 0 0 1px var(--iris-semantic-line-primary-strong); }
+.input:disabled { background: var(--iris-semantic-interaction-disable); color: var(--iris-semantic-label-disable); cursor: not-allowed; }
+.clear { position: absolute; right: var(--iris-space-12); width: 20px; height: 20px; border: none; border-radius: 999px;
+  background: var(--iris-semantic-interaction-inactive); color: var(--iris-semantic-static-white);
+  display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.clear:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 1px; }
