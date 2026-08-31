@@ -1,10 +1,16 @@
 {
   "name": "hs-design-system",
   "private": true,
-  "workspaces": ["packages/*", "apps/*"],
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
     "tokens": "node packages/tokens/build.mjs",
     "dev": "npm run dev -w apps/docs",
     "build": "npm run tokens && npm run build -w apps/docs"
+  },
+  "devDependencies": {
+    "@phosphor-icons/core": "^2.1.1"
   }
 }
