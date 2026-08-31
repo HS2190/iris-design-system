@@ -15,7 +15,7 @@
 .error .input { border-color: var(--iris-semantic-line-status-negative); }
 .error .input:focus { box-shadow: 0 0 0 1px var(--iris-semantic-line-status-negative); }
 .input:disabled { background: var(--iris-semantic-interaction-disable); color: var(--iris-semantic-label-disable); cursor: not-allowed; }
-.helper { font-size: var(--iris-font-size-caption-1); letter-spacing: var(--iris-letter-spacing-caption-1);
+.helper { margin: 0; font-size: var(--iris-font-size-caption-1); letter-spacing: var(--iris-letter-spacing-caption-1);
   color: var(--iris-semantic-label-alternative); }
 .error .helper { color: var(--iris-semantic-status-negative); }
 .root[data-disabled] .helper { color: var(--iris-semantic-label-disable); }

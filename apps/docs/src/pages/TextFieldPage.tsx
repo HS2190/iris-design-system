@@ -21,10 +21,38 @@ export default function TextFieldPage() {
           <TextField label="비활성" placeholder="입력 불가" disabled style={{ width: 220 }} />
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col>
-          <TextField label="이메일" placeholder="example@email.com" style={{ width: 320 }} />
-          <Chips primary="기본" items={['H = input-height(48)', 'P 16', 'R 10', 'body-1']} />
+      <Section title="Size" desc="주황 = 패딩, 청록 = 라벨·메시지 간격(px). 높이는 input-height 토큰(웹 48 · Android 56).">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 'normal' }}>
+                <TextField label="이메일" defaultValue="hs@example" error="이메일 형식이 올바르지 않습니다" style={{ width: 210 }} />
+                {/* 실측: label 17 · gap 6 · input 48 (pad-inline 16) · gap 6 · msg 15 */}
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 17, height: 6 }} />
+                <span className="size-zone pad" style={{ left: 0, top: 23, width: 16, height: 48 }}>16</span>
+                <span className="size-zone pad" style={{ right: 0, top: 23, width: 16, height: 48 }}>16</span>
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 71, height: 6 }} />
+                <span className="size-num gapnum" style={{ right: -18, top: 16 }}>6</span>
+                <span className="size-num gapnum" style={{ right: -18, top: 70 }}>6</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>기본 · Error</b>
+              <span className="sub">H input-height 48 · radius-sm 10 · body-1</span>
+              <span className="sub">라벨 label-1 500 · 메시지 caption-1</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 'auto' }}><TextField label="기본" placeholder="example@email.com" style={{ width: 240 }} /></div>
+              <Chips primary="기본" items={['H 48 (input-height)', 'P 16', 'G 6', 'R 10', 'body-1']} />
+            </div>
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 'auto' }}><TextField label="오류" defaultValue="hs@example" error="이메일 형식이 올바르지 않습니다" style={{ width: 240 }} /></div>
+              <Chips primary="오류" items={['메시지 G 6', 'caption-1', 'status/negative']} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="How to use">
