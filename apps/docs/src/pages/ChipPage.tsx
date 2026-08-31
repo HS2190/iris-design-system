@@ -36,9 +36,26 @@ export default function ChipPage() {
           ))}
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col style={{ gap: 16 }}>
-          <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
+      <Section title="Size" desc="주황 = 패딩(px). 높이 고정 · 너비 자유.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage">
+                <Chip size="m">필터</Chip>
+                {/* M: h36 · pad-inline 14 · pad-block (36-20)/2 = 8 */}
+                <span className="size-zone pad" style={{ left: 0, top: 0, width: 14, height: 36 }}>14</span>
+                <span className="size-zone pad" style={{ right: 0, top: 0, width: 14, height: 36 }}>14</span>
+                <span className="size-zone pad" style={{ left: 14, right: 14, top: 0, height: 8 }}>8</span>
+                <span className="size-zone pad" style={{ left: 14, right: 14, bottom: 0, height: 8 }}>8</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>M · 기본</b>
+              <span className="sub">높이 36 · radius-full · label-1 500</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
             <div className="size-item"><div className="size-slot" style={{ height: 36 }}><Chip size="m">Chip M</Chip></div><Chips primary="M" items={['H 36', 'P 14', 'R full', 'label-1']} /></div>
             <div className="size-item"><div className="size-slot" style={{ height: 36 }}><Chip size="s">Chip S</Chip></div><Chips primary="S" items={['H 30', 'P 12', 'R full', 'label-2']} /></div>
           </div>
