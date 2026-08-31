@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 export function Page({ kicker, title, desc, children }:
   { kicker: string; title: string; desc: string; children: React.ReactNode }) {
+  useEffect(() => { document.title = `${title} · Iris`; return () => { document.title = 'Iris Design System'; }; }, [title]);
   return (<>
     <p className="page-kicker">{kicker}</p>
     <h1 className="page-title">{title}</h1>

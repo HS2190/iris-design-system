@@ -1,4 +1,5 @@
 import { Button, Chip, ContentBadge, Switch, TextField, Checkbox, Divider, TextButton, iconNames } from '@iris/react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const FOUNDATIONS = [
@@ -12,6 +13,7 @@ const FOUNDATIONS = [
 
 export default function Home() {
   const nav = useNavigate();
+  useEffect(() => { document.title = 'Iris Design System'; }, []);
   return (
     <>
       <section className="hero">

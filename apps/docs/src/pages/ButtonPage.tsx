@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, TextField } from '@iris/react';
 
 const variants = ['solid', 'outlined'] as const;
@@ -18,6 +18,7 @@ function Seg<T extends string>({ label, value, options, onChange }:
 }
 
 export default function ButtonPage() {
+  useEffect(() => { document.title = 'Button · Iris'; return () => { document.title = 'Iris Design System'; }; }, []);
   const [variant, setVariant] = useState<typeof variants[number]>('solid');
   const [color, setColor] = useState<typeof colors[number]>('primary');
   const [size, setSize] = useState<typeof sizes[number]>('m');
