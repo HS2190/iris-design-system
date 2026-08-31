@@ -25,15 +25,15 @@ export default function TextFieldPage() {
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">
             <div className="size-hero">
-              <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 'normal' }}>
+              <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
                 <TextField label="이메일" defaultValue="hs@example" error="이메일 형식이 올바르지 않습니다" style={{ width: 210 }} />
-                {/* 실측: label 17 · gap 6 · input 48 (pad-inline 16) · gap 6 · msg 15 */}
-                <span className="size-zone gap" style={{ left: 0, right: 0, top: 17, height: 6 }} />
-                <span className="size-zone pad" style={{ left: 0, top: 23, width: 16, height: 48 }}>16</span>
-                <span className="size-zone pad" style={{ right: 0, top: 23, width: 16, height: 48 }}>16</span>
-                <span className="size-zone gap" style={{ left: 0, right: 0, top: 71, height: 6 }} />
-                <span className="size-num gapnum" style={{ right: -18, top: 16 }}>6</span>
-                <span className="size-num gapnum" style={{ right: -18, top: 70 }}>6</span>
+                {/* lh1 실측: label 14 · gap 6 · input 48 (pad-inline 16) · gap 6 · msg 12 */}
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 14, height: 6 }} />
+                <span className="size-zone pad" style={{ left: 0, top: 20, width: 16, height: 48 }}>16</span>
+                <span className="size-zone pad" style={{ right: 0, top: 20, width: 16, height: 48 }}>16</span>
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 68, height: 6 }} />
+                <span className="size-num gapnum" style={{ right: -18, top: 13 }}>6</span>
+                <span className="size-num gapnum" style={{ right: -18, top: 67 }}>6</span>
               </div>
             </div>
             <div className="size-hero-caption">
