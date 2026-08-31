@@ -16,19 +16,23 @@ export default function ContentBadgePage() {
           </div>
         </Canvas>
       </Section>
-      <Section title="Size" desc="단일 크기. 주황 = 패딩(px), 상하는 2px라 수치만 밖에 표기.">
+      <Section title="Size" desc="단일 크기. 주황 = 패딩(px).">
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">
             <div className="size-hero">
-              <div className="stage">
-                <ContentBadge tone="info" variant="subtle">안내</ContentBadge>
-                {/* H20 · pad-inline 8 · pad-block (20-16)/2 = 2 */}
-                <span className="size-zone pad" style={{ left: 0, top: 0, width: 8, height: 20 }}>8</span>
-                <span className="size-zone pad" style={{ right: 0, top: 0, width: 8, height: 20 }}>8</span>
-                <span className="size-zone pad" style={{ left: 8, right: 8, top: 0, height: 2 }} />
-                <span className="size-zone pad" style={{ left: 8, right: 8, bottom: 0, height: 2 }} />
-                <span className="size-num" style={{ left: '50%', top: -13, transform: 'translateX(-50%)' }}>2</span>
-                <span className="size-num" style={{ left: '50%', bottom: -13, transform: 'translateX(-50%)' }}>2</span>
+              {/* 배지 44×20을 4배 확대, 수치 오버레이는 비확대 → 존 안에 그대로 표기 */}
+              <div style={{ position: 'relative', width: 176, height: 80 }}>
+                <div style={{ transform: 'scale(4)', transformOrigin: 'top left', position: 'absolute', inset: 0 }}>
+                  <ContentBadge tone="info" variant="subtle" style={{ width: 44, justifyContent: 'center' }}>안내</ContentBadge>
+                  <span className="size-zone pad" style={{ left: 0, top: 0, width: 8, height: 20 }} />
+                  <span className="size-zone pad" style={{ right: 0, top: 0, width: 8, height: 20 }} />
+                  <span className="size-zone pad" style={{ left: 8, right: 8, top: 0, height: 2 }} />
+                  <span className="size-zone pad" style={{ left: 8, right: 8, bottom: 0, height: 2 }} />
+                </div>
+                <span className="size-num-in" style={{ left: 0, top: 0, width: 32, height: 80 }}>8</span>
+                <span className="size-num-in" style={{ right: 0, top: 0, width: 32, height: 80 }}>8</span>
+                <span className="size-num-in" style={{ left: 32, right: 32, top: 0, height: 8 }}>2</span>
+                <span className="size-num-in" style={{ left: 32, right: 32, bottom: 0, height: 8 }}>2</span>
               </div>
             </div>
             <div className="size-hero-caption">

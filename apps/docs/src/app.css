@@ -114,3 +114,6 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
   color: var(--iris-semantic-label-alternative); }
 .toc a:hover { color: var(--iris-semantic-label-normal); }
 .toc a.active { border-left-color: var(--iris-semantic-primary-normal); color: var(--iris-semantic-label-primary); font-weight: 700; }
+
+.size-num-in { position: absolute; pointer-events: none; display: flex; align-items: center; justify-content: center;
+  font-family: "IBM Plex Mono", monospace; font-size: 9px; line-height: 1; color: var(--iris-semantic-label-normal); }
