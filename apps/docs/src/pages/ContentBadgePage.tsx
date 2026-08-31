@@ -22,7 +22,7 @@ export default function ContentBadgePage() {
             <div className="size-hero">
               {/* 배지 44×20을 4배 확대, 수치 오버레이는 비확대 → 존 안에 그대로 표기 */}
               <div style={{ position: 'relative', width: 176, height: 80 }}>
-                <div style={{ transform: 'scale(4)', transformOrigin: 'top left', position: 'absolute', inset: 0 }}>
+                <div style={{ transform: 'scale(4)', transformOrigin: 'top left', position: 'absolute', left: 0, top: 0, width: 44, height: 20 }}>
                   <ContentBadge tone="info" variant="subtle" style={{ width: 44, justifyContent: 'center' }}>안내</ContentBadge>
                   <span className="size-zone pad" style={{ left: 0, top: 0, width: 8, height: 20 }} />
                   <span className="size-zone pad" style={{ right: 0, top: 0, width: 8, height: 20 }} />
