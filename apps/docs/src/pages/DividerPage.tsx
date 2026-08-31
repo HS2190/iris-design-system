@@ -27,10 +27,56 @@ export default function DividerPage() {
           </div>
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col>
-          <div style={{ width: 260 }}><Divider /></div>
-          <Chips primary="고정" items={['두께 1 (stroke-hairline)', 'normal = line/solid/neutral', 'strong = line/solid/normal']} />
+      <Section title="Size" desc="두께는 1(stroke-hairline) 고정. 청록 = 권장 여백(px) — 가로는 상하 10, 세로는 좌우 12.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap" style={{ gap: 72 }}>
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.6)', lineHeight: 1 }}>
+                <div style={{ width: 200, fontSize: 14 }}>
+                  <div>항목 A</div>
+                  <Divider style={{ margin: '10px 0' }} />
+                  <div>항목 B</div>
+                </div>
+                {/* A 0~14 · 여백 10 · 선 24~25 · 여백 10 · B 35~49 */}
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 14, height: 10 }} />
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 25, height: 10 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 16 }}>10</span>
+                <span className="size-num gapnum" style={{ right: -16, top: 27 }}>10</span>
+                <span className="size-num" style={{ left: -10, top: 21 }}>1</span>
+              </div>
+            </div>
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.6)', lineHeight: 1 }}>
+                <div style={{ display: 'flex', gap: 12, alignItems: 'center', height: 40, fontSize: 14 }}>
+                  <span style={{ width: 60, textAlign: 'right' }}>텍스트</span>
+                  <Divider orientation="vertical" />
+                  <span>텍스트</span>
+                </div>
+                {/* 박스 60 · 간격 12 · 선 72~73 · 간격 12 */}
+                <span className="size-zone gap" style={{ left: 60, top: 0, width: 12, height: 40 }} />
+                <span className="size-zone gap" style={{ left: 73, top: 0, width: 12, height: 40 }} />
+                <span className="size-num gapnum" style={{ left: 64, top: -11, transform: 'translateX(-50%)' }}>12</span>
+                <span className="size-num gapnum" style={{ left: 82, top: -11, transform: 'translateX(-50%)' }}>12</span>
+                <span className="size-num" style={{ left: 72, bottom: -12, transform: 'translateX(-50%)' }}>1</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>고정 · Horizontal / Vertical</b>
+              <span className="sub">두께 1 (stroke-hairline) · normal = line/solid/neutral · strong = line/solid/normal</span>
+              <span className="sub">권장 여백 — 가로: 상하 10 · 세로: 좌우 12 (세로 높이는 부모를 따름)</span>
+              <span className="legend"><i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 'auto' }}><div style={{ width: 220 }}>항목 A<Divider style={{ margin: '10px 0' }} />항목 B</div></div>
+              <Chips primary="가로" items={['두께 1', '상하 여백 10', 'normal / strong']} />
+            </div>
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 'auto' }}><div style={{ display: 'flex', gap: 12, alignItems: 'center', height: 40 }}>텍스트 <Divider orientation="vertical" /> 텍스트</div></div>
+              <Chips primary="세로" items={['두께 1', '좌우 간격 12', '높이 = 부모']} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="How to use">
