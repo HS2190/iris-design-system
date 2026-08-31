@@ -34,6 +34,7 @@ import BottomNavigationPage from './pages/BottomNavigationPage';
 import TabPage from './pages/TabPage';
 import PaginationPage from './pages/PaginationPage';
 import ProgressPage from './pages/ProgressPage';
+import ProgressTrackerPage from './pages/ProgressTrackerPage';
 import TooltipPage from './pages/TooltipPage';
 import PopoverPage from './pages/PopoverPage';
 import MenuPage from './pages/MenuPage';
@@ -81,6 +82,7 @@ const components = [
   { path: '/components/tab', name: 'Tab', ready: true },
   { path: '/components/pagination', name: 'Pagination', ready: true },
   { path: '/components/progress', name: 'Progress', ready: true },
+  { path: '/components/progress-tracker', name: 'Progress tracker', ready: true },
   { path: '/components/tooltip', name: 'Tooltip', ready: true },
   { path: '/components/popover', name: 'Popover', ready: true },
   { path: '/components/menu', name: 'Menu', ready: true },
@@ -166,6 +168,7 @@ export default function App() {
           <Route path="/components/tab" element={<TabPage />} />
           <Route path="/components/pagination" element={<PaginationPage />} />
           <Route path="/components/progress" element={<ProgressPage />} />
+          <Route path="/components/progress-tracker" element={<ProgressTrackerPage />} />
           <Route path="/components/tooltip" element={<TooltipPage />} />
           <Route path="/components/popover" element={<PopoverPage />} />
           <Route path="/components/menu" element={<MenuPage />} />

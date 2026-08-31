@@ -38,3 +38,4 @@ export { BottomSheet } from './BottomSheet/BottomSheet';
 export { Skeleton } from './Skeleton/Skeleton';
 export { Scrim } from './Scrim/Scrim';
 export { Grid, GridItem } from './Grid/Grid';
+export { ProgressTracker, type ProgressTrackerStep } from './ProgressTracker/ProgressTracker';

@@ -1,0 +1,28 @@
+.h, .v { list-style: none; margin: 0; padding: 0; font-family: var(--iris-font-family); }
+.h { display: flex; align-items: flex-start; }
+.hitem { display: flex; align-items: flex-start; flex: 1; min-width: 0; }
+.hitem:first-child { flex: none; }
+.hstep { display: flex; flex-direction: column; align-items: center; gap: var(--iris-space-8); flex: none; }
+.hconn { flex: 1; height: 2px; border-radius: 1px; margin: 11px var(--iris-space-4) 0;
+  background: var(--iris-semantic-line-solid-neutral); min-width: 20px; }
+.marker { box-sizing: border-box; width: 24px; height: 24px; border-radius: 999px; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: var(--iris-font-size-caption-1, 12px); font-weight: 700; font-variant-numeric: tabular-nums; }
+.done { background: var(--iris-semantic-primary-normal); color: var(--iris-semantic-static-white); }
+.current { border: 2px solid var(--iris-semantic-primary-normal); color: var(--iris-semantic-label-primary);
+  background: var(--iris-semantic-background-normal-normal); }
+.todo { border: 2px solid var(--iris-semantic-line-solid-normal); color: var(--iris-semantic-label-assistive);
+  background: var(--iris-semantic-background-normal-normal); }
+.lineDone { background: var(--iris-semantic-primary-normal); }
+.label { font-size: var(--iris-font-size-label-1, 14px); font-weight: 500; white-space: nowrap; }
+.tdone { color: var(--iris-semantic-label-neutral); }
+.tcurrent { color: var(--iris-semantic-label-normal); font-weight: 700; }
+.ttodo { color: var(--iris-semantic-label-assistive); }
+.v { display: flex; flex-direction: column; }
+.vrow { display: flex; gap: var(--iris-space-12); }
+.vleft { display: flex; flex-direction: column; align-items: center; width: 24px; flex: none; }
+.vconn { width: 2px; flex: 1; min-height: 20px; border-radius: 1px; margin: var(--iris-space-4) 0;
+  background: var(--iris-semantic-line-solid-neutral); }
+.vbody { display: flex; flex-direction: column; gap: 2px; padding-top: 3px; padding-bottom: var(--iris-space-20, 20px); min-width: 0; }
+.vrow:last-child .vbody { padding-bottom: 0; }
+.desc { font-size: var(--iris-font-size-caption-1, 12px); color: var(--iris-semantic-label-alternative); }
