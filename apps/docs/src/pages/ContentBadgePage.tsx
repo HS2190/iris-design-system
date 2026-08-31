@@ -20,19 +20,19 @@ export default function ContentBadgePage() {
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">
             <div className="size-hero">
-              {/* 배지 44×20을 4배 확대, 수치 오버레이는 비확대 → 존 안에 그대로 표기 */}
-              <div style={{ position: 'relative', width: 176, height: 80 }}>
-                <div style={{ transform: 'scale(4)', transformOrigin: 'top left', position: 'absolute', left: 0, top: 0, width: 44, height: 20 }}>
+              {/* 배지 44×20을 2.5배 — 칩 히어로와 비슷한 체급. 상하 2px 밴드 수치는 바로 밖에 */}
+              <div style={{ position: 'relative', width: 110, height: 50 }}>
+                <div style={{ transform: 'scale(2.5)', transformOrigin: 'top left', position: 'absolute', left: 0, top: 0, width: 44, height: 20 }}>
                   <ContentBadge tone="info" variant="subtle" style={{ width: 44, justifyContent: 'center' }}>안내</ContentBadge>
                   <span className="size-zone pad" style={{ left: 0, top: 0, width: 8, height: 20 }} />
                   <span className="size-zone pad" style={{ right: 0, top: 0, width: 8, height: 20 }} />
                   <span className="size-zone pad" style={{ left: 8, right: 8, top: 0, height: 2 }} />
                   <span className="size-zone pad" style={{ left: 8, right: 8, bottom: 0, height: 2 }} />
                 </div>
-                <span className="size-num-in" style={{ left: 0, top: 0, width: 32, height: 80 }}>8</span>
-                <span className="size-num-in" style={{ right: 0, top: 0, width: 32, height: 80 }}>8</span>
-                <span className="size-num-in" style={{ left: 32, right: 32, top: 0, height: 8 }}>2</span>
-                <span className="size-num-in" style={{ left: 32, right: 32, bottom: 0, height: 8 }}>2</span>
+                <span className="size-num-in" style={{ left: 0, top: 0, width: 20, height: 50 }}>8</span>
+                <span className="size-num-in" style={{ right: 0, top: 0, width: 20, height: 50 }}>8</span>
+                <span className="size-num-in" style={{ left: 20, right: 20, top: -13, height: 10 }}>2</span>
+                <span className="size-num-in" style={{ left: 20, right: 20, bottom: -13, height: 10 }}>2</span>
               </div>
             </div>
             <div className="size-hero-caption">
