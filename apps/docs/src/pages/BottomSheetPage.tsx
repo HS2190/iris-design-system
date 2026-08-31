@@ -46,17 +46,17 @@ export default function BottomSheetPage() {
             <div className="size-hero">
               <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
                 <BottomSheet title="공유하기" style={{ width: 260, borderRadius: 16 }}>사진 3장을 업로드할까요?</BottomSheet>
-                {/* padT 8 · 그래버 4 (8~12) · G12 · 제목 18 (24~42) · G8 · 본문 50~72 (lh22) · padB 20 */}
+                {/* 실측: padT 8 · 그래버 8~12 · G12 · 제목 24~44 (h20) · G8 · 본문 52~74 · padB 74~94 */}
                 <span className="size-zone pad" style={{ left: 0, right: 0, top: 0, height: 8 }}>8</span>
                 <span className="size-num" style={{ right: 96, top: 7 }}>36 × 4</span>
                 <span className="size-zone gap" style={{ left: 20, right: 20, top: 12, height: 12 }} />
                 <span className="size-num gapnum" style={{ right: -16, top: 12 }}>12</span>
-                <span className="size-zone pad" style={{ left: 0, top: 12, width: 20, height: 60 }} />
+                <span className="size-zone pad" style={{ left: 0, top: 12, width: 20, height: 62 }} />
                 <span className="size-num" style={{ left: -10, top: 40 }}>20</span>
-                <span className="size-zone pad" style={{ right: 0, top: 12, width: 20, height: 60 }} />
-                <span className="size-zone gap" style={{ left: 20, right: 20, top: 42, height: 8 }} />
-                <span className="size-num gapnum" style={{ right: -16, top: 40 }}>8</span>
-                <span className="size-zone pad" style={{ left: 0, right: 0, top: 72, height: 20 }}>20</span>
+                <span className="size-zone pad" style={{ right: 0, top: 12, width: 20, height: 62 }} />
+                <span className="size-zone gap" style={{ left: 20, right: 20, top: 44, height: 8 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 42 }}>8</span>
+                <span className="size-zone pad" style={{ left: 0, right: 0, top: 74, height: 20 }}>20</span>
               </div>
             </div>
             <div className="size-hero">
