@@ -1,11 +1,22 @@
 import { useState } from 'react';
 import { Icon, iconNames, Button } from '@iris/react';
-import { Page, Section, Canvas, Spec, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function IconPage() {
   const [copied, setCopied] = useState('');
+  const [sz, setSz] = useState<'16' | '20' | '24'>('24');
+  const [tn, setTn] = useState<'normal' | 'primary' | 'negative'>('normal');
   return (
     <Page kicker="Foundations · Icons" title="Icon" desc="24px 그리드의 라인 아이콘 30종. 2px round 스트로크, 색은 currentColor — 부모의 label/* 토큰을 그대로 따릅니다.">
+      <Section title="Playground">
+        <Playground
+          stage={<span style={{ lineHeight: 0, color: tn === 'primary' ? 'var(--iris-semantic-label-primary)' : tn === 'negative' ? 'var(--iris-semantic-status-negative)' : 'var(--iris-semantic-label-normal)' }}><Icon name="star" size={Number(sz)} /></span>}
+          panel={<>
+            <Seg label="size" value={sz} options={['16', '20', '24'] as const} onChange={setSz} />
+            <Seg label="color" value={tn} options={['normal', 'primary', 'negative'] as const} onChange={setTn} />
+          </>}
+          code={`<Icon name="star"${sz !== '24' ? ` size={${sz}}` : ''} />`} />
+      </Section>
       <Section title="Library" desc="클릭하면 이름이 복사됩니다.">
         <Canvas style={{ gap: 8 }}>
           {iconNames.map(n => (

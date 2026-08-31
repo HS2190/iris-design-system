@@ -12,6 +12,12 @@ export default function SegmentedControlPage() {
           <p style={{ margin: 0, color: 'var(--iris-semantic-label-neutral)', fontSize: 14 }}>현재 보기: <b>{view}</b></p>
         </Canvas>
       </Section>
+      <Section title="States">
+        <Canvas col style={{ gap: 16 }}>
+          <SegmentedControl options={['전체', '진행 중', '완료'] as const} value="전체" onChange={() => {}} aria-label="기본" />
+          <SegmentedControl options={['전체', '진행 중', '완료'] as const} value="전체" onChange={() => {}} disabled aria-label="비활성" />
+        </Canvas>
+      </Section>
       <Section title="Size">
         <Canvas col>
           <SegmentedControl options={['리스트', '캘린더'] as const} value="리스트" onChange={() => {}} aria-label="예시" />

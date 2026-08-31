@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import { FilterButton, Chip } from '@iris/react';
-import { Page, Section, Canvas, Chips, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function FilterButtonPage() {
   const [open, setOpen] = useState(false);
   const count = 2;
+  const [st, setSt] = useState<'default' | 'active' | 'disabled'>('default');
   return (
     <Page kicker="Components · Selection & Input" title="Filter button" desc="필터 시트/메뉴를 여는 트리거입니다. 적용된 필터 수를 뱃지로 보여줍니다. 즉시 토글되는 값은 Chip입니다.">
+      <Section title="Playground">
+        <Playground
+          stage={<FilterButton active={st === 'active'} count={st === 'active' ? 2 : undefined} disabled={st === 'disabled'}>직무</FilterButton>}
+          panel={<Seg label="state" value={st} options={['default', 'active', 'disabled'] as const} onChange={setSt} />}
+          code={`<FilterButton${st === 'active' ? ' active count={2}' : ''}${st === 'disabled' ? ' disabled' : ''}>직무</FilterButton>`} />
+      </Section>
       <Section title="States">
         <Canvas>
           <FilterButton>직무</FilterButton>

@@ -1,11 +1,23 @@
+import { useState } from 'react';
 import { ContentBadge, Chip } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 const tones = ['neutral', 'info', 'positive', 'cautionary', 'negative'] as const;
 
 export default function ContentBadgePage() {
+  const [tone, setTone] = useState<(typeof tones)[number]>('info');
+  const [variant, setVariant] = useState<'subtle' | 'solid'>('subtle');
   return (
     <Page kicker="Components · Contents" title="Content badge" desc="콘텐츠의 상태·분류를 짧게 표시하는 읽기 전용 뱃지입니다. Tone은 status/* 토큰과 1:1로 매핑됩니다.">
+      <Section title="Playground">
+        <Playground
+          stage={<ContentBadge tone={tone} variant={variant}>안내</ContentBadge>}
+          panel={<>
+            <Seg label="tone" value={tone} options={tones} onChange={setTone} />
+            <Seg label="variant" value={variant} options={['subtle', 'solid'] as const} onChange={setVariant} />
+          </>}
+          code={`<ContentBadge tone="${tone}"${variant === 'solid' ? ' variant="solid"' : ''}>안내</ContentBadge>`} />
+      </Section>
       <Section title="Variants" desc="Solid = status 채움 + 흰 글자, Subtle = 8% 틴트 + status 글자.">
         <Canvas col style={{ gap: 14 }}>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>

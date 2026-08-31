@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Select, Radio } from '@iris/react';
-import { Page, Section, Canvas, Chips, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 const jobs = [
   { value: 'pd', label: '프로덕트 디자이너' }, { value: 'ux', label: 'UX 리서처' },
@@ -8,8 +9,19 @@ const jobs = [
 ];
 
 export default function SelectPage() {
+  const [st, setSt] = useState<'default' | 'selected' | 'error' | 'disabled'>('default');
   return (
     <Page kicker="Components · Selection & Input" title="Select" desc="목록에서 하나를 고르는 드롭다운입니다. 네이티브 select 기반이라 모바일에서는 OS 픽커가 뜹니다. 옵션 6개 이상일 때 씁니다.">
+      <Section title="Playground">
+        <Playground
+          stage={<Select key={st} label="직무" placeholder="선택하세요" options={jobs} style={{ width: 260 }}
+            defaultValue={st === 'selected' ? 'pd' : undefined}
+            helper={st === 'default' ? '하나만 선택할 수 있어요' : undefined}
+            error={st === 'error' ? '직무를 선택해 주세요' : undefined}
+            disabled={st === 'disabled'} />}
+          panel={<Seg label="state" value={st} options={['default', 'selected', 'error', 'disabled'] as const} onChange={setSt} />}
+          code={`<Select label="직무" options={jobs}${st === 'selected' ? ' defaultValue="pd"' : ' placeholder="선택하세요"'}${st === 'error' ? ' error="직무를 선택해 주세요"' : ''}${st === 'disabled' ? ' disabled' : ''} />`} />
+      </Section>
       <Section title="States" desc="열어 보세요.">
         <Canvas>
           <Select label="직무" placeholder="선택하세요" options={jobs} helper="하나만 선택할 수 있어요" style={{ width: 240 }} />

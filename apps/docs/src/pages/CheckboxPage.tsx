@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import { Checkbox, Switch } from '@iris/react';
-import { Page, Section, Canvas, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function CheckboxPage() {
   const [items, setItems] = useState([true, true, false]);
   const all = items.every(Boolean); const some = items.some(Boolean) && !all;
+  const [cb, setCb] = useState<'default' | 'checked' | 'indeterminate' | 'disabled'>('default');
   return (
     <Page kicker="Components · Selection & Input" title="Checkbox" desc="서로 독립인 옵션의 다중 선택입니다. 하나만 골라야 하면 Radio, 즉시 적용되는 설정이면 Switch를 씁니다.">
+      <Section title="Playground">
+        <Playground
+          stage={<Checkbox key={cb} label="이메일 수신" defaultChecked={cb === 'checked'} indeterminate={cb === 'indeterminate'} disabled={cb === 'disabled'} />}
+          panel={<Seg label="state" value={cb} options={['default', 'checked', 'indeterminate', 'disabled'] as const} onChange={setCb} />}
+          code={`<Checkbox label="이메일 수신"${cb === 'checked' ? ' defaultChecked' : ''}${cb === 'indeterminate' ? ' indeterminate' : ''}${cb === 'disabled' ? ' disabled' : ''} />`} />
+      </Section>
       <Section title="States" desc="전부 실제 컴포넌트 — 눌러보세요.">
         <Canvas>
           <Checkbox label="기본" />
@@ -26,6 +33,12 @@ export default function CheckboxPage() {
                 onChange={e => setItems(items.map((v, j) => j === i ? e.target.checked : v))} />
             ))}
           </div>
+        </Canvas>
+      </Section>
+      <Section title="Size">
+        <Canvas col>
+          <Checkbox label="알림 받기" defaultChecked />
+          <Chips primary="고정" items={['박스 20 · 보더 1.5', 'R 8', '라벨 간격 8', 'body-2', '행 높이 ≥ 28']} />
         </Canvas>
       </Section>
       <Section title="How to use">

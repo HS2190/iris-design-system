@@ -1,9 +1,17 @@
+import { useState } from 'react';
 import { SearchField, TextField } from '@iris/react';
-import { Page, Section, Canvas, Chips, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function SearchFieldPage() {
+  const [st, setSt] = useState<'default' | 'filled' | 'disabled'>('default');
   return (
     <Page kicker="Components · Selection & Input" title="Search field" desc="검색 전용 입력입니다. radius-full 필 형태로 일반 폼 입력과 구분하고, 값이 있으면 지우기 버튼이 나타납니다. 화면당 하나만 둡니다.">
+      <Section title="Playground" desc="입력하면 지우기 버튼이 나타납니다.">
+        <Playground
+          stage={<SearchField key={st} placeholder="검색어를 입력하세요" defaultValue={st === 'filled' ? '디자인 시스템' : ''} disabled={st === 'disabled'} style={{ width: 280 }} />}
+          panel={<Seg label="state" value={st} options={['default', 'filled', 'disabled'] as const} onChange={setSt} />}
+          code={`<SearchField placeholder="검색어를 입력하세요"${st === 'filled' ? ' defaultValue="디자인 시스템"' : ''}${st === 'disabled' ? ' disabled' : ''} />`} />
+      </Section>
       <Section title="States" desc="입력하면 지우기 버튼이 생깁니다.">
         <Canvas>
           <SearchField placeholder="검색어를 입력하세요" style={{ width: 260 }} />
