@@ -31,6 +31,17 @@ const GROUPS: [string, string, string[]][] = [
 
 
 const famOf = (k: string) => k.split('/')[0];
+const FAM_USE: Record<string, string> = {
+  violet: '브랜드 — primary 전 계열 · status/info',
+  coolNeutral: '회색 전부 — label · background · line · fill',
+  neutral: '웜 그레이 예비 (현재 미사용)',
+  blue: 'accent 전용 — 태그·차트',
+  teal: 'accent 전용 — 태그·차트',
+  green: 'status/positive + accent',
+  orange: 'status/cautionary + accent',
+  red: 'status/negative + accent',
+  common: 'black·white — static · 반전 표면',
+};
 const FAMS = [...new Set(Object.keys(tokens.atomic).map(famOf))];
 
 export default function ColorPage() {
@@ -80,7 +91,7 @@ export default function ColorPage() {
           if (!cells.length) return null;
           return (
             <div className="fam-row" key={f}>
-              <span className="fam-name">{f}</span>
+              <span className="fam-name">{f}<em style={{ display: 'block', fontStyle: 'normal', fontSize: 9.5, color: 'var(--iris-semantic-label-assistive)', marginTop: 2, fontFamily: 'var(--iris-font-family)' }}>{FAM_USE[f] || ''}</em></span>
               {cells.map(k => (
                 <span key={k} className="fam-cell" style={{ background: av(k) }} title={`${k} · ${tokens.atomic[k]}`} />
               ))}

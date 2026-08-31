@@ -134,7 +134,7 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 .swatch-val { display: block; font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
   color: var(--iris-semantic-label-assistive); margin-top: 2px; }
 .fam-row { display: flex; align-items: center; gap: 3px; margin-bottom: 8px; }
-.fam-name { width: 100px; flex: none; font-family: "IBM Plex Mono", monospace; font-size: 11px;
+.fam-name { width: 148px; flex: none; font-family: "IBM Plex Mono", monospace; font-size: 11px;
   color: var(--iris-semantic-label-neutral); }
 .fam-cell { flex: 1; height: 30px; border-radius: 4px; min-width: 0; }
 .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; flex-wrap: wrap;
