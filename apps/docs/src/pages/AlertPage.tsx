@@ -42,15 +42,15 @@ export default function AlertPage() {
             <div className="size-hero">
               <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
                 <Alert title="메모를 삭제할까요?" actions={<><Button size="s" variant="outlined" color="assistive">취소</Button><Button size="s">삭제</Button></>}>삭제하면 되돌릴 수 없어요.</Alert>
-                {/* W320 P20 · 제목 18 (20~38) · G8 · 본문 15 (46~61) · G20 · 버튼 34 (81~115) · padB (115~135) */}
+                {/* 실측: 제목 20~40 · G8 · 본문 48~70 · G20 · 버튼 90~124 · padB 124~144 */}
                 <span className="size-zone pad" style={{ left: 0, right: 0, top: 0, height: 20 }}>20</span>
-                <span className="size-zone pad" style={{ left: 0, top: 20, width: 20, height: 95 }}>20</span>
-                <span className="size-zone pad" style={{ right: 0, top: 20, width: 20, height: 95 }}>20</span>
-                <span className="size-zone pad" style={{ left: 0, right: 0, top: 115, height: 20 }}>20</span>
-                <span className="size-zone gap" style={{ left: 20, right: 20, top: 38, height: 8 }} />
-                <span className="size-num gapnum" style={{ right: -16, top: 37 }}>8</span>
-                <span className="size-zone gap" style={{ left: 20, right: 20, top: 61, height: 20 }} />
-                <span className="size-num gapnum" style={{ right: -16, top: 66 }}>20</span>
+                <span className="size-zone pad" style={{ left: 0, top: 20, width: 20, height: 104 }}>20</span>
+                <span className="size-zone pad" style={{ right: 0, top: 20, width: 20, height: 104 }}>20</span>
+                <span className="size-zone pad" style={{ left: 0, right: 0, top: 124, height: 20 }}>20</span>
+                <span className="size-zone gap" style={{ left: 20, right: 20, top: 40, height: 8 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 39 }}>8</span>
+                <span className="size-zone gap" style={{ left: 20, right: 20, top: 70, height: 20 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 76 }}>20</span>
               </div>
             </div>
             <div className="size-hero-caption">

@@ -36,7 +36,7 @@ export default function PushBadgePage() {
                 <span className="size-zone pad" style={{ right: -4, top: -4, width: 4, height: 16 }} />
                 <span className="size-zone pad" style={{ right: 0, top: -4, width: 12, height: 4 }} />
                 <span className="size-num" style={{ right: -14, top: 2 }}>4</span>
-                <span className="size-num" style={{ right: 4, top: 16, transform: 'translateX(50%)' }}>16</span>
+                <span className="size-num" style={{ right: -16, top: 13 }}>16</span>
               </div>
             </div>
             <div className="size-hero-caption">

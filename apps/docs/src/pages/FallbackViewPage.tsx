@@ -29,13 +29,13 @@ export default function FallbackViewPage() {
             <div className="size-hero">
               <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
                 <FallbackView icon="edit" title="아직 메모가 없어요" description="첫 메모를 작성해 보세요." action={<Button size="s">새 메모</Button>} style={{ width: 220, padding: 0 }} />
-                {/* P0 기준: 아이콘 40 (0~40) · G12 · 제목 16 (52~68) · G4 · 설명 15 (72~87) · G16 · 버튼 34 (103~137) */}
+                {/* P0 기준: 아이콘 40 (0~40) · G12 · 제목 16 (52~68) · G4 · 설명 lh22 (72~94) · G16 · 버튼 34 (110~144) */}
                 <span className="size-zone gap" style={{ left: 40, right: 40, top: 40, height: 12 }} />
                 <span className="size-num gapnum" style={{ right: 20, top: 42 }}>12</span>
                 <span className="size-zone gap" style={{ left: 40, right: 40, top: 68, height: 4 }} />
                 <span className="size-num gapnum" style={{ right: 20, top: 66 }}>4</span>
-                <span className="size-zone gap" style={{ left: 40, right: 40, top: 87, height: 16 }} />
-                <span className="size-num gapnum" style={{ right: 20, top: 91 }}>16</span>
+                <span className="size-zone gap" style={{ left: 40, right: 40, top: 94, height: 16 }} />
+                <span className="size-num gapnum" style={{ right: 20, top: 98 }}>16</span>
               </div>
             </div>
             <div className="size-hero-caption">
