@@ -4,6 +4,7 @@ import { iconNames } from '@iris/react';
 import tokens from '@iris/tokens';
 import { componentGroups, utilityItems, componentCount } from '../nav';
 import { posts } from './behind/posts';
+import PrismSparks from '../components/PrismSparks';
 import '../landing.css';
 
 const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -22,6 +23,7 @@ function HeroMedia() {
   return (
     <div className="lp-hero-media" ref={ref}>
       <div className="lp-hero-sink" aria-hidden><div className="lp-hero-img" /></div>
+      <PrismSparks />
       <div className="lp-hero-copy">
         <h1 className="lp-headline">One core. Infinite expressions.</h1>
         <p className="lp-sub-kr">하나의 근원, 환경마다 다른 표현</p>
@@ -80,8 +82,25 @@ const FAQ: [string, string, string?][] = [
    'GitHub 저장소에 이슈나 PR을 남겨주세요. 토큰 변경은 Figma Variables가 원본이라, 값 수정은 파일에서 시작해 빌드로 반영됩니다.'],
 ];
 
+
+/** [data-rv] 요소를 시야에 들어올 때 한 번씩 등장시킨다. --i로 순번 지연. */
+function useReveal() {
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-rv]'));
+    if (reduceMotion()) { els.forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+    els.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
 export default function Home() {
   const [faq, setFaq] = useState(0);
+  useReveal();
   useEffect(() => { document.title = 'Iris Design System'; }, []);
 
   return (
@@ -91,11 +110,11 @@ export default function Home() {
       </section>
 
       <section className="lp-sec lp-wrap">
-        <p className="lp-kicker">Principles</p>
-        <h2 className="lp-h2 lp-h2-kr">매번 처음부터<br />정하지 않기 위해.</h2>
+        <p className="lp-kicker" data-rv>Principles</p>
+        <h2 className="lp-h2 lp-h2-kr" data-rv style={{ ["--i" as string]: 1 }}>매번 처음부터<br />정하지 않기 위해.</h2>
         <div className="lp-principles">
-          {PRINCIPLES.map(([n, t, d]) => (
-            <div className="lp-principle" key={n}>
+          {PRINCIPLES.map(([n, t, d], i) => (
+            <div className="lp-principle" key={n} data-rv style={{ ["--i" as string]: i }}>
               <span className="n">{n}</span>
               <div><h3>{t}</h3><p>{d}</p></div>
             </div>
@@ -106,42 +125,47 @@ export default function Home() {
       <InkBand />
 
       <section className="lp-sec lp-wrap">
-        <p className="lp-kicker">What’s Inside</p>
-        <h2 className="lp-h2">What’s Inside</h2>
+        <p className="lp-kicker" data-rv>What’s Inside</p>
+        <h2 className="lp-h2" data-rv style={{ ["--i" as string]: 1 }}>What’s Inside</h2>
         <div className="lp-inside">
           <div>
-            <div className="lp-stat"><b>{componentCount}</b><span>Components</span></div>
-            <div className="lp-stat"><b>{tokenCount}</b><span>Design tokens</span></div>
-            <div className="lp-stat"><b>{iconNames.length}×2</b><span>Icons · line·fill</span></div>
-            <Link to="/components" className="lp-inline-link">컴포넌트 문서 보기 ↗</Link>
+            <div className="lp-stat" data-rv style={{ ["--i" as string]: 0 }}><b>{componentCount}</b><span>Components</span></div>
+            <div className="lp-stat" data-rv style={{ ["--i" as string]: 1 }}><b>{tokenCount}</b><span>Design tokens</span></div>
+            <div className="lp-stat" data-rv style={{ ["--i" as string]: 2 }}><b>{iconNames.length}×2</b><span>Icons · line·fill</span></div>
+            <Link to="/components" className="lp-inline-link" data-rv style={{ ["--i" as string]: 3 }}>컴포넌트 문서 보기 ↗</Link>
           </div>
           <div className="lp-catlist">
-            {CATS.map(([n, c, to]) => <Link key={n} to={to}>{n}<small>{c}</small></Link>)}
+            {CATS.map(([n, c, to], i) => (
+              <Link key={n} to={to} data-rv style={{ ["--i" as string]: i }}>{n}<small>{c}</small></Link>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="lp-sec--alt">
         <div className="lp-wrap lp-center">
-          <p className="lp-kicker">One Source</p>
-          <h2 className="lp-h2">One Source, Every Platform</h2>
-          <p className="lp-lede">컴포넌트는 플랫폼을 모릅니다. 높이도 마진도, 값은 토큰이 정합니다.</p>
+          <p className="lp-kicker" data-rv>One Source</p>
+          <h2 className="lp-h2" data-rv style={{ ["--i" as string]: 1 }}>One Source, Every Platform</h2>
+          <p className="lp-lede" data-rv style={{ ["--i" as string]: 2 }}>컴포넌트는 플랫폼을 모릅니다. 높이도 마진도, 값은 토큰이 정합니다.</p>
           <div className="lp-table">
-            <div className="lp-trow head"><span>TOKEN</span><span>WEB</span><span>iOS</span><span>ANDROID</span></div>
-            {TOKENS.map(([t, w, i, a]) => (
-              <div className="lp-trow" key={t}><code>{t}</code><b>{w}</b><b>{i}</b><b>{a}</b></div>
+            <div className="lp-trow head" data-rv><span>TOKEN</span><span>WEB</span><span>iOS</span><span>ANDROID</span></div>
+            {TOKENS.map(([t, w, i, a], n) => (
+              <div className="lp-trow" key={t} data-rv style={{ ["--i" as string]: n + 1 }}>
+                <code>{t}</code><b>{w}</b><b>{i}</b><b>{a}</b>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       <section className="lp-sec lp-wrap lp-center">
-        <p className="lp-kicker">Themeable</p>
-        <h2 className="lp-h2">Light, Dark, and Yours</h2>
-        <p className="lp-lede">컴포넌트는 역할 토큰만 참조합니다. 테마가 바뀌면 가운데 층이 재매핑될 뿐입니다.</p>
+        <p className="lp-kicker" data-rv>Themeable</p>
+        <h2 className="lp-h2" data-rv style={{ ["--i" as string]: 1 }}>Light, Dark, and Yours</h2>
+        <p className="lp-lede" data-rv style={{ ["--i" as string]: 2 }}>컴포넌트는 역할 토큰만 참조합니다. 테마가 바뀌면 가운데 층이 재매핑될 뿐입니다.</p>
         <div className="lp-themes">
           {(['light', 'dark'] as const).map(mode => (
-            <div className="lp-theme-pane" data-theme={mode} key={mode}>
+            <div className="lp-theme-pane" data-theme={mode} key={mode} data-rv
+              style={{ ["--i" as string]: mode === 'light' ? 0 : 1 }}>
               <h4>오늘의 채용</h4>
               <div className="lp-theme-card">
                 <span className="t1">프로덕트 디자이너</span>
@@ -157,23 +181,25 @@ export default function Home() {
       </section>
 
       <section className="lp-sec lp-wrap">
-        <p className="lp-kicker">Get Started</p>
-        <h2 className="lp-h2">Get Started</h2>
+        <p className="lp-kicker" data-rv>Get Started</p>
+        <h2 className="lp-h2" data-rv style={{ ["--i" as string]: 1 }}>Get Started</h2>
         <div className="lp-rows">
-          <a className="lp-row" href="https://www.figma.com/design/k6EMzf6Q9nM7J1gkAt4ZYo/" target="_blank" rel="noreferrer">
+          <a className="lp-row" href="https://www.figma.com/design/k6EMzf6Q9nM7J1gkAt4ZYo/" target="_blank" rel="noreferrer"
+            data-rv style={{ ["--i" as string]: 0 }}>
             <b>Figma</b><span>UI 킷 파일 · 컴포넌트 44종 · 변수 8컬렉션</span><i>↗</i>
           </a>
-          <div className="lp-row"><b>npm</b><span>npm i @iris/tokens @iris/react</span><i>↗</i></div>
-          <div className="lp-row"><b>GitHub</b><span>소스와 이슈 · MIT</span><i>↗</i></div>
+          <div className="lp-row" data-rv style={{ ["--i" as string]: 1 }}><b>npm</b><span>npm i @iris/tokens @iris/react</span><i>↗</i></div>
+          <div className="lp-row" data-rv style={{ ["--i" as string]: 2 }}><b>GitHub</b><span>소스와 이슈 · MIT</span><i>↗</i></div>
         </div>
       </section>
 
       <section className="lp-sec lp-wrap">
-        <p className="lp-kicker">Behind</p>
-        <h2 className="lp-h2 lp-h2-kr">제작기</h2>
+        <p className="lp-kicker" data-rv>Behind</p>
+        <h2 className="lp-h2 lp-h2-kr" data-rv style={{ ["--i" as string]: 1 }}>제작기</h2>
         <div className="lp-posts">
-          {posts.map(post => (
-            <Link className="lp-post" to={`/behind/${post.slug}`} key={post.slug}>
+          {posts.map((post, i) => (
+            <Link className="lp-post" to={`/behind/${post.slug}`} key={post.slug}
+              data-rv style={{ ["--i" as string]: i }}>
               <div className="lp-post-thumb" />
               <h3>{post.title}</h3><p>{post.desc}</p>
               <small>{post.date} · {post.read}</small>
@@ -183,8 +209,8 @@ export default function Home() {
       </section>
 
       <section className="lp-sec lp-wrap">
-        <p className="lp-kicker">FAQ</p>
-        <h2 className="lp-h2">Frequently Asked</h2>
+        <p className="lp-kicker" data-rv>FAQ</p>
+        <h2 className="lp-h2" data-rv style={{ ["--i" as string]: 1 }}>Frequently Asked</h2>
         <div className="lp-faq">
           <div className="lp-faq-q" role="tablist" aria-orientation="vertical">
             {FAQ.map(([q], i) => (

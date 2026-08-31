@@ -42,6 +42,9 @@
   animation-timeline: scroll(root block);
   animation-range: 0 620px;
 }
+.lp-sparks { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  mix-blend-mode: screen; }
+
 /* 상단 스크림 — 내비 글자가 흰 광선 위에 걸쳐도 읽히게 (이미지 자체는 그대로) */
 .lp-hero-media::before {
   content: ""; position: absolute; inset: 0 0 auto; height: 200px; z-index: 1; pointer-events: none;
@@ -233,4 +236,29 @@
   .lp-catlist a, .lp-row, .lp-row i, .lp-faq-q button { transition: none; }
   .lp-post-thumb::after, .lp-post h3, .lp-post small { transition: none; }
   .lp-faq-a { animation: none; }
+}
+
+/* ── 계단 등장 + 스펙트럼 괘선 ─────────────────────────────────
+   히어로에서 갈라진 빛이 페이지를 타고 내려간다는 하나의 규칙. */
+[data-rv] {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 45ms);
+}
+[data-rv].in { opacity: 1; transform: none; }
+
+/* kicker 아래로 스펙트럼 선이 그어진다 — 색은 히어로 광선 실측값 */
+.lp-kicker::after {
+  content: ""; display: block; margin-top: 10px; height: 1px; width: 190px; max-width: 40vw;
+  background: linear-gradient(90deg,
+    rgb(176, 140, 230) 0%, rgb(92, 97, 148) 52%, rgb(122, 104, 134) 100%);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1000ms var(--ease-out) 160ms;
+}
+.lp-kicker.in::after { transform: scaleX(1); }
+.lp-center .lp-kicker::after { margin-left: auto; margin-right: auto; transform-origin: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-rv] { opacity: 1; transform: none; transition: none; }
+  .lp-kicker::after { transform: scaleX(1); transition: none; }
 }
