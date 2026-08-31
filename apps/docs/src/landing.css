@@ -1,0 +1,116 @@
+/* ── Iris 랜딩 — 모션 토큰 (docs 전역에서 재사용) ── */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.landing { padding: 0 0 120px; max-width: none; }
+.lp-wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+/* ── 진입 스태거 ── */
+@keyframes lp-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.lp-rise { opacity: 0; animation: lp-rise 560ms var(--ease-out) forwards; }
+
+/* ── Hero ── */
+.lp-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: 56px; align-items: center; padding: 92px 0 72px; }
+.lp-hero::before { content: ''; position: absolute; top: -140px; left: -280px; width: 720px; height: 620px;
+  border-radius: 50%; pointer-events: none; z-index: -1;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--iris-semantic-primary-normal) 20%, transparent), transparent); }
+.lp-eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 8px;
+  border-radius: 999px; border: 1px solid var(--iris-semantic-line-solid-neutral);
+  background: var(--iris-semantic-background-elevated-normal);
+  font-size: 12.5px; color: var(--iris-semantic-label-neutral); margin-bottom: 22px; }
+.lp-eyebrow i { width: 6px; height: 6px; border-radius: 999px; background: var(--iris-semantic-status-positive); }
+.lp-h1 { font-size: clamp(42px, 6.4vw, 68px); line-height: 1.08; letter-spacing: -.035em; font-weight: 700;
+  color: var(--iris-semantic-label-normal); margin: 0 0 20px; }
+.lp-h1 em { font-style: normal; color: var(--iris-semantic-label-primary); }
+.lp-lede { max-width: 520px; font-size: 16.5px; line-height: 1.75; color: var(--iris-semantic-label-neutral); margin: 0 0 30px; }
+.lp-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* 히어로 스테이지 — 실컴포넌트 콜라주 */
+.lp-stage { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+.lp-depth { transition: transform 420ms var(--ease-out); will-change: transform; }
+.lp-card { padding: 16px; border-radius: 16px; border: 1px solid var(--iris-semantic-line-solid-neutral);
+  background: var(--iris-semantic-background-elevated-normal); box-shadow: var(--iris-elevation-normal-small); }
+.lp-card + .lp-card { margin-top: 14px; }
+.lp-card-label { display: block; font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--iris-semantic-label-assistive); margin-bottom: 10px; }
+.lp-stats { display: flex; gap: 44px; flex-wrap: wrap; margin-top: 56px; }
+.lp-stats b { display: block; font-size: 30px; line-height: 1.1; letter-spacing: -.03em;
+  color: var(--iris-semantic-label-normal); font-variant-numeric: tabular-nums; }
+.lp-stats small { display: block; font-size: 12.5px; color: var(--iris-semantic-label-assistive); margin-top: 4px; }
+
+/* ── 섹션 헤더 ── */
+.lp-section { padding: 96px 0 0; }
+.lp-kicker { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--iris-semantic-label-primary); margin: 0 0 12px; }
+.lp-h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.25; letter-spacing: -.025em; font-weight: 700;
+  color: var(--iris-semantic-label-normal); margin: 0 0 12px; }
+.lp-sub { max-width: 560px; font-size: 15.5px; line-height: 1.7; color: var(--iris-semantic-label-neutral); margin: 0 0 32px; }
+
+/* ── 테마 분할 쇼케이스 ── */
+.lp-split { position: relative; height: 424px; border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--iris-semantic-line-solid-neutral); touch-action: none; user-select: none; }
+.lp-split-layer { position: absolute; inset: 0; }
+.lp-split-layer > * { pointer-events: none; }
+.lp-split-top { clip-path: inset(0 0 0 var(--split, 50%)); }
+.lp-split-handle { position: absolute; top: 0; bottom: 0; left: var(--split, 50%); width: 2px;
+  background: var(--iris-semantic-static-white); cursor: ew-resize; border: none; padding: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .18); }
+.lp-split-handle::after { content: '⟷'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 40px; height: 40px; border-radius: 999px; background: var(--iris-semantic-static-white); color: #171719;
+  display: flex; align-items: center; justify-content: center; font-size: 15px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .28); }
+.lp-split-handle:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 2px; }
+.lp-split-tag { position: absolute; bottom: 14px; z-index: 3; font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+  padding: 4px 8px; border-radius: 6px; letter-spacing: .04em; }
+.lp-split-tag.l { left: 14px; background: rgba(23, 23, 25, .06); color: #47474D; }
+.lp-split-tag.d { right: 14px; background: rgba(255, 255, 255, .1); color: #C2C2C6; }
+
+/* 분할 안 미니 화면 */
+.lp-mock { height: 100%; box-sizing: border-box; padding: 20px 24px 42px; background: var(--iris-semantic-background-normal-normal);
+  display: flex; flex-direction: column; gap: 14px; }
+.lp-mock-bar { display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 14px; border-bottom: 1px solid var(--iris-semantic-line-solid-neutral); }
+.lp-mock-title { font-size: 17px; font-weight: 700; letter-spacing: -.02em; color: var(--iris-semantic-label-normal); }
+.lp-mock-card { padding: 16px; border-radius: 14px; background: var(--iris-semantic-background-elevated-normal);
+  border: 1px solid var(--iris-semantic-line-solid-neutral); display: flex; flex-direction: column; gap: 10px; }
+.lp-mock-row { display: flex; align-items: center; gap: 10px; }
+.lp-mock-t1 { font-size: 15px; color: var(--iris-semantic-label-normal); }
+.lp-mock-t2 { font-size: 12.5px; color: var(--iris-semantic-label-alternative); }
+
+/* ── 컴포넌트 마키 ── */
+.lp-marq { position: relative; overflow: hidden; padding: 6px 0; }
+.lp-marq::before, .lp-marq::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+  pointer-events: none; }
+.lp-marq::before { left: 0; background: linear-gradient(to right, var(--iris-semantic-background-normal-normal), transparent); }
+.lp-marq::after { right: 0; background: linear-gradient(to left, var(--iris-semantic-background-normal-normal), transparent); }
+.lp-marq-track { display: flex; gap: 12px; width: max-content;
+  animation: lp-marq 46s linear infinite; }
+.lp-marq-track.rev { animation-direction: reverse; animation-duration: 58s; }
+@keyframes lp-marq { to { transform: translateX(-50%); } }
+.lp-chipcard { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: 14px;
+  border: 1px solid var(--iris-semantic-line-solid-neutral);
+  background: var(--iris-semantic-background-elevated-normal); flex: none;
+  transition: border-color 160ms var(--ease-out), transform 160ms var(--ease-out); }
+.lp-chipcard span.n { font-size: 12.5px; color: var(--iris-semantic-label-alternative); white-space: nowrap; }
+.lp-chipcard .demo { pointer-events: none; display: flex; align-items: center; }
+
+@media (hover: hover) and (pointer: fine) {
+  .lp-marq:hover .lp-marq-track { animation-play-state: paused; }
+  .lp-chipcard:hover { border-color: var(--iris-semantic-line-primary-normal); transform: translateY(-2px); }
+}
+
+@media (max-width: 900px) {
+  .lp-hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 0 48px; }
+  .lp-split { height: 380px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-rise { animation-duration: 1ms; }
+  .lp-depth { transition: none; }
+  .lp-marq { overflow-x: auto; }
+  .lp-marq-track { animation: none; }
+  .lp-chipcard { transition: none; }
+}

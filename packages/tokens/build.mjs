@@ -33,6 +33,9 @@ css += '}\n\n';
 const darkBlock = Object.entries(semantic).map(([n, v]) => `  --iris-semantic-${kebab(n)}: var(--iris-atomic-${kebab(v.dark)});`).join('\n');
 css += `@media (prefers-color-scheme: dark) {\n  :root:not([data-theme="light"]) {\n${darkBlock.replace(/^/gm, '  ')}\n  }\n}\n\n`;
 css += `[data-theme="dark"] {\n${darkBlock}\n}\n\n`;
+// ── scoped light: 다크 문서 안에서도 라이트 영역을 만들 수 있게 (테마 비교 데모 등)
+const lightBlock = Object.entries(semantic).map(([n, v]) => `  --iris-semantic-${kebab(n)}: var(--iris-atomic-${kebab(v.light)});`).join('\n');
+css += `[data-theme="light"] {\n${lightBlock}\n}\n\n`;
 // ── 타이포 유틸리티 클래스
 for (const t of typography) css += `.iris-${t.n} { font-family: var(--iris-font-family); font-size: var(--iris-font-size-${t.n}); line-height: var(--iris-line-height-${t.n}); letter-spacing: var(--iris-letter-spacing-${t.n}); font-weight: var(--iris-font-weight-${t.n}); word-break: keep-all; overflow-wrap: anywhere; }\n`;
 
