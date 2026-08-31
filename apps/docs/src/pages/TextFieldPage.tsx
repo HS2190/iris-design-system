@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField } from '@iris/react';
+import { TextField, Button } from '@iris/react';
 import { Page, Section, Canvas, Chips, DoDont, Props, Playground, Seg } from '../components/Doc';
 
 export default function TextFieldPage() {
@@ -19,6 +19,15 @@ export default function TextFieldPage() {
           <TextField label="기본" placeholder="입력하세요" style={{ width: 220 }} />
           <TextField label="오류" defaultValue="hs@example" error="이메일 형식이 올바르지 않습니다" style={{ width: 220 }} />
           <TextField label="비활성" placeholder="입력 불가" disabled style={{ width: 220 }} />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="로그인 폼 — 필드 간 16, 제출 버튼은 풀폭.">
+        <Canvas col>
+          <div style={{ width: 300, display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <TextField label="이메일" placeholder="example@email.com" />
+            <TextField label="비밀번호" type="password" placeholder="8자 이상" helper="영문·숫자 조합 8자 이상" />
+            <Button style={{ width: '100%' }}>로그인</Button>
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 패딩, 청록 = 라벨·메시지 간격(px). 높이는 input-height 토큰(웹 48 · Android 56).">

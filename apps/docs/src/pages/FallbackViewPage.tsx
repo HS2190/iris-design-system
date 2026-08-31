@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FallbackView, Button } from '@iris/react';
+import { FallbackView, Button, Card } from '@iris/react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function FallbackViewPage() {
@@ -21,6 +21,13 @@ export default function FallbackViewPage() {
           <Spec label="빈 목록 · 첫 사용"><FallbackView icon="edit" title="아직 메모가 없어요" description="첫 메모를 작성해 보세요." action={<Button size="s">새 메모</Button>} style={{ width: 220 }} /></Spec>
           <Spec label="검색 결과 없음"><FallbackView icon="search" title="검색 결과가 없어요" description="다른 키워드로 검색해 보세요." style={{ width: 220 }} /></Spec>
           <Spec label="로드 오류"><FallbackView icon="warning" title="불러오지 못했어요" description="네트워크를 확인해 주세요." action={<Button size="s" variant="outlined" color="assistive">다시 시도</Button>} style={{ width: 220 }} /></Spec>
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="패널·카드 안을 채웁니다 — 목록이 있어야 할 자리 그대로.">
+        <Canvas>
+          <Card variant="outlined" style={{ width: 340 }}>
+            <FallbackView icon="search" title="검색 결과가 없어요" description="다른 키워드로 검색해 보세요." style={{ padding: '16px 8px' }} />
+          </Card>
         </Canvas>
       </Section>
       <Section title="Size" desc="청록 = 블록 간격(px). 아이콘 40 · 중앙 정렬.">

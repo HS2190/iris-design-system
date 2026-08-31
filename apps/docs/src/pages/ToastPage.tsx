@@ -33,6 +33,13 @@ export default function ToastPage() {
           <Toast tone="neutral" style={{ maxWidth: 300 }}>네트워크가 불안정해 초안을 로컬에 백업했습니다. 연결되면 자동 동기화됩니다.</Toast>
         </Canvas>
       </Section>
+      <Section title="Usage" desc="화면 하단 중앙에 뜹니다 — 콘텐츠를 가리지 않는 위치.">
+        <Canvas>
+          <div style={{ position: 'relative', width: '100%', maxWidth: 420, height: 200, borderRadius: 12, background: 'var(--iris-semantic-background-normal-normal)', border: '1px solid var(--iris-semantic-line-solid-neutral)' }}>
+            <Toast tone="positive" style={{ position: 'absolute', bottom: 16, left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap' }}>저장되었습니다</Toast>
+          </div>
+        </Canvas>
+      </Section>
       <Section title="Size" desc="주황 = 패딩, 청록 = 아이콘·문구 간격(px). 최소 높이 48.">
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">

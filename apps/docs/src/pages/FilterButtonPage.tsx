@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FilterButton, Chip } from '@iris/react';
+import { FilterButton, Chip, SearchField } from '@iris/react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function FilterButtonPage() {
@@ -22,6 +22,18 @@ export default function FilterButtonPage() {
           <FilterButton active={open} count={open ? 1 : 0} onClick={() => setOpen(v => !v)} aria-expanded={open}>
             눌러보기
           </FilterButton>
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="목록 상단 필터 바 — 적용 수가 뱃지로 남습니다.">
+        <Canvas col>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 360 }}>
+            <SearchField placeholder="채용 공고 검색" />
+            <div style={{ display: 'flex', gap: 8 }}>
+              <FilterButton active count={2}>직무</FilterButton>
+              <FilterButton active count={1}>경력</FilterButton>
+              <FilterButton>지역</FilterButton>
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 패딩, 청록 = 요소 간격(px). 높이 36 고정 · 너비 자유.">

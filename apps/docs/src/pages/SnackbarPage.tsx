@@ -29,6 +29,13 @@ export default function SnackbarPage() {
           <Snackbar actionLabel="재시도" style={{ maxWidth: 340 }}>네트워크가 불안정해 3개 항목이 동기화되지 않았습니다.</Snackbar>
         </Canvas>
       </Section>
+      <Section title="Usage" desc="화면 하단 중앙 — 사라지기 전까지 액션이 살아있습니다.">
+        <Canvas>
+          <div style={{ position: 'relative', width: '100%', maxWidth: 420, height: 200, borderRadius: 12, background: 'var(--iris-semantic-background-normal-normal)', border: '1px solid var(--iris-semantic-line-solid-neutral)' }}>
+            <Snackbar actionLabel="실행 취소" style={{ position: 'absolute', bottom: 16, left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap', minWidth: 280 }}>메모를 삭제했습니다</Snackbar>
+          </div>
+        </Canvas>
+      </Section>
       <Section title="Size" desc="주황 = 패딩(px) — 우측은 액션 버튼 자체 패딩 8이 있어 8로 좁습니다.">
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">

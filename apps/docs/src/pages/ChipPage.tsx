@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Chip } from '@iris/react';
+import { Chip, SearchField } from '@iris/react';
 import { Page, Section, Canvas, Spec, Chips, DoDont, Props, Playground, Seg } from '../components/Doc';
 
 export default function ChipPage() {
@@ -34,6 +34,16 @@ export default function ChipPage() {
           {['전체', '디자인', '개발', '마케팅'].map(f => (
             <Chip key={f} selected={filters.includes(f)} onClick={() => toggle(f)}>{f}</Chip>
           ))}
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="검색 아래 필터 바 — 즉시 토글되는 조건들을 가로로 나열합니다.">
+        <Canvas col>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 340 }}>
+            <SearchField placeholder="채용 공고 검색" />
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <Chip size="s" selected>재택 가능</Chip><Chip size="s">신입</Chip><Chip size="s" selected>정규직</Chip><Chip size="s">스톡옵션</Chip>
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 패딩(px). 높이 고정 · 너비 자유.">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Table } from '@iris/react';
+import { Table, SectionHeader } from '@iris/react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 const rows = [
@@ -25,6 +25,14 @@ export default function TablePage() {
             columns={[{ key: 'name', header: '이름' }, { key: 'role', header: '직무' }, { key: 'years', header: '경력(년)', align: 'right' }]} /></Spec>
           <Spec label="빈 상태"><Table style={{ width: 380 }} data={[]} emptyText="아직 팀원이 없습니다"
             columns={[{ key: 'name', header: '이름' }, { key: 'role', header: '직무' }]} /></Spec>
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="섹션 헤더 아래 데이터 표.">
+        <Canvas col>
+          <div style={{ width: 380 }}>
+            <SectionHeader title="팀원" />
+            <Table interactive data={rows} columns={[{ key: 'name', header: '이름' }, { key: 'role', header: '직무' }, { key: 'years', header: '경력(년)', align: 'right' }]} />
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 셀 좌우 패딩 16(px). 헤더 행 40 · 데이터 행 48.">

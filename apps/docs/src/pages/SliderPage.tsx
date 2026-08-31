@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Slider, TextField } from '@iris/react';
+import { Slider, TextField, Button } from '@iris/react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function SliderPage() {
@@ -17,6 +17,15 @@ export default function SliderPage() {
           <Slider label="가격대" defaultValue={30} formatValue={v => `${v}만 원`} style={{ maxWidth: 360 }} />
           <Slider label="볼륨" defaultValue={70} formatValue={v => `${v}%`} style={{ maxWidth: 360 }} />
           <Slider label="비활성" defaultValue={50} disabled style={{ maxWidth: 360 }} />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="필터 패널 — 범위를 감으로 고르고 적용합니다.">
+        <Canvas col>
+          <div style={{ width: 300, display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <Slider label="가격대" defaultValue={30} formatValue={v => `~${v}만 원`} />
+            <Slider label="경력" defaultValue={50} formatValue={v => `~${Math.round(v / 10)}년`} />
+            <Button style={{ width: '100%' }}>적용하기</Button>
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="청록 = 라벨행·트랙 간격(px). 트랙 4 위에 노브 24가 올라갑니다.">

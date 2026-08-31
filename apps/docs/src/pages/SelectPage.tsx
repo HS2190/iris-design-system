@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Select, Radio } from '@iris/react';
+import { Select, Radio, TextField, Button } from '@iris/react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 const jobs = [
@@ -43,6 +43,15 @@ export default function SelectPage() {
           <Select label="선택됨" options={jobs} defaultValue="pd" style={{ width: 240 }} />
           <Select label="오류" placeholder="선택하세요" options={jobs} error="직무를 선택해 주세요" style={{ width: 240 }} />
           <Select label="비활성" placeholder="선택 불가" options={jobs} disabled style={{ width: 240 }} />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="프로필 폼 — 입력 필드와 같은 규칙(라벨·간격 16)으로 섞입니다.">
+        <Canvas col>
+          <div style={{ width: 300, display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <TextField label="이름" placeholder="이름을 입력하세요" />
+            <Select label="직무" placeholder="선택하세요" options={jobs} />
+            <Button style={{ width: '100%' }}>저장</Button>
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 패딩, 청록 = 라벨·헬퍼 간격(px). 오른쪽 40은 셰브론 자리입니다.">

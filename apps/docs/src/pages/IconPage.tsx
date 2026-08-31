@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Icon, iconNames, Button } from '@iris/react';
+import { Icon, iconNames, Button, ListCell } from '@iris/react';
 import { Page, Section, Canvas, Spec, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function IconPage() {
@@ -28,6 +28,12 @@ export default function IconPage() {
               <span style={{ fontSize: 11, fontFamily: '"IBM Plex Mono", monospace' }}>{n}</span>
             </button>
           ))}
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="아이콘은 단독보다 버튼·리스트 셀 안에서 라벨과 함께 씁니다.">
+        <Canvas style={{ gap: 32, alignItems: 'center' }}>
+          <Button variant="outlined" color="assistive" leadingIcon="share">공유</Button>
+          <ListCell title="알림 설정" leading={<Icon name="bell" />} trailing={<Icon name="chevron-right" size={20} />} style={{ width: 260 }} />
         </Canvas>
       </Section>
       <Section title="Size" desc="16 · 20 · 24가 표준입니다. 색은 감싸는 요소의 color로 정합니다.">

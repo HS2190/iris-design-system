@@ -35,6 +35,14 @@ export default function SectionMessagePage() {
           <SectionMessage tone="info" title="알아두세요" onClose={() => {}} style={{ width: 380 }}>초안은 30일 동안 보관됩니다.</SectionMessage>
         </Canvas>
       </Section>
+      <Section title="Usage" desc="폼 상단 오류 요약 — 문제 필드와 같은 화면에 남습니다.">
+        <Canvas col>
+          <div style={{ width: 320, display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <SectionMessage tone="negative" title="저장 실패">네트워크 확인 후 다시 시도해 주세요.</SectionMessage>
+            <TextField label="이메일" defaultValue="hs@example" error="이메일 형식이 올바르지 않습니다" />
+          </div>
+        </Canvas>
+      </Section>
       <Section title="Size" desc="주황 = 패딩, 청록 = 아이콘·본문 간격(px).">
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">

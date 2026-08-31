@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Avatar, AvatarGroup } from '@iris/react';
+import { Avatar, AvatarGroup, ListCell, Icon } from '@iris/react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 const IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C3AED"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs><rect width="112" height="112" fill="url(#g)"/></svg>');
@@ -34,6 +34,12 @@ export default function AvatarPage() {
           <Spec label="이미지 정상"><Avatar size="l" name="안현서" src={IMG} /></Spec>
           <Spec label="로드 실패 → 이니셜"><Avatar size="l" name="안현서" src="/broken.png" /></Spec>
           <Spec label="이름 없음"><Avatar size="l" /></Spec>
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="리스트 셀 리딩 — 사람이 주어인 목록의 기본 조합.">
+        <Canvas col style={{ gap: 4 }}>
+          <ListCell title="안현서" description="프로덕트 디자이너" leading={<Avatar size="l" name="안" src={IMG} />} trailing={<Icon name="chevron-right" size={20} />} style={{ width: 320 }} />
+          <ListCell title="김하나" description="프론트엔드 개발자" leading={<Avatar size="l" name="김" />} trailing={<Icon name="chevron-right" size={20} />} style={{ width: 320 }} />
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 그룹 겹침 -8(px), 링 2는 배경색. 크기 4단계 고정.">

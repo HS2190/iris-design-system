@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ListCell, Icon, Avatar, Switch } from '@iris/react';
+import { ListCell, Icon, Avatar, Switch, SectionHeader, Divider } from '@iris/react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function ListCellPage() {
@@ -30,6 +30,17 @@ export default function ListCellPage() {
         <Canvas col style={{ gap: 4 }}>
           <ListCell title="기본 (정적)" description="정보 표시 전용" style={{ width: 340 }} />
           <ListCell interactive title="인터랙티브" description="hover · 키보드 포커스" trailing={<Icon name="chevron-right" size={20} />} style={{ width: 340 }} />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="설정 화면 — 섹션 헤더 + 셀 + 그룹 경계 구분선.">
+        <Canvas col>
+          <div style={{ width: 340 }}>
+            <SectionHeader title="알림" />
+            <ListCell title="푸시 알림" trailing={<Switch aria-label="푸시" defaultChecked />} />
+            <ListCell title="이메일 요약" trailing={<Switch aria-label="이메일" />} />
+            <Divider style={{ margin: '8px 0' }} />
+            <ListCell interactive title="로그아웃" />
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 패딩, 청록 = 슬롯 간격(px). 최소 높이 56 — 내용이 길면 늘어납니다.">

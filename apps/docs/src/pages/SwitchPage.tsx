@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Switch, Checkbox } from '@iris/react';
+import { Switch, Checkbox, ListCell } from '@iris/react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function SwitchPage() {
@@ -18,6 +18,12 @@ export default function SwitchPage() {
           <Switch label="켜짐" defaultChecked />
           <Switch label="비활성" disabled />
           <Switch label="비활성 · 켜짐" disabled defaultChecked />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="설정 리스트 — 셀 트레일링에 얹어 즉시 적용.">
+        <Canvas col style={{ gap: 4 }}>
+          <ListCell title="푸시 알림" description="새 소식을 바로 받아요" trailing={<Switch aria-label="푸시 알림" defaultChecked />} style={{ width: 320 }} />
+          <ListCell title="이메일 요약" description="주 1회 모아서" trailing={<Switch aria-label="이메일 요약" />} style={{ width: 320 }} />
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 노브 인셋(px), 청록 = 트랙·라벨 간격(px). 트랙 52×32 안에 노브 28이 2px 인셋으로 들어갑니다.">

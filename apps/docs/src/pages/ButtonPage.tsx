@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '@iris/react';
+import { Button, TextField } from '@iris/react';
 
 const variants = ['solid', 'outlined'] as const;
 const colors = ['primary', 'assistive'] as const;
@@ -67,6 +67,17 @@ export default function ButtonPage() {
         <div className="spec"><Button variant="outlined" color="assistive" disabled>Disabled</Button><small>outlined · disabled</small></div>
       </div>
 
+      <h2 className="section">Usage</h2>
+      <p className="section-desc">폼 하단 제출 영역 — 주 행동 하나 + 보조 행동, 오른쪽 정렬.</p>
+      <div className="canvas">
+        <div style={{ width: 300, display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <TextField label="이메일" placeholder="example@email.com" />
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+            <Button variant="outlined" color="assistive">취소</Button>
+            <Button>저장</Button>
+          </div>
+        </div>
+      </div>
       <h2 className="section">Size</h2>
       <p className="section-desc">높이 고정 · 너비 자유. 주황 = 패딩, 청록 = 아이콘–라벨 간격(px). 수치는 전부 토큰입니다.</p>
       <div className="canvas col" style={{ gap: 8 }}>

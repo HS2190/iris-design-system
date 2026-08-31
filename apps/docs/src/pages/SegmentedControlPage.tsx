@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SegmentedControl, Chip } from '@iris/react';
+import { SegmentedControl, Chip, SectionHeader, ListCell, Icon } from '@iris/react';
 import { Page, Section, Canvas, Chips, DoDont, Props } from '../components/Doc';
 
 export default function SegmentedControlPage() {
@@ -16,6 +16,18 @@ export default function SegmentedControlPage() {
         <Canvas col style={{ gap: 16 }}>
           <SegmentedControl options={['전체', '진행 중', '완료'] as const} value="전체" onChange={() => {}} aria-label="기본" />
           <SegmentedControl options={['전체', '진행 중', '완료'] as const} value="전체" onChange={() => {}} disabled aria-label="비활성" />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="섹션 헤더 아래에서 같은 데이터의 보기를 전환합니다.">
+        <Canvas col style={{ gap: 8 }}>
+          <div style={{ width: 340 }}>
+            <SectionHeader title="내 작업" />
+            <SegmentedControl options={['전체', '진행 중'] as const} value="전체" onChange={() => {}} aria-label="보기" />
+            <div style={{ marginTop: 8 }}>
+              <ListCell title="디자인 시스템 문서" description="오늘" trailing={<Icon name="chevron-right" size={20} />} />
+              <ListCell title="포트폴리오 개편" description="어제" trailing={<Icon name="chevron-right" size={20} />} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 트랙 패딩 4(px). 높이 40 트랙 안에 32 세그먼트, 세그 사이 2.">

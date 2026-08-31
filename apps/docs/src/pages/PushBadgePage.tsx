@@ -26,6 +26,16 @@ export default function PushBadgePage() {
           <Spec label="초과 → 99+"><PushBadge count={120}><Icon name="bell" /></PushBadge></Spec>
         </Canvas>
       </Section>
+      <Section title="Usage" desc="하단 탭 바 — 미확인이 있는 탭에만 얹습니다.">
+        <Canvas>
+          <div style={{ display: 'flex', gap: 44, padding: '10px 24px', borderRadius: 12, background: 'var(--iris-semantic-background-elevated-normal)', color: 'var(--iris-semantic-label-alternative)' }}>
+            <Icon name="home" />
+            <Icon name="search" />
+            <PushBadge count={3}><Icon name="bell" style={{ color: 'var(--iris-semantic-label-normal)' }} /></PushBadge>
+            <Icon name="user" />
+          </div>
+        </Canvas>
+      </Section>
       <Section title="Size" desc="주황 = 앵커 밖 오프셋 4(px). 카운트 최소 16 · dot 6.">
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">

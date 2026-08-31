@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Accordion } from '@iris/react';
+import { Accordion, SectionHeader } from '@iris/react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 const faq = [
@@ -25,6 +25,14 @@ export default function AccordionPage() {
             { id: 'closed', title: '접힌 항목', content: '눌러서 펼칩니다.' },
             { id: 'off', title: '비활성 항목', content: '열리지 않습니다.', disabled: true },
           ]} />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="FAQ 섹션 — 헤더 아래에 붙입니다.">
+        <Canvas col>
+          <div style={{ width: 340 }}>
+            <SectionHeader title="자주 묻는 질문" />
+            <Accordion items={faq.slice(0, 2)} defaultOpen={['a']} />
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 패딩(px). 헤더 56 고정, 콘텐츠는 좌우·하단 16.">

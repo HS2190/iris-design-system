@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SearchField, TextField } from '@iris/react';
+import { SearchField, TextField, FilterButton } from '@iris/react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function SearchFieldPage() {
@@ -17,6 +17,18 @@ export default function SearchFieldPage() {
           <SearchField placeholder="검색어를 입력하세요" style={{ width: 260 }} />
           <SearchField defaultValue="디자인 시스템" style={{ width: 260 }} />
           <SearchField placeholder="검색 불가" disabled style={{ width: 260 }} />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="목록 상단 — 검색 + 필터 버튼을 한 줄에.">
+        <Canvas col>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 360 }}>
+            <SearchField placeholder="채용 공고 검색" />
+            <div style={{ display: 'flex', gap: 8 }}>
+              <FilterButton active count={2}>직무</FilterButton>
+              <FilterButton>경력</FilterButton>
+              <FilterButton>지역</FilterButton>
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 좌우 패딩 40(px) — 왼쪽엔 검색 아이콘(좌 14), 오른쪽엔 지우기 버튼(우 12)이 들어갑니다.">

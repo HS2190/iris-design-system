@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Radio, Select } from '@iris/react';
+import { Radio, Select, Button } from '@iris/react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function RadioPage() {
@@ -42,6 +42,16 @@ export default function RadioPage() {
           <Radio name="pay" label="간편 결제" />
           <Radio name="pay2" label="비활성" disabled />
           <Radio name="pay2" label="비활성 · 선택" disabled defaultChecked />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="결제 수단 선택 — 기본값 하나를 미리 선택해 둡니다.">
+        <Canvas col>
+          <div style={{ width: 300, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <Radio name="upay" label="카드 결제" defaultChecked />
+            <Radio name="upay" label="계좌 이체" />
+            <Radio name="upay" label="간편 결제" />
+            <Button style={{ width: '100%', marginTop: 6 }}>결제하기</Button>
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 상하 여백, 청록 = 원·라벨 간격(px). 행 높이 28에 원 20이 가운데 정렬됩니다.">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Divider } from '@iris/react';
+import { Divider, ListCell, Icon } from '@iris/react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function DividerPage() {
@@ -24,6 +24,16 @@ export default function DividerPage() {
           <div style={{ width: '100%' }}><Divider weight="strong" /><small className="mono" style={{ fontSize: 11, color: 'var(--iris-semantic-label-assistive)' }}>strong</small></div>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center', height: 40 }}>
             텍스트 <Divider orientation="vertical" /> 텍스트 <Divider orientation="vertical" weight="strong" /> 텍스트
+          </div>
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="설정 리스트의 그룹 경계 — 성격이 바뀌는 곳에 한 줄.">
+        <Canvas col style={{ gap: 0 }}>
+          <div style={{ width: 320 }}>
+            <ListCell title="알림 설정" trailing={<Icon name="chevron-right" size={20} />} />
+            <ListCell title="테마" trailing={<Icon name="chevron-right" size={20} />} />
+            <Divider style={{ margin: '8px 0' }} />
+            <ListCell title="로그아웃" />
           </div>
         </Canvas>
       </Section>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Checkbox, Switch } from '@iris/react';
+import { Checkbox, Switch, Button } from '@iris/react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function CheckboxPage() {
@@ -32,6 +32,15 @@ export default function CheckboxPage() {
               <Checkbox key={l} label={l} checked={items[i]}
                 onChange={e => setItems(items.map((v, j) => j === i ? e.target.checked : v))} />
             ))}
+          </div>
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="약관 동의 — 폼과 함께 제출되는 선택.">
+        <Canvas col>
+          <div style={{ width: 300, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <Checkbox label="(필수) 서비스 이용약관 동의" />
+            <Checkbox label="(선택) 마케팅 수신 동의" />
+            <Button style={{ width: '100%', marginTop: 6 }}>가입하기</Button>
           </div>
         </Canvas>
       </Section>

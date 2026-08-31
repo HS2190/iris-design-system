@@ -38,6 +38,17 @@ export default function CardPage() {
           <Spec label="인터랙티브 · hover"><Card variant="outlined" interactive style={{ width: 200 }}><CardDemo w={200} /></Card></Spec>
         </Canvas>
       </Section>
+      <Section title="Usage" desc="아티클 그리드 — 같은 카드가 나란히 반복됩니다.">
+        <Canvas style={{ gap: 16 }}>
+          <Card variant="outlined" interactive thumbnail={<span>16 : 9</span>} style={{ width: 200 }}><CardDemo w={200} /></Card>
+          <Card variant="outlined" interactive thumbnail={<span>16 : 9</span>} style={{ width: 200 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width: 168 }}>
+              <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--iris-semantic-label-normal)' }}>토큰 네이밍 가이드</span>
+              <span style={{ fontSize: 12, color: 'var(--iris-semantic-label-alternative)' }}>atomic → semantic · 5분</span>
+            </div>
+          </Card>
+        </Canvas>
+      </Section>
       <Section title="Size" desc="주황 = 본문 패딩 16, 청록 = 제목·메타 간격(px). 썸네일은 16:9 고정 비율.">
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">

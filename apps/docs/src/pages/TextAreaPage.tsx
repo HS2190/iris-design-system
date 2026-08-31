@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextArea, TextField } from '@iris/react';
+import { TextArea, TextField, Button } from '@iris/react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 export default function TextAreaPage() {
@@ -19,6 +19,15 @@ export default function TextAreaPage() {
           <TextArea label="자기소개" placeholder="200자 이내로 입력하세요" maxLength={200} showCount style={{ width: 300 }} />
           <TextArea label="오류" defaultValue="너무 짧음" error="10자 이상 입력해 주세요" style={{ width: 300 }} />
           <TextArea label="비활성" placeholder="입력 불가" disabled style={{ width: 300 }} />
+        </Canvas>
+      </Section>
+      <Section title="Usage" desc="후기 작성 폼 — 한 줄 입력과 여러 줄 입력의 조합.">
+        <Canvas col>
+          <div style={{ width: 320, display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <TextField label="제목" placeholder="한 줄 요약" />
+            <TextArea label="내용" placeholder="200자 이내" maxLength={200} showCount />
+            <Button style={{ width: '100%' }}>등록</Button>
+          </div>
         </Canvas>
       </Section>
       <Section title="Size" desc="주황 = 패딩(상하 12 · 좌우 16), 청록 = 라벨·카운터 간격(px). 최소 높이 120에 세로 리사이즈.">
