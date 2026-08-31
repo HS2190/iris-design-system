@@ -34,7 +34,6 @@ const famOf = (k: string) => k.split('/')[0];
 const FAM_USE: Record<string, string> = {
   violet: '브랜드 — primary 전 계열 · status/info',
   coolNeutral: '회색 전부 — label · background · line · fill',
-  neutral: '웜 그레이 예비 (현재 미사용)',
   blue: 'accent 전용 — 태그·차트',
   teal: 'accent 전용 — 태그·차트',
   green: 'status/positive + accent',
