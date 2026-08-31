@@ -308,3 +308,16 @@ h1.prose-title { font-size: var(--iris-font-size-display-2); line-height: var(--
   .prose-foot-link.next { text-align: left; }
   .prose-foot-link.next span { justify-content: flex-start; }
 }
+
+/* ── 랜딩 히어로 위에 얹히는 GNB (디자인 I) ────────────────────
+   히어로가 화면에 걸쳐 있는 동안만 투명 + 흰 글자, 벗어나면 원래대로. */
+.gnb { transition: background 240ms var(--ease-out, ease), border-color 240ms var(--ease-out, ease); }
+.gnb.over { background: transparent; border-bottom-color: transparent; }
+.gnb.over .gnb-brand { color: #fff; }
+.gnb.over .gnb-nav a { color: rgba(255, 255, 255, .78); }
+.gnb.over .gnb-nav a:hover { background: rgba(255, 255, 255, .13); }
+.gnb.over .gnb-nav a.active { color: #fff; }
+.gnb.over .seg { background: rgba(255, 255, 255, .15); }
+.gnb.over .seg button { color: rgba(255, 255, 255, .62); }
+.gnb.over .seg button.on { background: rgba(255, 255, 255, .93); color: #16181d; box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .gnb { transition: none; } }

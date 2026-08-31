@@ -80,16 +80,37 @@ function ThemeToggle() {
   );
 }
 
+
+/** 랜딩 히어로가 GNB 뒤에 걸쳐 있는 동안 true — 내비를 이미지 위에 얹기 위해. */
+function useHeroOverlay(active: boolean) {
+  const [over, setOver] = useState(false);
+  useEffect(() => {
+    if (!active) { setOver(false); return; }
+    setOver(true);
+    let io: IntersectionObserver | undefined;
+    const raf = requestAnimationFrame(() => {
+      const hero = document.querySelector('.lp-hero-media');
+      if (!hero) return;
+      io = new IntersectionObserver(([e]) => setOver(e.isIntersecting),
+        { rootMargin: '-60px 0px 0px 0px' });
+      io.observe(hero);
+    });
+    return () => { cancelAnimationFrame(raf); io?.disconnect(); };
+  }, [active]);
+  return over;
+}
+
 export default function App() {
   const { pathname } = useLocation();
   const isHome = pathname === '/';
+  const heroOver = useHeroOverlay(isHome);
   const section = pathname.startsWith('/behind') ? 'behind'
     : pathname.startsWith('/foundations') || pathname === '/components/icon' ? 'foundations'
     : pathname === '/utilities' || utilSlugs.some(sl => pathname === `/components/${sl}`) ? 'utilities'
     : 'components';
   return (
     <div className="shell">
-      <header className="gnb">
+      <header className={heroOver ? 'gnb over' : 'gnb'}>
         <NavLink to="/" className="gnb-brand">
           <span className="brand-mark" aria-hidden />
           <b>Iris</b>

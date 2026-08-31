@@ -7,39 +7,25 @@ import { posts } from './behind/posts';
 import '../landing.css';
 
 const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const finePointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-/* ── 히어로: 커서가 조리개가 되어 반대 테마를 드러낸다 ── */
+/* ── 히어로: 프리즘에 빛이 들어와(개화) 스크롤하면 가라앉는다(침강) ── */
 function HeroMedia() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
-    if (!el || reduceMotion() || !finePointer()) return;
-    let frame = 0;
-    const move = (e: PointerEvent) => {
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        frame = 0;
-        const r = el.getBoundingClientRect();
-        el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        el.style.setProperty('--my', `${e.clientY - r.top}px`);
-        el.style.setProperty('--reveal', '1');
-      });
-    };
-    const leave = () => { el.style.setProperty('--reveal', '0'); };
-    el.addEventListener('pointermove', move);
-    el.addEventListener('pointerleave', leave);
-    return () => {
-      cancelAnimationFrame(frame);
-      el.removeEventListener('pointermove', move);
-      el.removeEventListener('pointerleave', leave);
-    };
+    if (!el || reduceMotion()) return;
+    // 침강은 스크롤 구동 — 지원 브라우저에서만 붙인다(미지원 시 정지 이미지)
+    const supportsScrub = typeof CSS !== 'undefined' && !!CSS.supports
+      && CSS.supports('animation-timeline: scroll()');
+    if (supportsScrub) el.classList.add('sink');
   }, []);
   return (
-    <div className="lp-hero-media" ref={ref} aria-hidden>
-      <div className="lp-hero-layer lp-hero-base" />
-      <div className="lp-hero-layer lp-hero-reveal" />
-      <span className="lp-hero-hint">MOVE TO OPEN THE APERTURE</span>
+    <div className="lp-hero-media" ref={ref}>
+      <div className="lp-hero-sink" aria-hidden><div className="lp-hero-img" /></div>
+      <div className="lp-hero-copy">
+        <h1 className="lp-headline">One core. Infinite expressions.</h1>
+        <p className="lp-sub-kr">하나의 근원, 환경마다 다른 표현</p>
+      </div>
     </div>
   );
 }
@@ -102,11 +88,6 @@ export default function Home() {
     <>
       <section className="lp-hero">
         <HeroMedia />
-        <div className="lp-wrap">
-          <h1 className="lp-wordmark">Iris</h1>
-          <p className="lp-sub-en">A Universal Design System.</p>
-          <p className="lp-sub-kr">하나의 근원에서 모두를 위한 디자인.</p>
-        </div>
       </section>
 
       <section className="lp-sec lp-wrap">

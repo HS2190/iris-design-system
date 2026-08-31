@@ -5,48 +5,67 @@
   --lp-display: "Geist", "Noto Sans KR", system-ui, sans-serif;
 }
 
-.landing { padding: 0; max-width: none; }
+.landing { padding: 0; max-width: none; margin-top: calc(-1 * var(--gnb-h, 60px)); }
 .lp-wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
-/* ── 히어로 ── */
-.lp-hero { padding: 0 0 96px; }
+/* ── 히어로 (디자인 I · 프리즘) ──────────────────────────────
+   빛 하나가 프리즘에 들어가 스펙트럼으로 갈라지는 그림 위에 문구를 얹는다.
+   개화 = 로드 시 빛이 도착하며 초점이 맞음 · 침강 = 스크롤하면 프리즘이 가라앉음 */
+.lp-hero { padding: 0; }
 .lp-hero-media {
-  position: relative; height: 600px; overflow: hidden;
-  background: var(--iris-semantic-background-normal-alternative);
-  --mx: 50%; --my: 50%; --reveal: 0;
+  position: relative; height: clamp(560px, 82vh, 820px); overflow: hidden;
+  background: #0b0d12;  /* 이미지 로드 전에도 어두운 바닥 — 흰 섬광 방지 */
 }
-.lp-hero-layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
-.lp-hero-base { background-image: url("/hero-light.jpg"); animation: lp-settle 1000ms var(--ease-out) both; }
-.lp-hero-reveal {
-  background-image: url("/hero-dark.jpg"); opacity: var(--reveal);
-  transition: opacity 260ms var(--ease-out);
-  -webkit-mask-image: radial-gradient(circle 190px at var(--mx) var(--my), #000 0%, #000 42%, transparent 78%);
-  mask-image: radial-gradient(circle 190px at var(--mx) var(--my), #000 0%, #000 42%, transparent 78%);
+.lp-hero-img {
+  position: absolute; inset: 0; background-image: url("/hero-prism.jpg");
+  background-size: cover; background-position: center;
+  animation: lp-refract 1400ms var(--ease-out) both;
+  will-change: transform, opacity, filter;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .lp-hero-base { background-image: url("/hero-dark.jpg"); }
-  :root:not([data-theme="light"]) .lp-hero-reveal { background-image: url("/hero-light.jpg"); }
+/* 개화 — 빛이 도착하며 초점이 맞는다 */
+@keyframes lp-refract {
+  from { transform: scale(1.07); opacity: 0; filter: brightness(.45) saturate(.6); }
+  60%  { opacity: 1; }
+  to   { transform: none; opacity: 1; filter: none; }
 }
-[data-theme="dark"] .lp-hero-base { background-image: url("/hero-dark.jpg"); }
-[data-theme="dark"] .lp-hero-reveal { background-image: url("/hero-light.jpg"); }
-@keyframes lp-settle { from { transform: scale(1.06); opacity: 0; } to { transform: none; opacity: 1; } }
+/* 침강 — 스크롤하면 프리즘이 가라앉고 문구는 떠오른다 */
+@keyframes lp-sink { to { transform: translateY(70px) scale(1.05); } }
+@keyframes lp-lift { to { transform: translateY(-48px); opacity: 0; } }
+.lp-hero-sink { position: absolute; inset: 0; will-change: transform; }
+.lp-hero-media.sink .lp-hero-sink {
+  animation: lp-sink 1s linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0 760px;
+}
+.lp-hero-media.sink .lp-hero-copy {
+  animation: lp-lift 1s linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0 620px;
+}
+/* 상단 스크림 — 내비 글자가 흰 광선 위에 걸쳐도 읽히게 (이미지 자체는 그대로) */
+.lp-hero-media::before {
+  content: ""; position: absolute; inset: 0 0 auto; height: 200px; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(4, 6, 10, .88) 0%, rgba(4, 6, 10, .55) 42%, rgba(4, 6, 10, 0) 100%);
+}
 
-.lp-hero-hint {
-  position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%);
-  font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .08em;
-  color: var(--iris-semantic-label-assistive); opacity: 0; transition: opacity 400ms var(--ease-out);
-  pointer-events: none;
+.lp-hero-copy {
+  position: absolute; left: 0; right: 0; bottom: 15%; padding: 0 40px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  text-align: center; will-change: transform, opacity; z-index: 2;
 }
-.lp-hero-media:hover .lp-hero-hint { opacity: 1; }
-
-.lp-wordmark {
-  font-family: var(--lp-display); font-size: clamp(64px, 8vw, 104px); font-weight: 700;
-  letter-spacing: -.05em; line-height: 1; text-align: center;
-  color: var(--iris-semantic-label-normal); margin: 52px 0 0;
+.lp-headline {
+  font-family: var(--lp-display); font-size: clamp(38px, 5.4vw, 74px); font-weight: 700;
+  letter-spacing: -.04em; line-height: 1.06; margin: 0; color: #fff;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, .55);
+  animation: lp-copy-in 900ms var(--ease-out) 320ms both;
 }
-.lp-sub-en { text-align: center; font-family: var(--lp-display); font-size: 19px; letter-spacing: -.01em;
-  color: var(--iris-semantic-label-neutral); margin: 22px 0 0; }
-.lp-sub-kr { text-align: center; font-size: 16px; color: var(--iris-semantic-label-alternative); margin: 8px 0 0; }
+@keyframes lp-copy-in { from { transform: translateY(18px); opacity: 0; } to { transform: none; opacity: 1; } }
+.lp-sub-kr {
+  margin: 0; text-align: center; font-size: clamp(14px, 1.3vw, 17px); letter-spacing: -.01em;
+  color: rgba(255, 255, 255, .74); text-shadow: 0 1px 20px rgba(0, 0, 0, .6);
+  animation: lp-copy-in 900ms var(--ease-out) 460ms both;
+}
 
 /* ── 공통 섹션 ── */
 .lp-sec { padding: 104px 0 0; }
@@ -76,7 +95,7 @@
 /* ── 잉크 밴드 (스크롤 리빌) ── */
 .lp-band { margin-top: 104px; height: 560px; overflow: hidden;
   background: var(--iris-semantic-background-normal-alternative); }
-.lp-band-img { width: 100%; height: 100%; background-image: url("/band-ink.jpg");
+.lp-band-img { width: 100%; height: 100%; background-image: url("/band-prism.jpg");
   background-size: cover; background-position: center; }
 @keyframes lp-ink-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 .lp-band-img.scrub { animation: lp-ink-wipe 1s linear both;
@@ -145,7 +164,7 @@
   border: 1px solid var(--iris-semantic-line-solid-neutral); }
 /* 이미지는 의사요소에 둔다 — 테두리·라운드는 그대로 두고 그림만 확대하기 위해 */
 .lp-post-thumb::after { content: ""; position: absolute; inset: 0;
-  background-image: url("/band-ink.jpg"); background-size: 300% auto; background-position: 0 50%;
+  background-image: url("/band-prism.jpg"); background-size: 300% auto; background-position: 0 50%;
   transition: transform 320ms var(--ease-out); }
 .lp-post:nth-child(2) .lp-post-thumb::after { background-position: 50% 50%; }
 .lp-post:nth-child(3) .lp-post-thumb::after { background-position: 100% 50%; }
@@ -207,8 +226,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lp-hero-base { animation: none; }
-  .lp-hero-reveal { transition: none; }
+  .lp-hero-img, .lp-hero-media.sink .lp-hero-sink,
+  .lp-hero-media.sink .lp-hero-copy, .lp-headline, .lp-sub-kr { animation: none; }
   .lp-band-img.scrub, .lp-band-img.io.in { animation: none; }
   .lp-band-img.io { clip-path: none; }
   .lp-catlist a, .lp-row, .lp-row i, .lp-faq-q button { transition: none; }
