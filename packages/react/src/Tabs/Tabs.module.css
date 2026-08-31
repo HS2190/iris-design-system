@@ -1,0 +1,13 @@
+.root { box-sizing: border-box; display: flex; gap: var(--iris-space-20, 20px);
+  border-bottom: 1px solid var(--iris-semantic-line-solid-neutral);
+  font-family: var(--iris-font-family); overflow-x: auto; }
+.fluid { gap: 0; }
+.fluid .item { flex: 1; }
+.item { position: relative; box-sizing: border-box; height: 44px; padding: 0 var(--iris-space-4);
+  border: none; background: none; cursor: pointer; font-family: inherit; white-space: nowrap;
+  font-size: var(--iris-font-size-body-2, 15px); color: var(--iris-semantic-label-alternative); }
+.item:hover { color: var(--iris-semantic-label-neutral); }
+.item:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: -2px; }
+.item[aria-selected="true"] { color: var(--iris-semantic-label-normal); font-weight: 700; }
+.item[aria-selected="true"]::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; border-radius: 1px; background: var(--iris-semantic-primary-normal); }

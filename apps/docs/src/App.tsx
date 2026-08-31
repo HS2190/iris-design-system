@@ -29,6 +29,11 @@ import SnackbarPage from './pages/SnackbarPage';
 import SectionMessagePage from './pages/SectionMessagePage';
 import FallbackViewPage from './pages/FallbackViewPage';
 import PushBadgePage from './pages/PushBadgePage';
+import TopNavigationPage from './pages/TopNavigationPage';
+import BottomNavigationPage from './pages/BottomNavigationPage';
+import TabPage from './pages/TabPage';
+import PaginationPage from './pages/PaginationPage';
+import ProgressPage from './pages/ProgressPage';
 
 const components = [
   { path: '/components/button', name: 'Button', ready: true },
@@ -58,6 +63,11 @@ const components = [
   { path: '/components/section-message', name: 'Section message', ready: true },
   { path: '/components/fallback-view', name: 'Fallback view', ready: true },
   { path: '/components/push-badge', name: 'Push badge', ready: true },
+  { path: '/components/top-navigation', name: 'Top navigation', ready: true },
+  { path: '/components/bottom-navigation', name: 'Bottom navigation', ready: true },
+  { path: '/components/tab', name: 'Tab', ready: true },
+  { path: '/components/pagination', name: 'Pagination', ready: true },
+  { path: '/components/progress', name: 'Progress', ready: true },
 ];
 
 function ThemeToggle() {
@@ -128,6 +138,11 @@ export default function App() {
           <Route path="/components/section-message" element={<SectionMessagePage />} />
           <Route path="/components/fallback-view" element={<FallbackViewPage />} />
           <Route path="/components/push-badge" element={<PushBadgePage />} />
+          <Route path="/components/top-navigation" element={<TopNavigationPage />} />
+          <Route path="/components/bottom-navigation" element={<BottomNavigationPage />} />
+          <Route path="/components/tab" element={<TabPage />} />
+          <Route path="/components/pagination" element={<PaginationPage />} />
+          <Route path="/components/progress" element={<ProgressPage />} />
         </Routes>
       </main>
       <Toc />

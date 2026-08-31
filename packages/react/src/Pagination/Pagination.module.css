@@ -1,0 +1,16 @@
+.root { display: inline-flex; align-items: center; gap: var(--iris-space-4); font-family: var(--iris-font-family); }
+.btn { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border: none; background: none; border-radius: var(--iris-radius-xs);
+  cursor: pointer; font-family: inherit; font-size: var(--iris-font-size-label-1, 14px);
+  color: var(--iris-semantic-label-neutral); font-variant-numeric: tabular-nums; }
+.btn:hover:not(:disabled):not([data-active]) { background: var(--iris-semantic-interaction-hover); }
+.btn:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 1px; }
+.btn[data-active] { background: var(--iris-semantic-primary-normal); color: var(--iris-semantic-static-white); font-weight: 700; }
+.btn:disabled { color: var(--iris-semantic-label-disable); cursor: not-allowed; }
+.ellipsis { width: 32px; text-align: center; color: var(--iris-semantic-label-assistive); }
+.dots { display: inline-flex; align-items: center; gap: var(--iris-space-8); }
+.dot { width: 6px; height: 6px; padding: 0; border: none; border-radius: 999px; cursor: pointer;
+  background: var(--iris-semantic-fill-strong); transition: width .15s ease, background-color .15s ease; }
+.dot[data-active] { width: 16px; background: var(--iris-semantic-primary-normal); }
+.dot:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 1px; }
+@media (prefers-reduced-motion: reduce) { .dot { transition: none; } }

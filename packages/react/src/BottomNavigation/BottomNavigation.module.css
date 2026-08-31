@@ -1,0 +1,12 @@
+.root { box-sizing: border-box; display: flex; height: 56px;
+  background: var(--iris-semantic-background-normal-normal);
+  border-top: 1px solid var(--iris-semantic-line-solid-neutral);
+  font-family: var(--iris-font-family); }
+.item { box-sizing: border-box; flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 4px; padding-top: 8px; border: none; background: none; cursor: pointer; font-family: inherit;
+  color: var(--iris-semantic-label-assistive); }
+.item:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: -2px; }
+.item[data-active] { color: var(--iris-semantic-label-primary); }
+.iconWrap { display: inline-flex; }
+.label { font-size: var(--iris-font-size-caption-2, 10px); font-weight: 500; line-height: 1; }
+.item[data-active] .label { font-weight: 700; }

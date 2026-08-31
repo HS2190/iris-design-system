@@ -1,0 +1,14 @@
+.root { box-sizing: border-box; display: flex; flex-direction: column; gap: 6px; width: 100%;
+  font-family: var(--iris-font-family); }
+.top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--iris-space-8); }
+.label { font-size: var(--iris-font-size-label-1, 14px); font-weight: 500; color: var(--iris-semantic-label-neutral); }
+.value { font-size: var(--iris-font-size-label-1, 14px); font-weight: 700; color: var(--iris-semantic-label-normal);
+  font-variant-numeric: tabular-nums; }
+.track { display: block; height: 4px; border-radius: 999px; overflow: hidden;
+  background: var(--iris-semantic-fill-strong); }
+.fill { display: block; height: 100%; border-radius: 999px; background: var(--iris-semantic-primary-normal);
+  transition: width .2s ease; }
+.indeterminate { display: block; height: 100%; width: 40%; border-radius: 999px;
+  background: var(--iris-semantic-primary-normal); animation: iris-progress-slide 1.2s ease-in-out infinite; }
+@keyframes iris-progress-slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(350%); } }
+@media (prefers-reduced-motion: reduce) { .fill { transition: none; } .indeterminate { animation: none; width: 100%; opacity: .4; } }
