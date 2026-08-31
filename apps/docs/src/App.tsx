@@ -2,6 +2,7 @@ import { Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import ComponentsIndexPage from './pages/ComponentsIndexPage';
+import UtilitiesIndexPage from './pages/UtilitiesIndexPage';
 import Toc from './components/Toc';
 import ButtonPage from './pages/ButtonPage';
 import TextButtonPage from './pages/TextButtonPage';
@@ -61,8 +62,9 @@ const componentGroups: [string, [string, string][]][] = [
   ['Feedback', [['Alert', 'alert'], ['Toast', 'toast'], ['Snackbar', 'snackbar'], ['Section message', 'section-message'], ['Fallback view', 'fallback-view'], ['Push badge', 'push-badge']]],
   ['Navigations', [['Top navigation', 'top-navigation'], ['Bottom navigation', 'bottom-navigation'], ['Tab', 'tab'], ['Pagination', 'pagination'], ['Progress', 'progress'], ['Progress tracker', 'progress-tracker']]],
   ['Presentation', [['Tooltip', 'tooltip'], ['Popover', 'popover'], ['Menu', 'menu'], ['Popup', 'popup'], ['Bottom sheet', 'bottom-sheet']]],
-  ['Loading & Utilities', [['Skeleton', 'skeleton'], ['Scrim', 'scrim'], ['Grid', 'grid'], ['Divider', 'divider'], ['Icon', 'icon']]],
 ];
+const utilityItems: [string, string][] = [['Skeleton', 'skeleton'], ['Scrim', 'scrim'], ['Grid', 'grid'], ['Divider', 'divider']];
+const utilSlugs = utilityItems.map(([, s]) => s);
 
 function ThemeToggle() {
   const [theme, setTheme] = useState<string>(() => localStorage.getItem('iris-theme') ?? 'system');
@@ -85,6 +87,9 @@ function ThemeToggle() {
 export default function App() {
   const { pathname } = useLocation();
   const isHome = pathname === '/';
+  const section = pathname.startsWith('/foundations') || pathname === '/components/icon' ? 'foundations'
+    : pathname === '/utilities' || utilSlugs.some(sl => pathname === `/components/${sl}`) ? 'utilities'
+    : 'components';
   return (
     <div className="shell">
       <header className="gnb">
@@ -93,8 +98,9 @@ export default function App() {
           <b>Iris</b>
         </NavLink>
         <nav className="gnb-nav">
-          <NavLink to="/foundations" className={pathname.startsWith('/foundations') ? 'active' : ''}>Foundations</NavLink>
-          <NavLink to="/components" className={pathname.startsWith('/components') ? 'active' : ''}>Components</NavLink>
+          <NavLink to="/foundations" className={() => !isHome && section === 'foundations' ? 'active' : ''}>Foundations</NavLink>
+          <NavLink to="/components" className={() => !isHome && section === 'components' ? 'active' : ''}>Components</NavLink>
+          <NavLink to="/utilities" className={() => !isHome && section === 'utilities' ? 'active' : ''}>Utilities</NavLink>
         </nav>
         <div className="gnb-right"><ThemeToggle /></div>
       </header>
@@ -108,12 +114,14 @@ export default function App() {
         <div className="layout">
           <aside className="sidebar">
             <nav className="nav">
-              <div className="nav-group">Foundations</div>
-              <NavLink to="/foundations" end className={({ isActive }) => isActive ? 'active' : ''}>개요</NavLink>
-              {[['Color', '/foundations/color'], ['Typography', '/foundations/typography'], ['Spacing', '/foundations/spacing'], ['Elevation', '/foundations/elevation'], ['Platform', '/foundations/platform']].map(([n, p]) => (
-                <NavLink key={p} to={p} className={({ isActive }) => isActive ? 'active' : ''}>{n}</NavLink>
-              ))}
-              {componentGroups.map(([cat, items]) => (
+              {section === 'foundations' && <>
+                <div className="nav-group">Foundations</div>
+                <NavLink to="/foundations" end className={({ isActive }) => isActive ? 'active' : ''}>개요</NavLink>
+                {[['Color', '/foundations/color'], ['Typography', '/foundations/typography'], ['Spacing', '/foundations/spacing'], ['Elevation', '/foundations/elevation'], ['Platform', '/foundations/platform'], ['Icon', '/components/icon']].map(([n, p]) => (
+                  <NavLink key={p} to={p} className={({ isActive }) => isActive ? 'active' : ''}>{n}</NavLink>
+                ))}
+              </>}
+              {section === 'components' && componentGroups.map(([cat, items]) => (
                 <span key={cat} style={{ display: 'contents' }}>
                   <div className="nav-group">{cat}</div>
                   {items.map(([name, slug]) => (
@@ -121,11 +129,19 @@ export default function App() {
                   ))}
                 </span>
               ))}
+              {section === 'utilities' && <>
+                <div className="nav-group">Utilities</div>
+                <NavLink to="/utilities" end className={({ isActive }) => isActive ? 'active' : ''}>개요</NavLink>
+                {utilityItems.map(([name, slug]) => (
+                  <NavLink key={slug} to={`/components/${slug}`} className={({ isActive }) => isActive ? 'active' : ''}>{name}</NavLink>
+                ))}
+              </>}
             </nav>
           </aside>
           <main className="main">
             <Routes>
               <Route path="/components" element={<ComponentsIndexPage />} />
+              <Route path="/utilities" element={<UtilitiesIndexPage />} />
               <Route path="/components/button" element={<ButtonPage />} />
               <Route path="/components/text-button" element={<TextButtonPage />} />
               <Route path="/components/icon-button" element={<IconButtonPage />} />

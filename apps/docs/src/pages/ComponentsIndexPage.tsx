@@ -8,7 +8,6 @@ const CATS: [string, string, [string, string][]][] = [
   ['Feedback', '시스템이 답하는 방법', [['Alert', 'alert'], ['Toast', 'toast'], ['Snackbar', 'snackbar'], ['Section message', 'section-message'], ['Fallback view', 'fallback-view'], ['Push badge', 'push-badge']]],
   ['Navigations', '길을 잡는 것', [['Top navigation', 'top-navigation'], ['Bottom navigation', 'bottom-navigation'], ['Tab', 'tab'], ['Pagination', 'pagination'], ['Progress', 'progress'], ['Progress tracker', 'progress-tracker']]],
   ['Presentation', '떠오르는 레이어', [['Tooltip', 'tooltip'], ['Popover', 'popover'], ['Menu', 'menu'], ['Popup', 'popup'], ['Bottom sheet', 'bottom-sheet']]],
-  ['Loading & Utilities', '바탕을 받치는 것', [['Skeleton', 'skeleton'], ['Scrim', 'scrim'], ['Grid', 'grid'], ['Divider', 'divider'], ['Icon', 'icon']]],
 ];
 
 export default function ComponentsIndexPage() {
