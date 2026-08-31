@@ -21,10 +21,36 @@ export default function TextAreaPage() {
           <TextArea label="비활성" placeholder="입력 불가" disabled style={{ width: 300 }} />
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col>
-          <TextArea label="자기소개" placeholder="입력하세요" style={{ width: 340 }} />
-          <Chips primary="기본" items={['min-H 120', 'P 12 · 16', 'R 10', 'body-1', '세로 리사이즈']} />
+      <Section title="Size" desc="주황 = 패딩(상하 12 · 좌우 16), 청록 = 라벨·카운터 간격(px). 최소 높이 120에 세로 리사이즈.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.05)', lineHeight: 1 }}>
+                <TextArea label="자기소개" defaultValue="안녕하세요" maxLength={200} showCount style={{ width: 210 }} />
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 14, height: 6 }} />
+                <span className="size-zone pad" style={{ left: 0, top: 20, width: 16, height: 120 }}>16</span>
+                <span className="size-zone pad" style={{ right: 0, top: 20, width: 16, height: 120 }}>16</span>
+                <span className="size-zone pad" style={{ left: 16, right: 16, top: 20, height: 12 }}>12</span>
+                <span className="size-zone pad" style={{ left: 16, right: 16, top: 128, height: 12 }}>12</span>
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 140, height: 6 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 13 }}>6</span>
+                <span className="size-num gapnum" style={{ right: -16, top: 139 }}>6</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>기본 · 카운터 표시</b>
+              <span className="sub">min-H 120 · P 12 · 16 · R 10 · body-1</span>
+              <span className="sub">라벨 label-1 500 · 카운터 caption-1 · 간격 6</span>
+              <span className="sub">세로 리사이즈 허용 (disabled 시 잠금)</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 'auto' }}><TextArea label="자기소개" placeholder="입력하세요" style={{ width: 300 }} /></div>
+              <Chips primary="기본" items={['min-H 120', 'P 12 · 16', 'G 6', 'R 10', 'body-1']} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="How to use">

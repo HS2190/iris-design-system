@@ -18,10 +18,33 @@ export default function SegmentedControlPage() {
           <SegmentedControl options={['전체', '진행 중', '완료'] as const} value="전체" onChange={() => {}} disabled aria-label="비활성" />
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col>
-          <SegmentedControl options={['리스트', '캘린더'] as const} value="리스트" onChange={() => {}} aria-label="예시" />
-          <Chips primary="고정" items={['H 40', '트랙 P 4', '세그먼트 H 32 · R 8', 'label-1']} />
+      <Section title="Size" desc="주황 = 트랙 패딩 4(px). 높이 40 트랙 안에 32 세그먼트, 세그 사이 2.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.6)', lineHeight: 1 }}>
+                <SegmentedControl options={['리스트', '캘린더'] as const} value="리스트" onChange={() => {}} aria-label="크기 예시" />
+                <span className="size-zone pad" style={{ left: 0, top: 4, width: 4, bottom: 4 }} />
+                <span className="size-zone pad" style={{ right: 0, top: 4, width: 4, bottom: 4 }} />
+                <span className="size-zone pad" style={{ left: 4, right: 4, top: 0, height: 4 }} />
+                <span className="size-zone pad" style={{ left: 4, right: 4, bottom: 0, height: 4 }} />
+                <span className="size-num" style={{ left: -9, top: 16 }}>4</span>
+                <span className="size-num" style={{ left: 24, top: -11, transform: 'translateX(-50%)' }}>4</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>고정</b>
+              <span className="sub">트랙 H 40 · P 4 · R 10</span>
+              <span className="sub">세그먼트 H 32 · P 12 · R 8 · 세그 간 2 · label-1</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />트랙 패딩 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 40 }}><SegmentedControl options={['리스트', '캘린더'] as const} value="리스트" onChange={() => {}} aria-label="예시" /></div>
+              <Chips primary="고정" items={['H 40', '트랙 P 4', '세그 H 32 · R 8', '세그 간 2', 'label-1']} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="How to use">

@@ -45,10 +45,34 @@ export default function SelectPage() {
           <Select label="비활성" placeholder="선택 불가" options={jobs} disabled style={{ width: 240 }} />
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col>
-          <Select label="직무" placeholder="선택하세요" options={jobs} style={{ width: 300 }} />
-          <Chips primary="기본" items={['H = input-height(48)', 'P 16 · 40(chevron)', 'R 10', 'body-1']} />
+      <Section title="Size" desc="주황 = 패딩, 청록 = 라벨·헬퍼 간격(px). 오른쪽 40은 셰브론 자리입니다.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
+                <Select label="직무" placeholder="선택하세요" options={jobs} helper="하나만 선택할 수 있어요" style={{ width: 210 }} />
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 14, height: 6 }} />
+                <span className="size-zone pad" style={{ left: 0, top: 20, width: 16, height: 48 }}>16</span>
+                <span className="size-zone pad" style={{ right: 0, top: 20, width: 40, height: 48 }}>40</span>
+                <span className="size-zone gap" style={{ left: 0, right: 0, top: 68, height: 6 }} />
+                <span className="size-num gapnum" style={{ right: -16, top: 13 }}>6</span>
+                <span className="size-num gapnum" style={{ right: -16, top: 67 }}>6</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>기본</b>
+              <span className="sub">H input-height 48 · R 10 · body-1</span>
+              <span className="sub">P 좌 16 · 우 40 (셰브론 20 · 우측 12 고정)</span>
+              <span className="sub">라벨 label-1 500 · 헬퍼 caption-1 · 간격 6</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 'auto' }}><Select label="직무" placeholder="선택하세요" options={jobs} style={{ width: 260 }} /></div>
+              <Chips primary="기본" items={['H 48 (input-height)', 'P 16 · 40', 'G 6', 'R 10', 'body-1']} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="How to use">

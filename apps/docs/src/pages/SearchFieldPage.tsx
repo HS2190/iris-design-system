@@ -19,10 +19,29 @@ export default function SearchFieldPage() {
           <SearchField placeholder="검색 불가" disabled style={{ width: 260 }} />
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col>
-          <SearchField placeholder="검색어를 입력하세요" style={{ width: 320 }} />
-          <Chips primary="기본" items={['H = input-height(48)', 'P 40(아이콘 자리)', 'R full', 'body-1']} />
+      <Section title="Size" desc="주황 = 좌우 패딩 40(px) — 왼쪽엔 검색 아이콘(좌 14), 오른쪽엔 지우기 버튼(우 12)이 들어갑니다.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.3)', lineHeight: 1 }}>
+                <SearchField defaultValue="디자인 시스템" style={{ width: 230 }} />
+                <span className="size-zone pad" style={{ left: 0, top: 0, width: 40, height: 48 }}>40</span>
+                <span className="size-zone pad" style={{ right: 0, top: 0, width: 40, height: 48 }}>40</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>기본 · 값 입력됨</b>
+              <span className="sub">H input-height 48 · R full · body-1</span>
+              <span className="sub">P 40 — 아이콘 20 (좌 14) · 지우기 20 (우 12)</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item">
+              <div className="size-slot"><SearchField placeholder="검색어를 입력하세요" style={{ width: 280 }} /></div>
+              <Chips primary="기본" items={['H 48 (input-height)', 'P 40', 'R full', 'body-1']} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="How to use">

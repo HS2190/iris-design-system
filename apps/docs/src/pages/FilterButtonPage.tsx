@@ -24,10 +24,31 @@ export default function FilterButtonPage() {
           </FilterButton>
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col>
-          <FilterButton active count={2}>직무</FilterButton>
-          <Chips primary="고정" items={['H 36', 'P 12', 'G 4', 'R full', 'label-1', '아이콘 16']} />
+      <Section title="Size" desc="주황 = 패딩, 청록 = 요소 간격(px). 높이 36 고정 · 너비 자유.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(2)', lineHeight: 1 }}>
+                <FilterButton active count={2}>직무</FilterButton>
+                <span className="size-zone pad" style={{ left: 0, top: 0, width: 12, height: 36 }}>12</span>
+                <span className="size-zone pad" style={{ right: 0, top: 0, width: 12, height: 36 }}>12</span>
+                <span className="size-zone gap" style={{ left: 28, top: 6, width: 4, bottom: 6 }} />
+                <span className="size-num gapnum" style={{ left: 30, top: -11, transform: 'translateX(-50%)' }}>4</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>고정 · Active</b>
+              <span className="sub">H 36 · P 12 · R full · label-1 700</span>
+              <span className="sub">아이콘 16 · 카운트 뱃지 16 · 요소 간격 4</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />패딩&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 36 }}><FilterButton active count={2}>직무</FilterButton></div>
+              <Chips primary="고정" items={['H 36', 'P 12', 'G 4', 'R full', '아이콘 16', 'label-1']} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="How to use">
