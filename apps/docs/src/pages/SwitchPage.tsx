@@ -20,10 +20,35 @@ export default function SwitchPage() {
           <Switch label="비활성 · 켜짐" disabled defaultChecked />
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col>
-          <Switch label="알림 받기" defaultChecked />
-          <Chips primary="고정" items={['52 × 32', '노브 28', 'R full', 'On = primary/normal']} />
+      <Section title="Size" desc="주황 = 노브 인셋(px), 청록 = 트랙·라벨 간격(px). 트랙 52×32 안에 노브 28이 2px 인셋으로 들어갑니다.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(1.8)', lineHeight: 1 }}>
+                <Switch label="푸시 알림" />
+                {/* 트랙 52×32 · p2 · 노브 28(off, 좌측) · 간격 8 */}
+                <span className="size-zone pad" style={{ left: 0, top: 0, width: 2, height: 32 }} />
+                <span className="size-zone pad" style={{ left: 2, top: 0, width: 28, height: 2 }} />
+                <span className="size-zone pad" style={{ left: 2, bottom: 0, width: 28, height: 2 }} />
+                <span className="size-num" style={{ left: -9, top: 13 }}>2</span>
+                <span className="size-num" style={{ left: 16, top: -11, transform: 'translateX(-50%)' }}>2</span>
+                <span className="size-zone gap" style={{ left: 52, top: 0, width: 8, height: 32 }} />
+                <span className="size-num gapnum" style={{ left: 56, top: -11, transform: 'translateX(-50%)' }}>8</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>고정 · Off</b>
+              <span className="sub">트랙 52×32 · 노브 28 · 인셋 2 · R full</span>
+              <span className="sub">라벨 body-2 · 간격 8</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />인셋&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 32 }}><Switch label="알림 받기" defaultChecked /></div>
+              <Chips primary="고정" items={['트랙 52×32', '노브 28 · 인셋 2', 'R full', 'G 8', 'On = primary/normal']} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="How to use">

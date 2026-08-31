@@ -35,10 +35,34 @@ export default function CheckboxPage() {
           </div>
         </Canvas>
       </Section>
-      <Section title="Size">
-        <Canvas col>
-          <Checkbox label="알림 받기" defaultChecked />
-          <Chips primary="고정" items={['박스 20 · 보더 1.5', 'R 8', '라벨 간격 8', 'body-2', '행 높이 ≥ 28']} />
+      <Section title="Size" desc="주황 = 상하 여백, 청록 = 박스·라벨 간격(px). 행 높이 28에 박스 20이 가운데 정렬됩니다.">
+        <Canvas col style={{ gap: 8 }}>
+          <div className="size-hero-wrap">
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(2)', lineHeight: 1 }}>
+                <Checkbox label="이메일 수신" defaultChecked />
+                {/* 행 28 · 박스 20(상하 4) · 간격 8 */}
+                <span className="size-zone pad" style={{ left: 0, top: 0, width: 20, height: 4 }} />
+                <span className="size-zone pad" style={{ left: 0, bottom: 0, width: 20, height: 4 }} />
+                <span className="size-num" style={{ left: -10, top: 0 }}>4</span>
+                <span className="size-num" style={{ left: -10, bottom: 0 }}>4</span>
+                <span className="size-zone gap" style={{ left: 20, top: 0, width: 8, height: 28 }} />
+                <span className="size-num gapnum" style={{ left: 24, top: -12, transform: 'translateX(-50%)' }}>8</span>
+              </div>
+            </div>
+            <div className="size-hero-caption">
+              <b>고정 · Checked</b>
+              <span className="sub">박스 20 · 보더 1.5 · R 8 · 행 높이 28</span>
+              <span className="sub">라벨 body-2 · 간격 8</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />여백&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
+            </div>
+          </div>
+          <div className="size-row">
+            <div className="size-item">
+              <div className="size-slot" style={{ height: 28 }}><Checkbox label="알림 받기" defaultChecked /></div>
+              <Chips primary="고정" items={['박스 20 · 보더 1.5', 'R 8', 'G 8', 'body-2', '행 높이 28']} />
+            </div>
+          </div>
         </Canvas>
       </Section>
       <Section title="How to use">
