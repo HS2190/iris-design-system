@@ -44,7 +44,7 @@ export default function TopNavigationPage() {
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">
             <div className="size-hero">
-              <div className="stage" style={{ transform: 'scale(1.4)', lineHeight: 1 }}>
+              <div className="stage" style={{ transform: 'scale(1.25)', lineHeight: 1 }}>
                 <TopNavigation title="설정" leading={iconBtn('arrow-left', '뒤로')} trailing={iconBtn('bell', '알림')} style={{ width: 320 }} />
                 {/* H 64 · padL/R 16 · 아이콘 버튼 40 (y12~52) · 슬롯 간격 8 */}
                 <span className="size-zone pad" style={{ left: 0, top: 0, width: 16, height: 64 }}>16</span>
