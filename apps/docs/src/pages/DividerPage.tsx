@@ -80,10 +80,18 @@ export default function DividerPage() {
         </Canvas>
       </Section>
       <Section title="How to use">
-        <DoDont doTitle="리스트 셀 사이 · 섹션 경계" doBody="구조가 실제로 나뉘는 곳에 한 줄."
-          doEx={<div style={{ width: '100%' }}>항목 A<Divider style={{ margin: '10px 0' }} />항목 B</div>}
-          dontTitle="모든 줄 사이에 선" dontBody="여백이 이미 구분해 주는 곳에 선을 더하면 소음이 됩니다."
-          dontEx={<div style={{ width: '100%' }}>줄 1<Divider weight="strong" style={{ margin: '6px 0' }} />줄 2<Divider weight="strong" style={{ margin: '6px 0' }} />줄 3</div>} />
+        <DoDont doTitle="성격이 바뀌는 경계에만 한 줄" doBody="같은 그룹(알림·테마)은 여백으로만 묶고, 성격이 다른 로그아웃 앞에만 선을 긋습니다 — 선 1개."
+          doEx={<div style={{ width: '100%', fontSize: 14 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}><span>알림 설정</span><span>테마</span></div>
+            <Divider style={{ margin: '12px 0' }} />
+            <span>로그아웃</span>
+          </div>}
+          dontTitle="모든 줄 사이에 선" dontBody="같은 리스트인데 줄마다 선을 그으면 그룹 정보는 사라지고 소음만 남습니다 — 선 2개."
+          dontEx={<div style={{ width: '100%', fontSize: 14 }}>
+            <span>알림 설정</span><Divider style={{ margin: '12px 0' }} />
+            <span>테마</span><Divider style={{ margin: '12px 0' }} />
+            <span>로그아웃</span>
+          </div>} />
       </Section>
       <Section title="Props">
         <Props rows={[
