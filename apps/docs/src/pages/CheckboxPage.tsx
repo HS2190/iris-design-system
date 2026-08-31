@@ -37,7 +37,7 @@ export default function CheckboxPage() {
       </Section>
       <Section title="Size" desc="주황 = 상하 여백, 청록 = 박스·라벨 간격(px). 행 높이 28에 박스 20이 가운데 정렬됩니다.">
         <Canvas col style={{ gap: 8 }}>
-          <div className="size-hero-wrap">
+          <div className="size-hero-wrap" style={{ gap: 72 }}>
             <div className="size-hero">
               <div className="stage" style={{ transform: 'scale(2)', lineHeight: 1 }}>
                 <Checkbox label="이메일 수신" defaultChecked />
