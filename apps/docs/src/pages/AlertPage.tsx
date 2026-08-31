@@ -62,7 +62,6 @@ export default function AlertPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><Alert title="점검 안내" actions={<Button size="s">확인</Button>}>오늘 밤 점검합니다.</Alert></div>
               <Chips primary="고정" items={['W 320', 'P 20', 'R 16', '제목→본문 8', '본문→액션 20']} />
             </div>
           </div>

@@ -79,7 +79,6 @@ export default function CardPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><Card variant="outlined" style={{ width: 220 }}><CardDemo /></Card></div>
               <Chips primary="고정" items={['R 16', '본문 P 16', '썸네일 16:9', '내부 간격 자유']} />
             </div>
           </div>

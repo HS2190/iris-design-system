@@ -56,7 +56,6 @@ export default function SectionHeaderPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><div style={{ width: 300 }}><SectionHeader title="최근 프로젝트" action={more} /></div></div>
               <Chips primary="고정" items={['P 상 16 · 하 8', '제목 18 (heading-2)', '액션 label-1', 'G 12']} />
             </div>
           </div>

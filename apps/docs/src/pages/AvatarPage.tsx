@@ -67,7 +67,6 @@ export default function AvatarPage() {
           <div className="size-row">
             {([['xl', '56', '이니셜 20'], ['l', '40', '이니셜 16'], ['m', '32 · 기본', '이니셜 13'], ['s', '24', '이니셜 11']] as const).map(([k, h, f]) => (
               <div className="size-item" key={k}>
-                <div className="size-slot" style={{ height: 56 }}><Avatar size={k} name="안" /></div>
                 <Chips primary={k.toUpperCase()} items={[h, f, 'R full']} />
               </div>
             ))}

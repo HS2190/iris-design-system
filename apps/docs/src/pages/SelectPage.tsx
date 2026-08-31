@@ -79,7 +79,6 @@ export default function SelectPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><Select label="직무" placeholder="선택하세요" options={jobs} style={{ width: 260 }} /></div>
               <Chips primary="기본" items={['H 48 (input-height)', 'P 16 · 40', 'G 6', 'R 10', 'body-1']} />
             </div>
           </div>

@@ -50,7 +50,6 @@ export default function SliderPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><Slider defaultValue={40} style={{ width: 280 }} aria-label="예시" /></div>
               <Chips primary="고정" items={['트랙 4', '노브 24', 'G 6', '터치 타깃 ≥ touch-target-min']} />
             </div>
           </div>

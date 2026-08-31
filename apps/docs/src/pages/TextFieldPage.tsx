@@ -54,11 +54,9 @@ export default function TextFieldPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><TextField label="기본" placeholder="example@email.com" style={{ width: 240 }} /></div>
               <Chips primary="기본" items={['H 48 (input-height)', 'P 16', 'G 6', 'R 10', 'body-1']} />
             </div>
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><TextField label="오류" defaultValue="hs@example" error="이메일 형식이 올바르지 않습니다" style={{ width: 240 }} /></div>
               <Chips primary="오류" items={['메시지 G 6', 'caption-1', 'status/negative']} />
             </div>
           </div>

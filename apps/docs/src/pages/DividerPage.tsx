@@ -79,11 +79,9 @@ export default function DividerPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><div style={{ width: 220 }}>항목 A<Divider style={{ margin: '10px 0' }} />항목 B</div></div>
               <Chips primary="가로" items={['두께 1', '상하 여백 10', 'normal / strong']} />
             </div>
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><div style={{ display: 'flex', gap: 12, alignItems: 'center', height: 40 }}>텍스트 <Divider orientation="vertical" /> 텍스트</div></div>
               <Chips primary="세로" items={['두께 1', '좌우 간격 12', '높이 = 부모']} />
             </div>
           </div>

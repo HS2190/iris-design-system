@@ -56,7 +56,6 @@ export default function TextAreaPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><TextArea label="자기소개" placeholder="입력하세요" style={{ width: 300 }} /></div>
               <Chips primary="기본" items={['min-H 120', 'P 12 · 16', 'G 6', 'R 10', 'body-1']} />
             </div>
           </div>

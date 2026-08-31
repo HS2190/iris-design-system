@@ -55,7 +55,6 @@ export default function FallbackViewPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><FallbackView icon="search" title="검색 결과가 없어요" description="다른 키워드로 검색해 보세요." style={{ width: 240 }} /></div>
               <Chips primary="고정" items={['아이콘 40', 'G 12 · 4 · 16', 'P 32 · 16', 'body-1 / body-2']} />
             </div>
           </div>

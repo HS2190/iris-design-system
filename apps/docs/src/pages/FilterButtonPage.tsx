@@ -57,7 +57,6 @@ export default function FilterButtonPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 36 }}><FilterButton active count={2}>직무</FilterButton></div>
               <Chips primary="고정" items={['H 36', 'P 12', 'G 4', 'R full', '아이콘 16', 'label-1']} />
             </div>
           </div>

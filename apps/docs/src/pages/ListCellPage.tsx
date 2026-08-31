@@ -70,7 +70,6 @@ export default function ListCellPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 56 }}><ListCell title="알림 설정" description="푸시·이메일" leading={<Icon name="settings" />} trailing={<Icon name="chevron-right" size={20} />} style={{ width: 300 }} /></div>
               <Chips primary="고정" items={['min-H 56', 'P 8 · 16', '리딩 G 12', '트레일링 G 8', 'body-1 / caption-1']} />
             </div>
           </div>

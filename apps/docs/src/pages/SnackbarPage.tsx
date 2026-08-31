@@ -58,7 +58,6 @@ export default function SnackbarPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 48 }}><Snackbar actionLabel="실행 취소">메모를 삭제했습니다</Snackbar></div>
               <Chips primary="고정" items={['min-H 48', 'P 좌 16 · 우 8', 'G 16', 'R 12', '액션 label-1']} />
             </div>
           </div>

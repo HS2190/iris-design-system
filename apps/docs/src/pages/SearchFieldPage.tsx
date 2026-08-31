@@ -52,7 +52,6 @@ export default function SearchFieldPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot"><SearchField placeholder="검색어를 입력하세요" style={{ width: 280 }} /></div>
               <Chips primary="기본" items={['H 48 (input-height)', 'P 40', 'R full', 'body-1']} />
             </div>
           </div>

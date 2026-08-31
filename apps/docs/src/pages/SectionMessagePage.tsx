@@ -67,7 +67,6 @@ export default function SectionMessagePage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><SectionMessage tone="cautionary" title="저장 공간 부족" style={{ width: 340 }}>오래된 파일을 정리해 주세요.</SectionMessage></div>
               <Chips primary="고정" items={['P 12 · 16', 'G 8', 'R 10', '아이콘 20', 'label-1 / body-2']} />
             </div>
           </div>

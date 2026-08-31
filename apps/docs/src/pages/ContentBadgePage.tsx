@@ -54,7 +54,7 @@ export default function ContentBadgePage() {
             </div>
           </div>
           <div className="size-row">
-            <div className="size-item"><div className="size-slot" style={{ height: 20 }}><ContentBadge tone="positive">완료</ContentBadge></div><Chips primary="기본" items={['H 20', 'P 8', 'R 8', 'caption-1']} /></div>
+            <div className="size-item"><Chips primary="기본" items={['H 20', 'P 8', 'R 8', 'caption-1']} /></div>
           </div>
         </Canvas>
       </Section>

@@ -51,7 +51,6 @@ export default function SwitchPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 32 }}><Switch label="알림 받기" defaultChecked /></div>
               <Chips primary="고정" items={['트랙 52×32', '노브 28 · 인셋 2', 'R full', 'G 8', 'On = primary/normal']} />
             </div>
           </div>

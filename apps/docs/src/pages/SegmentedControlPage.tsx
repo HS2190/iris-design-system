@@ -53,7 +53,6 @@ export default function SegmentedControlPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 40 }}><SegmentedControl options={['리스트', '캘린더'] as const} value="리스트" onChange={() => {}} aria-label="예시" /></div>
               <Chips primary="고정" items={['H 40', '트랙 P 4', '세그 H 32 · R 8', '세그 간 2', 'label-1']} />
             </div>
           </div>

@@ -58,11 +58,9 @@ export default function PushBadgePage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 32 }}><PushBadge count={3}><Icon name="bell" /></PushBadge></div>
               <Chips primary="count" items={['H 16 · min-W 16', 'P 0 4', 'caption-2', 'R full']} />
             </div>
             <div className="size-item">
-              <div className="size-slot" style={{ height: 32 }}><PushBadge><Icon name="bell" /></PushBadge></div>
               <Chips primary="dot" items={['6 × 6', '오프셋 0', 'R full']} />
             </div>
           </div>

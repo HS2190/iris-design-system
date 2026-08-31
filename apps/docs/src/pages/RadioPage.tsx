@@ -78,7 +78,6 @@ export default function RadioPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 28 }}><Radio name="sz" label="카드 결제" defaultChecked /></div>
               <Chips primary="고정" items={['원 20 · 보더 1.5', '도트 8', 'R full', 'G 8', 'body-2']} />
             </div>
           </div>

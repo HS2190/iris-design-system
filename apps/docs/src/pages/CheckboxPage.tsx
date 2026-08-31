@@ -88,7 +88,6 @@ export default function CheckboxPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 28 }}><Checkbox label="알림 받기" defaultChecked /></div>
               <Chips primary="고정" items={['박스 20 · 보더 1.5', 'R 8', 'G 8', 'body-2', '행 높이 28']} />
             </div>
           </div>

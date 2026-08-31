@@ -58,8 +58,6 @@ export default function TablePage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><Table style={{ width: 320 }} data={rows.slice(0, 2)}
-                columns={[{ key: 'name', header: '이름' }, { key: 'years', header: '경력(년)', align: 'right' }]} /></div>
               <Chips primary="고정" items={['헤더 H 40', '행 H 48', '셀 P 16', 'caption-1 / body-2']} />
             </div>
           </div>

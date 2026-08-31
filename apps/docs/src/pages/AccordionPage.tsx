@@ -57,7 +57,6 @@ export default function AccordionPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 'auto' }}><Accordion style={{ width: 300 }} items={[{ id: 'r', title: '헤더', content: '콘텐츠' }]} /></div>
               <Chips primary="고정" items={['헤더 H 56', 'P 16', '콘텐츠 P 16', '구분선 1', 'body-1 / body-2']} />
             </div>
           </div>

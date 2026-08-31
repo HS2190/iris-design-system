@@ -63,7 +63,6 @@ export default function ToastPage() {
           </div>
           <div className="size-row">
             <div className="size-item">
-              <div className="size-slot" style={{ height: 48 }}><Toast tone="positive">저장되었습니다</Toast></div>
               <Chips primary="고정" items={['min-H 48', 'P 12 · 16', 'G 8', 'R 12', '아이콘 20', 'body-2']} />
             </div>
           </div>

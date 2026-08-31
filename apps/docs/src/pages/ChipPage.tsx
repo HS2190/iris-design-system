@@ -66,8 +66,8 @@ export default function ChipPage() {
             </div>
           </div>
           <div className="size-row">
-            <div className="size-item"><div className="size-slot" style={{ height: 36 }}><Chip size="m">Chip M</Chip></div><Chips primary="M" items={['H 36', 'P 14', 'R full', 'label-1']} /></div>
-            <div className="size-item"><div className="size-slot" style={{ height: 36 }}><Chip size="s">Chip S</Chip></div><Chips primary="S" items={['H 30', 'P 12', 'R full', 'label-2']} /></div>
+            <div className="size-item"><Chips primary="M" items={['H 36', 'P 14', 'R full', 'label-1']} /></div>
+            <div className="size-item"><Chips primary="S" items={['H 30', 'P 12', 'R full', 'label-2']} /></div>
           </div>
         </Canvas>
       </Section>
