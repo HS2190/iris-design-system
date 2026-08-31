@@ -1,0 +1,10 @@
+.root { box-sizing: border-box; display: inline-flex; align-items: center; gap: var(--iris-space-8);
+  min-height: 48px; padding: var(--iris-space-12) var(--iris-space-16);
+  border-radius: var(--iris-radius-md); background: var(--iris-semantic-inverse-background);
+  color: var(--iris-semantic-inverse-label); font-family: var(--iris-font-family);
+  box-shadow: var(--iris-elevation-normal-medium, 0 4px 12px rgba(0, 0, 0, .2)); }
+.icon { display: inline-flex; flex: none; }
+.neutral { color: var(--iris-semantic-inverse-label); opacity: .8; }
+.positive { color: var(--iris-semantic-status-positive); }
+.negative { color: var(--iris-semantic-status-negative); }
+.msg { font-size: var(--iris-font-size-body-2, 15px); line-height: 1.4; }

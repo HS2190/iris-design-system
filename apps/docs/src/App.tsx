@@ -23,6 +23,12 @@ import CardPage from './pages/CardPage';
 import SectionHeaderPage from './pages/SectionHeaderPage';
 import AccordionPage from './pages/AccordionPage';
 import TablePage from './pages/TablePage';
+import AlertPage from './pages/AlertPage';
+import ToastPage from './pages/ToastPage';
+import SnackbarPage from './pages/SnackbarPage';
+import SectionMessagePage from './pages/SectionMessagePage';
+import FallbackViewPage from './pages/FallbackViewPage';
+import PushBadgePage from './pages/PushBadgePage';
 
 const components = [
   { path: '/components/button', name: 'Button', ready: true },
@@ -46,6 +52,12 @@ const components = [
   { path: '/components/section-header', name: 'Section header', ready: true },
   { path: '/components/accordion', name: 'Accordion', ready: true },
   { path: '/components/table', name: 'Table', ready: true },
+  { path: '/components/alert', name: 'Alert', ready: true },
+  { path: '/components/toast', name: 'Toast', ready: true },
+  { path: '/components/snackbar', name: 'Snackbar', ready: true },
+  { path: '/components/section-message', name: 'Section message', ready: true },
+  { path: '/components/fallback-view', name: 'Fallback view', ready: true },
+  { path: '/components/push-badge', name: 'Push badge', ready: true },
 ];
 
 function ThemeToggle() {
@@ -110,6 +122,12 @@ export default function App() {
           <Route path="/components/section-header" element={<SectionHeaderPage />} />
           <Route path="/components/accordion" element={<AccordionPage />} />
           <Route path="/components/table" element={<TablePage />} />
+          <Route path="/components/alert" element={<AlertPage />} />
+          <Route path="/components/toast" element={<ToastPage />} />
+          <Route path="/components/snackbar" element={<SnackbarPage />} />
+          <Route path="/components/section-message" element={<SectionMessagePage />} />
+          <Route path="/components/fallback-view" element={<FallbackViewPage />} />
+          <Route path="/components/push-badge" element={<PushBadgePage />} />
         </Routes>
       </main>
       <Toc />

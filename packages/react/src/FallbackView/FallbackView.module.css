@@ -1,0 +1,9 @@
+.root { box-sizing: border-box; display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: var(--iris-space-32, 32px) var(--iris-space-16);
+  font-family: var(--iris-font-family); }
+.icon { display: inline-flex; color: var(--iris-semantic-label-assistive); }
+.title { margin-top: var(--iris-space-12); font-size: var(--iris-font-size-body-1, 16px);
+  font-weight: 700; color: var(--iris-semantic-label-normal); }
+.desc { margin-top: 4px; font-size: var(--iris-font-size-body-2, 15px);
+  line-height: var(--iris-line-height-body-2, 1.5); color: var(--iris-semantic-label-alternative); }
+.action { margin-top: var(--iris-space-16); }

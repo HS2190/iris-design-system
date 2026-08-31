@@ -1,0 +1,20 @@
+.root { box-sizing: border-box; display: flex; align-items: flex-start; gap: var(--iris-space-8);
+  padding: var(--iris-space-12) var(--iris-space-16); border-radius: var(--iris-radius-sm);
+  font-family: var(--iris-font-family); }
+.info { background: color-mix(in srgb, var(--iris-semantic-status-info) 8%, transparent); }
+.info .icon { color: var(--iris-semantic-status-info); }
+.positive { background: color-mix(in srgb, var(--iris-semantic-status-positive) 8%, transparent); }
+.positive .icon { color: var(--iris-semantic-status-positive); }
+.cautionary { background: color-mix(in srgb, var(--iris-semantic-status-cautionary) 10%, transparent); }
+.cautionary .icon { color: var(--iris-semantic-status-cautionary); }
+.negative { background: color-mix(in srgb, var(--iris-semantic-status-negative) 8%, transparent); }
+.negative .icon { color: var(--iris-semantic-status-negative); }
+.icon { display: inline-flex; flex: none; }
+.body { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; padding-top: 1px; }
+.title { font-size: var(--iris-font-size-label-1, 14px); font-weight: 700; color: var(--iris-semantic-label-normal); }
+.msg { font-size: var(--iris-font-size-body-2, 15px); line-height: var(--iris-line-height-body-2, 1.5);
+  color: var(--iris-semantic-label-neutral); }
+.close { flex: none; display: inline-flex; border: none; background: none; cursor: pointer; padding: 2px;
+  border-radius: var(--iris-radius-xs); color: var(--iris-semantic-label-alternative); }
+.close:hover { color: var(--iris-semantic-label-normal); }
+.close:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); }

@@ -1,0 +1,9 @@
+.badge { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
+  min-width: 16px; height: 16px; padding: 0 4px; border-radius: 999px;
+  background: var(--iris-semantic-status-negative); color: var(--iris-semantic-static-white);
+  font-family: var(--iris-font-family); font-size: var(--iris-font-size-caption-2, 10px);
+  font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.dot { min-width: 6px; width: 6px; height: 6px; padding: 0; }
+.anchor { position: relative; display: inline-flex; }
+.anchor .badge { position: absolute; top: -4px; right: -4px; }
+.anchor .dot { top: 0; right: 0; }

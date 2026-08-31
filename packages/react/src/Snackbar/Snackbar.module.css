@@ -1,0 +1,12 @@
+.root { box-sizing: border-box; display: inline-flex; align-items: center; gap: var(--iris-space-16);
+  min-height: 48px; padding: 6px var(--iris-space-8) 6px var(--iris-space-16);
+  border-radius: var(--iris-radius-md); background: var(--iris-semantic-inverse-background);
+  color: var(--iris-semantic-inverse-label); font-family: var(--iris-font-family);
+  box-shadow: var(--iris-elevation-normal-medium, 0 4px 12px rgba(0, 0, 0, .2)); }
+.msg { flex: 1; font-size: var(--iris-font-size-body-2, 15px); line-height: 1.4; }
+.action { flex: none; border: none; background: none; cursor: pointer; padding: var(--iris-space-8);
+  border-radius: var(--iris-radius-xs); font-family: inherit;
+  font-size: var(--iris-font-size-label-1, 14px); font-weight: 700;
+  color: var(--iris-semantic-inverse-primary, #A78BFA); }
+.action:hover { background: rgba(255, 255, 255, .1); }
+.action:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: -1px; }
