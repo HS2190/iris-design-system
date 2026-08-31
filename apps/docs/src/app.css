@@ -195,3 +195,36 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 .swt:hover .swt-tile { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 1px; }
 .swt-name { font-size: 12.5px; color: var(--iris-semantic-label-neutral); }
 .swt-name b { font-weight: 500; color: var(--iris-semantic-label-normal); }
+
+/* ── GNB 셸 (몽타주식) ── */
+.gnb { position: sticky; top: 0; z-index: 60; display: flex; align-items: center; gap: 28px;
+  height: 60px; padding: 0 24px; border-bottom: 1px solid var(--iris-semantic-line-solid-neutral);
+  background: var(--iris-semantic-background-normal-normal); }
+.gnb-brand { display: flex; align-items: center; gap: 9px; color: var(--iris-semantic-label-normal); }
+.gnb-brand b { font-size: 16px; letter-spacing: -.01em; }
+.gnb-nav { display: flex; gap: 4px; }
+.gnb-nav a { padding: 8px 12px; border-radius: 8px; font-size: 14.5px; font-weight: 500;
+  color: var(--iris-semantic-label-neutral); }
+.gnb-nav a:hover { background: var(--iris-semantic-interaction-hover); }
+.gnb-nav a.active { color: var(--iris-semantic-label-primary); font-weight: 700; }
+.gnb-right { margin-left: auto; display: flex; align-items: center; }
+.gnb .control label { display: none; }
+.gnb .seg { width: auto; }
+.sidebar { top: 60px; height: calc(100vh - 60px); }
+.toc { top: 60px; height: calc(100vh - 60px); }
+/* 랜딩 */
+.landing { max-width: 1040px; margin: 0 auto; padding: 24px 32px 96px; }
+.hero { position: relative; padding: 88px 0 56px; }
+.hero::before { content: ''; position: absolute; top: -60px; left: -20%; width: 70%; height: 420px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--iris-semantic-primary-normal) 16%, transparent), transparent);
+  pointer-events: none; }
+.hero h1 { position: relative; font-size: clamp(40px, 6vw, 64px); line-height: 1.12; letter-spacing: -.03em;
+  font-weight: 700; color: var(--iris-semantic-label-normal); margin: 0 0 18px; }
+.hero h1 em { font-style: normal; color: var(--iris-semantic-label-primary); }
+.hero p { position: relative; max-width: 560px; font-size: 16.5px; line-height: 1.7;
+  color: var(--iris-semantic-label-neutral); margin: 0 0 28px; }
+.hero-cta { position: relative; display: flex; gap: 10px; }
+.hero-stats { position: relative; display: flex; gap: 48px; margin-top: 52px; flex-wrap: wrap; }
+.hero-stats b { display: block; font-size: 28px; letter-spacing: -.02em; color: var(--iris-semantic-label-normal); }
+.hero-stats small { font-size: 12.5px; color: var(--iris-semantic-label-assistive); }
+@media (max-width: 860px) { .gnb { gap: 12px; } .sidebar { top: 0; height: auto; } }
