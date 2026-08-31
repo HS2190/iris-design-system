@@ -17,6 +17,12 @@ import SegmentedControlPage from './pages/SegmentedControlPage';
 import TextAreaPage from './pages/TextAreaPage';
 import SliderPage from './pages/SliderPage';
 import FilterButtonPage from './pages/FilterButtonPage';
+import AvatarPage from './pages/AvatarPage';
+import ListCellPage from './pages/ListCellPage';
+import CardPage from './pages/CardPage';
+import SectionHeaderPage from './pages/SectionHeaderPage';
+import AccordionPage from './pages/AccordionPage';
+import TablePage from './pages/TablePage';
 
 const components = [
   { path: '/components/button', name: 'Button', ready: true },
@@ -34,6 +40,12 @@ const components = [
   { path: '/components/text-area', name: 'Text area', ready: true },
   { path: '/components/slider', name: 'Slider', ready: true },
   { path: '/components/filter-button', name: 'Filter button', ready: true },
+  { path: '/components/avatar', name: 'Avatar', ready: true },
+  { path: '/components/list-cell', name: 'List cell', ready: true },
+  { path: '/components/card', name: 'Card', ready: true },
+  { path: '/components/section-header', name: 'Section header', ready: true },
+  { path: '/components/accordion', name: 'Accordion', ready: true },
+  { path: '/components/table', name: 'Table', ready: true },
 ];
 
 function ThemeToggle() {
@@ -92,6 +104,12 @@ export default function App() {
           <Route path="/components/text-area" element={<TextAreaPage />} />
           <Route path="/components/slider" element={<SliderPage />} />
           <Route path="/components/filter-button" element={<FilterButtonPage />} />
+          <Route path="/components/avatar" element={<AvatarPage />} />
+          <Route path="/components/list-cell" element={<ListCellPage />} />
+          <Route path="/components/card" element={<CardPage />} />
+          <Route path="/components/section-header" element={<SectionHeaderPage />} />
+          <Route path="/components/accordion" element={<AccordionPage />} />
+          <Route path="/components/table" element={<TablePage />} />
         </Routes>
       </main>
       <Toc />

@@ -1,0 +1,14 @@
+.root { box-sizing: border-box; display: flex; align-items: center; gap: var(--iris-space-12);
+  min-height: 56px; padding: 8px var(--iris-space-16); border-radius: var(--iris-radius-sm);
+  font-family: var(--iris-font-family); }
+.root[data-interactive] { cursor: pointer; }
+.root[data-interactive]:hover { background: var(--iris-semantic-interaction-hover); }
+.root[data-interactive]:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: -2px; }
+.leading { display: inline-flex; flex: none; color: var(--iris-semantic-label-neutral); }
+.content { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.title { font-size: var(--iris-font-size-body-1, 16px); letter-spacing: var(--iris-letter-spacing-body-1);
+  color: var(--iris-semantic-label-normal); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.desc { font-size: var(--iris-font-size-caption-1, 12px); letter-spacing: var(--iris-letter-spacing-caption-1);
+  color: var(--iris-semantic-label-alternative); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trailing { display: inline-flex; align-items: center; gap: var(--iris-space-8); flex: none;
+  color: var(--iris-semantic-label-alternative); font-size: var(--iris-font-size-body-2, 15px); }

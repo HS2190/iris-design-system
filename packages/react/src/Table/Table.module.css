@@ -1,0 +1,14 @@
+.wrap { overflow-x: auto; font-family: var(--iris-font-family); }
+.table { border-collapse: collapse; width: 100%; }
+.th { box-sizing: border-box; height: 40px; padding: 0 var(--iris-space-16);
+  font-size: var(--iris-font-size-caption-1, 12px); font-weight: 500; letter-spacing: .02em;
+  color: var(--iris-semantic-label-alternative);
+  border-bottom: 1px solid var(--iris-semantic-line-solid-normal); white-space: nowrap; }
+.td { box-sizing: border-box; height: 48px; padding: 0 var(--iris-space-16);
+  font-size: var(--iris-font-size-body-2, 15px); color: var(--iris-semantic-label-normal);
+  border-bottom: 1px solid var(--iris-semantic-line-solid-neutral); }
+.td[data-num] { font-variant-numeric: tabular-nums; }
+.table[data-interactive] .tr:hover td { background: var(--iris-semantic-interaction-hover); }
+.empty { height: 96px; text-align: center; color: var(--iris-semantic-label-assistive);
+  font-size: var(--iris-font-size-body-2, 15px);
+  border-bottom: 1px solid var(--iris-semantic-line-solid-neutral); }

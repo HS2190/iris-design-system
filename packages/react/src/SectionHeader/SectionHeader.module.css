@@ -1,0 +1,9 @@
+.root { box-sizing: border-box; display: flex; align-items: flex-end; justify-content: space-between;
+  gap: var(--iris-space-12); padding: var(--iris-space-16) 0 var(--iris-space-8);
+  font-family: var(--iris-font-family); }
+.texts { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.title { font-size: var(--iris-font-size-heading-2, 18px); font-weight: 700;
+  letter-spacing: var(--iris-letter-spacing-heading-2, -0.02em); color: var(--iris-semantic-label-normal); }
+.desc { font-size: var(--iris-font-size-caption-1, 12px); color: var(--iris-semantic-label-alternative); }
+.action { flex: none; display: inline-flex; align-items: center; gap: 2px; cursor: pointer;
+  font-size: var(--iris-font-size-label-1, 14px); font-weight: 500; color: var(--iris-semantic-label-primary); }
