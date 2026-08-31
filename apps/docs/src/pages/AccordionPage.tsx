@@ -41,10 +41,10 @@ export default function AccordionPage() {
             <div className="size-hero">
               <div className="stage" style={{ transform: 'scale(1.4)', lineHeight: 1 }}>
                 <Accordion style={{ width: 250 }} defaultOpen={['x']} items={[{ id: 'x', title: '헤더 56', content: '콘텐츠 영역' }]} />
-                {/* 헤더 0~56 · 콘텐츠 56~71 · padB 71~87 */}
-                <span className="size-zone pad" style={{ left: 0, top: 0, width: 16, height: 87 }}>16</span>
-                <span className="size-zone pad" style={{ right: 0, top: 0, width: 16, height: 87 }}>16</span>
-                <span className="size-zone pad" style={{ left: 16, right: 16, top: 71, height: 16 }}>16</span>
+                {/* 헤더 0~56 · 콘텐츠 56~78 (lh22) · padB 78~94 */}
+                <span className="size-zone pad" style={{ left: 0, top: 0, width: 16, height: 94 }}>16</span>
+                <span className="size-zone pad" style={{ right: 0, top: 0, width: 16, height: 94 }}>16</span>
+                <span className="size-zone pad" style={{ left: 16, right: 16, top: 78, height: 16 }}>16</span>
                 <span className="size-num" style={{ left: -24, top: 26 }}>56</span>
               </div>
             </div>
