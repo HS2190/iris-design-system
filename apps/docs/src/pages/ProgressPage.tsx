@@ -37,7 +37,7 @@ export default function ProgressPage() {
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">
             <div className="size-hero">
-              <div className="stage" style={{ transform: 'scale(1.6)', lineHeight: 1 }}>
+              <div className="stage" style={{ transform: 'scale(1.25)', lineHeight: 1 }}>
                 <Progress label="업로드 중" value={65} showValue style={{ width: 220 }} />
                 {/* 라벨행 14 (0~14) · G 6 (14~20) · 트랙 4 (20~24) */}
                 <span className="size-zone gap" style={{ left: 0, right: 0, top: 14, height: 6 }} />
