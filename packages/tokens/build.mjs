@@ -34,7 +34,7 @@ const darkBlock = Object.entries(semantic).map(([n, v]) => `  --iris-semantic-${
 css += `@media (prefers-color-scheme: dark) {\n  :root:not([data-theme="light"]) {\n${darkBlock.replace(/^/gm, '  ')}\n  }\n}\n\n`;
 css += `[data-theme="dark"] {\n${darkBlock}\n}\n\n`;
 // ── 타이포 유틸리티 클래스
-for (const t of typography) css += `.iris-${t.n} { font-family: var(--iris-font-family); font-size: var(--iris-font-size-${t.n}); line-height: var(--iris-line-height-${t.n}); letter-spacing: var(--iris-letter-spacing-${t.n}); font-weight: var(--iris-font-weight-${t.n}); }\n`;
+for (const t of typography) css += `.iris-${t.n} { font-family: var(--iris-font-family); font-size: var(--iris-font-size-${t.n}); line-height: var(--iris-line-height-${t.n}); letter-spacing: var(--iris-letter-spacing-${t.n}); font-weight: var(--iris-font-weight-${t.n}); word-break: keep-all; overflow-wrap: anywhere; }\n`;
 
 mkdirSync(join(R, 'dist'), { recursive: true });
 writeFileSync(join(R, 'dist', 'iris.css'), css);
