@@ -42,8 +42,8 @@ export default function BottomNavigationPage() {
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">
             <div className="size-hero">
-              <div className="stage" style={{ transform: 'scale(1.5)', lineHeight: 1 }}>
-                <BottomNavigation items={items.slice(0, 3)} value="home" style={{ width: 270 }} />
+              <div className="stage" style={{ transform: 'scale(1.25)', lineHeight: 1 }}>
+                <BottomNavigation items={items.slice(0, 3)} value="home" style={{ width: 240 }} />
                 {/* H 56 · padT 8 · 아이콘 24 (8~32) · G 4 (32~36) · 라벨 10 (36~46) */}
                 <span className="size-zone pad" style={{ left: 0, right: 0, top: 0, height: 8 }}>8</span>
                 <span className="size-zone gap" style={{ left: 0, right: 0, top: 32, height: 4 }} />
