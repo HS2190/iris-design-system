@@ -46,6 +46,7 @@ import BottomSheetPage from './pages/BottomSheetPage';
 import SkeletonPage from './pages/SkeletonPage';
 import ScrimPage from './pages/ScrimPage';
 import GridPage from './pages/GridPage';
+import FoundationsPage from './pages/FoundationsPage';
 import ColorPage from './pages/ColorPage';
 import TypographyPage from './pages/TypographyPage';
 import SpacingPage from './pages/SpacingPage';
@@ -92,6 +93,7 @@ export default function App() {
           <div className="nav-group">Getting started</div>
           <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>소개</NavLink>
           <div className="nav-group">Foundations</div>
+          <NavLink to="/foundations" end className={({ isActive }) => isActive ? 'active' : ''}>개요</NavLink>
           {[['Color', '/foundations/color'], ['Typography', '/foundations/typography'], ['Spacing', '/foundations/spacing'], ['Elevation', '/foundations/elevation'], ['Platform', '/foundations/platform']].map(([n, p]) => (
             <NavLink key={p} to={p} className={({ isActive }) => isActive ? 'active' : ''}>{n}</NavLink>
           ))}
@@ -153,6 +155,7 @@ export default function App() {
           <Route path="/components/skeleton" element={<SkeletonPage />} />
           <Route path="/components/scrim" element={<ScrimPage />} />
           <Route path="/components/grid" element={<GridPage />} />
+          <Route path="/foundations" element={<FoundationsPage />} />
           <Route path="/foundations/color" element={<ColorPage />} />
           <Route path="/foundations/typography" element={<TypographyPage />} />
           <Route path="/foundations/spacing" element={<SpacingPage />} />

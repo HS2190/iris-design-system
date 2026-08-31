@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Icon, iconNames, Button, ListCell, type IconName, type IconVariant } from '@iris/react';
+import { Icon, iconNames, Button, ListCell, SearchField, FallbackView, type IconName, type IconVariant } from '@iris/react';
 import { Page, Section, Canvas, Spec, Seg, Playground, DoDont, Props } from '../components/Doc';
 
 const CATS: [string, IconName[]][] = [
@@ -18,6 +18,7 @@ export default function IconPage() {
   const [copied, setCopied] = useState('');
   const [va, setVa] = useState<IconVariant>('line');
   const [sz, setSz] = useState<'16' | '20' | '24'>('24');
+  const [q, setQ] = useState('');
   return (
     <Page kicker="Foundations · Icons" title="Icon" desc={`Phosphor 기반 아이콘 ${iconNames.length}종 × line/fill 2변형. 색은 currentColor — 부모의 label/* 토큰을 그대로 따릅니다. (MIT · phosphoricons.com)`}>
       <Section title="Playground">
@@ -30,10 +31,17 @@ export default function IconPage() {
           code={`<Icon name="star"${va === 'fill' ? ' variant="fill"' : ''}${sz !== '24' ? ` size={${sz}}` : ''} />`} />
       </Section>
       <Section title="Library" desc="클릭하면 이름이 복사됩니다. 우측 상단에서 변형을 전환해 보세요.">
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 8 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+          <SearchField placeholder="아이콘 검색 (예: arrow, check)" value={q} onChange={e => setQ(e.target.value)} onClear={() => setQ('')} style={{ width: 260 }} />
           <div style={{ width: 180 }}><Seg label="variant" value={va} options={['line', 'fill'] as const} onChange={setVa} /></div>
         </div>
-        {CATS.map(([cat, names]) => (
+        {q && iconNames.filter(n => n.includes(q.toLowerCase())).length === 0 && (
+          <FallbackView icon="search" title="검색 결과가 없어요" description="다른 키워드로 검색해 보세요." style={{ padding: '24px 0' }} />
+        )}
+        {CATS.map(([cat, allNames]) => {
+          const names = q ? allNames.filter(n => n.includes(q.toLowerCase())) : allNames;
+          if (names.length === 0) return null;
+          return (
           <div key={cat}>
             <div className="home-cat">{cat} · {names.length}</div>
             <Canvas style={{ gap: 4, marginBottom: 16 }}>
@@ -49,7 +57,33 @@ export default function IconPage() {
               ))}
             </Canvas>
           </div>
-        ))}
+          );
+        })}
+      </Section>
+      <Section title="키라인" desc="24px 그리드 · 실내용 20px 라이브 영역. Phosphor 원본(256 그리드)을 24로 스케일해 씁니다.">
+        <Canvas style={{ gap: 48, alignItems: 'center' }}>
+          <div style={{ position: 'relative', width: 144, height: 144 }}>
+            <span style={{ position: 'absolute', inset: 0, color: 'var(--iris-semantic-label-normal)' }}><Icon name="bell" size={144} /></span>
+            {[0, 36, 72, 108, 144].map(v => (
+              <span key={'h' + v} style={{ position: 'absolute', left: 0, right: 0, top: v, height: 1, background: 'rgba(6,182,212,.35)' }} />
+            ))}
+            {[0, 36, 72, 108, 144].map(v => (
+              <span key={'v' + v} style={{ position: 'absolute', top: 0, bottom: 0, left: v, width: 1, background: 'rgba(6,182,212,.35)' }} />
+            ))}
+            <span style={{ position: 'absolute', inset: 12, border: '1.5px dashed rgba(249,115,22,.6)' }} />
+          </div>
+          <div style={{ fontSize: 13, color: 'var(--iris-semantic-label-neutral)', lineHeight: 1.8, maxWidth: 300 }}>
+            점선 안쪽이 라이브 영역(20px) — 글리프는 이 안에 그립니다.<br />
+            바깥 2px은 광학 여백이라 아이콘끼리 붙어도 숨을 쉽니다.
+          </div>
+        </Canvas>
+      </Section>
+      <Section title="네이밍" desc="kebab-case · 대상 명사 우선, 방향·변형은 접미사로.">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 13.5, color: 'var(--iris-semantic-label-neutral)' }}>
+          <div className="codeline">chevron-down · arrow-left · more-vertical  — 방향은 접미사</div>
+          <div className="codeline">check-circle · x-circle · eye-off  — 변형·상태도 접미사</div>
+          <div className="codeline">variant="fill"  — 채움은 이름이 아니라 variant 축</div>
+        </div>
       </Section>
       <Section title="Size" desc="16 · 20 · 24가 표준. 색은 감싸는 요소의 color로 정합니다.">
         <Canvas>
