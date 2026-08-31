@@ -43,7 +43,7 @@ export default function PaginationPage() {
         <Canvas col style={{ gap: 8 }}>
           <div className="size-hero-wrap">
             <div className="size-hero">
-              <div className="stage" style={{ transform: 'scale(1.6)', lineHeight: 1 }}>
+              <div className="stage" style={{ transform: 'scale(1.6)', lineHeight: 0 }}>
                 <Pagination page={2} total={3} />
                 {/* [<]0~32 · G4 · [1]36~68 · G4 · [2]72~104 · G4 · [3]108~140 · G4 · [>]144~176 */}
                 <span className="size-zone gap" style={{ left: 32, top: 0, width: 4, height: 32 }} />
@@ -51,8 +51,18 @@ export default function PaginationPage() {
                 <span className="size-num" style={{ left: 52, top: 34, transform: 'translateX(-50%)' }}>32</span>
               </div>
             </div>
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(3)', lineHeight: 0 }}>
+                <Pagination variant="dot" page={2} total={4} />
+                {/* dot 6 (0~6) · G 8 (6~14) · 활성 16 (14~30) · 이후 반복 */}
+                <span className="size-zone gap" style={{ left: 6, top: 0, width: 8, height: 6 }} />
+                <span className="size-num gapnum" style={{ left: 10, top: -11, transform: 'translateX(-50%)' }}>8</span>
+                <span className="size-num" style={{ left: 3, top: 9, transform: 'translateX(-50%)' }}>6</span>
+                <span className="size-num" style={{ left: 22, top: 9, transform: 'translateX(-50%)' }}>16</span>
+              </div>
+            </div>
             <div className="size-hero-caption">
-              <b>number · 2 페이지</b>
+              <b>number · 2 페이지 / dot</b>
               <span className="sub">버튼 32 × 32 · 간격 4 · R 8 · label-1 tabular</span>
               <span className="sub">활성 = primary/normal 채움 · dot 6 (활성 16 필)</span>
               <span className="legend"><i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
