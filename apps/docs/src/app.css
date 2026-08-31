@@ -84,6 +84,8 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 .size-hero { position: relative; display: inline-block; padding: 40px 56px 44px; }
 .size-hero .stage { position: relative; display: inline-block; transform: scale(1.8); transform-origin: center; }
 .size-zone { position: absolute; pointer-events: none; }
+.size-zone.pad { display: flex; align-items: center; justify-content: center; font-family: "IBM Plex Mono", monospace;
+  font-size: 7px; color: var(--iris-semantic-label-normal); }
 .size-num { position: absolute; pointer-events: none; font-family: "IBM Plex Mono", monospace; font-size: 7.5px;
   color: var(--iris-semantic-label-neutral); line-height: 1; }
 .size-num.gapnum { color: rgb(6,182,212); font-weight: 700; }
