@@ -37,7 +37,7 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 
 .canvas { border: 1px solid var(--iris-semantic-line-solid-neutral); border-radius: var(--iris-radius-lg);
   background: var(--iris-semantic-background-normal-alternative); padding: 32px; display: flex; flex-wrap: wrap;
-  gap: 20px; align-items: center; }
+  gap: 20px; align-items: flex-start; }
 .canvas.col { flex-direction: column; align-items: flex-start; }
 .spec { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 .spec small { font-size: 11px; color: var(--iris-semantic-label-alternative); font-family: "IBM Plex Mono", monospace; }
