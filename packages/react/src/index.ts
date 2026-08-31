@@ -30,3 +30,8 @@ export { BottomNavigation, type BottomNavItem } from './BottomNavigation/BottomN
 export { Tabs } from './Tabs/Tabs';
 export { Pagination } from './Pagination/Pagination';
 export { Progress } from './Progress/Progress';
+export { Tooltip } from './Tooltip/Tooltip';
+export { Popover } from './Popover/Popover';
+export { Menu, type MenuItem } from './Menu/Menu';
+export { Popup } from './Popup/Popup';
+export { BottomSheet } from './BottomSheet/BottomSheet';

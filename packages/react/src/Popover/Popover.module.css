@@ -1,0 +1,9 @@
+.root { box-sizing: border-box; width: 260px; max-width: 100%; padding: var(--iris-space-16);
+  border-radius: var(--iris-radius-md); background: var(--iris-semantic-background-elevated-normal);
+  box-shadow: var(--iris-elevation-normal-medium, 0 4px 12px rgba(0, 0, 0, .2));
+  font-family: var(--iris-font-family); }
+.title { display: block; font-size: var(--iris-font-size-label-1, 14px); font-weight: 700;
+  color: var(--iris-semantic-label-normal); margin-bottom: var(--iris-space-8); }
+.body { font-size: var(--iris-font-size-body-2, 15px); line-height: var(--iris-line-height-body-2, 1.5);
+  color: var(--iris-semantic-label-neutral); }
+.action { display: flex; justify-content: flex-end; margin-top: var(--iris-space-12); }

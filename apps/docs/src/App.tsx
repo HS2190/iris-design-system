@@ -34,6 +34,11 @@ import BottomNavigationPage from './pages/BottomNavigationPage';
 import TabPage from './pages/TabPage';
 import PaginationPage from './pages/PaginationPage';
 import ProgressPage from './pages/ProgressPage';
+import TooltipPage from './pages/TooltipPage';
+import PopoverPage from './pages/PopoverPage';
+import MenuPage from './pages/MenuPage';
+import PopupPage from './pages/PopupPage';
+import BottomSheetPage from './pages/BottomSheetPage';
 
 const components = [
   { path: '/components/button', name: 'Button', ready: true },
@@ -68,6 +73,11 @@ const components = [
   { path: '/components/tab', name: 'Tab', ready: true },
   { path: '/components/pagination', name: 'Pagination', ready: true },
   { path: '/components/progress', name: 'Progress', ready: true },
+  { path: '/components/tooltip', name: 'Tooltip', ready: true },
+  { path: '/components/popover', name: 'Popover', ready: true },
+  { path: '/components/menu', name: 'Menu', ready: true },
+  { path: '/components/popup', name: 'Popup', ready: true },
+  { path: '/components/bottom-sheet', name: 'Bottom sheet', ready: true },
 ];
 
 function ThemeToggle() {
@@ -143,6 +153,11 @@ export default function App() {
           <Route path="/components/tab" element={<TabPage />} />
           <Route path="/components/pagination" element={<PaginationPage />} />
           <Route path="/components/progress" element={<ProgressPage />} />
+          <Route path="/components/tooltip" element={<TooltipPage />} />
+          <Route path="/components/popover" element={<PopoverPage />} />
+          <Route path="/components/menu" element={<MenuPage />} />
+          <Route path="/components/popup" element={<PopupPage />} />
+          <Route path="/components/bottom-sheet" element={<BottomSheetPage />} />
         </Routes>
       </main>
       <Toc />
