@@ -9,11 +9,11 @@ export interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement>
 
 /** 범위 안의 대략적인 값 선택. 정확한 값이 필요하면 Text field를 병행한다. */
 export const Slider = forwardRef<HTMLInputElement, SliderProps>(function Slider(
-  { label, formatValue, min = 0, max = 100, defaultValue, value, onChange, className, ...rest }, ref) {
+  { label, formatValue, min = 0, max = 100, defaultValue, value, onChange, className, style, ...rest }, ref) {
   const [val, setVal] = useState(Number(value ?? defaultValue ?? min));
   const pct = ((val - Number(min)) / (Number(max) - Number(min))) * 100;
   return (
-    <div className={[s.root, className].filter(Boolean).join(' ')}>
+    <div className={[s.root, className].filter(Boolean).join(' ')} style={style}>
       {(label || formatValue) && (
         <div className={s.top}>
           {label && <span className={s.label}>{label}</span>}
