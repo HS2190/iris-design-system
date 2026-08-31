@@ -50,11 +50,22 @@ export default function CheckboxPage() {
                 <span className="size-num gapnum" style={{ left: 24, top: -12, transform: 'translateX(-50%)' }}>8</span>
               </div>
             </div>
+            <div className="size-hero">
+              <div className="stage" style={{ transform: 'scale(3)', lineHeight: 1 }}>
+                <Checkbox indeterminate aria-label="일부 선택" />
+                {/* 박스 20 (y4~24) · 마크 14×14 중앙 (x3~17, y7~21) → 안쪽 여백 3 */}
+                <span className="size-zone pad" style={{ left: 0, top: 7, width: 3, height: 14 }} />
+                <span className="size-zone pad" style={{ left: 3, top: 4, width: 14, height: 3 }} />
+                <span className="size-num" style={{ left: -8, top: 12 }}>3</span>
+                <span className="size-num" style={{ left: 10, top: -5, transform: 'translateX(-50%)' }}>3</span>
+              </div>
+            </div>
             <div className="size-hero-caption">
-              <b>고정 · Checked</b>
+              <b>고정 · Checked / Indeterminate</b>
               <span className="sub">박스 20 · 보더 1.5 · R 8 · 행 높이 28</span>
+              <span className="sub">마크 14×14 · 박스 안 여백 3 · 스트로크 3(24 그리드)</span>
               <span className="sub">라벨 body-2 · 간격 8</span>
-              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />여백&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
+              <span className="legend"><i style={{ background: 'rgba(249,115,22,.5)' }} />여백·인셋&nbsp;&nbsp;<i style={{ background: 'rgba(6,182,212,.55)' }} />간격 · px</span>
             </div>
           </div>
           <div className="size-row">
