@@ -39,3 +39,6 @@ export { Skeleton } from './Skeleton/Skeleton';
 export { Scrim } from './Scrim/Scrim';
 export { Grid, GridItem } from './Grid/Grid';
 export { ProgressTracker, type ProgressTrackerStep } from './ProgressTracker/ProgressTracker';
+export { TextButton } from './TextButton/TextButton';
+export { IconButton } from './IconButton/IconButton';
+export { ActionArea } from './ActionArea/ActionArea';

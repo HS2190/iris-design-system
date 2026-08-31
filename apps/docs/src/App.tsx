@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import Toc from './components/Toc';
 import ButtonPage from './pages/ButtonPage';
+import TextButtonPage from './pages/TextButtonPage';
+import IconButtonPage from './pages/IconButtonPage';
+import ActionAreaPage from './pages/ActionAreaPage';
 import IconPage from './pages/IconPage';
 import ChipPage from './pages/ChipPage';
 import ContentBadgePage from './pages/ContentBadgePage';
@@ -51,6 +54,9 @@ import PlatformPage from './pages/PlatformPage';
 
 const components = [
   { path: '/components/button', name: 'Button', ready: true },
+  { path: '/components/text-button', name: 'Text button', ready: true },
+  { path: '/components/icon-button', name: 'Icon button', ready: true },
+  { path: '/components/action-area', name: 'Action area', ready: true },
   { path: '/components/icon', name: 'Icon', ready: true },
   { path: '/components/chip', name: 'Chip', ready: true },
   { path: '/components/content-badge', name: 'Content badge', ready: true },
@@ -137,6 +143,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/components/button" element={<ButtonPage />} />
+          <Route path="/components/text-button" element={<TextButtonPage />} />
+          <Route path="/components/icon-button" element={<IconButtonPage />} />
+          <Route path="/components/action-area" element={<ActionAreaPage />} />
           <Route path="/components/icon" element={<IconPage />} />
           <Route path="/components/chip" element={<ChipPage />} />
           <Route path="/components/content-badge" element={<ContentBadgePage />} />

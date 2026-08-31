@@ -10,7 +10,7 @@ const FOUNDATIONS = [
 ] as const;
 
 const CATS: [string, [string, string][]][] = [
-  ['Actions', [['Button', 'button'], ['Chip', 'chip'], ['Filter button', 'filter-button']]],
+  ['Actions', [['Button', 'button'], ['Text button', 'text-button'], ['Icon button', 'icon-button'], ['Chip', 'chip'], ['Filter button', 'filter-button'], ['Action area', 'action-area']]],
   ['Selection & Input', [['Text field', 'text-field'], ['Text area', 'text-area'], ['Select', 'select'], ['Search field', 'search-field'], ['Checkbox', 'checkbox'], ['Radio', 'radio'], ['Switch', 'switch'], ['Segmented control', 'segmented-control'], ['Slider', 'slider']]],
   ['Contents', [['Content badge', 'content-badge'], ['Avatar', 'avatar'], ['List cell', 'list-cell'], ['Card', 'card'], ['Section header', 'section-header'], ['Accordion', 'accordion'], ['Table', 'table']]],
   ['Feedback', [['Alert', 'alert'], ['Toast', 'toast'], ['Snackbar', 'snackbar'], ['Section message', 'section-message'], ['Fallback view', 'fallback-view'], ['Push badge', 'push-badge']]],
@@ -68,7 +68,7 @@ export default function Home() {
       </div>
 
       <h2 className="section">Components</h2>
-      <p className="section-desc">41개 컴포넌트 — 전부 Playground·수치 스펙·Do/Don't 문서를 갖췄습니다.</p>
+      <p className="section-desc">44개 컴포넌트 — 전부 Playground·수치 스펙·Do/Don't 문서를 갖췄습니다.</p>
       {CATS.map(([cat, items]) => (
         <div key={cat}>
           <div className="home-cat">{cat}</div>
