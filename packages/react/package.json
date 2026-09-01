@@ -36,7 +36,7 @@
     "url": "git+https://github.com/HS2190/iris-design-system.git",
     "directory": "packages/react"
   },
-  "homepage": "https://github.com/HS2190/iris-design-system#readme",
+  "homepage": "https://hs2190.github.io/iris-design-system/",
   "bugs": {
     "url": "https://github.com/HS2190/iris-design-system/issues"
   },

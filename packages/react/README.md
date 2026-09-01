@@ -30,7 +30,7 @@ CSS Modules는 이미 처리되어 단일 CSS 파일로 들어 있으므로 번�
 ## 컴포넌트
 
 Actions · Selection & Input · Contents · Feedback · Navigations · Presentation ·
-Utilities 7개 범주. 전체 목록과 Props는 문서 사이트를 참고하세요.
+Utilities 7개 범주. 전체 목록과 Props는 [문서 사이트](https://hs2190.github.io/iris-design-system/)를 참고하세요.
 
 색은 `currentColor`, 크기는 토큰을 따릅니다. 컴포넌트는 플랫폼을 모르고,
 높이·마진 같은 플랫폼별 값은 `@hs2190/iris-tokens`가 정합니다.

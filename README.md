@@ -7,6 +7,8 @@ Figma Variables가 원본이고, 코드는 그 빌드 결과입니다.
 컴포넌트 44 · 디자인 토큰 223 · 아이콘 72×2(line·fill) · MIT
 ```
 
+**문서 사이트 → https://hs2190.github.io/iris-design-system/**
+
 ## 설치
 
 ```bash
