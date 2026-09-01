@@ -1,10 +1,10 @@
 import { Children, useState } from 'react';
 import s from './Avatar.module.css';
 
-const SIZE = { xl: 56, l: 40, m: 32, s: 24 } as const;
+const SIZE = { xl: 64, l: 48, m: 40, s: 32 } as const;
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
-  /** xl 56 · l 40 · m 32 · s 24 */
+  /** xl 64 · l 48 · m 40 · s 32 (Figma 정본) */
   size?: keyof typeof SIZE;
   src?: string;
   /** 이미지가 없거나 로드 실패 시 첫 글자를 이니셜로 표시 */

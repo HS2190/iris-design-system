@@ -50,22 +50,22 @@ export default function AvatarPage() {
                 <AvatarGroup max={3} size="m">
                   <Avatar size="m" name="안" src={IMG} /><Avatar size="m" name="김" /><Avatar size="m" name="이" />
                 </AvatarGroup>
-                {/* m 32 · step 24 → 겹침 8: x24~32, x48~56 */}
-                <span className="size-zone gap" style={{ left: 24, top: 0, width: 8, height: 32 }} />
-                <span className="size-zone gap" style={{ left: 48, top: 0, width: 8, height: 32 }} />
-                <span className="size-num gapnum" style={{ left: 28, top: -12, transform: 'translateX(-50%)' }}>8</span>
-                <span className="size-num gapnum" style={{ left: 52, top: -12, transform: 'translateX(-50%)' }}>8</span>
+                {/* m 40 · step 32 → 겹침 8: x32~40, x64~72 */}
+                <span className="size-zone gap" style={{ left: 32, top: 0, width: 8, height: 40 }} />
+                <span className="size-zone gap" style={{ left: 64, top: 0, width: 8, height: 40 }} />
+                <span className="size-num gapnum" style={{ left: 36, top: -12, transform: 'translateX(-50%)' }}>8</span>
+                <span className="size-num gapnum" style={{ left: 68, top: -12, transform: 'translateX(-50%)' }}>8</span>
               </div>
             </div>
             <div className="size-hero-caption">
               <b>그룹 · M</b>
               <span className="sub">겹침 -8 · 링 2 (background/normal)</span>
-              <span className="sub">XL 56 · L 40 · M 32 · S 24 — R full 고정</span>
+              <span className="sub">XL 64 · L 48 · M 40 · S 32 — R full 고정</span>
               <span className="legend"><i style={{ background: 'rgba(6,182,212,.55)' }} />겹침 · px</span>
             </div>
           </div>
           <div className="size-row">
-            {([['xl', '56', '이니셜 20'], ['l', '40', '이니셜 16'], ['m', '32 · 기본', '이니셜 13'], ['s', '24', '이니셜 11']] as const).map(([k, h, f]) => (
+            {([['xl', '64', '이니셜 24'], ['l', '48', '이니셜 18'], ['m', '40 · 기본', '이니셜 14'], ['s', '32', '이니셜 13']] as const).map(([k, h, f]) => (
               <div className="size-item" key={k}>
                 <Chips primary={k.toUpperCase()} items={[h, f, 'R full']} />
               </div>
@@ -84,7 +84,7 @@ export default function AvatarPage() {
       </Section>
       <Section title="Props">
         <Props rows={[
-          ['size', "'xl' | 'l' | 'm' | 's'", "'m'", '56 / 40 / 32 / 24'],
+          ['size', "'xl' | 'l' | 'm' | 's'", "'m'", '64 / 48 / 40 / 32'],
           ['src', 'string', '—', '이미지 URL — 실패 시 이니셜 폴백'],
           ['name', 'string', '—', '이니셜 소스 + 접근성 라벨'],
           ['(Group) max', 'number', '4', '표시 한도, 초과분 +N'],
