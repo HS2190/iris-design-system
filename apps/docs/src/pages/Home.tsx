@@ -137,7 +137,7 @@ const FAQ: [string, string, string?][] = [
   ['iOS·Android 코드도 제공되나요?',
    '현재 제공되는 코드는 웹(React + CSS 변수)입니다. 토큰은 이미 세 플랫폼 값을 모두 갖고 있어서, 네이티브 빌드는 같은 소스에서 내보내는 것이 다음 단계입니다.'],
   ['기여하거나 이슈를 남기려면?',
-   'GitHub 저장소에 이슈나 PR을 남겨주세요. 토큰 변경은 Figma Variables가 원본이라, 값 수정은 파일에서 시작해 빌드로 반영됩니다.'],
+   'github.com/HS2190/iris-design-system 에 이슈나 PR을 남겨주세요. 토큰 변경은 Figma Variables가 원본이라, 값 수정은 파일에서 시작해 빌드로 반영됩니다.'],
 ];
 
 
@@ -234,8 +234,13 @@ export default function Home() {
             data-rv style={{ ["--i" as string]: 0 }}>
             <b>Figma</b><span>UI 킷 파일 · 컴포넌트 44종 · 변수 8컬렉션</span><i>↗</i>
           </a>
-          <div className="lp-row" data-rv style={{ ["--i" as string]: 1 }}><b>npm</b><span>npm i @hs2190/iris-tokens @hs2190/iris-react</span><i>↗</i></div>
-          <div className="lp-row" data-rv style={{ ["--i" as string]: 2 }}><b>GitHub</b><span>소스와 이슈 · MIT</span><i>↗</i></div>
+          <div className="lp-row" data-rv style={{ ["--i" as string]: 1 }}>
+            <b>npm</b><span>npm i @hs2190/iris-tokens @hs2190/iris-react</span><i className="soon">준비 중</i>
+          </div>
+          <a className="lp-row" data-rv style={{ ["--i" as string]: 2 }}
+            href="https://github.com/HS2190/iris-design-system" target="_blank" rel="noreferrer">
+            <b>GitHub</b><span>소스와 이슈 · MIT</span><i>↗</i>
+          </a>
         </div>
       </section>
 
