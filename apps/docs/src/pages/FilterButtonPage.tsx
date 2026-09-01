@@ -9,7 +9,7 @@ export default function FilterButtonPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Filter button" desc="필터 시트/메뉴를 여는 트리거입니다. 적용된 필터 수를 뱃지로 보여줍니다. 즉시 토글되는 값은 Chip입니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="FilterButton"
           stage={<FilterButton active={st === 'active'} count={st === 'active' ? 2 : undefined} disabled={st === 'disabled'}>직무</FilterButton>}
           panel={<Seg label="state" value={st} options={['default', 'active', 'disabled'] as const} onChange={setSt} />}
           code={`<FilterButton${st === 'active' ? ' active count={2}' : ''}${st === 'disabled' ? ' disabled' : ''}>직무</FilterButton>`} />

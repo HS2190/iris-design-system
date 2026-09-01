@@ -7,7 +7,7 @@ export default function SwitchPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Switch" desc="즉시 적용되는 on/off 설정 토글입니다. 52×32 고정, role=switch로 노출됩니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Switch"
           stage={<Switch key={st} label="푸시 알림" defaultChecked={st === 'on'} disabled={st === 'disabled'} />}
           panel={<Seg label="state" value={st} options={['off', 'on', 'disabled'] as const} onChange={setSt} />}
           code={`<Switch label="푸시 알림"${st === 'on' ? ' defaultChecked' : ''}${st === 'disabled' ? ' disabled' : ''} />`} />

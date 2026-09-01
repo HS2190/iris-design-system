@@ -325,3 +325,26 @@ h1.prose-title { font-size: var(--iris-font-size-display-2); line-height: var(--
 .gnb.over .seg button { color: rgba(255, 255, 255, .62); }
 .gnb.over .seg button.on { background: rgba(255, 255, 255, .93); color: #16181d; box-shadow: none; }
 @media (prefers-reduced-motion: reduce) { .gnb { transition: none; } }
+
+/* ── 코드 블록 + 플랫폼 구현 스펙 ───────────────────────────────
+   웹 코드만 제공하므로, 네이티브 구현자에게 필요한 건 코드가 아니라 수치다. */
+.codeblock { margin: 12px 0 0; padding: 16px 18px; border-radius: var(--iris-radius-md);
+  background: var(--iris-semantic-inverse-background); color: var(--iris-semantic-inverse-label);
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; line-height: 1.75;
+  overflow-x: auto; white-space: pre; }
+
+.platspec { margin-top: 16px; padding: 18px 20px; border-radius: var(--iris-radius-md);
+  border: 1px solid var(--iris-semantic-line-solid-neutral);
+  background: var(--iris-semantic-background-normal-alternative); }
+.platspec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  margin-bottom: 12px; }
+.platspec-head b { font-size: 13px; color: var(--iris-semantic-label-normal); }
+.platspec-head small { font-family: "IBM Plex Mono", monospace; font-size: 11px;
+  color: var(--iris-semantic-label-assistive); }
+.platspec-table { max-width: 520px; }
+.platspec-table th:not(:first-child), .platspec-table td:not(:first-child) {
+  text-align: right; font-variant-numeric: tabular-nums; }
+.platspec-table td:not(:first-child) { font-family: "IBM Plex Mono", monospace; font-weight: 500;
+  color: var(--iris-semantic-label-normal); }
+.platspec-note { margin: 0; font-size: 13px; color: var(--iris-semantic-label-neutral); }
+.platspec-foot { margin: 12px 0 0; font-size: 12px; color: var(--iris-semantic-label-assistive); }

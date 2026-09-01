@@ -10,7 +10,7 @@ export default function AvatarPage() {
   return (
     <Page kicker="Components · Contents" title="Avatar" desc="사용자·대상을 나타내는 원형 아이덴티티입니다. 이미지가 없거나 로드에 실패하면 이름 첫 글자 이니셜로 폴백합니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Avatar"
           stage={<Avatar size={sz} name="안현서" src={ty === '이미지' ? IMG : undefined} />}
           panel={<>
             <Seg label="size" value={sz} options={['s', 'm', 'l', 'xl'] as const} onChange={setSz} />

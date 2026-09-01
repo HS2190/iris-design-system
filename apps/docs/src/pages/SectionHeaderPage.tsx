@@ -10,7 +10,7 @@ export default function SectionHeaderPage() {
   return (
     <Page kicker="Components · Contents" title="Section header" desc="섹션 제목 행입니다. 제목 + 선택적 설명, 우측 '더보기' 액션. 아래 콘텐츠(리스트·카드)와 한 묶음으로 씁니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="SectionHeader"
           stage={<SectionHeader title="최근 프로젝트" description={de === '있음' ? '최근 7일 작업' : undefined}
             action={ac === '더보기' ? more : undefined} style={{ width: 320 }} />}
           panel={<>

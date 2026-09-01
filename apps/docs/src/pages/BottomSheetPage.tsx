@@ -15,7 +15,7 @@ export default function BottomSheetPage() {
   return (
     <Page kicker="Components · Presentation" title="Bottom sheet" desc="모바일 하단 시트입니다. 그래버 36×4 · 상단 radius-sheet 토큰. 스크림·드래그 제스처는 앱 셸이 담당합니다.">
       <Section title="Playground" desc="여닫아 보세요.">
-        <Playground
+        <Playground name="BottomSheet"
           stage={<div style={{ position: 'relative', width: 280, height: 260, borderRadius: 16, overflow: 'hidden', border: '1px solid var(--iris-semantic-line-solid-neutral)', background: 'var(--iris-semantic-background-normal-normal)' }}>
             <div style={{ padding: 16 }}><Button size="s" variant="outlined" color="assistive" onClick={() => setOpen(v => !v)}>{open ? '닫기' : '시트 열기'}</Button></div>
             {open && <>

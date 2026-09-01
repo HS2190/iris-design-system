@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { COMPONENT_TOKENS, PLATFORM_VALUES } from '../lib/component-tokens';
 
 /** 문서 페이지 공용 빌딩블록 — 모든 컴포넌트 페이지가 같은 형식을 쓰게 한다. */
 
@@ -72,15 +73,70 @@ export function Seg<T extends string>({ label, value, options, onChange }:
   );
 }
 
-export function Playground({ stage, panel, code }:
-  { stage: React.ReactNode; panel: React.ReactNode; code: string }) {
+export function Playground({ stage, panel, code, name }:
+  { stage: React.ReactNode; panel: React.ReactNode; code: string;
+    /** @iris/react export 이름 — import 줄과 플랫폼 스펙을 붙이는 데 쓴다 */
+    name?: string }) {
   return (<>
     <div className="playground">
       <div className="playground-stage">{stage}</div>
       <div className="playground-panel">{panel}</div>
     </div>
-    <div className="codeline" style={{ marginTop: 12 }}>{code}</div>
+    <CodeBlock code={code} name={name} />
+    {name && <PlatformSpec name={name} />}
   </>);
+}
+
+/** import 줄까지 갖춘 코드 블록 — 붙여넣으면 그대로 도는 형태 */
+export function CodeBlock({ code, name }: { code: string; name?: string }) {
+  const full = name
+    ? `import { ${name} } from '@iris/react';\nimport '@iris/tokens/dist/iris.css';\n\n${code}`
+    : code;
+  return <pre className="codeblock">{full}</pre>;
+}
+
+/**
+ * 이 컴포넌트가 참조하는 플랫폼 토큰의 세 값.
+ * 웹 코드만 제공하므로, 네이티브 구현자에게 필요한 것은 코드가 아니라 이 수치다.
+ */
+export function PlatformSpec({ name }: { name: string }) {
+  const info = COMPONENT_TOKENS[name];
+  if (!info) return null;
+  return (
+    <div className="platspec">
+      <div className="platspec-head">
+        <b>플랫폼 구현 스펙</b>
+        {info.tokenCount > 0 && <small>참조 토큰 {info.tokenCount}개</small>}
+      </div>
+      {info.platform.length ? (
+        <table className="props platspec-table">
+          <thead>
+            <tr><th>토큰</th><th>웹</th><th>iOS</th><th>Android</th></tr>
+          </thead>
+          <tbody>
+            {info.platform.map(t => {
+              const v = PLATFORM_VALUES[t];
+              return (
+                <tr key={t}>
+                  <td>{t}</td>
+                  <td>{v.web}</td><td>{v.ios}</td><td>{v.android}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <p className="platspec-note">
+          플랫폼에 따라 달라지는 값이 없습니다 — 세 플랫폼에서 같은 수치를 씁니다.
+        </p>
+      )}
+      <p className="platspec-foot">
+        {info.platform.length
+          ? '제공되는 코드는 웹(React + CSS 변수)뿐입니다. iOS·Android는 위 값으로 구현합니다.'
+          : '제공되는 코드는 웹(React + CSS 변수)뿐입니다. 네이티브에서도 같은 수치로 구현합니다.'}
+      </p>
+    </div>
+  );
 }
 
 export function useSeg<T extends string>(initial: T) { return useState<T>(initial); }

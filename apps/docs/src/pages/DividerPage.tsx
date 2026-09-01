@@ -8,7 +8,7 @@ export default function DividerPage() {
   return (
     <Page kicker="Components · Utilities" title="Divider" desc="요소 사이를 나누는 1px 선입니다. 여백으로 충분한 곳에는 쓰지 않습니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Divider"
           stage={ori === 'horizontal'
             ? <div style={{ width: 220 }}>항목 A<Divider weight={wt} style={{ margin: '10px 0' }} />항목 B</div>
             : <div style={{ display: 'flex', gap: 12, alignItems: 'center', height: 40 }}>항목 A<Divider orientation="vertical" weight={wt} />항목 B</div>}

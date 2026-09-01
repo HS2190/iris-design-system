@@ -11,7 +11,7 @@ export default function ChipPage() {
   return (
     <Page kicker="Components · Actions" title="Chip" desc="태그·필터·선택 항목을 표현하는 작은 액션입니다. 선택할 수 있는 모든 값이 한 화면에 보일 때 그룹으로 씁니다. 높이는 고정입니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Chip"
           stage={<Chip variant={variant} size={size} selected={selected} onClick={() => setSelected(v => !v)}>필터</Chip>}
           panel={<>
             <Seg label="variant" value={variant} options={['solid', 'outlined'] as const} onChange={setVariant} />

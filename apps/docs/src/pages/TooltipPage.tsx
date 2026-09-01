@@ -7,7 +7,7 @@ export default function TooltipPage() {
   return (
     <Page kicker="Components · Presentation" title="Tooltip" desc="hover·focus에 뜨는 한 줄 힌트입니다. 오프셋 8 · caption-1. 필수 정보는 담지 않습니다 — 못 보는 사용자가 있습니다.">
       <Section title="Playground" desc="버튼에 마우스를 올리거나 Tab으로 포커스해 보세요.">
-        <Playground
+        <Playground name="Tooltip"
           stage={<div style={{ padding: '48px 0' }}><Tooltip content="변경 사항 저장" placement={pl}><Button size="s" variant="outlined" color="assistive">저장</Button></Tooltip></div>}
           panel={<Seg label="placement" value={pl} options={['top', 'bottom'] as const} onChange={setPl} />}
           code={`<Tooltip content="변경 사항 저장" placement="${pl}"><Button>저장</Button></Tooltip>`} />

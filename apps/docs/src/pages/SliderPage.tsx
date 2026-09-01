@@ -7,7 +7,7 @@ export default function SliderPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Slider" desc="범위 안의 대략적인 값을 드래그로 고릅니다. 정확한 숫자가 필요하면 Text field를 병행합니다.">
       <Section title="Playground" desc="드래그해 보세요.">
-        <Playground
+        <Playground name="Slider"
           stage={<Slider key={st} label="가격대" defaultValue={30} formatValue={v => `${v}만 원`} disabled={st === 'disabled'} style={{ width: 300 }} />}
           panel={<Seg label="state" value={st} options={['default', 'disabled'] as const} onChange={setSt} />}
           code={`<Slider label="가격대" formatValue={v => \`\${v}만 원\`}${st === 'disabled' ? ' disabled' : ''} />`} />

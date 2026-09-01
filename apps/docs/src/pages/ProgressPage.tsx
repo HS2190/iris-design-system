@@ -7,7 +7,7 @@ export default function ProgressPage() {
   return (
     <Page kicker="Components · Navigations" title="Progress" desc="진행 표시줄입니다. 트랙 4 고정, 값을 모르면 indeterminate. role=progressbar로 노출됩니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Progress"
           stage={<Progress label="업로드 중" value={v === '불확정' ? undefined : Number(v)} showValue indeterminate={v === '불확정'} style={{ width: 280 }} />}
           panel={<Seg label="value" value={v} options={['25', '65', '100', '불확정'] as const} onChange={setV} />}
           code={`<Progress label="업로드 중"${v === '불확정' ? ' indeterminate' : ` value={${v}} showValue`} />`} />

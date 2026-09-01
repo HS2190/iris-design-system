@@ -10,7 +10,7 @@ export default function ContentBadgePage() {
   return (
     <Page kicker="Components · Contents" title="Content badge" desc="콘텐츠의 상태·분류를 짧게 표시하는 읽기 전용 뱃지입니다. Tone은 status/* 토큰과 1:1로 매핑됩니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="ContentBadge"
           stage={<ContentBadge tone={tone} variant={variant}>안내</ContentBadge>}
           panel={<>
             <Seg label="tone" value={tone} options={tones} onChange={setTone} />

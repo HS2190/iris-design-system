@@ -8,7 +8,7 @@ export default function TextButtonPage() {
   return (
     <Page kicker="Components · Actions" title="Text button" desc="배경 없는 라벨 버튼입니다 — '더보기'·'전체 삭제' 같은 보조 행동. 화면당 주 행동은 Button 하나, 나머지가 이것입니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="TextButton"
           stage={<TextButton color={co} size={sz} trailingIcon="chevron-right">더보기</TextButton>}
           panel={<>
             <Seg label="color" value={co} options={['primary', 'assistive'] as const} onChange={setCo} />

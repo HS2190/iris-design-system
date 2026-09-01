@@ -8,7 +8,7 @@ export default function PopoverPage() {
   return (
     <Page kicker="Components · Presentation" title="Popover" desc="앵커에 붙는 작은 안내 오버레이입니다. 제목 + 두어 줄 + 액션 하나. 한 줄 힌트는 Tooltip, 자유 콘텐츠는 Popup.">
       <Section title="Playground" desc="버튼으로 여닫아 보세요.">
-        <Playground
+        <Playground name="Popover"
           stage={<div style={{ position: 'relative', paddingBottom: show ? 150 : 0 }}>
             <Button size="s" variant="outlined" color="assistive" onClick={() => setShow(v => !v)}>기능 안내 {show ? '닫기' : '열기'}</Button>
             {show && <Popover title="새로운 필터" style={{ position: 'absolute', top: 44, left: 0 }}

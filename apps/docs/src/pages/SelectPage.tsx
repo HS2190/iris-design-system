@@ -13,7 +13,7 @@ export default function SelectPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Select" desc="목록에서 하나를 고르는 드롭다운입니다. 네이티브 select 기반이라 모바일에서는 OS 픽커가 뜹니다. 옵션 6개 이상일 때 씁니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Select"
           stage={<Select key={st} label="직무" placeholder="선택하세요" options={jobs} style={{ width: 260 }}
             defaultValue={st === 'selected' ? 'pd' : undefined}
             helper={st === 'default' ? '하나만 선택할 수 있어요' : undefined}

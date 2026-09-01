@@ -10,7 +10,7 @@ export default function ToastPage() {
   return (
     <Page kicker="Components · Feedback" title="Toast" desc="결과를 잠깐 알리고 사라지는 알림입니다. 액션이 필요하면 Snackbar, 지속 안내는 Section message를 씁니다.">
       <Section title="Playground" desc="눌러보세요 — 2.4초 뒤 사라집니다.">
-        <Playground
+        <Playground name="Toast"
           stage={<div style={{ position: 'relative', width: '100%', height: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Button size="s" onClick={fire}>저장하기</Button>
             {shown && <Toast tone={tone} style={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap' }}>

@@ -9,7 +9,7 @@ export default function CheckboxPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Checkbox" desc="서로 독립인 옵션의 다중 선택입니다. 하나만 골라야 하면 Radio, 즉시 적용되는 설정이면 Switch를 씁니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Checkbox"
           stage={<Checkbox key={cb} label="이메일 수신" defaultChecked={cb === 'checked'} indeterminate={cb === 'indeterminate'} disabled={cb === 'disabled'} />}
           panel={<Seg label="state" value={cb} options={['default', 'checked', 'indeterminate', 'disabled'] as const} onChange={setCb} />}
           code={`<Checkbox label="이메일 수신"${cb === 'checked' ? ' defaultChecked' : ''}${cb === 'indeterminate' ? ' indeterminate' : ''}${cb === 'disabled' ? ' disabled' : ''} />`} />

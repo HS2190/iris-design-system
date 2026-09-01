@@ -10,7 +10,7 @@ export default function SnackbarPage() {
   return (
     <Page kicker="Components · Feedback" title="Snackbar" desc="액션이 붙는 지속형 알림입니다 — 실행 취소가 대표 용도. 단순 통보면 Toast를 씁니다.">
       <Section title="Playground" desc="삭제해 보세요 — 5초 안에 실행 취소할 수 있습니다.">
-        <Playground
+        <Playground name="Snackbar"
           stage={<div style={{ position: 'relative', width: '100%', height: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {deleted
               ? <span style={{ color: 'var(--iris-semantic-label-assistive)', fontSize: 14 }}>메모 없음</span>

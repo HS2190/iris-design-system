@@ -8,7 +8,7 @@ export default function ListCellPage() {
   return (
     <Page kicker="Components · Contents" title="List cell" desc="리스트 한 행입니다. 리딩(아이콘·아바타) + 콘텐츠(제목·설명) + 트레일링(값·셰브론·스위치) 3슬롯 구조, 최소 높이 56.">
       <Section title="Playground">
-        <Playground
+        <Playground name="ListCell"
           stage={<ListCell interactive title="알림 설정" description="푸시·이메일 수신 관리" style={{ width: 320 }}
             leading={ld === 'icon' ? <Icon name="settings" /> : ld === 'avatar' ? <Avatar size="m" name="안" /> : undefined}
             trailing={tr === 'chevron' ? <Icon name="chevron-right" size={20} /> : tr === 'value' ? <>사용 중<Icon name="chevron-right" size={20} /></> : tr === 'switch' ? <Switch aria-label="알림" defaultChecked /> : undefined} />}

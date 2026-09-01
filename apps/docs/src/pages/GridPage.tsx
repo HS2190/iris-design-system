@@ -11,7 +11,7 @@ export default function GridPage() {
   return (
     <Page kicker="Components · Utilities" title="Grid" desc="레이아웃 그리드입니다. 웹 12 · 태블릿 8 · 모바일 4컬럼 관례, 거터 16. 브레이크포인트는 breakpoint 토큰을 따릅니다.">
       <Section title="Playground" desc="컬럼 수를 바꿔보세요.">
-        <Playground
+        <Playground name="Grid"
           stage={<Grid columns={Number(cols)} gutter={16} style={{ width: 340 }}>
             {Array.from({ length: Number(cols) }, (_, i) => <GridItem key={i}><Col /></GridItem>)}
           </Grid>}

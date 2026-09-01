@@ -7,7 +7,7 @@ export default function PushBadgePage() {
   return (
     <Page kicker="Components · Feedback" title="Push badge" desc="미확인 알림 표시입니다. dot(존재만) 또는 카운트(수), 앵커 우상단에 얹습니다. 확인하면 사라지는 값만 담습니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="PushBadge"
           stage={<PushBadge count={v === 'dot' ? undefined : Number(v)}><Icon name="bell" /></PushBadge>}
           panel={<Seg label="value" value={v} options={['dot', '3', '120'] as const} onChange={setV} />}
           code={`<PushBadge${v === 'dot' ? '' : ` count={${v}}`}><Icon name="bell" /></PushBadge>`} />

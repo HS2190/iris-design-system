@@ -16,7 +16,7 @@ export default function ScrimPage() {
   return (
     <Page kicker="Components · Utilities" title="Scrim" desc="오버레이 뒤를 덮는 막입니다. material/dimmer 토큰(52%)으로 부모 전체를 덮고, 탭하면 닫는 게 관례입니다.">
       <Section title="Playground" desc="켜고 꺼 보세요 — 뒤 콘텐츠의 대비가 어떻게 죽는지.">
-        <Playground
+        <Playground name="Scrim"
           stage={<Frame>{on && <Scrim onClick={() => setOn(false)} style={{ cursor: 'pointer' }} />}{!on && <div style={{ position: 'absolute', bottom: 12, left: 12 }}><Button size="s" variant="outlined" color="assistive" onClick={() => setOn(true)}>스크림 켜기</Button></div>}</Frame>}
           panel={<div style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)', lineHeight: 1.6 }}>스크림을 탭하면<br />닫힙니다.</div>}
           code={`<Scrim onClick={close} />`} />

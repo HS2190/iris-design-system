@@ -7,7 +7,7 @@ export default function PopupPage() {
   return (
     <Page kicker="Components · Presentation" title="Popup" desc="자유 콘텐츠를 담는 모달입니다. 폼·상세 등 한 작업을 완결. 확인만 받는 흐름은 Alert, 모바일 다중 선택은 Bottom sheet.">
       <Section title="Playground" desc="여닫아 보세요 — 닫기 X와 푸터 버튼이 있습니다.">
-        <Playground
+        <Playground name="Popup"
           stage={open
             ? <Popup title="이름 바꾸기" onClose={() => setOpen(false)}
                 footer={<><Button size="s" variant="outlined" color="assistive" onClick={() => setOpen(false)}>취소</Button><Button size="s" onClick={() => setOpen(false)}>저장</Button></>}>

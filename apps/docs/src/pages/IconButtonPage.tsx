@@ -8,7 +8,7 @@ export default function IconButtonPage() {
   return (
     <Page kicker="Components · Actions" title="Icon button" desc="아이콘 전용 버튼입니다. 라벨이 없으므로 aria-label이 필수이고, 뜻이 모호하면 Tooltip을 얹습니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="IconButton"
           stage={<IconButton icon="share" aria-label="공유" size={sz} variant={va} />}
           panel={<>
             <Seg label="size" value={sz} options={['l', 'm', 's'] as const} onChange={setSz} />

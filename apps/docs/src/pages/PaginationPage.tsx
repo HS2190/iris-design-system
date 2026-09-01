@@ -13,7 +13,7 @@ export default function PaginationPage() {
   return (
     <Page kicker="Components · Navigations" title="Pagination" desc="페이지를 나눠 이동합니다. number는 목록·표, dot은 캐러셀 인디케이터. 현재 페이지는 aria-current로 노출됩니다.">
       <Section title="Playground" desc="눌러보세요.">
-        <Playground
+        <Playground name="Pagination"
           stage={<Pagination variant={va} page={pg} total={9} onChange={setPg} />}
           panel={<Seg label="variant" value={va} options={['number', 'dot'] as const} onChange={setVa} />}
           code={`<Pagination${va === 'dot' ? ' variant="dot"' : ''} page={${pg}} total={9} onChange={setPage} />`} />

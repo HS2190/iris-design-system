@@ -13,7 +13,7 @@ export default function AccordionPage() {
   return (
     <Page kicker="Components · Contents" title="Accordion" desc="접고 펼치는 목록입니다. 헤더 56 고정, 단일/복수 확장을 선택할 수 있고 aria-expanded로 노출됩니다.">
       <Section title="Playground" desc="눌러서 펼쳐보세요.">
-        <Playground
+        <Playground name="Accordion"
           stage={<Accordion key={mode} items={faq} multiple={mode === '복수'} defaultOpen={['a']} style={{ width: 340 }} />}
           panel={<Seg label="expand" value={mode} options={['단일', '복수'] as const} onChange={setMode} />}
           code={`<Accordion items={faq}${mode === '복수' ? ' multiple' : ''} defaultOpen={['a']} />`} />

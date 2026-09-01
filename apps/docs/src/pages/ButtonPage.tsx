@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button, TextField } from '@iris/react';
+import { CodeBlock, PlatformSpec } from '../components/Doc';
 
 const variants = ['solid', 'outlined'] as const;
 const colors = ['primary', 'assistive'] as const;
@@ -46,7 +47,8 @@ export default function ButtonPage() {
           <Seg label="loading" value={String(loading) as 'true' | 'false'} options={['false', 'true'] as const} onChange={v => setLoading(v === 'true')} />
         </div>
       </div>
-      <div className="codeline" style={{ marginTop: 12 }}>{code}</div>
+      <CodeBlock code={code} name="Button" />
+      <PlatformSpec name="Button" />
 
       <h2 className="section">Variants</h2>
       <p className="section-desc">Variant(Solid·Outlined) × Color(Primary·Assistive). 위계는 Solid Primary(메인) → Outlined Primary(대체) → Solid Assistive(토글 보조) → Outlined Assistive(닫기·취소) 순입니다.</p>

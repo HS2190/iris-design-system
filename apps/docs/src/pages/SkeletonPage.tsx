@@ -19,7 +19,7 @@ export default function SkeletonPage() {
   return (
     <Page kicker="Components · Loading" title="Skeleton" desc="로딩 플레이스홀더입니다. 실제 콘텐츠의 레이아웃 모양대로 조합합니다. 시머는 reduced-motion에서 정지합니다.">
       <Section title="Playground" desc="불러오기를 누르면 1.6초 동안 스켈레톤이 보입니다.">
-        <Playground
+        <Playground name="Skeleton"
           stage={<div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start' }}>
             {loading
               ? <CellSkeleton />

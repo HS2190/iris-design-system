@@ -14,7 +14,7 @@ export default function BottomNavigationPage() {
   return (
     <Page kicker="Components · Navigations" title="Bottom navigation" desc="모바일 하단 탭 바입니다. 3~5탭, 아이콘 24 + 라벨 10, 활성 탭은 primary + aria-current로 노출됩니다.">
       <Section title="Playground" desc="탭을 눌러보세요 — 알림 탭엔 Push badge가 얹혀 있습니다.">
-        <Playground
+        <Playground name="BottomNavigation"
           stage={<BottomNavigation items={items} value={tab} onChange={setTab} style={{ width: 340 }} />}
           panel={<div style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)', lineHeight: 1.6 }}>현재 탭: <b>{tab}</b></div>}
           code={`<BottomNavigation items={items} value="${tab}" onChange={setTab} />`} />

@@ -21,7 +21,7 @@ export default function ProgressTrackerPage() {
   return (
     <Page kicker="Components · Navigations" title="Progress tracker" desc="다단계 절차의 현재 위치를 보여줍니다. 마커 24 · 커넥터 2, 3~5단계 권장. 단계가 아니라 진행률(%)이면 Progress입니다.">
       <Section title="Playground" desc="다음/이전으로 단계를 이동해 보세요.">
-        <Playground
+        <Playground name="ProgressTracker"
           stage={<div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: ori === 'horizontal' ? 340 : undefined }}>
             <ProgressTracker steps={ori === 'vertical' ? vSteps : steps} current={steps[idx].id} orientation={ori} />
             <div style={{ display: 'flex', gap: 8 }}>

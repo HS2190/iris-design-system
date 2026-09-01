@@ -22,7 +22,7 @@ export default function IconPage() {
   return (
     <Page kicker="Foundations · Icons" title="Icon" desc={`Phosphor 기반 아이콘 ${iconNames.length}종 × line/fill 2변형. 색은 currentColor — 부모의 label/* 토큰을 그대로 따릅니다. (MIT · phosphoricons.com)`}>
       <Section title="Playground">
-        <Playground
+        <Playground name="Icon"
           stage={<Icon name="star" size={Number(sz)} variant={va} style={{ color: 'var(--iris-semantic-label-normal)' }} />}
           panel={<>
             <Seg label="variant" value={va} options={['line', 'fill'] as const} onChange={setVa} />

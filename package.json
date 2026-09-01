@@ -8,7 +8,8 @@
   "scripts": {
     "tokens": "node packages/tokens/build.mjs",
     "dev": "npm run dev -w apps/docs",
-    "build": "npm run tokens && npm run build -w apps/docs"
+    "build": "npm run tokens && npm run gen:tokens && npm run build -w apps/docs",
+    "gen:tokens": "node scripts/gen-component-tokens.mjs"
   },
   "devDependencies": {
     "@phosphor-icons/core": "^2.1.1"

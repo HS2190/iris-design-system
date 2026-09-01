@@ -16,7 +16,7 @@ export default function SectionMessagePage() {
   return (
     <Page kicker="Components · Feedback" title="Section message" desc="화면 맥락 안에 남는 인라인 안내 배너입니다. 잠깐 통보는 Toast, 흐름 차단은 Alert.">
       <Section title="Playground">
-        <Playground
+        <Playground name="SectionMessage"
           stage={<SectionMessage tone={tone} title={COPY[tone][0]} onClose={cl === '있음' ? () => {} : undefined} style={{ width: 340 }}>{COPY[tone][1]}</SectionMessage>}
           panel={<>
             <Seg label="tone" value={tone} options={tones} onChange={setTone} />

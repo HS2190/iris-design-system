@@ -13,7 +13,7 @@ export default function TopNavigationPage() {
   return (
     <Page kicker="Components · Navigations" title="Top navigation" desc="화면 상단 바입니다. 높이는 nav-top-height 토큰(웹 64 · iOS 44 · Android 56), 좌측 뒤로가기 · 제목 · 우측 액션 최대 2개.">
       <Section title="Playground">
-        <Playground
+        <Playground name="TopNavigation"
           stage={<TopNavigation title="설정" leading={iconBtn('arrow-left', '뒤로')} style={{ width: 340 }}
             trailing={tr === '0' ? undefined : <>{iconBtn('search', '검색')}{tr === '2' && iconBtn('bell', '알림')}</>} />}
           panel={<Seg label="trailing" value={tr} options={['0', '1', '2'] as const} onChange={setTr} />}

@@ -7,7 +7,7 @@ export default function SearchFieldPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Search field" desc="검색 전용 입력입니다. radius-full 필 형태로 일반 폼 입력과 구분하고, 값이 있으면 지우기 버튼이 나타납니다. 화면당 하나만 둡니다.">
       <Section title="Playground" desc="입력하면 지우기 버튼이 나타납니다.">
-        <Playground
+        <Playground name="SearchField"
           stage={<SearchField key={st} placeholder="검색어를 입력하세요" defaultValue={st === 'filled' ? '디자인 시스템' : ''} disabled={st === 'disabled'} style={{ width: 280 }} />}
           panel={<Seg label="state" value={st} options={['default', 'filled', 'disabled'] as const} onChange={setSt} />}
           code={`<SearchField placeholder="검색어를 입력하세요"${st === 'filled' ? ' defaultValue="디자인 시스템"' : ''}${st === 'disabled' ? ' disabled' : ''} />`} />

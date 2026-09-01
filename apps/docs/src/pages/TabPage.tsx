@@ -10,7 +10,7 @@ export default function TabPage() {
   return (
     <Page kicker="Components · Navigations" title="Tab" desc="콘텐츠 분류를 전환합니다. 높이 44 · 밑줄 인디케이터 2, 4개 이상이면 가로 스크롤. 2~3개 보기 전환은 Segmented control.">
       <Section title="Playground" desc="눌러보세요.">
-        <Playground
+        <Playground name="Tabs"
           stage={<Tabs items={cats} value={tab} onChange={setTab} fluid={mode === 'fluid'} style={{ width: 340 }} />}
           panel={<Seg label="layout" value={mode} options={['기본', 'fluid'] as const} onChange={setMode} />}
           code={`<Tabs items={['전체', ...]} value="${tab}" onChange={setTab}${mode === 'fluid' ? ' fluid' : ''} />`} />

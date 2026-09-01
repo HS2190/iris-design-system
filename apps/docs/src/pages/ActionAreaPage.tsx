@@ -14,7 +14,7 @@ export default function ActionAreaPage() {
   return (
     <Page kicker="Components · Actions" title="Action area" desc="화면 하단 고정 버튼 영역입니다. 버튼 1~2개를 균등 분할하고, 하단 패딩에 safe-area 토큰이 더해집니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="ActionArea"
           stage={<Frame><ActionArea divider>
             {n === '2버튼' && <Button variant="outlined" color="assistive">취소</Button>}
             <Button>{n === '2버튼' ? '결제하기' : '시작하기'}</Button>

@@ -7,7 +7,7 @@ export default function FallbackViewPage() {
   return (
     <Page kicker="Components · Feedback" title="Fallback view" desc="빈 목록·검색 결과 없음·오류를 채우는 중앙 안내입니다. 왜 비었는지와 다음 행동을 함께 제시합니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="FallbackView"
           stage={ty === '검색 없음'
             ? <FallbackView icon="search" title="검색 결과가 없어요" description={'다른 키워드로 검색해 보세요.'} />
             : ty === '빈 목록'

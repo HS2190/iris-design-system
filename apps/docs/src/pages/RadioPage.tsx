@@ -7,7 +7,7 @@ export default function RadioPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Radio" desc="상호 배타 옵션 중 하나를 고릅니다. 같은 name으로 그룹을 만들고, 기본 선택값 하나를 권장합니다. 옵션 6개 이상이면 Select를 씁니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Radio"
           stage={<div key={rd} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <Radio name="pg" label="카드 결제" defaultChecked disabled={rd === 'disabled'} />
             <Radio name="pg" label="계좌 이체" disabled={rd === 'disabled'} />

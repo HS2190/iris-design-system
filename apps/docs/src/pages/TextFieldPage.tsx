@@ -7,7 +7,7 @@ export default function TextFieldPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Text field" desc="단일 행 텍스트 입력입니다. 라벨·입력 영역·헬퍼로 구성되고, 높이는 플랫폼 토큰(--iris-input-height)을 따릅니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="TextField"
           stage={<TextField label="이메일" placeholder="example@email.com" style={{ width: 280 }}
             helper="회사 이메일을 입력하세요" error={state === 'error' ? '이메일 형식이 올바르지 않습니다' : undefined}
             disabled={state === 'disabled'} defaultValue={state === 'error' ? 'hs@example' : ''} />}

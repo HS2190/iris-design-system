@@ -17,7 +17,7 @@ export default function CardPage() {
   return (
     <Page kicker="Components · Contents" title="Card" desc="콘텐츠 묶음 컨테이너입니다. 상단 16:9 썸네일 슬롯 + 본문 패딩 16, 링크 카드는 hover로 떠오릅니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Card"
           stage={<Card variant={va} interactive thumbnail={th === '있음' ? <span>16 : 9</span> : undefined} style={{ width: 220 }}><CardDemo /></Card>}
           panel={<>
             <Seg label="variant" value={va} options={['outlined', 'elevated', 'filled'] as const} onChange={setVa} />

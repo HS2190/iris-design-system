@@ -7,7 +7,7 @@ export default function AlertPage() {
   return (
     <Page kicker="Components · Feedback" title="Alert" desc="흐름을 멈추고 확인을 받는 대화상자입니다. 표현부 컴포넌트 — 스크림·포털·포커스 트랩은 앱 셸이 담당합니다.">
       <Section title="Playground">
-        <Playground
+        <Playground name="Alert"
           stage={<Alert title="메모를 삭제할까요?" actions={btns === '2버튼'
             ? <><Button size="s" variant="outlined" color="assistive">취소</Button><Button size="s">삭제</Button></>
             : <Button size="s">확인</Button>}>

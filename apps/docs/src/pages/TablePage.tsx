@@ -13,7 +13,7 @@ export default function TablePage() {
   return (
     <Page kicker="Components · Contents" title="Table" desc="데이터 테이블입니다. 헤더 40 · 행 48, 숫자 열은 우측 정렬 + tabular-nums. 넓으면 컨테이너가 가로 스크롤합니다.">
       <Section title="Playground" desc="행 위에 올려보세요 — interactive면 hover 배경이 생깁니다.">
-        <Playground
+        <Playground name="Table"
           stage={<Table interactive style={{ width: 380 }} data={rows}
             columns={[{ key: 'name', header: '이름' }, { key: 'role', header: '직무' }, { key: 'years', header: '경력(년)', align: al }]} />}
           panel={<Seg label="숫자 열 정렬" value={al} options={['left', 'right'] as const} onChange={setAl} />}

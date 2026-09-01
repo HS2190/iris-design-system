@@ -14,7 +14,7 @@ export default function MenuPage() {
   return (
     <Page kicker="Components · Presentation" title="Menu" desc="더보기·우클릭에서 뜨는 행동 목록입니다. 항목 40 · 외곽 패딩 6, 파괴적 행동은 구분선 아래 negative로.">
       <Section title="Playground" desc="더보기를 눌러 여닫고, 항목을 선택해 보세요.">
-        <Playground
+        <Playground name="Menu"
           stage={<div style={{ position: 'relative', paddingBottom: open ? 150 : 0 }}>
             <button aria-label="더보기" aria-expanded={open} onClick={() => setOpen(v => !v)}
               style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, border: '1px solid var(--iris-semantic-line-solid-neutral)', background: 'none', borderRadius: 10, color: 'var(--iris-semantic-label-neutral)', cursor: 'pointer' }}>

@@ -7,7 +7,7 @@ export default function TextAreaPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Text area" desc="여러 줄 텍스트 입력입니다. 최소 높이 120에 세로 리사이즈를 허용하고, maxLength와 함께 글자 수 카운터를 보여줍니다.">
       <Section title="Playground" desc="입력하면 카운터가 실시간으로 움직입니다.">
-        <Playground
+        <Playground name="TextArea"
           stage={<TextArea key={st} label="자기소개" placeholder="200자 이내로 입력하세요" maxLength={200} showCount
             error={st === 'error' ? '10자 이상 입력해 주세요' : undefined} defaultValue={st === 'error' ? '너무 짧음' : ''}
             disabled={st === 'disabled'} style={{ width: 300 }} />}
