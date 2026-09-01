@@ -135,19 +135,40 @@
 .lp-trow b { font-family: var(--lp-display); font-size: 24px; font-weight: 700; letter-spacing: -.02em;
   color: var(--iris-semantic-label-normal); font-variant-numeric: tabular-nums; }
 
-/* ── Themeable ── */
-.lp-themes { display: grid; grid-template-columns: 1fr 1fr; margin-top: 48px;
-  border: 1px solid var(--iris-semantic-line-solid-normal); border-radius: 16px; overflow: hidden; }
-.lp-theme-pane { padding: 32px; background: var(--iris-semantic-background-normal-normal); }
-.lp-theme-pane h4 { font-size: 19px; font-weight: 700; margin: 0 0 20px;
-  color: var(--iris-semantic-label-normal); letter-spacing: -.02em; }
-.lp-theme-card { border: 1px solid var(--iris-semantic-line-solid-neutral); border-radius: 12px;
-  padding: 18px; background: var(--iris-semantic-background-elevated-normal);
-  display: flex; flex-direction: column; gap: 10px; }
-.lp-theme-card .t1 { font-size: 15.5px; font-weight: 500; color: var(--iris-semantic-label-normal); }
-.lp-theme-card .t2 { font-size: 13px; color: var(--iris-semantic-label-alternative); }
-.lp-theme-tag { display: block; margin-top: 18px; font-family: "IBM Plex Mono", monospace;
-  font-size: 11px; color: var(--iris-semantic-label-assistive); }
+/* ── Themeable — 경계를 끌면 같은 화면이 라이트↔다크로 갈린다 ────
+   두 층에 같은 Mock을 깔고 위층만 clip-path로 잘라낸다. 컴포넌트는
+   양쪽에서 완전히 동일하고, 바뀌는 것은 감싼 요소의 data-theme뿐이다. */
+.lp-split { position: relative; height: 424px; margin-top: 48px; border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--iris-semantic-line-solid-neutral); touch-action: none; user-select: none;
+  text-align: left; }
+.lp-split-layer { position: absolute; inset: 0; }
+.lp-split-layer > * { pointer-events: none; }
+.lp-split-top { clip-path: inset(0 0 0 var(--split, 50%)); }
+.lp-split-handle { position: absolute; top: 0; bottom: 0; left: var(--split, 50%); width: 2px;
+  background: var(--iris-semantic-static-white); cursor: ew-resize; border: none; padding: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .18); }
+.lp-split-handle::after { content: '⟷'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 40px; height: 40px; border-radius: 999px; background: var(--iris-semantic-static-white); color: #171719;
+  display: flex; align-items: center; justify-content: center; font-size: 15px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .28); }
+.lp-split-handle:focus-visible { outline: 2px solid var(--iris-semantic-interaction-focus-ring); outline-offset: 2px; }
+.lp-split-tag { position: absolute; bottom: 14px; z-index: 3; font-family: "IBM Plex Mono", monospace;
+  font-size: 10.5px; padding: 4px 8px; border-radius: 6px; letter-spacing: .04em; }
+.lp-split-tag.l { left: 14px; background: rgba(23, 23, 25, .06); color: #47474D; }
+.lp-split-tag.d { right: 14px; background: rgba(255, 255, 255, .1); color: #C2C2C6; }
+
+/* 분할 안 미니 화면 */
+.lp-mock { height: 100%; box-sizing: border-box; padding: 20px 24px 42px;
+  background: var(--iris-semantic-background-normal-normal);
+  display: flex; flex-direction: column; gap: 14px; }
+.lp-mock-bar { display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 14px; border-bottom: 1px solid var(--iris-semantic-line-solid-neutral); }
+.lp-mock-title { font-size: 17px; font-weight: 700; letter-spacing: -.02em; color: var(--iris-semantic-label-normal); }
+.lp-mock-card { padding: 16px; border-radius: 14px; background: var(--iris-semantic-background-elevated-normal);
+  border: 1px solid var(--iris-semantic-line-solid-neutral); display: flex; flex-direction: column; gap: 10px; }
+.lp-mock-row { display: flex; align-items: center; gap: 10px; }
+.lp-mock-t1 { font-size: 15px; color: var(--iris-semantic-label-normal); }
+.lp-mock-t2 { font-size: 12.5px; color: var(--iris-semantic-label-alternative); }
 
 /* ── Get started ── */
 .lp-rows { margin-top: 48px; border-top: 1px solid var(--iris-semantic-line-solid-normal); }
@@ -219,7 +240,8 @@
 
 @media (max-width: 900px) {
   .lp-hero-media { height: 380px; }
-  .lp-inside, .lp-themes, .lp-posts { grid-template-columns: 1fr; gap: 32px; }
+  .lp-inside, .lp-posts { grid-template-columns: 1fr; gap: 32px; }
+  .lp-split { height: 380px; }
   .lp-faq { grid-template-columns: 1fr; }
   .lp-faq-divider { display: none; }
   .lp-row { grid-template-columns: 1fr 40px; }

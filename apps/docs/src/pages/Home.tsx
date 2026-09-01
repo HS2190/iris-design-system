@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { iconNames } from '@iris/react';
+import { iconNames, Icon, Chip, ContentBadge, Progress, ListCell, Avatar, Button } from '@iris/react';
 import tokens from '@iris/tokens';
 import { componentGroups, utilityItems, componentCount } from '../nav';
 import { posts } from './behind/posts';
@@ -48,6 +48,64 @@ function InkBand() {
     return () => io.disconnect();
   }, []);
   return <div className="lp-band"><div className="lp-band-img" ref={ref} /></div>;
+}
+
+/* ── 테마 분할 쇼케이스 — 경계를 끌면 같은 화면이 라이트↔다크로 갈린다 ── */
+function Mock() {
+  return (
+    <div className="lp-mock">
+      <div className="lp-mock-bar">
+        <span className="lp-mock-title">오늘의 채용</span>
+        <div style={{ display: 'flex', gap: 6 }}>
+          <Icon name="search" size={20} style={{ color: 'var(--iris-semantic-label-neutral)' }} />
+          <Icon name="bell" size={20} style={{ color: 'var(--iris-semantic-label-neutral)' }} />
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: 6 }}>
+        <Chip size="s" selected>재택</Chip><Chip size="s">신입</Chip><Chip size="s">정규직</Chip>
+      </div>
+      <div className="lp-mock-card">
+        <div className="lp-mock-row" style={{ justifyContent: 'space-between' }}>
+          <span className="lp-mock-t1">프로덕트 디자이너</span>
+          <ContentBadge tone="positive">신규</ContentBadge>
+        </div>
+        <span className="lp-mock-t2">Iris팀 · 서울 · 경력 5년+</span>
+        <Progress value={68} label="지원 진행" showValue />
+      </div>
+      <ListCell title="UX 라이터" description="Iris팀 · 어제" style={{ padding: '8px 0' }}
+        leading={<Avatar size="m" name="라" />} trailing={<Icon name="chevron-right" size={20} />} />
+      <div style={{ display: 'flex', gap: 8, marginTop: 'auto' }}>
+        <Button size="s" variant="outlined" color="assistive" style={{ flex: 1 }}>나중에</Button>
+        <Button size="s" style={{ flex: 1 }}>지원하기</Button>
+      </div>
+    </div>
+  );
+}
+
+function ThemeSplit() {
+  const box = useRef<HTMLDivElement>(null);
+  const [pct, setPct] = useState(52);
+  const set = (clientX: number) => {
+    const r = box.current?.getBoundingClientRect();
+    if (!r) return;
+    setPct(Math.min(94, Math.max(6, ((clientX - r.left) / r.width) * 100)));
+  };
+  return (
+    <div className="lp-split" ref={box} style={{ ['--split' as string]: `${pct}%` }}
+      onPointerDown={e => { (e.target as HTMLElement).setPointerCapture?.(e.pointerId); set(e.clientX); }}
+      onPointerMove={e => { if (e.buttons === 1) set(e.clientX); }}>
+      <div className="lp-split-layer" data-theme="light"><Mock /></div>
+      <div className="lp-split-layer lp-split-top" data-theme="dark"><Mock /></div>
+      <span className="lp-split-tag l">data-theme="light"</span>
+      <span className="lp-split-tag d">data-theme="dark"</span>
+      <button className="lp-split-handle" aria-label="테마 경계 이동" role="slider"
+        aria-valuemin={6} aria-valuemax={94} aria-valuenow={Math.round(pct)}
+        onKeyDown={e => {
+          if (e.key === 'ArrowLeft') setPct(p => Math.max(6, p - 4));
+          if (e.key === 'ArrowRight') setPct(p => Math.min(94, p + 4));
+        }} />
+    </div>
+  );
 }
 
 const PRINCIPLES: [string, string, string][] = [
@@ -162,21 +220,9 @@ export default function Home() {
         <p className="lp-kicker" data-rv>Themeable</p>
         <h2 className="lp-h2" data-rv style={{ ["--i" as string]: 1 }}>Light, Dark, and Yours</h2>
         <p className="lp-lede" data-rv style={{ ["--i" as string]: 2 }}>컴포넌트는 역할 토큰만 참조합니다. 테마가 바뀌면 가운데 층이 재매핑될 뿐입니다.</p>
-        <div className="lp-themes">
-          {(['light', 'dark'] as const).map(mode => (
-            <div className="lp-theme-pane" data-theme={mode} key={mode} data-rv
-              style={{ ["--i" as string]: mode === 'light' ? 0 : 1 }}>
-              <h4>오늘의 채용</h4>
-              <div className="lp-theme-card">
-                <span className="t1">프로덕트 디자이너</span>
-                <span className="t2">Iris팀 · 서울 · 경력 5년+</span>
-                <span style={{ height: 4, borderRadius: 2, background: 'var(--iris-semantic-fill-strong)', display: 'block' }}>
-                  <span style={{ display: 'block', width: '68%', height: '100%', borderRadius: 2, background: 'var(--iris-semantic-primary-normal)' }} />
-                </span>
-              </div>
-              <span className="lp-theme-tag">data-theme="{mode}"</span>
-            </div>
-          ))}
+        <ThemeSplit />
+        <div className="codeline" style={{ marginTop: 16, textAlign: 'left' }}>
+          {'<html data-theme="dark">  /* 이 한 줄이 전부입니다 */'}
         </div>
       </section>
 
