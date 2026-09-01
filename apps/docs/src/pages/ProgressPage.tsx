@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Progress, Card, Toast } from '@iris/react';
+import { Progress, Card, Toast } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function ProgressPage() {

@@ -1,11 +1,15 @@
 {
-  "name": "@iris/docs",
+  "name": "@hs2190/iris-docs",
   "private": true,
   "type": "module",
-  "scripts": { "dev": "vite", "build": "tsc -b && vite build", "preview": "vite preview" },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@iris/react": "*",
-    "@iris/tokens": "*",
+    "@hs2190/iris-react": "*",
+    "@hs2190/iris-tokens": "*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.0"

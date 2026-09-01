@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Scrim, Button, Popup, BottomSheet, ListCell, Icon } from '@iris/react';
+import { Scrim, Button, Popup, BottomSheet, ListCell, Icon } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const Frame = ({ children, h = 220 }: { children?: React.ReactNode; h?: number }) => (

@@ -1,5 +1,5 @@
 {
-  "name": "@iris/tokens",
+  "name": "@hs2190/iris-tokens",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/tokens.js",
@@ -18,5 +18,17 @@
   },
   "description": "Iris Design System — 디자인 토큰 (Figma Variables 단일 소스, Web·iOS·Android 값)",
   "license": "MIT",
-  "author": "안현서"
+  "author": "안현서",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HS2190/iris-design-system.git",
+    "directory": "packages/tokens"
+  },
+  "homepage": "https://github.com/HS2190/iris-design-system#readme",
+  "bugs": {
+    "url": "https://github.com/HS2190/iris-design-system/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

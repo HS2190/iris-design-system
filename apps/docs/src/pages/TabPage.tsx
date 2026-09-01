@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tabs, SegmentedControl, ListCell, Icon } from '@iris/react';
+import { Tabs, SegmentedControl, ListCell, Icon } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const cats = ['전체', '디자인', '개발', '마케팅'] as const;

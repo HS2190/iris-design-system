@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Popup, Button, TextField, Alert } from '@iris/react';
+import { Popup, Button, TextField, Alert } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function PopupPage() {

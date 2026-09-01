@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ProgressTracker, Button, Progress } from '@iris/react';
+import { ProgressTracker, Button, Progress } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const steps = [

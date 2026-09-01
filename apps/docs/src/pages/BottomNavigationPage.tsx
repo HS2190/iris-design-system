@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BottomNavigation, type BottomNavItem } from '@iris/react';
+import { BottomNavigation, type BottomNavItem } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const items: BottomNavItem[] = [

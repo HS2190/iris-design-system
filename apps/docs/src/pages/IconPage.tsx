@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Icon, iconNames, Button, ListCell, SearchField, FallbackView, type IconName, type IconVariant } from '@iris/react';
+import { Icon, iconNames, Button, ListCell, SearchField, FallbackView, type IconName, type IconVariant } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const CATS: [string, IconName[]][] = [

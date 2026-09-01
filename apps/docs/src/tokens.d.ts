@@ -1,4 +1,4 @@
-declare module '@iris/tokens' {
+declare module '@hs2190/iris-tokens' {
   const tokens: {
     atomic: Record<string, string>;
     semantic: Record<string, { light: string; dark: string }>;

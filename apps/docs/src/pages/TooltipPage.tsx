@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tooltip, Button, Icon, Popover } from '@iris/react';
+import { Tooltip, Button, Icon, Popover } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function TooltipPage() {

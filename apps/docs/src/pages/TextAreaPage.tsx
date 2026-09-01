@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextArea, TextField, Button } from '@iris/react';
+import { TextArea, TextField, Button } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function TextAreaPage() {

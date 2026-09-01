@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Icon } from '@iris/react';
+import { Icon } from '@hs2190/iris-react';
 import { posts, postIndex } from '../pages/behind/posts';
 
 /** 제작기 글 공용 빌딩블록 — 문서 페이지(Doc.tsx)와 같은 토큰을 쓰되 읽기용 조판. */

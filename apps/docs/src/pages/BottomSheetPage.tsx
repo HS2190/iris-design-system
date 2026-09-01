@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BottomSheet, Button, ListCell, Icon, Popup } from '@iris/react';
+import { BottomSheet, Button, ListCell, Icon, Popup } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const sheetList = (

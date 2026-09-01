@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextButton, Button } from '@iris/react';
+import { TextButton, Button } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function TextButtonPage() {

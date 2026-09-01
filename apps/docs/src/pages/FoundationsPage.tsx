@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Icon } from '@iris/react';
+import { Icon } from '@hs2190/iris-react';
 import { Page } from '../components/Doc';
 
 const CARDS: [string, string, string, React.ReactNode][] = [

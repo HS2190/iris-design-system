@@ -1,4 +1,4 @@
-import tokens from '@iris/tokens';
+import tokens from '@hs2190/iris-tokens';
 import { Page, Section, Chips, DoDont, useCssVars } from '../components/Doc';
 
 const GROUPS: [string, string, [string, string][]][] = [

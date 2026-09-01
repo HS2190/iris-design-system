@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Toast, Button, SectionMessage } from '@iris/react';
+import { Toast, Button, SectionMessage } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function ToastPage() {

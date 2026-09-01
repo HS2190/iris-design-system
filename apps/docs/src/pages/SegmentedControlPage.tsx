@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SegmentedControl, Chip, SectionHeader, ListCell, Icon } from '@iris/react';
+import { SegmentedControl, Chip, SectionHeader, ListCell, Icon } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Chips, DoDont, Props, Playground, Seg, CodeSpec } from '../components/Doc';
 
 export default function SegmentedControlPage() {

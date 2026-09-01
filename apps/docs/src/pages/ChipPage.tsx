@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Chip, SearchField } from '@iris/react';
+import { Chip, SearchField } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Chips, DoDont, Props, Playground, Seg, CodeSpec } from '../components/Doc';
 
 export default function ChipPage() {

@@ -10,13 +10,13 @@ Figma Variables가 원본이고, 코드는 그 빌드 결과입니다.
 ## 설치
 
 ```bash
-npm i @iris/tokens @iris/react
+npm i @hs2190/iris-tokens @hs2190/iris-react
 ```
 
 ```tsx
-import { Button, TextField } from '@iris/react';
-import '@iris/tokens/css';      // CSS 변수 (테마 포함)
-import '@iris/react/styles.css'; // 컴포넌트 스타일
+import { Button, TextField } from '@hs2190/iris-react';
+import '@hs2190/iris-tokens/css';      // CSS 변수 (테마 포함)
+import '@hs2190/iris-react/styles.css'; // 컴포넌트 스타일
 
 export default function App() {
   return (

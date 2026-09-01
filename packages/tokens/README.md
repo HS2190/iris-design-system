@@ -1,15 +1,15 @@
-# @iris/tokens
+# @hs2190/iris-tokens
 
-[Iris Design System](https://github.com/) 의 디자인 토큰.
+[Iris Design System](https://github.com/HS2190/iris-design-system) 의 디자인 토큰.
 Figma Variables가 원본이고 이 패키지는 그 빌드 결과입니다.
 
 ```bash
-npm i @iris/tokens
+npm i @hs2190/iris-tokens
 ```
 
 ```js
-import '@iris/tokens/css';          // CSS 변수 — 이것만으로 충분한 경우가 많습니다
-import tokens from '@iris/tokens';   // 값이 필요할 때 (JS 객체)
+import '@hs2190/iris-tokens/css';          // CSS 변수 — 이것만으로 충분한 경우가 많습니다
+import tokens from '@hs2190/iris-tokens';   // 값이 필요할 때 (JS 객체)
 ```
 
 ## 담긴 것
@@ -34,7 +34,7 @@ import tokens from '@iris/tokens';   // 값이 필요할 때 (JS 객체)
 
 ## 플랫폼 값
 
-`import tokens from '@iris/tokens'` 의 `tokens.platform` 에 세 플랫폼 값이 모두 있습니다.
+`import tokens from '@hs2190/iris-tokens'` 의 `tokens.platform` 에 세 플랫폼 값이 모두 있습니다.
 **CSS로 빌드되는 것은 웹 값뿐입니다** — 네이티브 빌드는 아직 없습니다.
 
 ```json

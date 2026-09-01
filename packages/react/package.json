@@ -1,5 +1,5 @@
 {
-  "name": "@iris/react",
+  "name": "@hs2190/iris-react",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -30,5 +30,17 @@
   ],
   "scripts": {
     "build": "vite build && tsc -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HS2190/iris-design-system.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/HS2190/iris-design-system#readme",
+  "bugs": {
+    "url": "https://github.com/HS2190/iris-design-system/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

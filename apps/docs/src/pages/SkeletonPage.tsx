@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Skeleton, Button, Avatar, ListCell, Card } from '@iris/react';
+import { Skeleton, Button, Avatar, ListCell, Card } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const CellSkeleton = ({ w = 300 }: { w?: number }) => (

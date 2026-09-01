@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import tokens from '@iris/tokens';
-import { Button, Icon } from '@iris/react';
+import tokens from '@hs2190/iris-tokens';
+import { Button, Icon } from '@hs2190/iris-react';
 import { Page, Section, DoDont } from '../components/Doc';
 
 const hexToRgba = (h: string) => {

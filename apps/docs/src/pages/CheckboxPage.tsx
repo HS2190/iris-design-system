@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Checkbox, Switch, Button } from '@iris/react';
+import { Checkbox, Switch, Button } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function CheckboxPage() {

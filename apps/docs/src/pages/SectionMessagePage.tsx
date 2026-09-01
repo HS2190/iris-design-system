@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SectionMessage, TextField, Toast } from '@iris/react';
+import { SectionMessage, TextField, Toast } from '@hs2190/iris-react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const tones = ['info', 'positive', 'cautionary', 'negative'] as const;

@@ -1,5 +1,5 @@
-import tokens from '@iris/tokens';
-import { Table } from '@iris/react';
+import tokens from '@hs2190/iris-tokens';
+import { Table } from '@hs2190/iris-react';
 import { Page, Section, Chips } from '../components/Doc';
 
 const shadow = (name: string, filter?: number) => {
