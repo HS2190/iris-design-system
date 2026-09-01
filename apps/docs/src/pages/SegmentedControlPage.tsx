@@ -1,16 +1,31 @@
 import { useState } from 'react';
 import { SegmentedControl, Chip, SectionHeader, ListCell, Icon } from '@iris/react';
-import { Page, Section, Canvas, Chips, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, DoDont, Props, Playground, Seg, CodeSpec } from '../components/Doc';
 
 export default function SegmentedControlPage() {
-  const [view, setView] = useState<'전체' | '진행 중' | '완료'>('전체');
+  type View = '전체' | '진행 중' | '완료';
+  const [view, setView] = useState<View>('전체');
+  const [count, setCount] = useState<'2' | '3'>('3');
+  const [disabled, setDisabled] = useState(false);
+  const opts: readonly View[] = count === '3' ? ['전체', '진행 중', '완료'] : ['전체', '진행 중'];
+  const code = `<SegmentedControl options={[${opts.map(o => `'${o}'`).join(', ')}]} value="${view}"`
+    + ` onChange={setView}${disabled ? ' disabled' : ''} aria-label="보기 전환" />`;
   return (
     <Page kicker="Components · Selection & Input" title="Segmented control" desc="같은 데이터의 보기(view)를 즉시 전환합니다. 2~3개 짧은 라벨 전용 — 4개 이상이면 Tab이나 Select입니다.">
       <Section title="Playground" desc="실제로 전환됩니다.">
-        <Canvas col style={{ gap: 16 }}>
-          <SegmentedControl options={['전체', '진행 중', '완료'] as const} value={view} onChange={setView} aria-label="보기 전환" />
-          <p style={{ margin: 0, color: 'var(--iris-semantic-label-neutral)', fontSize: 14 }}>현재 보기: <b>{view}</b></p>
-        </Canvas>
+        <Playground
+          stage={
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14, alignItems: 'center' }}>
+              <SegmentedControl options={opts} value={view} onChange={setView} disabled={disabled} aria-label="보기 전환" />
+              <p style={{ margin: 0, color: 'var(--iris-semantic-label-neutral)', fontSize: 14 }}>현재 보기: <b>{view}</b></p>
+            </div>
+          }
+          panel={<>
+            <Seg label="options" value={count} options={['2', '3'] as const}
+              onChange={v => { setCount(v); if (v === '2' && view === '완료') setView('전체'); }} />
+            <Seg label="disabled" value={String(disabled) as 'true' | 'false'} options={['false', 'true'] as const}
+              onChange={v => setDisabled(v === 'true')} />
+          </>} />
       </Section>
       <Section title="States">
         <Canvas col style={{ gap: 16 }}>
@@ -63,6 +78,9 @@ export default function SegmentedControlPage() {
           doEx={<SegmentedControl options={['리스트', '캘린더'] as const} value="리스트" onChange={() => {}} aria-label="do" />}
           dontTitle="다중 선택 필터" dontBody="여러 개를 고르는 값은 Chip 그룹입니다."
           dontEx={<><Chip size="s" selected>디자인</Chip><Chip size="s" selected>개발</Chip></>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="SegmentedControl" code={code} />
       </Section>
       <Section title="Props">
         <Props rows={[
