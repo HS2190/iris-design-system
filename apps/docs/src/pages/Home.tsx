@@ -234,9 +234,10 @@ export default function Home() {
             data-rv style={{ ["--i" as string]: 0 }}>
             <b>Figma</b><span>UI 킷 파일 · 컴포넌트 44종 · 변수 8컬렉션</span><i>↗</i>
           </a>
-          <div className="lp-row" data-rv style={{ ["--i" as string]: 1 }}>
-            <b>npm</b><span>npm i @hs2190.an/iris-tokens @hs2190.an/iris-react</span><i className="soon">준비 중</i>
-          </div>
+          <a className="lp-row" data-rv style={{ ["--i" as string]: 1 }}
+            href="https://www.npmjs.com/package/@hs2190.an/iris-react" target="_blank" rel="noreferrer">
+            <b>npm</b><span>npm i @hs2190.an/iris-tokens @hs2190.an/iris-react</span><i>↗</i>
+          </a>
           <a className="lp-row" data-rv style={{ ["--i" as string]: 2 }}
             href="https://github.com/HS2190/iris-design-system" target="_blank" rel="noreferrer">
             <b>GitHub</b><span>소스와 이슈 · MIT</span><i>↗</i>
