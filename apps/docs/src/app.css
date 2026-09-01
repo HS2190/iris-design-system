@@ -197,9 +197,13 @@ h2.section { font-size: var(--iris-font-size-title-3); line-height: var(--iris-l
 .swt-name b { font-weight: 500; color: var(--iris-semantic-label-normal); }
 
 /* ── GNB 셸 (몽타주식) ── */
-.gnb { position: sticky; top: 0; z-index: 60; display: flex; align-items: center; gap: 28px;
-  height: 60px; padding: 0 24px; border-bottom: 1px solid var(--iris-semantic-line-solid-neutral);
+/* 바는 화면 전체를 덮되(배경·구분선), 내용은 안쪽 컨테이너가 잡는다 */
+.gnb { position: sticky; top: 0; z-index: 60; display: flex; align-items: center;
+  height: 60px; border-bottom: 1px solid var(--iris-semantic-line-solid-neutral);
   background: var(--iris-semantic-background-normal-normal); }
+.gnb-inner { display: flex; align-items: center; gap: 28px; width: 100%; padding: 0 24px; }
+/* 랜딩 — .lp-wrap과 같은 규칙이라 브랜드가 섹션 내용과 자동으로 정렬된다 */
+.gnb--wrapped .gnb-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 .gnb-brand { display: flex; align-items: center; gap: 9px; color: var(--iris-semantic-label-normal); }
 .gnb-brand b { font-size: 16px; letter-spacing: -.01em; }
 .gnb-nav { display: flex; gap: 4px; }

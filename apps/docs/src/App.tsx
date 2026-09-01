@@ -110,18 +110,26 @@ export default function App() {
     : 'components';
   return (
     <div className="shell">
-      <header className={heroOver ? 'gnb over' : 'gnb'}>
-        <NavLink to="/" className="gnb-brand">
-          <span className="brand-mark" aria-hidden />
-          <b>Iris</b>
-        </NavLink>
-        <nav className="gnb-nav">
-          <NavLink to="/foundations" className={() => !isHome && section === 'foundations' ? 'active' : ''}>Foundations</NavLink>
-          <NavLink to="/components" className={() => !isHome && section === 'components' ? 'active' : ''}>Components</NavLink>
-          <NavLink to="/utilities" className={() => !isHome && section === 'utilities' ? 'active' : ''}>Utilities</NavLink>
-          <NavLink to="/behind" className={() => !isHome && section === 'behind' ? 'active' : ''}>Behind</NavLink>
-        </nav>
-        <div className="gnb-right"><ThemeToggle /></div>
+      <header className={[
+        'gnb',
+        heroOver ? 'over' : '',
+        // 랜딩에서는 본문(.lp-wrap)과 같은 폭으로 묶어 브랜드가 섹션 내용과 정렬되게 한다.
+        // 문서 페이지는 사이드바가 왼쪽 끝을 잡고 있으므로 전체 폭을 유지한다.
+        isHome ? 'gnb--wrapped' : '',
+      ].filter(Boolean).join(' ')}>
+        <div className="gnb-inner">
+          <NavLink to="/" className="gnb-brand">
+            <span className="brand-mark" aria-hidden />
+            <b>Iris</b>
+          </NavLink>
+          <nav className="gnb-nav">
+            <NavLink to="/foundations" className={() => !isHome && section === 'foundations' ? 'active' : ''}>Foundations</NavLink>
+            <NavLink to="/components" className={() => !isHome && section === 'components' ? 'active' : ''}>Components</NavLink>
+            <NavLink to="/utilities" className={() => !isHome && section === 'utilities' ? 'active' : ''}>Utilities</NavLink>
+            <NavLink to="/behind" className={() => !isHome && section === 'behind' ? 'active' : ''}>Behind</NavLink>
+          </nav>
+          <div className="gnb-right"><ThemeToggle /></div>
+        </div>
       </header>
       {isHome ? (
         <main className="landing">
