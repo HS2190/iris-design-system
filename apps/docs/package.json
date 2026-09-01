@@ -1,5 +1,5 @@
 {
-  "name": "@hs2190/iris-docs",
+  "name": "@hs2190.an/iris-docs",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,8 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hs2190/iris-react": "*",
-    "@hs2190/iris-tokens": "*",
+    "@hs2190.an/iris-react": "*",
+    "@hs2190.an/iris-tokens": "*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.0"

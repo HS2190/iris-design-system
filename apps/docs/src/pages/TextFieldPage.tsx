@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField, Button } from '@hs2190/iris-react';
+import { TextField, Button } from '@hs2190.an/iris-react';
 import { Page, Section, Canvas, Chips, DoDont, Props, Playground, Seg, CodeSpec } from '../components/Doc';
 
 export default function TextFieldPage() {

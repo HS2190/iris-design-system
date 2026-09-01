@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert, Button, Toast } from '@hs2190/iris-react';
+import { Alert, Button, Toast } from '@hs2190.an/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function AlertPage() {

@@ -1,5 +1,5 @@
 {
-  "name": "@hs2190/iris-react",
+  "name": "@hs2190.an/iris-react",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Icon } from '@hs2190/iris-react';
-import tokens from '@hs2190/iris-tokens';
+import { Icon } from '@hs2190.an/iris-react';
+import tokens from '@hs2190.an/iris-tokens';
 import { COMPONENT_TOKENS } from '../../lib/component-tokens';
 import { Article, P, H2, Fig, Aside, Pull, Code } from '../../components/Prose';
 import { Seg } from '../../components/Doc';

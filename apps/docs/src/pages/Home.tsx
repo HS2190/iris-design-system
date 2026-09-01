@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { iconNames, Icon, Chip, ContentBadge, Progress, ListCell, Avatar, Button } from '@hs2190/iris-react';
-import tokens from '@hs2190/iris-tokens';
+import { iconNames, Icon, Chip, ContentBadge, Progress, ListCell, Avatar, Button } from '@hs2190.an/iris-react';
+import tokens from '@hs2190.an/iris-tokens';
 import { componentGroups, utilityItems, componentCount } from '../nav';
 import { posts } from './behind/posts';
 import PrismSparks from '../components/PrismSparks';
@@ -235,7 +235,7 @@ export default function Home() {
             <b>Figma</b><span>UI 킷 파일 · 컴포넌트 44종 · 변수 8컬렉션</span><i>↗</i>
           </a>
           <div className="lp-row" data-rv style={{ ["--i" as string]: 1 }}>
-            <b>npm</b><span>npm i @hs2190/iris-tokens @hs2190/iris-react</span><i className="soon">준비 중</i>
+            <b>npm</b><span>npm i @hs2190.an/iris-tokens @hs2190.an/iris-react</span><i className="soon">준비 중</i>
           </div>
           <a className="lp-row" data-rv style={{ ["--i" as string]: 2 }}
             href="https://github.com/HS2190/iris-design-system" target="_blank" rel="noreferrer">

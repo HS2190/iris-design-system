@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Icon, iconNames, type IconName, type IconVariant } from '@hs2190/iris-react';
+import { Icon, iconNames, type IconName, type IconVariant } from '@hs2190.an/iris-react';
 import { Article, P, H2, Fig, Aside, Pull, Code } from '../../components/Prose';
 import { Seg } from '../../components/Doc';
 

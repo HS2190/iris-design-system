@@ -1,4 +1,4 @@
-import { Table, Icon } from '@hs2190/iris-react';
+import { Table, Icon } from '@hs2190.an/iris-react';
 import { Page, Section, Chips } from '../components/Doc';
 
 const rows = [

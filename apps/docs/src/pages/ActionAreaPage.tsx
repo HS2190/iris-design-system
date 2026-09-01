@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ActionArea, Button } from '@hs2190/iris-react';
+import { ActionArea, Button } from '@hs2190.an/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const Frame = ({ children }: { children: React.ReactNode }) => (

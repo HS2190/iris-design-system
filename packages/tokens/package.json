@@ -1,5 +1,5 @@
 {
-  "name": "@hs2190/iris-tokens",
+  "name": "@hs2190.an/iris-tokens",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/tokens.js",

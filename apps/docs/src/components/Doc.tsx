@@ -94,7 +94,7 @@ export function CodeSpec({ name, code }: { name: string; code: string }) {
 /** import 줄까지 갖춘 코드 블록 — 붙여넣으면 그대로 도는 형태 */
 export function CodeBlock({ code, name }: { code: string; name?: string }) {
   const full = name
-    ? `import { ${name} } from '@hs2190/iris-react';\nimport '@hs2190/iris-tokens/css';\nimport '@hs2190/iris-react/styles.css';\n\n${code}`
+    ? `import { ${name} } from '@hs2190.an/iris-react';\nimport '@hs2190.an/iris-tokens/css';\nimport '@hs2190.an/iris-react/styles.css';\n\n${code}`
     : code;
   return <pre className="codeblock">{full}</pre>;
 }

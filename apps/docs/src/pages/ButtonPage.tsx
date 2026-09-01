@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, TextField } from '@hs2190/iris-react';
+import { Button, TextField } from '@hs2190.an/iris-react';
 import { CodeBlock, PlatformSpec } from '../components/Doc';
 
 const variants = ['solid', 'outlined'] as const;

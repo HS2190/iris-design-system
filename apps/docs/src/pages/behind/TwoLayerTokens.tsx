@@ -1,5 +1,5 @@
-import { Card, Button, Icon, ContentBadge } from '@hs2190/iris-react';
-import tokens from '@hs2190/iris-tokens';
+import { Card, Button, Icon, ContentBadge } from '@hs2190.an/iris-react';
+import tokens from '@hs2190.an/iris-tokens';
 import { Article, P, H2, Fig, Aside, Pull, Code } from '../../components/Prose';
 
 /* 글에 나오는 값은 전부 토큰 소스에서 직접 읽는다 — 글과 시스템이 어긋날 수 없게. */

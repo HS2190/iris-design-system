@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TopNavigation, Icon, ListCell } from '@hs2190/iris-react';
+import { TopNavigation, Icon, ListCell } from '@hs2190.an/iris-react';
 import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const iconBtn = (name: 'arrow-left' | 'bell' | 'search' | 'settings' | 'share', label: string) => (

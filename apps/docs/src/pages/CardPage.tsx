@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Card, ContentBadge } from '@hs2190/iris-react';
+import { Card, ContentBadge } from '@hs2190.an/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 function CardDemo({ w = 220 }: { w?: number }) {

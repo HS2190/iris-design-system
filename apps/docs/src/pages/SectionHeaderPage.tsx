@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SectionHeader, ListCell, Icon } from '@hs2190/iris-react';
+import { SectionHeader, ListCell, Icon } from '@hs2190.an/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const more = <>더보기<Icon name="chevron-right" size={16} /></>;

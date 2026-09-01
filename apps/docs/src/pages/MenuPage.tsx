@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, type MenuItem, Icon, Select } from '@hs2190/iris-react';
+import { Menu, type MenuItem, Icon, Select } from '@hs2190.an/iris-react';
 import { Page, Section, Canvas, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const items: MenuItem[] = [

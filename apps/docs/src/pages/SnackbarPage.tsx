@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Snackbar, Button, Toast } from '@hs2190/iris-react';
+import { Snackbar, Button, Toast } from '@hs2190.an/iris-react';
 import { Page, Section, Canvas, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function SnackbarPage() {

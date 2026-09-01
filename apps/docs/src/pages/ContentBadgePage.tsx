@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ContentBadge, Chip } from '@hs2190/iris-react';
+import { ContentBadge, Chip } from '@hs2190.an/iris-react';
 import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const tones = ['neutral', 'info', 'positive', 'cautionary', 'negative'] as const;

@@ -1,4 +1,4 @@
-import { ListCell, Icon } from '@hs2190/iris-react';
+import { ListCell, Icon } from '@hs2190.an/iris-react';
 import { Page, Section, Chips, DoDont } from '../components/Doc';
 
 const SPACE = [2, 4, 6, 8, 10, 12, 14, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 96, 120];
