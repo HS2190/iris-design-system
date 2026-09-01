@@ -230,7 +230,7 @@ export default function Home() {
         <p className="lp-kicker" data-rv>Get Started</p>
         <h2 className="lp-h2" data-rv style={{ ["--i" as string]: 1 }}>Get Started</h2>
         <div className="lp-rows">
-          <a className="lp-row" href="https://www.figma.com/design/k6EMzf6Q9nM7J1gkAt4ZYo/" target="_blank" rel="noreferrer"
+          <a className="lp-row" href="https://www.figma.com/design/JYuP0F6e0mVlqcvfmIj0ii/Iris-Design-system" target="_blank" rel="noreferrer"
             data-rv style={{ ["--i" as string]: 0 }}>
             <b>Figma</b><span>UI 킷 파일 · 컴포넌트 44종 · 변수 8컬렉션</span><i>↗</i>
           </a>
@@ -281,7 +281,7 @@ export default function Home() {
         <b>Iris</b>
         <span>© 2026 안현서</span>
         <nav>
-          <a href="https://www.figma.com/design/k6EMzf6Q9nM7J1gkAt4ZYo/" target="_blank" rel="noreferrer">Figma</a>
+          <a href="https://www.figma.com/design/JYuP0F6e0mVlqcvfmIj0ii/Iris-Design-system" target="_blank" rel="noreferrer">Figma</a>
           <a href="#/components">Components</a>
           <span>MIT</span>
         </nav>

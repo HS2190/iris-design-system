@@ -13,7 +13,7 @@ const hexToRgba = h => { const x = h.slice(1); const v = i => parseInt(x.slice(i
   return x.length === 8 ? `rgba(${v(0)}, ${v(2)}, ${v(4)}, ${(v(6) / 255).toFixed(3).replace(/0+$/,'').replace(/\.$/,'')})` : h; };
 const resolve = name => { const h = atomic[name]; if (!h) throw new Error('unknown atomic: ' + name); return hexToRgba(h); };
 
-let css = `/* @hs2190.an/iris-tokens — generated ${new Date().toISOString().slice(0,10)} from Figma k6EMzf6Q9nM7J1gkAt4ZYo. 수정 금지: Figma → build로만 변경 */\n`;
+let css = `/* @hs2190.an/iris-tokens — generated ${new Date().toISOString().slice(0,10)} from Figma JYuP0F6e0mVlqcvfmIj0ii. 수정 금지: Figma → build로만 변경 */\n`;
 // ── atomic + semantic(light) + scales on :root
 css += ':root {\n  color-scheme: light dark;\n';
 css += `  --iris-font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Roboto", sans-serif;\n`;
