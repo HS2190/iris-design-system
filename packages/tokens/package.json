@@ -1,6 +1,6 @@
 {
   "name": "@hs2190.an/iris-tokens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "./dist/tokens.js",
   "exports": {
