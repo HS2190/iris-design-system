@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SectionMessage, TextField, Toast } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const tones = ['info', 'positive', 'cautionary', 'negative'] as const;
 const COPY = {
@@ -16,13 +16,13 @@ export default function SectionMessagePage() {
   return (
     <Page kicker="Components · Feedback" title="Section message" desc="화면 맥락 안에 남는 인라인 안내 배너입니다. 잠깐 통보는 Toast, 흐름 차단은 Alert.">
       <Section title="Playground">
-        <Playground name="SectionMessage"
+        <Playground
           stage={<SectionMessage tone={tone} title={COPY[tone][0]} onClose={cl === '있음' ? () => {} : undefined} style={{ width: 340 }}>{COPY[tone][1]}</SectionMessage>}
           panel={<>
             <Seg label="tone" value={tone} options={tones} onChange={setTone} />
             <Seg label="close" value={cl} options={['없음', '있음'] as const} onChange={setCl} />
           </>}
-          code={`<SectionMessage tone="${tone}" title="${COPY[tone][0]}"${cl === '있음' ? ' onClose={dismiss}' : ''}>...</SectionMessage>`} />
+ />
       </Section>
       <Section title="Variants" desc="Tone 4종 — status/* 토큰 8% 틴트 + 아이콘 색.">
         <Canvas col style={{ gap: 12 }}>
@@ -93,6 +93,9 @@ export default function SectionMessagePage() {
           doEx={<SectionMessage tone="negative" title="저장 실패" style={{ width: 300 }}>네트워크 확인 후 다시 시도해 주세요.</SectionMessage>}
           dontTitle="사라지는 오류 통보" dontBody="같은 실패를 토스트로 흘리면 사용자가 놓칩니다."
           dontEx={<Toast tone="negative">저장 실패</Toast>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="SectionMessage" code={`<SectionMessage tone="${tone}" title="${COPY[tone][0]}"${cl === '있음' ? ' onClose={dismiss}' : ''}>...</SectionMessage>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

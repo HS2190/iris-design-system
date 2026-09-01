@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Switch, Checkbox, ListCell } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function SwitchPage() {
   const [st, setSt] = useState<'off' | 'on' | 'disabled'>('off');
   return (
     <Page kicker="Components · Selection & Input" title="Switch" desc="즉시 적용되는 on/off 설정 토글입니다. 52×32 고정, role=switch로 노출됩니다.">
       <Section title="Playground">
-        <Playground name="Switch"
+        <Playground
           stage={<Switch key={st} label="푸시 알림" defaultChecked={st === 'on'} disabled={st === 'disabled'} />}
           panel={<Seg label="state" value={st} options={['off', 'on', 'disabled'] as const} onChange={setSt} />}
-          code={`<Switch label="푸시 알림"${st === 'on' ? ' defaultChecked' : ''}${st === 'disabled' ? ' disabled' : ''} />`} />
+ />
       </Section>
       <Section title="States">
         <Canvas>
@@ -61,6 +61,9 @@ export default function SwitchPage() {
           doEx={<Switch label="푸시 알림" defaultChecked />}
           dontTitle="제출이 필요한 동의" dontBody="폼과 함께 제출되는 선택은 Checkbox입니다."
           dontEx={<Checkbox label="약관에 동의합니다" />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Switch" code={`<Switch label="푸시 알림"${st === 'on' ? ' defaultChecked' : ''}${st === 'disabled' ? ' disabled' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

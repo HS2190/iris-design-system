@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { Radio, Select, Button } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function RadioPage() {
   const [rd, setRd] = useState<'default' | 'disabled'>('default');
   return (
     <Page kicker="Components · Selection & Input" title="Radio" desc="상호 배타 옵션 중 하나를 고릅니다. 같은 name으로 그룹을 만들고, 기본 선택값 하나를 권장합니다. 옵션 6개 이상이면 Select를 씁니다.">
       <Section title="Playground">
-        <Playground name="Radio"
+        <Playground
           stage={<div key={rd} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <Radio name="pg" label="카드 결제" defaultChecked disabled={rd === 'disabled'} />
             <Radio name="pg" label="계좌 이체" disabled={rd === 'disabled'} />
             <Radio name="pg" label="간편 결제" disabled={rd === 'disabled'} />
           </div>}
           panel={<Seg label="state" value={rd} options={['default', 'disabled'] as const} onChange={setRd} />}
-          code={`<Radio name="pay" label="카드 결제" defaultChecked${rd === 'disabled' ? ' disabled' : ''} />`} />
+ />
       </Section>
       <Section title="Variants" desc="시각 변형은 단일형 — 쓰임에 따라 배치만 달라집니다.">
         <Canvas style={{ gap: 40 }}>
@@ -88,6 +88,9 @@ export default function RadioPage() {
           doEx={<div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><Radio name="d1" label="카드 결제" defaultChecked /><Radio name="d1" label="계좌 이체" /></div>}
           dontTitle="옵션 6개 이상" dontBody="목록이 길어지면 Select로 접습니다."
           dontEx={<Select options={[{ value: 'seoul', label: '서울' }]} placeholder="지역 선택 (17개 시·도)" style={{ width: 200 }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Radio" code={`<Radio name="pay" label="카드 결제" defaultChecked${rd === 'disabled' ? ' disabled' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

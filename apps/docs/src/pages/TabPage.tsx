@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Tabs, SegmentedControl, ListCell, Icon } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const cats = ['전체', '디자인', '개발', '마케팅'] as const;
 
@@ -10,10 +10,10 @@ export default function TabPage() {
   return (
     <Page kicker="Components · Navigations" title="Tab" desc="콘텐츠 분류를 전환합니다. 높이 44 · 밑줄 인디케이터 2, 4개 이상이면 가로 스크롤. 2~3개 보기 전환은 Segmented control.">
       <Section title="Playground" desc="눌러보세요.">
-        <Playground name="Tabs"
+        <Playground
           stage={<Tabs items={cats} value={tab} onChange={setTab} fluid={mode === 'fluid'} style={{ width: 340 }} />}
           panel={<Seg label="layout" value={mode} options={['기본', 'fluid'] as const} onChange={setMode} />}
-          code={`<Tabs items={['전체', ...]} value="${tab}" onChange={setTab}${mode === 'fluid' ? ' fluid' : ''} />`} />
+ />
       </Section>
       <Section title="Variants" desc="기본 = 내용 폭 + 간격 20, fluid = 균등 분할.">
         <Canvas col style={{ gap: 16 }}>
@@ -67,6 +67,9 @@ export default function TabPage() {
           doEx={<Tabs items={cats} value="디자인" onChange={() => {}} style={{ width: 280 }} />}
           dontTitle="2개 보기 전환에 탭" dontBody="같은 데이터의 2~3개 짧은 보기 전환은 Segmented control이 맞습니다."
           dontEx={<SegmentedControl options={['리스트', '캘린더'] as const} value="리스트" onChange={() => {}} aria-label="보기" />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Tabs" code={`<Tabs items={['전체', ...]} value="${tab}" onChange={setTab}${mode === 'fluid' ? ' fluid' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

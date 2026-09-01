@@ -73,17 +73,21 @@ export function Seg<T extends string>({ label, value, options, onChange }:
   );
 }
 
-export function Playground({ stage, panel, code, name }:
-  { stage: React.ReactNode; panel: React.ReactNode; code: string;
-    /** @iris/react export 이름 — import 줄과 플랫폼 스펙을 붙이는 데 쓴다 */
-    name?: string }) {
-  return (<>
+export function Playground({ stage, panel }:
+  { stage: React.ReactNode; panel: React.ReactNode }) {
+  return (
     <div className="playground">
       <div className="playground-stage">{stage}</div>
       <div className="playground-panel">{panel}</div>
     </div>
+  );
+}
+
+/** Code 섹션 — 붙여넣으면 도는 코드 + 네이티브 구현에 필요한 수치 */
+export function CodeSpec({ name, code }: { name: string; code: string }) {
+  return (<>
     <CodeBlock code={code} name={name} />
-    {name && <PlatformSpec name={name} />}
+    <PlatformSpec name={name} />
   </>);
 }
 

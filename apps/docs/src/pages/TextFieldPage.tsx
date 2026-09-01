@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { TextField, Button } from '@iris/react';
-import { Page, Section, Canvas, Chips, DoDont, Props, Playground, Seg } from '../components/Doc';
+import { Page, Section, Canvas, Chips, DoDont, Props, Playground, Seg, CodeSpec } from '../components/Doc';
 
 export default function TextFieldPage() {
   const [state, setState] = useState<'default' | 'error' | 'disabled'>('default');
   return (
     <Page kicker="Components · Selection & Input" title="Text field" desc="단일 행 텍스트 입력입니다. 라벨·입력 영역·헬퍼로 구성되고, 높이는 플랫폼 토큰(--iris-input-height)을 따릅니다.">
       <Section title="Playground">
-        <Playground name="TextField"
+        <Playground
           stage={<TextField label="이메일" placeholder="example@email.com" style={{ width: 280 }}
             helper="회사 이메일을 입력하세요" error={state === 'error' ? '이메일 형식이 올바르지 않습니다' : undefined}
             disabled={state === 'disabled'} defaultValue={state === 'error' ? 'hs@example' : ''} />}
           panel={<Seg label="state" value={state} options={['default', 'error', 'disabled'] as const} onChange={setState} />}
-          code={`<TextField label="이메일" helper="회사 이메일을 입력하세요"${state === 'error' ? ' error="이메일 형식이 올바르지 않습니다"' : ''}${state === 'disabled' ? ' disabled' : ''} />`} />
+ />
       </Section>
       <Section title="States" desc="Focused는 line/primary/strong 2px, Error는 status/negative. 입력해 보세요.">
         <Canvas>
@@ -67,6 +67,9 @@ export default function TextFieldPage() {
           doEx={<TextField label="이메일" placeholder="example@email.com" helper="회사 이메일" style={{ width: 220 }} />}
           dontTitle="플레이스홀더를 라벨 대신" dontBody="입력을 시작하면 라벨이 사라져 무엇을 쓰던 칸인지 잊게 됩니다."
           dontEx={<TextField placeholder="이메일" style={{ width: 220 }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="TextField" code={`<TextField label="이메일" helper="회사 이메일을 입력하세요"${state === 'error' ? ' error="이메일 형식이 올바르지 않습니다"' : ''}${state === 'disabled' ? ' disabled' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

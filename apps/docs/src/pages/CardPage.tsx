@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Card, ContentBadge } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 function CardDemo({ w = 220 }: { w?: number }) {
   return (
@@ -17,13 +17,13 @@ export default function CardPage() {
   return (
     <Page kicker="Components · Contents" title="Card" desc="콘텐츠 묶음 컨테이너입니다. 상단 16:9 썸네일 슬롯 + 본문 패딩 16, 링크 카드는 hover로 떠오릅니다.">
       <Section title="Playground">
-        <Playground name="Card"
+        <Playground
           stage={<Card variant={va} interactive thumbnail={th === '있음' ? <span>16 : 9</span> : undefined} style={{ width: 220 }}><CardDemo /></Card>}
           panel={<>
             <Seg label="variant" value={va} options={['outlined', 'elevated', 'filled'] as const} onChange={setVa} />
             <Seg label="thumbnail" value={th} options={['있음', '없음'] as const} onChange={setTh} />
           </>}
-          code={`<Card variant="${va}" interactive${th === '있음' ? ' thumbnail={<img ... />}' : ''}>...</Card>`} />
+ />
       </Section>
       <Section title="Variants" desc="Outlined = 경계선, Elevated = 그림자 + elevated 배경, Filled = alternative 배경.">
         <Canvas style={{ gap: 24 }}>
@@ -95,6 +95,9 @@ export default function CardPage() {
               <span style={{ display: 'flex', gap: 4 }}><ContentBadge tone="info">기록</ContentBadge><ContentBadge tone="positive">완료</ContentBadge></span>
             </div>
           </Card>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Card" code={`<Card variant="${va}" interactive${th === '있음' ? ' thumbnail={<img ... />}' : ''}>...</Card>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

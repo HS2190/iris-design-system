@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Popover, Button, Tooltip } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function PopoverPage() {
   const [show, setShow] = useState(true);
@@ -8,7 +8,7 @@ export default function PopoverPage() {
   return (
     <Page kicker="Components · Presentation" title="Popover" desc="앵커에 붙는 작은 안내 오버레이입니다. 제목 + 두어 줄 + 액션 하나. 한 줄 힌트는 Tooltip, 자유 콘텐츠는 Popup.">
       <Section title="Playground" desc="버튼으로 여닫아 보세요.">
-        <Playground name="Popover"
+        <Playground
           stage={<div style={{ position: 'relative', paddingBottom: show ? 150 : 0 }}>
             <Button size="s" variant="outlined" color="assistive" onClick={() => setShow(v => !v)}>기능 안내 {show ? '닫기' : '열기'}</Button>
             {show && <Popover title="새로운 필터" style={{ position: 'absolute', top: 44, left: 0 }}
@@ -17,7 +17,7 @@ export default function PopoverPage() {
             </Popover>}
           </div>}
           panel={<Seg label="action" value={ac} options={['있음', '없음'] as const} onChange={setAc} />}
-          code={`<Popover title="새로운 필터"${ac === '있음' ? ' action={<Button size="s">확인</Button>}' : ''}>직무·경력을 한 번에 걸 수 있어요.</Popover>`} />
+ />
       </Section>
       <Section title="Variants">
         <Canvas style={{ gap: 32 }}>
@@ -80,6 +80,9 @@ export default function PopoverPage() {
           doEx={<Popover title="새로운 필터" action={<Button size="s">확인</Button>} style={{ width: 230 }}>직무·경력을 한 번에 걸 수 있어요.</Popover>}
           dontTitle="한 줄 힌트에 팝오버" dontBody="같은 정보가 이름 한 줄이면 Tooltip이 맞습니다."
           dontEx={<div style={{ paddingTop: 40 }}><Tooltip open content="필터"><Button size="s" variant="outlined" color="assistive" leadingIcon="filter">필터</Button></Tooltip></div>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Popover" code={`<Popover title="새로운 필터"${ac === '있음' ? ' action={<Button size="s">확인</Button>}' : ''}>직무·경력을 한 번에 걸 수 있어요.</Popover>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

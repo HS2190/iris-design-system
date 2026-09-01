@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Chip, SearchField } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, DoDont, Props, Playground, Seg } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, DoDont, Props, Playground, Seg, CodeSpec } from '../components/Doc';
 
 export default function ChipPage() {
   const [variant, setVariant] = useState<'solid' | 'outlined'>('outlined');
@@ -11,14 +11,14 @@ export default function ChipPage() {
   return (
     <Page kicker="Components · Actions" title="Chip" desc="태그·필터·선택 항목을 표현하는 작은 액션입니다. 선택할 수 있는 모든 값이 한 화면에 보일 때 그룹으로 씁니다. 높이는 고정입니다.">
       <Section title="Playground">
-        <Playground name="Chip"
+        <Playground
           stage={<Chip variant={variant} size={size} selected={selected} onClick={() => setSelected(v => !v)}>필터</Chip>}
           panel={<>
             <Seg label="variant" value={variant} options={['solid', 'outlined'] as const} onChange={setVariant} />
             <Seg label="size" value={size} options={['m', 's'] as const} onChange={setSize} />
             <Seg label="selected" value={String(selected) as 'true' | 'false'} options={['false', 'true'] as const} onChange={v => setSelected(v === 'true')} />
           </>}
-          code={`<Chip variant="${variant}" size="${size}"${selected ? ' selected' : ''}>필터</Chip>`} />
+ />
       </Section>
       <Section title="Variants" desc="Selected는 Solid = primary 채움, Outlined = fill/primary + primary 라인입니다.">
         <Canvas>
@@ -76,6 +76,9 @@ export default function ChipPage() {
           doEx={<><Chip selected>디자인</Chip><Chip>개발</Chip><Chip>마케팅</Chip></>}
           dontTitle="긴 문장·내비게이션" dontBody="칩은 짧은 값 전용입니다. 페이지 이동은 Tab, 읽기 전용 상태는 Content badge를 쓰세요."
           dontEx={<Chip>지원 자격을 확인한 후 신청해 주세요</Chip>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Chip" code={`<Chip variant="${variant}" size="${size}"${selected ? ' selected' : ''}>필터</Chip>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

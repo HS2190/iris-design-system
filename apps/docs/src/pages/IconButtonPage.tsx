@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { IconButton, Tooltip, Button } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function IconButtonPage() {
   const [sz, setSz] = useState<'l' | 'm' | 's'>('m');
@@ -8,13 +8,13 @@ export default function IconButtonPage() {
   return (
     <Page kicker="Components · Actions" title="Icon button" desc="아이콘 전용 버튼입니다. 라벨이 없으므로 aria-label이 필수이고, 뜻이 모호하면 Tooltip을 얹습니다.">
       <Section title="Playground">
-        <Playground name="IconButton"
+        <Playground
           stage={<IconButton icon="share" aria-label="공유" size={sz} variant={va} />}
           panel={<>
             <Seg label="size" value={sz} options={['l', 'm', 's'] as const} onChange={setSz} />
             <Seg label="variant" value={va} options={['plain', 'outlined'] as const} onChange={setVa} />
           </>}
-          code={`<IconButton icon="share" aria-label="공유" size="${sz}"${va === 'outlined' ? ' variant="outlined"' : ''} />`} />
+ />
       </Section>
       <Section title="Variants" desc="Plain = 나브·툴바 안, Outlined = 단독 배치.">
         <Canvas style={{ gap: 32 }}>
@@ -70,6 +70,9 @@ export default function IconButtonPage() {
           doEx={<IconButton icon="share" aria-label="공유" variant="outlined" />}
           dontTitle="모호한 행동을 아이콘만으로" dontBody="같은 행동인데 해석이 갈리면 라벨 있는 버튼이 맞습니다."
           dontEx={<Button size="s" variant="outlined" color="assistive" leadingIcon="share">공유</Button>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="IconButton" code={`<IconButton icon="share" aria-label="공유" size="${sz}"${va === 'outlined' ? ' variant="outlined"' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

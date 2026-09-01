@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FilterButton, Chip, SearchField } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function FilterButtonPage() {
   const [open, setOpen] = useState(false);
@@ -9,10 +9,10 @@ export default function FilterButtonPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Filter button" desc="필터 시트/메뉴를 여는 트리거입니다. 적용된 필터 수를 뱃지로 보여줍니다. 즉시 토글되는 값은 Chip입니다.">
       <Section title="Playground">
-        <Playground name="FilterButton"
+        <Playground
           stage={<FilterButton active={st === 'active'} count={st === 'active' ? 2 : undefined} disabled={st === 'disabled'}>직무</FilterButton>}
           panel={<Seg label="state" value={st} options={['default', 'active', 'disabled'] as const} onChange={setSt} />}
-          code={`<FilterButton${st === 'active' ? ' active count={2}' : ''}${st === 'disabled' ? ' disabled' : ''}>직무</FilterButton>`} />
+ />
       </Section>
       <Section title="States">
         <Canvas>
@@ -67,6 +67,9 @@ export default function FilterButtonPage() {
           doEx={<><FilterButton active count={2}>직무</FilterButton><FilterButton>경력</FilterButton><FilterButton>지역</FilterButton></>}
           dontTitle="즉시 토글되는 값" dontBody="누르는 즉시 켜지고 꺼지는 값은 Chip입니다."
           dontEx={<><Chip selected>디자인</Chip><Chip>개발</Chip></>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="FilterButton" code={`<FilterButton${st === 'active' ? ' active count={2}' : ''}${st === 'disabled' ? ' disabled' : ''}>직무</FilterButton>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

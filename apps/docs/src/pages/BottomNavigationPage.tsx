@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BottomNavigation, type BottomNavItem } from '@iris/react';
-import { Page, Section, Canvas, Chips, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const items: BottomNavItem[] = [
   { id: 'home', label: '홈', icon: 'home' },
@@ -14,10 +14,10 @@ export default function BottomNavigationPage() {
   return (
     <Page kicker="Components · Navigations" title="Bottom navigation" desc="모바일 하단 탭 바입니다. 3~5탭, 아이콘 24 + 라벨 10, 활성 탭은 primary + aria-current로 노출됩니다.">
       <Section title="Playground" desc="탭을 눌러보세요 — 알림 탭엔 Push badge가 얹혀 있습니다.">
-        <Playground name="BottomNavigation"
+        <Playground
           stage={<BottomNavigation items={items} value={tab} onChange={setTab} style={{ width: 340 }} />}
           panel={<div style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)', lineHeight: 1.6 }}>현재 탭: <b>{tab}</b></div>}
-          code={`<BottomNavigation items={items} value="${tab}" onChange={setTab} />`} />
+ />
       </Section>
       <Section title="Variants" desc="기본 4탭 · 미확인 알림은 Push badge로.">
         <Canvas col style={{ gap: 16 }}>
@@ -70,6 +70,9 @@ export default function BottomNavigationPage() {
           doEx={<BottomNavigation items={items} value="home" style={{ width: 280 }} />}
           dontTitle="6탭 이상" dontBody="같은 앱에 탭을 더 얹으면 눌림 영역이 좁아지고 위계가 무너집니다."
           dontEx={<BottomNavigation items={[...items, { id: 'set', label: '설정', icon: 'settings' }, { id: 'cal', label: '캘린더', icon: 'calendar' }]} value="home" style={{ width: 280 }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="BottomNavigation" code={`<BottomNavigation items={items} value="${tab}" onChange={setTab} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

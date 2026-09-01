@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu, type MenuItem, Icon, Select } from '@iris/react';
-import { Page, Section, Canvas, Chips, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const items: MenuItem[] = [
   { id: 'edit', label: '수정', icon: 'edit' },
@@ -14,7 +14,7 @@ export default function MenuPage() {
   return (
     <Page kicker="Components · Presentation" title="Menu" desc="더보기·우클릭에서 뜨는 행동 목록입니다. 항목 40 · 외곽 패딩 6, 파괴적 행동은 구분선 아래 negative로.">
       <Section title="Playground" desc="더보기를 눌러 여닫고, 항목을 선택해 보세요.">
-        <Playground name="Menu"
+        <Playground
           stage={<div style={{ position: 'relative', paddingBottom: open ? 150 : 0 }}>
             <button aria-label="더보기" aria-expanded={open} onClick={() => setOpen(v => !v)}
               style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, border: '1px solid var(--iris-semantic-line-solid-neutral)', background: 'none', borderRadius: 10, color: 'var(--iris-semantic-label-neutral)', cursor: 'pointer' }}>
@@ -23,7 +23,7 @@ export default function MenuPage() {
             {open && <Menu items={items} onSelect={id => { setLast(id); setOpen(false); }} style={{ position: 'absolute', top: 44, left: 0 }} />}
           </div>}
           panel={<div style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)', lineHeight: 1.6 }}>마지막 선택:<br /><b>{last ?? '없음'}</b></div>}
-          code={`<Menu items={[{ id: 'edit', label: '수정', icon: 'edit' }, ...]} onSelect={run} />`} />
+ />
       </Section>
       <Section title="Variants" desc="아이콘 유무 · 파괴적 행동은 구분선 + negative.">
         <Canvas style={{ gap: 32 }}>
@@ -93,6 +93,9 @@ export default function MenuPage() {
           doEx={<Menu items={items} style={{ minWidth: 160 }} />}
           dontTitle="값 선택을 메뉴로" dontBody="같은 목록이라도 '하나를 고르는 값'이면 Select입니다."
           dontEx={<Select aria-label="정렬" options={[{ value: 'a', label: '수정됨 순' }, { value: 'b', label: '이름순' }]} defaultValue="a" style={{ width: 160 }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Menu" code={`<Menu items={[{ id: 'edit', label: '수정', icon: 'edit' }, ...]} onSelect={run} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

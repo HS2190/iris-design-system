@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Select, Radio, TextField, Button } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const jobs = [
   { value: 'pd', label: '프로덕트 디자이너' }, { value: 'ux', label: 'UX 리서처' },
@@ -13,14 +13,14 @@ export default function SelectPage() {
   return (
     <Page kicker="Components · Selection & Input" title="Select" desc="목록에서 하나를 고르는 드롭다운입니다. 네이티브 select 기반이라 모바일에서는 OS 픽커가 뜹니다. 옵션 6개 이상일 때 씁니다.">
       <Section title="Playground">
-        <Playground name="Select"
+        <Playground
           stage={<Select key={st} label="직무" placeholder="선택하세요" options={jobs} style={{ width: 260 }}
             defaultValue={st === 'selected' ? 'pd' : undefined}
             helper={st === 'default' ? '하나만 선택할 수 있어요' : undefined}
             error={st === 'error' ? '직무를 선택해 주세요' : undefined}
             disabled={st === 'disabled'} />}
           panel={<Seg label="state" value={st} options={['default', 'selected', 'error', 'disabled'] as const} onChange={setSt} />}
-          code={`<Select label="직무" options={jobs}${st === 'selected' ? ' defaultValue="pd"' : ' placeholder="선택하세요"'}${st === 'error' ? ' error="직무를 선택해 주세요"' : ''}${st === 'disabled' ? ' disabled' : ''} />`} />
+ />
       </Section>
       <Section title="Variants" desc="시각 변형은 단일형 — 쓰임에 따라 구성이 달라집니다.">
         <Canvas style={{ gap: 40 }}>
@@ -89,6 +89,9 @@ export default function SelectPage() {
           doEx={<Select placeholder="직무 선택 (6개)" options={jobs} style={{ width: 200 }} />}
           dontTitle="옵션 2~3개" dontBody="다 보여줄 수 있으면 Radio나 Segmented control이 빠릅니다."
           dontEx={<div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}><Radio name="s1" label="카드" defaultChecked /><Radio name="s1" label="계좌" /></div>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Select" code={`<Select label="직무" options={jobs}${st === 'selected' ? ' defaultValue="pd"' : ' placeholder="선택하세요"'}${st === 'error' ? ' error="직무를 선택해 주세요"' : ''}${st === 'disabled' ? ' disabled' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

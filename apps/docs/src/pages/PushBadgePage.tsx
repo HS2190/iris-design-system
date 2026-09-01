@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { PushBadge, Icon, Button } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function PushBadgePage() {
   const [v, setV] = useState<'dot' | '3' | '120'>('3');
   return (
     <Page kicker="Components · Feedback" title="Push badge" desc="미확인 알림 표시입니다. dot(존재만) 또는 카운트(수), 앵커 우상단에 얹습니다. 확인하면 사라지는 값만 담습니다.">
       <Section title="Playground">
-        <Playground name="PushBadge"
+        <Playground
           stage={<PushBadge count={v === 'dot' ? undefined : Number(v)}><Icon name="bell" /></PushBadge>}
           panel={<Seg label="value" value={v} options={['dot', '3', '120'] as const} onChange={setV} />}
-          code={`<PushBadge${v === 'dot' ? '' : ` count={${v}}`}><Icon name="bell" /></PushBadge>`} />
+ />
       </Section>
       <Section title="Variants" desc="dot = 존재만 알림, count = 수가 의미 있을 때. 앵커 없이 단독도 가능.">
         <Canvas style={{ gap: 40 }}>
@@ -71,6 +71,9 @@ export default function PushBadgePage() {
           doEx={<PushBadge count={3}><Icon name="bell" /></PushBadge>}
           dontTitle="전체 개수를 상시 노출" dontBody="같은 아이콘에 총량을 붙이면 영원히 99+ — 신호가 죽습니다."
           dontEx={<PushBadge count={4096}><Icon name="bell" /></PushBadge>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="PushBadge" code={`<PushBadge${v === 'dot' ? '' : ` count={${v}}`}><Icon name="bell" /></PushBadge>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

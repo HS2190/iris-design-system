@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Slider, TextField, Button } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function SliderPage() {
   const [st, setSt] = useState<'default' | 'disabled'>('default');
   return (
     <Page kicker="Components · Selection & Input" title="Slider" desc="범위 안의 대략적인 값을 드래그로 고릅니다. 정확한 숫자가 필요하면 Text field를 병행합니다.">
       <Section title="Playground" desc="드래그해 보세요.">
-        <Playground name="Slider"
+        <Playground
           stage={<Slider key={st} label="가격대" defaultValue={30} formatValue={v => `${v}만 원`} disabled={st === 'disabled'} style={{ width: 300 }} />}
           panel={<Seg label="state" value={st} options={['default', 'disabled'] as const} onChange={setSt} />}
-          code={`<Slider label="가격대" formatValue={v => \`\${v}만 원\`}${st === 'disabled' ? ' disabled' : ''} />`} />
+ />
       </Section>
       <Section title="States" desc="드래그해 보세요.">
         <Canvas col style={{ gap: 24 }}>
@@ -60,6 +60,9 @@ export default function SliderPage() {
           doEx={<Slider label="가격대" defaultValue={30} formatValue={v => `${v}만`} style={{ width: 220 }} />}
           dontTitle="정확한 값 단독 입력" dontBody="생년월일·수량처럼 정확해야 하는 값은 입력 필드로."
           dontEx={<TextField label="수량" defaultValue="3" style={{ width: 120 }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Slider" code={`<Slider label="가격대" formatValue={v => \`\${v}만 원\`}${st === 'disabled' ? ' disabled' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

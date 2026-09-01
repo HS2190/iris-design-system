@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ProgressTracker, Button, Progress } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const steps = [
   { id: 'cart', label: '장바구니' },
@@ -21,7 +21,7 @@ export default function ProgressTrackerPage() {
   return (
     <Page kicker="Components · Navigations" title="Progress tracker" desc="다단계 절차의 현재 위치를 보여줍니다. 마커 24 · 커넥터 2, 3~5단계 권장. 단계가 아니라 진행률(%)이면 Progress입니다.">
       <Section title="Playground" desc="다음/이전으로 단계를 이동해 보세요.">
-        <Playground name="ProgressTracker"
+        <Playground
           stage={<div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: ori === 'horizontal' ? 340 : undefined }}>
             <ProgressTracker steps={ori === 'vertical' ? vSteps : steps} current={steps[idx].id} orientation={ori} />
             <div style={{ display: 'flex', gap: 8 }}>
@@ -30,7 +30,7 @@ export default function ProgressTrackerPage() {
             </div>
           </div>}
           panel={<Seg label="orientation" value={ori} options={['horizontal', 'vertical'] as const} onChange={setOri} />}
-          code={`<ProgressTracker steps={steps} current="${steps[idx].id}"${ori === 'vertical' ? ' orientation="vertical"' : ''} />`} />
+ />
       </Section>
       <Section title="Variants" desc="가로 = 짧은 라벨 절차, 세로 = 설명 붙는 절차.">
         <Canvas col style={{ gap: 32 }}>
@@ -95,6 +95,9 @@ export default function ProgressTrackerPage() {
           doEx={<ProgressTracker steps={steps} current="ship" style={{ width: 320 }} />}
           dontTitle="진행률에 트래커" dontBody="같은 흐름이라도 '몇 %'가 중요하면 Progress가 맞습니다."
           dontEx={<Progress label="업로드 중" value={65} showValue style={{ width: 280 }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="ProgressTracker" code={`<ProgressTracker steps={steps} current="${steps[idx].id}"${ori === 'vertical' ? ' orientation="vertical"' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SectionHeader, ListCell, Icon } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const more = <>더보기<Icon name="chevron-right" size={16} /></>;
 
@@ -10,14 +10,14 @@ export default function SectionHeaderPage() {
   return (
     <Page kicker="Components · Contents" title="Section header" desc="섹션 제목 행입니다. 제목 + 선택적 설명, 우측 '더보기' 액션. 아래 콘텐츠(리스트·카드)와 한 묶음으로 씁니다.">
       <Section title="Playground">
-        <Playground name="SectionHeader"
+        <Playground
           stage={<SectionHeader title="최근 프로젝트" description={de === '있음' ? '최근 7일 작업' : undefined}
             action={ac === '더보기' ? more : undefined} style={{ width: 320 }} />}
           panel={<>
             <Seg label="action" value={ac} options={['없음', '더보기'] as const} onChange={setAc} />
             <Seg label="description" value={de} options={['없음', '있음'] as const} onChange={setDe} />
           </>}
-          code={`<SectionHeader title="최근 프로젝트"${de === '있음' ? ' description="최근 7일 작업"' : ''}${ac === '더보기' ? ' action={<>더보기<Icon name="chevron-right" /></>}' : ''} />`} />
+ />
       </Section>
       <Section title="Variants">
         <Canvas col style={{ gap: 12 }}>
@@ -66,6 +66,9 @@ export default function SectionHeaderPage() {
           doEx={<div style={{ width: 260 }}><SectionHeader title="알림" action={more} /></div>}
           dontTitle="액션 여러 개" dontBody="같은 섹션에 더보기·설정·새로고침을 다 걸면 제목 행이 툴바가 됩니다."
           dontEx={<div style={{ width: 260 }}><SectionHeader title="알림" action={<><Icon name="settings" size={16} />설정 · 새로고침 · {more}</>} /></div>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="SectionHeader" code={`<SectionHeader title="최근 프로젝트"${de === '있음' ? ' description="최근 7일 작업"' : ''}${ac === '더보기' ? ' action={<>더보기<Icon name="chevron-right" /></>}' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

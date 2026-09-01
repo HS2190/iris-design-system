@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Table, SectionHeader } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const rows = [
   { name: '안현서', role: '프로덕트 디자이너', years: '7' },
@@ -13,11 +13,11 @@ export default function TablePage() {
   return (
     <Page kicker="Components · Contents" title="Table" desc="데이터 테이블입니다. 헤더 40 · 행 48, 숫자 열은 우측 정렬 + tabular-nums. 넓으면 컨테이너가 가로 스크롤합니다.">
       <Section title="Playground" desc="행 위에 올려보세요 — interactive면 hover 배경이 생깁니다.">
-        <Playground name="Table"
+        <Playground
           stage={<Table interactive style={{ width: 380 }} data={rows}
             columns={[{ key: 'name', header: '이름' }, { key: 'role', header: '직무' }, { key: 'years', header: '경력(년)', align: al }]} />}
           panel={<Seg label="숫자 열 정렬" value={al} options={['left', 'right'] as const} onChange={setAl} />}
-          code={`<Table interactive columns={[..., { key: 'years', header: '경력(년)', align: '${al}' }]} data={rows} />`} />
+ />
       </Section>
       <Section title="States" desc="빈 데이터면 emptyText 행을 보여줍니다.">
         <Canvas col style={{ gap: 24 }}>
@@ -70,6 +70,9 @@ export default function TablePage() {
           dontTitle="숫자를 가운데·좌측에" dontBody="같은 데이터도 정렬이 흩어지면 자릿수 비교가 안 됩니다."
           dontEx={<Table style={{ width: 240 }} data={[{ n: '구독', v: '128,400' }, { n: '광고', v: '9,120' }]}
             columns={[{ key: 'n', header: '항목' }, { key: 'v', header: '금액(원)', align: 'center' }]} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Table" code={`<Table interactive columns={[..., { key: 'years', header: '경력(년)', align: '${al}' }]} data={rows} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

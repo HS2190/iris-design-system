@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TopNavigation, Icon, ListCell } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const iconBtn = (name: 'arrow-left' | 'bell' | 'search' | 'settings' | 'share', label: string) => (
   <button key={name} aria-label={label} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, border: 'none', background: 'none', borderRadius: 10, color: 'var(--iris-semantic-label-neutral)', cursor: 'pointer' }}>
@@ -13,11 +13,11 @@ export default function TopNavigationPage() {
   return (
     <Page kicker="Components · Navigations" title="Top navigation" desc="화면 상단 바입니다. 높이는 nav-top-height 토큰(웹 64 · iOS 44 · Android 56), 좌측 뒤로가기 · 제목 · 우측 액션 최대 2개.">
       <Section title="Playground">
-        <Playground name="TopNavigation"
+        <Playground
           stage={<TopNavigation title="설정" leading={iconBtn('arrow-left', '뒤로')} style={{ width: 340 }}
             trailing={tr === '0' ? undefined : <>{iconBtn('search', '검색')}{tr === '2' && iconBtn('bell', '알림')}</>} />}
           panel={<Seg label="trailing" value={tr} options={['0', '1', '2'] as const} onChange={setTr} />}
-          code={`<TopNavigation title="설정" leading={<IconButton ... />}${tr !== '0' ? ' trailing={...}' : ''} />`} />
+ />
       </Section>
       <Section title="Variants">
         <Canvas col style={{ gap: 12 }}>
@@ -75,6 +75,9 @@ export default function TopNavigationPage() {
           doEx={<TopNavigation title="알림" trailing={<>{iconBtn('search', '검색')}{iconBtn('more-vertical' as never, '더보기')}</>} style={{ width: 280 }} />}
           dontTitle="액션 나열" dontBody="같은 화면에 4개를 걸면 제목이 밀리고 눌림 실수가 늘어납니다."
           dontEx={<TopNavigation title="알림" trailing={<>{iconBtn('search', '검색')}{iconBtn('bell', '알림')}{iconBtn('share', '공유')}{iconBtn('settings', '설정')}</>} style={{ width: 280 }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="TopNavigation" code={`<TopNavigation title="설정" leading={<IconButton ... />}${tr !== '0' ? ' trailing={...}' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

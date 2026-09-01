@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Pagination, Table } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const rows = [
   { name: '안현서', role: '프로덕트 디자이너' },
@@ -13,10 +13,10 @@ export default function PaginationPage() {
   return (
     <Page kicker="Components · Navigations" title="Pagination" desc="페이지를 나눠 이동합니다. number는 목록·표, dot은 캐러셀 인디케이터. 현재 페이지는 aria-current로 노출됩니다.">
       <Section title="Playground" desc="눌러보세요.">
-        <Playground name="Pagination"
+        <Playground
           stage={<Pagination variant={va} page={pg} total={9} onChange={setPg} />}
           panel={<Seg label="variant" value={va} options={['number', 'dot'] as const} onChange={setVa} />}
-          code={`<Pagination${va === 'dot' ? ' variant="dot"' : ''} page={${pg}} total={9} onChange={setPage} />`} />
+ />
       </Section>
       <Section title="Variants">
         <Canvas col style={{ gap: 20 }}>
@@ -83,6 +83,9 @@ export default function PaginationPage() {
           doEx={<Pagination page={5} total={20} />}
           dontTitle="목록에 dot" dontBody="같은 20페이지를 점으로 늘어놓으면 위치도 이동도 못 잡습니다."
           dontEx={<Pagination variant="dot" page={5} total={20} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Pagination" code={`<Pagination${va === 'dot' ? ' variant="dot"' : ''} page={${pg}} total={9} onChange={setPage} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

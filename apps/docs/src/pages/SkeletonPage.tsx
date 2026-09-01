@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Skeleton, Button, Avatar, ListCell, Card } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const CellSkeleton = ({ w = 300 }: { w?: number }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: 12, width: w }}>
@@ -19,7 +19,7 @@ export default function SkeletonPage() {
   return (
     <Page kicker="Components · Loading" title="Skeleton" desc="로딩 플레이스홀더입니다. 실제 콘텐츠의 레이아웃 모양대로 조합합니다. 시머는 reduced-motion에서 정지합니다.">
       <Section title="Playground" desc="불러오기를 누르면 1.6초 동안 스켈레톤이 보입니다.">
-        <Playground name="Skeleton"
+        <Playground
           stage={<div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start' }}>
             {loading
               ? <CellSkeleton />
@@ -27,7 +27,7 @@ export default function SkeletonPage() {
             <Button size="s" variant="outlined" color="assistive" onClick={reload}>다시 불러오기</Button>
           </div>}
           panel={<div style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)', lineHeight: 1.6 }}>콘텐츠와 같은<br />모양·크기로.</div>}
-          code={`<Skeleton variant="circle" /> <Skeleton width="55%" />`} />
+ />
       </Section>
       <Section title="Variants" desc="text(글줄 14) · circle(아바타) · rect(블록).">
         <Canvas style={{ gap: 40 }}>
@@ -86,6 +86,9 @@ export default function SkeletonPage() {
           doEx={<CellSkeleton w={240} />}
           dontTitle="아무 사각형 하나" dontBody="같은 자리를 큰 블록 하나로 채우면 로딩 후 레이아웃이 널뜁니다."
           dontEx={<Skeleton variant="rect" width={240} height={56} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Skeleton" code={`<Skeleton variant="circle" /> <Skeleton width="55%" />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

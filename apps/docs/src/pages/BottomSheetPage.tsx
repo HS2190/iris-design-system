@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BottomSheet, Button, ListCell, Icon, Popup } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const sheetList = (
   <div style={{ margin: '0 -8px' }}>
@@ -15,7 +15,7 @@ export default function BottomSheetPage() {
   return (
     <Page kicker="Components · Presentation" title="Bottom sheet" desc="모바일 하단 시트입니다. 그래버 36×4 · 상단 radius-sheet 토큰. 스크림·드래그 제스처는 앱 셸이 담당합니다.">
       <Section title="Playground" desc="여닫아 보세요.">
-        <Playground name="BottomSheet"
+        <Playground
           stage={<div style={{ position: 'relative', width: 280, height: 260, borderRadius: 16, overflow: 'hidden', border: '1px solid var(--iris-semantic-line-solid-neutral)', background: 'var(--iris-semantic-background-normal-normal)' }}>
             <div style={{ padding: 16 }}><Button size="s" variant="outlined" color="assistive" onClick={() => setOpen(v => !v)}>{open ? '닫기' : '시트 열기'}</Button></div>
             {open && <>
@@ -24,7 +24,7 @@ export default function BottomSheetPage() {
             </>}
           </div>}
           panel={<div style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)', lineHeight: 1.6 }}>스크림을 누르면<br />닫힙니다.</div>}
-          code={`<BottomSheet title="공유하기"><ListCell ... /></BottomSheet>`} />
+ />
       </Section>
       <Section title="Variants">
         <Canvas style={{ gap: 32 }}>
@@ -89,6 +89,9 @@ export default function BottomSheetPage() {
           doEx={<div style={{ width: 240 }}><BottomSheet title="공유하기" style={{ borderRadius: 16 }}>{sheetList}</BottomSheet></div>}
           dontTitle="데스크톱 넓은 화면에 시트" dontBody="같은 작업이 데스크톱 중앙이면 Popup이 맞습니다."
           dontEx={<Popup title="공유하기" onClose={() => {}} style={{ width: 240 }}>링크를 아는 모두가 볼 수 있어요.</Popup>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="BottomSheet" code={`<BottomSheet title="공유하기"><ListCell ... /></BottomSheet>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

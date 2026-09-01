@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Progress, Card, Toast } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function ProgressPage() {
   const [v, setV] = useState<'25' | '65' | '100' | '불확정'>('65');
   return (
     <Page kicker="Components · Navigations" title="Progress" desc="진행 표시줄입니다. 트랙 4 고정, 값을 모르면 indeterminate. role=progressbar로 노출됩니다.">
       <Section title="Playground">
-        <Playground name="Progress"
+        <Playground
           stage={<Progress label="업로드 중" value={v === '불확정' ? undefined : Number(v)} showValue indeterminate={v === '불확정'} style={{ width: 280 }} />}
           panel={<Seg label="value" value={v} options={['25', '65', '100', '불확정'] as const} onChange={setV} />}
-          code={`<Progress label="업로드 중"${v === '불확정' ? ' indeterminate' : ` value={${v}} showValue`} />`} />
+ />
       </Section>
       <Section title="Variants">
         <Canvas col style={{ gap: 20 }}>
@@ -64,6 +64,9 @@ export default function ProgressPage() {
           doEx={<Progress label="불러오는 중" indeterminate style={{ width: 240 }} />}
           dontTitle="가짜 고정 퍼센트" dontBody="같은 로딩을 65%에 멈춰두면 멈춘 것처럼 보이고 신뢰를 잃습니다."
           dontEx={<Progress label="불러오는 중" value={65} showValue style={{ width: 240 }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Progress" code={`<Progress label="업로드 중"${v === '불확정' ? ' indeterminate' : ` value={${v}} showValue`} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

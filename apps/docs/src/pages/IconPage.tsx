@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Icon, iconNames, Button, ListCell, SearchField, FallbackView, type IconName, type IconVariant } from '@iris/react';
-import { Page, Section, Canvas, Spec, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const CATS: [string, IconName[]][] = [
   ['Navigation', ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right', 'arrow-left', 'arrow-right', 'external-link', 'menu', 'more-horizontal', 'more-vertical', 'home', 'sign-out', 'refresh', 'sort', 'sliders']],
@@ -22,13 +22,13 @@ export default function IconPage() {
   return (
     <Page kicker="Foundations · Icons" title="Icon" desc={`Phosphor 기반 아이콘 ${iconNames.length}종 × line/fill 2변형. 색은 currentColor — 부모의 label/* 토큰을 그대로 따릅니다. (MIT · phosphoricons.com)`}>
       <Section title="Playground">
-        <Playground name="Icon"
+        <Playground
           stage={<Icon name="star" size={Number(sz)} variant={va} style={{ color: 'var(--iris-semantic-label-normal)' }} />}
           panel={<>
             <Seg label="variant" value={va} options={['line', 'fill'] as const} onChange={setVa} />
             <Seg label="size" value={sz} options={['16', '20', '24'] as const} onChange={setSz} />
           </>}
-          code={`<Icon name="star"${va === 'fill' ? ' variant="fill"' : ''}${sz !== '24' ? ` size={${sz}}` : ''} />`} />
+ />
       </Section>
       <Section title="Library" desc="클릭하면 이름이 복사됩니다. 우측 상단에서 변형을 전환해 보세요.">
         <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 8, alignItems: 'center', flexWrap: 'wrap' }}>
@@ -103,6 +103,9 @@ export default function IconPage() {
       <Section title="How to use">
         <DoDont doTitle="자명한 아이콘만 단독 사용" doBody="닫기·검색·더보기처럼 뜻이 통용되는 아이콘만 단독으로. 그 외엔 라벨과 함께." doEx={<><Button variant="outlined" color="assistive" leadingIcon="share">공유</Button><Icon name="close" /></>}
           dontTitle="모호한 아이콘을 라벨 없이" dontBody="필터·설정처럼 해석이 갈리는 아이콘을 단독으로 쓰면 학습 비용이 생깁니다." dontEx={<><Icon name="filter" /><Icon name="settings" /><Icon name="more-vertical" /></>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Icon" code={`<Icon name="star"${va === 'fill' ? ' variant="fill"' : ''}${sz !== '24' ? ` size={${sz}}` : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

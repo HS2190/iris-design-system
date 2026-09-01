@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { Alert, Button, Toast } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function AlertPage() {
   const [btns, setBtns] = useState<'2버튼' | '1버튼'>('2버튼');
   return (
     <Page kicker="Components · Feedback" title="Alert" desc="흐름을 멈추고 확인을 받는 대화상자입니다. 표현부 컴포넌트 — 스크림·포털·포커스 트랩은 앱 셸이 담당합니다.">
       <Section title="Playground">
-        <Playground name="Alert"
+        <Playground
           stage={<Alert title="메모를 삭제할까요?" actions={btns === '2버튼'
             ? <><Button size="s" variant="outlined" color="assistive">취소</Button><Button size="s">삭제</Button></>
             : <Button size="s">확인</Button>}>
             삭제하면 되돌릴 수 없어요.
           </Alert>}
           panel={<Seg label="actions" value={btns} options={['2버튼', '1버튼'] as const} onChange={setBtns} />}
-          code={`<Alert title="메모를 삭제할까요?" actions={...}>삭제하면 되돌릴 수 없어요.</Alert>`} />
+ />
       </Section>
       <Section title="Variants" desc="확인+취소 2버튼이 기본, 단순 공지는 1버튼.">
         <Canvas style={{ gap: 32 }}>
@@ -72,6 +72,9 @@ export default function AlertPage() {
           doEx={<Alert title="메모를 삭제할까요?" actions={<><Button size="s" variant="outlined" color="assistive">취소</Button><Button size="s">삭제</Button></>}>삭제하면 되돌릴 수 없어요.</Alert>}
           dontTitle="예 / 아니요" dontBody="같은 확인인데 라벨이 행동을 안 담으면 질문을 다시 읽어야 합니다."
           dontEx={<Alert title="메모를 삭제할까요?" actions={<><Button size="s" variant="outlined" color="assistive">아니요</Button><Button size="s">예</Button></>}>삭제하면 되돌릴 수 없어요.</Alert>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Alert" code={`<Alert title="메모를 삭제할까요?" actions={...}>삭제하면 되돌릴 수 없어요.</Alert>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

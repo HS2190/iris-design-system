@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ActionArea, Button } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const Frame = ({ children }: { children: React.ReactNode }) => (
   <div style={{ width: 300, borderRadius: 16, overflow: 'hidden', border: '1px solid var(--iris-semantic-line-solid-neutral)', background: 'var(--iris-semantic-background-normal-normal)' }}>
@@ -14,13 +14,13 @@ export default function ActionAreaPage() {
   return (
     <Page kicker="Components · Actions" title="Action area" desc="화면 하단 고정 버튼 영역입니다. 버튼 1~2개를 균등 분할하고, 하단 패딩에 safe-area 토큰이 더해집니다.">
       <Section title="Playground">
-        <Playground name="ActionArea"
+        <Playground
           stage={<Frame><ActionArea divider>
             {n === '2버튼' && <Button variant="outlined" color="assistive">취소</Button>}
             <Button>{n === '2버튼' ? '결제하기' : '시작하기'}</Button>
           </ActionArea></Frame>}
           panel={<Seg label="buttons" value={n} options={['1버튼', '2버튼'] as const} onChange={setN} />}
-          code={`<ActionArea divider>${n === '2버튼' ? '<Button variant="outlined" color="assistive">취소</Button>' : ''}<Button>확인</Button></ActionArea>`} />
+ />
       </Section>
       <Section title="Variants" desc="풀폭 1버튼 / 균등 2버튼 · 스크롤 경계엔 divider.">
         <Canvas col style={{ gap: 20 }}>
@@ -68,6 +68,9 @@ export default function ActionAreaPage() {
           doEx={<div style={{ width: 260 }}><ActionArea><Button variant="outlined" color="assistive">취소</Button><Button>결제하기</Button></ActionArea></div>}
           dontTitle="주 행동 두 개" dontBody="같은 영역에 solid가 둘이면 어느 것이 결제인지 알 수 없습니다."
           dontEx={<div style={{ width: 260 }}><ActionArea><Button>취소</Button><Button>결제하기</Button></ActionArea></div>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="ActionArea" code={`<ActionArea divider>${n === '2버튼' ? '<Button variant="outlined" color="assistive">취소</Button>' : ''}<Button>확인</Button></ActionArea>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

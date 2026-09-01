@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Popup, Button, TextField, Alert } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function PopupPage() {
   const [open, setOpen] = useState(true);
   return (
     <Page kicker="Components · Presentation" title="Popup" desc="자유 콘텐츠를 담는 모달입니다. 폼·상세 등 한 작업을 완결. 확인만 받는 흐름은 Alert, 모바일 다중 선택은 Bottom sheet.">
       <Section title="Playground" desc="여닫아 보세요 — 닫기 X와 푸터 버튼이 있습니다.">
-        <Playground name="Popup"
+        <Playground
           stage={open
             ? <Popup title="이름 바꾸기" onClose={() => setOpen(false)}
                 footer={<><Button size="s" variant="outlined" color="assistive" onClick={() => setOpen(false)}>취소</Button><Button size="s" onClick={() => setOpen(false)}>저장</Button></>}>
@@ -15,7 +15,7 @@ export default function PopupPage() {
               </Popup>
             : <Button size="s" variant="outlined" color="assistive" onClick={() => setOpen(true)}>팝업 열기</Button>}
           panel={<div style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)', lineHeight: 1.6 }}>스크림·포털은<br />앱 셸 담당입니다.</div>}
-          code={`<Popup title="이름 바꾸기" onClose={close} footer={...}><TextField ... /></Popup>`} />
+ />
       </Section>
       <Section title="Variants">
         <Canvas col style={{ gap: 24 }}>
@@ -84,6 +84,9 @@ export default function PopupPage() {
           </Popup>}
           dontTitle="확인만 받는데 팝업" dontBody="같은 흐름이 예/아니오 확인뿐이면 Alert가 맞습니다."
           dontEx={<Alert title="저장할까요?" actions={<><Button size="s" variant="outlined" color="assistive">취소</Button><Button size="s">저장</Button></>} style={{ width: 260 }}>변경 사항을 저장합니다.</Alert>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Popup" code={`<Popup title="이름 바꾸기" onClose={close} footer={...}><TextField ... /></Popup>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

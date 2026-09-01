@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ListCell, Icon, Avatar, Switch, SectionHeader, Divider } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function ListCellPage() {
   const [ld, setLd] = useState<'none' | 'icon' | 'avatar'>('icon');
@@ -8,7 +8,7 @@ export default function ListCellPage() {
   return (
     <Page kicker="Components · Contents" title="List cell" desc="리스트 한 행입니다. 리딩(아이콘·아바타) + 콘텐츠(제목·설명) + 트레일링(값·셰브론·스위치) 3슬롯 구조, 최소 높이 56.">
       <Section title="Playground">
-        <Playground name="ListCell"
+        <Playground
           stage={<ListCell interactive title="알림 설정" description="푸시·이메일 수신 관리" style={{ width: 320 }}
             leading={ld === 'icon' ? <Icon name="settings" /> : ld === 'avatar' ? <Avatar size="m" name="안" /> : undefined}
             trailing={tr === 'chevron' ? <Icon name="chevron-right" size={20} /> : tr === 'value' ? <>사용 중<Icon name="chevron-right" size={20} /></> : tr === 'switch' ? <Switch aria-label="알림" defaultChecked /> : undefined} />}
@@ -16,7 +16,7 @@ export default function ListCellPage() {
             <Seg label="leading" value={ld} options={['none', 'icon', 'avatar'] as const} onChange={setLd} />
             <Seg label="trailing" value={tr} options={['none', 'chevron', 'value', 'switch'] as const} onChange={setTr} />
           </>}
-          code={`<ListCell interactive title="알림 설정" description="푸시·이메일 수신 관리"${ld !== 'none' ? ` leading={<${ld === 'icon' ? 'Icon' : 'Avatar'} ... />}` : ''}${tr !== 'none' ? ' trailing={...}' : ''} />`} />
+ />
       </Section>
       <Section title="Variants" desc="슬롯 조합으로 구성이 달라집니다. 제목·설명은 넘치면 말줄임.">
         <Canvas col style={{ gap: 4 }}>
@@ -80,6 +80,9 @@ export default function ListCellPage() {
           doEx={<ListCell title="알림 설정" description="푸시·이메일 수신 관리" trailing={<Icon name="chevron-right" size={20} />} style={{ width: 260 }} />}
           dontTitle="제목에 전부 욱여넣기" dontBody="같은 내용을 한 줄에 쓰면 스캔이 안 되고 말줄임됩니다."
           dontEx={<ListCell title="알림 설정 — 푸시·이메일 수신 관리" trailing={<Icon name="chevron-right" size={20} />} style={{ width: 260 }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="ListCell" code={`<ListCell interactive title="알림 설정" description="푸시·이메일 수신 관리"${ld !== 'none' ? ` leading={<${ld === 'icon' ? 'Icon' : 'Avatar'} ... />}` : ''}${tr !== 'none' ? ' trailing={...}' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

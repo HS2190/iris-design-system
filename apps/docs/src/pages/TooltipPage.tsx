@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Tooltip, Button, Icon, Popover } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function TooltipPage() {
   const [pl, setPl] = useState<'top' | 'bottom'>('top');
   return (
     <Page kicker="Components · Presentation" title="Tooltip" desc="hover·focus에 뜨는 한 줄 힌트입니다. 오프셋 8 · caption-1. 필수 정보는 담지 않습니다 — 못 보는 사용자가 있습니다.">
       <Section title="Playground" desc="버튼에 마우스를 올리거나 Tab으로 포커스해 보세요.">
-        <Playground name="Tooltip"
+        <Playground
           stage={<div style={{ padding: '48px 0' }}><Tooltip content="변경 사항 저장" placement={pl}><Button size="s" variant="outlined" color="assistive">저장</Button></Tooltip></div>}
           panel={<Seg label="placement" value={pl} options={['top', 'bottom'] as const} onChange={setPl} />}
-          code={`<Tooltip content="변경 사항 저장" placement="${pl}"><Button>저장</Button></Tooltip>`} />
+ />
       </Section>
       <Section title="Variants" desc="위/아래 배치. open으로 강제 표시(제어)도 가능합니다.">
         <Canvas style={{ gap: 56, paddingTop: 56, paddingBottom: 56 }}>
@@ -71,6 +71,9 @@ export default function TooltipPage() {
           doEx={<div style={{ paddingTop: 40 }}><Tooltip open content="공유"><Button size="s" variant="outlined" color="assistive" leadingIcon="share">공유</Button></Tooltip></div>}
           dontTitle="설명·액션을 툴팁에" dontBody="같은 안내가 길거나 눌러야 한다면 Popover입니다."
           dontEx={<Popover title="공유하기" action={<Button size="s">링크 복사</Button>} style={{ width: 220 }}>링크를 아는 모두가 볼 수 있어요.</Popover>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Tooltip" code={`<Tooltip content="변경 사항 저장" placement="${pl}"><Button>저장</Button></Tooltip>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

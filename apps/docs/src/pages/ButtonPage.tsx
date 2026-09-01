@@ -47,8 +47,6 @@ export default function ButtonPage() {
           <Seg label="loading" value={String(loading) as 'true' | 'false'} options={['false', 'true'] as const} onChange={v => setLoading(v === 'true')} />
         </div>
       </div>
-      <CodeBlock code={code} name="Button" />
-      <PlatformSpec name="Button" />
 
       <h2 className="section">Variants</h2>
       <p className="section-desc">Variant(Solid·Outlined) × Color(Primary·Assistive). 위계는 Solid Primary(메인) → Outlined Primary(대체) → Solid Assistive(토글 보조) → Outlined Assistive(닫기·취소) 순입니다.</p>
@@ -142,6 +140,11 @@ export default function ButtonPage() {
           <p>화면당 Solid Primary는 하나. 높이·둥글기를 임의로 바꾸지 않습니다.</p>
         </div>
       </div>
+
+      <h2 className="section">Code</h2>
+      <p className="section-desc">Playground에서 고른 설정이 그대로 반영됩니다.</p>
+      <CodeBlock code={code} name="Button" />
+      <PlatformSpec name="Button" />
 
       <h2 className="section">Props</h2>
       <table className="props">

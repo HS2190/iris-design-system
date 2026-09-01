@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Grid, GridItem, Card } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const Col = ({ h = 40 }: { h?: number }) => (
   <div style={{ height: h, borderRadius: 6, background: 'var(--iris-semantic-fill-primary)', border: '1px solid var(--iris-semantic-line-primary-normal, transparent)' }} />
@@ -11,12 +11,12 @@ export default function GridPage() {
   return (
     <Page kicker="Components · Utilities" title="Grid" desc="레이아웃 그리드입니다. 웹 12 · 태블릿 8 · 모바일 4컬럼 관례, 거터 16. 브레이크포인트는 breakpoint 토큰을 따릅니다.">
       <Section title="Playground" desc="컬럼 수를 바꿔보세요.">
-        <Playground name="Grid"
+        <Playground
           stage={<Grid columns={Number(cols)} gutter={16} style={{ width: 340 }}>
             {Array.from({ length: Number(cols) }, (_, i) => <GridItem key={i}><Col /></GridItem>)}
           </Grid>}
           panel={<Seg label="columns" value={cols} options={['12', '8', '4'] as const} onChange={setCols} />}
-          code={`<Grid columns={${cols}} gutter={16}>...</Grid>`} />
+ />
       </Section>
       <Section title="Variants" desc="플랫폼 관례 — 웹 12 · 태블릿 8 · 모바일 4.">
         <Canvas col style={{ gap: 16 }}>
@@ -72,6 +72,9 @@ export default function GridPage() {
           doEx={<Grid columns={12} gutter={16} style={{ width: 280 }}><GridItem span={8}><Col h={48} /></GridItem><GridItem span={4}><Col h={48} /></GridItem></Grid>}
           dontTitle="임의 폭 배치" dontBody="같은 구성을 자유 폭으로 놓으면 페이지마다 간격이 달라집니다."
           dontEx={<div style={{ display: 'flex', gap: 9, width: 280 }}><div style={{ width: 171 }}><Col h={48} /></div><div style={{ flex: 1 }}><Col h={48} /></div></div>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Grid" code={`<Grid columns={${cols}} gutter={16}>...</Grid>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

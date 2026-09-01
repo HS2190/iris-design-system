@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Accordion, SectionHeader } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const faq = [
   { id: 'a', title: '배송은 얼마나 걸리나요?', content: '평일 오후 2시 이전 주문은 당일 출고되며, 보통 1~2일 안에 도착합니다.' },
@@ -13,10 +13,10 @@ export default function AccordionPage() {
   return (
     <Page kicker="Components · Contents" title="Accordion" desc="접고 펼치는 목록입니다. 헤더 56 고정, 단일/복수 확장을 선택할 수 있고 aria-expanded로 노출됩니다.">
       <Section title="Playground" desc="눌러서 펼쳐보세요.">
-        <Playground name="Accordion"
+        <Playground
           stage={<Accordion key={mode} items={faq} multiple={mode === '복수'} defaultOpen={['a']} style={{ width: 340 }} />}
           panel={<Seg label="expand" value={mode} options={['단일', '복수'] as const} onChange={setMode} />}
-          code={`<Accordion items={faq}${mode === '복수' ? ' multiple' : ''} defaultOpen={['a']} />`} />
+ />
       </Section>
       <Section title="States" desc="펼침 · 접힘 · 비활성 항목.">
         <Canvas col>
@@ -69,6 +69,9 @@ export default function AccordionPage() {
           doEx={<Accordion style={{ width: 260 }} items={[{ id: 'd1', title: '배송은 얼마나 걸리나요?', content: '1~2일 안에 도착합니다.' }]} />}
           dontTitle="제목에 답까지" dontBody="같은 FAQ의 답을 제목에 요약하면 펼칠 이유가 없어지고 행이 길어집니다."
           dontEx={<Accordion style={{ width: 260 }} items={[{ id: 'd2', title: '배송은 얼마나 걸리나요? (1~2일, 당일 출고)', content: '…' }]} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Accordion" code={`<Accordion items={faq}${mode === '복수' ? ' multiple' : ''} defaultOpen={['a']} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

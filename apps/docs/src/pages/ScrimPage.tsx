@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Scrim, Button, Popup, BottomSheet, ListCell, Icon } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const Frame = ({ children, h = 220 }: { children?: React.ReactNode; h?: number }) => (
   <div style={{ position: 'relative', width: 280, height: h, borderRadius: 12, overflow: 'hidden', border: '1px solid var(--iris-semantic-line-solid-neutral)', background: 'var(--iris-semantic-background-normal-normal)' }}>
@@ -16,10 +16,10 @@ export default function ScrimPage() {
   return (
     <Page kicker="Components · Utilities" title="Scrim" desc="오버레이 뒤를 덮는 막입니다. material/dimmer 토큰(52%)으로 부모 전체를 덮고, 탭하면 닫는 게 관례입니다.">
       <Section title="Playground" desc="켜고 꺼 보세요 — 뒤 콘텐츠의 대비가 어떻게 죽는지.">
-        <Playground name="Scrim"
+        <Playground
           stage={<Frame>{on && <Scrim onClick={() => setOn(false)} style={{ cursor: 'pointer' }} />}{!on && <div style={{ position: 'absolute', bottom: 12, left: 12 }}><Button size="s" variant="outlined" color="assistive" onClick={() => setOn(true)}>스크림 켜기</Button></div>}</Frame>}
           panel={<div style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)', lineHeight: 1.6 }}>스크림을 탭하면<br />닫힙니다.</div>}
-          code={`<Scrim onClick={close} />`} />
+ />
       </Section>
       <Section title="Variants" desc="단일형 — 항상 material/dimmer 토큰. 라이트/다크 모두에서 같은 역할.">
         <Canvas>
@@ -66,6 +66,9 @@ export default function ScrimPage() {
           doEx={<Frame h={200}><Scrim /><div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Popup title="점검 안내" style={{ width: 220 }}>오늘 밤 점검합니다.</Popup></div></Frame>}
           dontTitle="스크림 없는 모달" dontBody="같은 팝업인데 뒤가 그대로면 어디를 눌러도 되는지 헷갈립니다."
           dontEx={<Frame h={200}><div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Popup title="점검 안내" style={{ width: 220 }}>오늘 밤 점검합니다.</Popup></div></Frame>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Scrim" code={`<Scrim onClick={close} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

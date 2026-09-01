@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ContentBadge, Chip } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const tones = ['neutral', 'info', 'positive', 'cautionary', 'negative'] as const;
 
@@ -10,13 +10,13 @@ export default function ContentBadgePage() {
   return (
     <Page kicker="Components · Contents" title="Content badge" desc="콘텐츠의 상태·분류를 짧게 표시하는 읽기 전용 뱃지입니다. Tone은 status/* 토큰과 1:1로 매핑됩니다.">
       <Section title="Playground">
-        <Playground name="ContentBadge"
+        <Playground
           stage={<ContentBadge tone={tone} variant={variant}>안내</ContentBadge>}
           panel={<>
             <Seg label="tone" value={tone} options={tones} onChange={setTone} />
             <Seg label="variant" value={variant} options={['subtle', 'solid'] as const} onChange={setVariant} />
           </>}
-          code={`<ContentBadge tone="${tone}"${variant === 'solid' ? ' variant="solid"' : ''}>안내</ContentBadge>`} />
+ />
       </Section>
       <Section title="Variants" desc="Solid = status 채움 + 흰 글자, Subtle = 8% 틴트 + status 글자.">
         <Canvas col style={{ gap: 14 }}>
@@ -67,6 +67,9 @@ export default function ContentBadgePage() {
       <Section title="How to use">
         <DoDont doTitle="읽기 전용 상태 표시" doBody="완료·진행·보류 같은 상태, 분류 라벨." doEx={<><ContentBadge tone="positive">완료</ContentBadge><ContentBadge tone="cautionary" variant="solid">진행 중</ContentBadge></>}
           dontTitle="클릭되는 필터" dontBody="누르면 상태가 바뀌는 값은 Chip입니다." dontEx={<><Chip size="s" selected>디자인</Chip><Chip size="s">개발</Chip></>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="ContentBadge" code={`<ContentBadge tone="${tone}"${variant === 'solid' ? ' variant="solid"' : ''}>안내</ContentBadge>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

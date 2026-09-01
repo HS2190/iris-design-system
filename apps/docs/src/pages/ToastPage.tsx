@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Toast, Button, SectionMessage } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function ToastPage() {
   const [tone, setTone] = useState<'neutral' | 'positive' | 'negative'>('positive');
@@ -10,7 +10,7 @@ export default function ToastPage() {
   return (
     <Page kicker="Components · Feedback" title="Toast" desc="결과를 잠깐 알리고 사라지는 알림입니다. 액션이 필요하면 Snackbar, 지속 안내는 Section message를 씁니다.">
       <Section title="Playground" desc="눌러보세요 — 2.4초 뒤 사라집니다.">
-        <Playground name="Toast"
+        <Playground
           stage={<div style={{ position: 'relative', width: '100%', height: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Button size="s" onClick={fire}>저장하기</Button>
             {shown && <Toast tone={tone} style={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap' }}>
@@ -18,7 +18,7 @@ export default function ToastPage() {
             </Toast>}
           </div>}
           panel={<Seg label="tone" value={tone} options={['neutral', 'positive', 'negative'] as const} onChange={setTone} />}
-          code={`<Toast tone="${tone}">저장되었습니다</Toast>`} />
+ />
       </Section>
       <Section title="Variants" desc="Tone별 아이콘·색. 배경은 inverse — 어느 화면 위에서든 뜹니다.">
         <Canvas col style={{ gap: 12 }}>
@@ -73,6 +73,9 @@ export default function ToastPage() {
           doEx={<Toast tone="positive">저장되었습니다</Toast>}
           dontTitle="복구가 필요한 오류를 토스트로" dontBody="같은 흐름의 실패는 사라지면 안 됩니다 — Section message로 남기세요."
           dontEx={<SectionMessage tone="negative" title="저장 실패">네트워크 확인 후 다시 시도해 주세요.</SectionMessage>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Toast" code={`<Toast tone="${tone}">저장되었습니다</Toast>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

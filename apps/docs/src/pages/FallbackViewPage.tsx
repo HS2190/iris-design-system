@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { FallbackView, Button, Card } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function FallbackViewPage() {
   const [ty, setTy] = useState<'검색 없음' | '빈 목록' | '오류'>('검색 없음');
   return (
     <Page kicker="Components · Feedback" title="Fallback view" desc="빈 목록·검색 결과 없음·오류를 채우는 중앙 안내입니다. 왜 비었는지와 다음 행동을 함께 제시합니다.">
       <Section title="Playground">
-        <Playground name="FallbackView"
+        <Playground
           stage={ty === '검색 없음'
             ? <FallbackView icon="search" title="검색 결과가 없어요" description={'다른 키워드로 검색해 보세요.'} />
             : ty === '빈 목록'
               ? <FallbackView icon="edit" title="아직 메모가 없어요" description="첫 메모를 작성해 보세요." action={<Button size="s">새 메모</Button>} />
               : <FallbackView icon="warning" title="불러오지 못했어요" description="네트워크 확인 후 다시 시도해 주세요." action={<Button size="s" variant="outlined" color="assistive">다시 시도</Button>} />}
           panel={<Seg label="type" value={ty} options={['검색 없음', '빈 목록', '오류'] as const} onChange={setTy} />}
-          code={`<FallbackView icon="..." title="..." description="..." action={<Button ... />} />`} />
+ />
       </Section>
       <Section title="Variants" desc="같은 구조(아이콘·제목·설명·액션)로 세 상황을 커버합니다.">
         <Canvas style={{ gap: 24 }}>
@@ -65,6 +65,9 @@ export default function FallbackViewPage() {
           doEx={<FallbackView icon="edit" title="아직 메모가 없어요" description="첫 메모를 작성해 보세요." action={<Button size="s">새 메모</Button>} style={{ width: 220, padding: '16px 8px' }} />}
           dontTitle="'없음'만 던지기" dontBody="같은 상황인데 막다른 골목이 됩니다 — 행동 없는 빈 화면."
           dontEx={<FallbackView title="데이터 없음" style={{ width: 220, padding: '16px 8px' }} />} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="FallbackView" code={`<FallbackView icon="..." title="..." description="..." action={<Button ... />} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

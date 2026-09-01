@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Avatar, AvatarGroup, ListCell, Icon } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 const IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C3AED"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs><rect width="112" height="112" fill="url(#g)"/></svg>');
 
@@ -10,13 +10,13 @@ export default function AvatarPage() {
   return (
     <Page kicker="Components · Contents" title="Avatar" desc="사용자·대상을 나타내는 원형 아이덴티티입니다. 이미지가 없거나 로드에 실패하면 이름 첫 글자 이니셜로 폴백합니다.">
       <Section title="Playground">
-        <Playground name="Avatar"
+        <Playground
           stage={<Avatar size={sz} name="안현서" src={ty === '이미지' ? IMG : undefined} />}
           panel={<>
             <Seg label="size" value={sz} options={['s', 'm', 'l', 'xl'] as const} onChange={setSz} />
             <Seg label="type" value={ty} options={['이니셜', '이미지'] as const} onChange={setTy} />
           </>}
-          code={`<Avatar size="${sz}" name="안현서"${ty === '이미지' ? ' src={imageUrl}' : ''} />`} />
+ />
       </Section>
       <Section title="Variants" desc="단일 아바타와 그룹. 그룹은 -8 겹침 + 2px 배경 링, max 초과분은 +N으로 접습니다.">
         <Canvas style={{ gap: 40 }}>
@@ -78,6 +78,9 @@ export default function AvatarPage() {
           doEx={<AvatarGroup max={3} size="m"><Avatar size="m" name="안" src={IMG} /><Avatar size="m" name="김" /><Avatar size="m" name="이" /><Avatar size="m" name="박" /><Avatar size="m" name="최" /></AvatarGroup>}
           dontTitle="아바타 전부 나열" dontBody="같은 5명을 다 펼치면 공간을 잡아먹고 수를 셀 수도 없습니다."
           dontEx={<div style={{ display: 'flex', gap: 4 }}><Avatar size="m" name="안" src={IMG} /><Avatar size="m" name="김" /><Avatar size="m" name="이" /><Avatar size="m" name="박" /><Avatar size="m" name="최" /></div>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Avatar" code={`<Avatar size="${sz}" name="안현서"${ty === '이미지' ? ' src={imageUrl}' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[

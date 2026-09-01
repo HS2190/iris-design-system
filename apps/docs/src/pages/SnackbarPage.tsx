@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Snackbar, Button, Toast } from '@iris/react';
-import { Page, Section, Canvas, Chips, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function SnackbarPage() {
   const [deleted, setDeleted] = useState(false);
@@ -10,7 +10,7 @@ export default function SnackbarPage() {
   return (
     <Page kicker="Components · Feedback" title="Snackbar" desc="액션이 붙는 지속형 알림입니다 — 실행 취소가 대표 용도. 단순 통보면 Toast를 씁니다.">
       <Section title="Playground" desc="삭제해 보세요 — 5초 안에 실행 취소할 수 있습니다.">
-        <Playground name="Snackbar"
+        <Playground
           stage={<div style={{ position: 'relative', width: '100%', height: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {deleted
               ? <span style={{ color: 'var(--iris-semantic-label-assistive)', fontSize: 14 }}>메모 없음</span>
@@ -21,7 +21,7 @@ export default function SnackbarPage() {
             </Snackbar>}
           </div>}
           panel={<div style={{ fontSize: 12.5, color: 'var(--iris-semantic-label-alternative)', lineHeight: 1.6 }}>실행 취소를 누르면<br />메모가 돌아옵니다.</div>}
-          code={`<Snackbar actionLabel="실행 취소" onAction={undo}>메모를 삭제했습니다</Snackbar>`} />
+ />
       </Section>
       <Section title="States" desc="한 줄이 기본, 길면 두 줄까지.">
         <Canvas col style={{ gap: 12 }}>
@@ -68,6 +68,9 @@ export default function SnackbarPage() {
           doEx={<Snackbar actionLabel="실행 취소" style={{ minWidth: 240 }}>메모를 삭제했습니다</Snackbar>}
           dontTitle="액션 없는 통보에 스낵바" dontBody="같은 통보에 액션이 없다면 Toast가 맞습니다."
           dontEx={<Toast tone="positive">메모를 삭제했습니다</Toast>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Snackbar" code={`<Snackbar actionLabel="실행 취소" onAction={undo}>메모를 삭제했습니다</Snackbar>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

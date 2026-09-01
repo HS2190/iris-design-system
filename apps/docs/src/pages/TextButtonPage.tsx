@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextButton, Button } from '@iris/react';
-import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Spec, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function TextButtonPage() {
   const [co, setCo] = useState<'primary' | 'assistive'>('primary');
@@ -8,13 +8,13 @@ export default function TextButtonPage() {
   return (
     <Page kicker="Components · Actions" title="Text button" desc="배경 없는 라벨 버튼입니다 — '더보기'·'전체 삭제' 같은 보조 행동. 화면당 주 행동은 Button 하나, 나머지가 이것입니다.">
       <Section title="Playground">
-        <Playground name="TextButton"
+        <Playground
           stage={<TextButton color={co} size={sz} trailingIcon="chevron-right">더보기</TextButton>}
           panel={<>
             <Seg label="color" value={co} options={['primary', 'assistive'] as const} onChange={setCo} />
             <Seg label="size" value={sz} options={['m', 's'] as const} onChange={setSz} />
           </>}
-          code={`<TextButton color="${co}" size="${sz}" trailingIcon="chevron-right">더보기</TextButton>`} />
+ />
       </Section>
       <Section title="Variants" desc="Primary = 강조 보조 행동, Assistive = 중립.">
         <Canvas style={{ gap: 32 }}>
@@ -69,6 +69,9 @@ export default function TextButtonPage() {
           doEx={<div style={{ display: 'flex', gap: 8, alignItems: 'center' }}><TextButton color="assistive">취소</TextButton><Button size="s">저장</Button></div>}
           dontTitle="주 행동을 텍스트로" dontBody="같은 저장을 배경 없이 두면 눌리는 곳이 안 보입니다."
           dontEx={<div style={{ display: 'flex', gap: 8, alignItems: 'center' }}><TextButton color="assistive">취소</TextButton><TextButton>저장</TextButton></div>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="TextButton" code={`<TextButton color="${co}" size="${sz}" trailingIcon="chevron-right">더보기</TextButton>`} />
       </Section>
       <Section title="Props">
         <Props rows={[

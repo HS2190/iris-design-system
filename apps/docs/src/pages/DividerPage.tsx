@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Divider, ListCell, Icon } from '@iris/react';
-import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props } from '../components/Doc';
+import { Page, Section, Canvas, Chips, Seg, Playground, DoDont, Props, CodeSpec } from '../components/Doc';
 
 export default function DividerPage() {
   const [ori, setOri] = useState<'horizontal' | 'vertical'>('horizontal');
@@ -8,7 +8,7 @@ export default function DividerPage() {
   return (
     <Page kicker="Components · Utilities" title="Divider" desc="요소 사이를 나누는 1px 선입니다. 여백으로 충분한 곳에는 쓰지 않습니다.">
       <Section title="Playground">
-        <Playground name="Divider"
+        <Playground
           stage={ori === 'horizontal'
             ? <div style={{ width: 220 }}>항목 A<Divider weight={wt} style={{ margin: '10px 0' }} />항목 B</div>
             : <div style={{ display: 'flex', gap: 12, alignItems: 'center', height: 40 }}>항목 A<Divider orientation="vertical" weight={wt} />항목 B</div>}
@@ -16,7 +16,7 @@ export default function DividerPage() {
             <Seg label="orientation" value={ori} options={['horizontal', 'vertical'] as const} onChange={setOri} />
             <Seg label="weight" value={wt} options={['normal', 'strong'] as const} onChange={setWt} />
           </>}
-          code={`<Divider${ori === 'vertical' ? ' orientation="vertical"' : ''}${wt === 'strong' ? ' weight="strong"' : ''} />`} />
+ />
       </Section>
       <Section title="Variants" desc="Normal(line/solid/neutral)이 기본, 섹션 경계만 Strong(line/solid/normal).">
         <Canvas col style={{ gap: 20 }}>
@@ -100,6 +100,9 @@ export default function DividerPage() {
             <span>테마</span><Divider style={{ margin: '12px 0' }} />
             <span>로그아웃</span>
           </div>} />
+      </Section>
+      <Section title="Code" desc="Playground에서 고른 설정이 그대로 반영됩니다.">
+        <CodeSpec name="Divider" code={`<Divider${ori === 'vertical' ? ' orientation="vertical"' : ''}${wt === 'strong' ? ' weight="strong"' : ''} />`} />
       </Section>
       <Section title="Props">
         <Props rows={[
