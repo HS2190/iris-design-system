@@ -106,9 +106,15 @@ function useHeroOverlay(active: boolean) {
  * gtag의 자동 페이지뷰는 최초 로드 1회뿐이라 문서 페이지 이동이 전혀 집계되지 않는다.
  * 그래서 index.html에서 send_page_view: false로 자동 전송을 끄고,
  * 라우트가 바뀔 때마다 여기서 직접 page_view를 보낸다(최초 진입 포함).
+ *
+ * 로컬에서는 보내지 않는다 — vite preview는 프로덕션 빌드라 스니펫이 살아 있어
+ * 이 가드가 없으면 내 확인 트래픽이 그대로 집계된다.
  */
+const isLocal = () => /^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname);
+
 function usePageView(pathname: string) {
   useEffect(() => {
+    if (isLocal()) return;
     const w = window as unknown as { gtag?: (...args: unknown[]) => void };
     if (!w.gtag) return;
     w.gtag('event', 'page_view', {
