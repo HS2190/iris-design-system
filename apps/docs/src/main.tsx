@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import '@iris/tokens/css';
+import '@iris/react/styles.css';
 import './app.css';
 import App from './App';
 

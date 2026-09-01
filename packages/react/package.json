@@ -2,7 +2,31 @@
   "name": "@iris/react",
   "version": "0.1.0",
   "type": "module",
-  "main": "./src/index.ts",
-  "exports": { ".": "./src/index.ts" },
-  "peerDependencies": { "react": ">=18", "react-dom": ">=18" }
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/iris-react.css",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "description": "Iris Design System — React 컴포넌트 44종 (Web · iOS · Android 공용 토큰 기반)",
+  "license": "MIT",
+  "author": "안현서",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.json"
+  }
 }

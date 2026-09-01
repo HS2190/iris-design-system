@@ -3,3 +3,4 @@ dist/
 apps/docs/dist/
 .DS_Store
 *.tsbuildinfo
+*.tgz
