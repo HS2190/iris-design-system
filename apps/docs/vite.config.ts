@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react';
 /**
  * 개발 서버(vite dev)에서는 gtag 스니펫을 아예 제거한다.
  * 전송을 막는 것을 넘어 googletagmanager.com 요청 자체가 생기지 않는다.
- * (프로덕션 빌드를 로컬에서 띄우는 vite preview는 localhost 가드가 막는다 — App.tsx)
+ * (프로덕션 빌드를 로컬에서 띄우는 vite preview는 index.html의 hostname 가드가 막는다.
+ *  App.tsx의 isLocal()은 수동 page_view만 막아서 자동 이벤트를 못 막았다.)
  */
 function stripAnalyticsInDev(isDev: boolean) {
   return {

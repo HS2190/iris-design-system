@@ -8,10 +8,17 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    // 해시 라우팅이라 자동 페이지뷰는 끄고, 라우트가 바뀔 때마다 직접 보낸다.
-    // 켜두면 최초 진입이 자동 1회 + 수동 1회로 중복 집계된다.
-    gtag('config', 'G-YPW8JE1RJ6', { send_page_view: false });
+    // 로컬에서는 config 자체를 호출하지 않는다.
+    // send_page_view: false는 page_view만 막을 뿐, config 호출은 그것만으로도
+    // session_start·first_visit를 전송한다. vite preview는 프로덕션 빌드라
+    // 스니펫이 살아 있어, 이 가드가 없으면 내 확인 트래픽이 페이지뷰 없는
+    // 세션으로 집계되어 이탈률과 세션 시간을 망친다.
+    if (!/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) {
+      gtag('js', new Date());
+      // 해시 라우팅이라 자동 페이지뷰는 끄고, 라우트가 바뀔 때마다 직접 보낸다.
+      // 켜두면 최초 진입이 자동 1회 + 수동 1회로 중복 집계된다.
+      gtag('config', 'G-YPW8JE1RJ6', { send_page_view: false });
+    }
   </script>
   <!-- End Google tag -->
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
