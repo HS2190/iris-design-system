@@ -1,4 +1,4 @@
-.root { box-sizing: border-box; display: flex; height: 56px;
+.root { box-sizing: border-box; display: flex; height: var(--iris-nav-bottom-height, 56px);
   background: var(--iris-semantic-background-normal-normal);
   border-top: 1px solid var(--iris-semantic-line-solid-neutral);
   font-family: var(--iris-font-family); }

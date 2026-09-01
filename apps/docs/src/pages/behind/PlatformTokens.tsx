@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Icon } from '@iris/react';
 import tokens from '@iris/tokens';
+import { COMPONENT_TOKENS } from '../../lib/component-tokens';
 import { Article, P, H2, Fig, Aside, Pull, Code } from '../../components/Prose';
 import { Seg } from '../../components/Doc';
 
@@ -8,6 +9,16 @@ type Plat = 'web' | 'ios' | 'android';
 const plats: readonly Plat[] = ['web', 'ios', 'android'] as const;
 const platform = tokens.platform;
 const platformCount = Object.keys(platform).length;
+
+/* 어느 플랫폼 토큰이 실제로 어느 컴포넌트에 배선됐는지 — CSS에서 추출한 값이라
+   글이 코드보다 앞서갈 수 없다. */
+const wiring = Object.fromEntries(
+  Object.keys(platform).map(t => [
+    t,
+    Object.entries(COMPONENT_TOKENS).filter(([, v]) => v.platform.includes(t)).map(([n]) => n),
+  ]),
+) as Record<string, string[]>;
+const wiredCount = Object.values(wiring).filter(v => v.length).length;
 
 /** 실제 platform 토큰 값으로 높이만 바뀌는 입력 필드 — 컴포넌트 코드는 하나. */
 function InputPreview({ p }: { p: Plat }) {
@@ -98,8 +109,6 @@ height: var(--iris-nav-top-height);`}</Code>
               {plats.map(x => (
                 <span key={x} className="bh-mono" style={{
                   textAlign: 'right', fontVariantNumeric: 'tabular-nums',
-                  color: name === 'nav-bottom-height' && x === 'web'
-                    ? 'var(--iris-semantic-label-disable)' : undefined,
                 }}>{v[x]}</span>
               ))}
             </span>
@@ -107,12 +116,40 @@ height: var(--iris-nav-top-height);`}</Code>
         </div>
       </Fig>
 
-      <H2>값이 0이라는 말</H2>
+      <Fig caption="이 표는 손으로 적은 것이 아니라 각 컴포넌트의 CSS에서 var(--iris-*)를 추출한 결과입니다. 배선이 끊기면 이 자리에 바로 드러납니다.">
+        <div className="bh-grid" style={{ gridTemplateColumns: '1.1fr 1.6fr', gap: '10px 20px', alignItems: 'center' }}>
+          <span className="bh-mono" style={{ fontSize: 10.5, letterSpacing: '.08em', textTransform: 'uppercase' }}>토큰</span>
+          <span className="bh-mono" style={{ fontSize: 10.5, letterSpacing: '.08em', textTransform: 'uppercase' }}>배선된 컴포넌트</span>
+          {Object.entries(wiring).map(([t, comps]) => (
+            <span key={t} style={{ display: 'contents' }}>
+              <span className="bh-mono" style={{ color: comps.length ? 'var(--iris-semantic-label-normal)' : 'var(--iris-semantic-label-disable)' }}>{t}</span>
+              <span style={{ fontSize: 13, color: comps.length ? 'var(--iris-semantic-label-neutral)' : 'var(--iris-semantic-label-disable)' }}>
+                {comps.length ? comps.join(' · ') : '— 아직 없음'}
+              </span>
+            </span>
+          ))}
+        </div>
+      </Fig>
+
       <P>
-        표에서 가장 마음에 드는 줄은 <code>nav-bottom-height</code>의 웹 값 <b>0</b>입니다.
-        웹에는 하단 내비게이션이 없다는 사실이, 조건문이 아니라 <b>토큰 값 하나로 표현</b>됩니다.
-        <code>safe-area-top</code>과 <code>safe-area-bottom</code>도 마찬가지입니다 —
-        노치와 홈 인디케이터는 iOS에만 있는 개념이지만, 웹에서는 그냥 0이라 컴포넌트가 신경 쓸 일이 없습니다.
+        {platformCount}개 중 <b>{wiredCount}개</b>가 실제로 컴포넌트에 배선돼 있습니다.
+        남은 <code>safe-area-top</code>과 <code>font-base-size</code>는 웹에서 대응물이 없어
+        (노치가 없고, CSS가 rem이 아니라 px 기반이라) 네이티브 빌드가 생길 때 쓰입니다.
+        구조를 만들어 두는 것과 실제로 쓰는 것은 다른 일이고, 이 표가 그 차이를 숨기지 않습니다.
+      </P>
+
+      <H2>0은 값이 아니라 규칙이었다</H2>
+      <P>
+        처음 <code>nav-bottom-height</code>의 웹 값은 <b>0</b>이었습니다.
+        &ldquo;웹에는 하단 내비게이션이 없다&rdquo;는 뜻으로 넣은 값이었는데, 배선하려는 순간 문제가 드러났습니다.
+        그 토큰을 실제로 참조하면 웹에서 컴포넌트 높이가 0으로 무너집니다.
+        그래서 <code>BottomNavigation</code>은 <code>56px</code>을 하드코딩한 채였고, 토큰 층을 우회하고 있었습니다.
+      </P>
+      <P>
+        원인은 한 칸에 두 가지를 담은 것이었습니다 — <b>기하</b>(높이가 얼마인가)와
+        <b>사용 규칙</b>(이 플랫폼이 이걸 쓰는가). 토큰은 기하만 담아야 합니다.
+        웹 값을 56으로 고치고 컴포넌트를 배선했습니다. 웹에서 하단 내비를 쓰지 않는다는 것은
+        값이 아니라 사용 지침으로 남습니다.
       </P>
 
       <Fig plain caption="분기가 사라진 게 아니라 자리를 옮겼습니다. 컴포넌트 44개가 아니라 토큰 9개가 그것을 압니다.">
@@ -130,6 +167,7 @@ height: var(--iris-nav-top-height);`}</Code>
           지금 배포되는 CSS는 <b>웹 값으로만</b> 빌드됩니다. <code>build.mjs</code>가 각 토큰의
           <code>web</code> 값만 읽어 CSS 변수로 내보내기 때문입니다. iOS와 Android 값은
           <code>tokens.json</code>에 들어 있지만, 그 값을 소비하는 네이티브 빌드는 아직 없습니다.
+          위 배선 표도 결국 <b>웹 컴포넌트가 토큰을 경유한다</b>는 것까지만 증명합니다.
         </p>
         <p>
           그러니까 이 구조는 지금 <b>준비된 구조</b>이지 <b>증명된 구조</b>가 아닙니다.

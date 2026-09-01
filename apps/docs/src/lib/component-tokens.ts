@@ -21,8 +21,10 @@ export const COMPONENT_TOKENS: Record<string, ComponentTokens> = {
   "tokenCount": 6
  },
  "BottomNavigation": {
-  "platform": [],
-  "tokenCount": 7
+  "platform": [
+   "nav-bottom-height"
+  ],
+  "tokenCount": 8
  },
  "BottomSheet": {
   "platform": [
@@ -63,16 +65,20 @@ export const COMPONENT_TOKENS: Record<string, ComponentTokens> = {
   "tokenCount": 18
  },
  "Grid": {
-  "platform": [],
-  "tokenCount": 0
+  "platform": [
+   "page-margin"
+  ],
+  "tokenCount": 1
  },
  "Icon": {
   "platform": [],
   "tokenCount": 0
  },
  "IconButton": {
-  "platform": [],
-  "tokenCount": 8
+  "platform": [
+   "touch-target-min"
+  ],
+  "tokenCount": 9
  },
  "ListCell": {
   "platform": [],
@@ -205,7 +211,7 @@ export const PLATFORM_VALUES: Record<string, { web: number; ios: number; android
   "android": 56
  },
  "nav-bottom-height": {
-  "web": 0,
+  "web": 56,
   "ios": 49,
   "android": 80
  },

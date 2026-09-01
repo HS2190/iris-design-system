@@ -1,1 +1,3 @@
-.grid { display: grid; width: 100%; }
+/* 페이지 그리드 — 좌우 마진은 플랫폼이 정한다 (웹 24 · iOS 20 · Android 16) */
+.grid { display: grid; width: 100%; box-sizing: border-box;
+  padding-inline: var(--iris-page-margin, 24px); }

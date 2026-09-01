@@ -1,10 +1,15 @@
-.root { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
+.root { box-sizing: border-box; position: relative; display: inline-flex; align-items: center; justify-content: center;
   border: none; background: none; cursor: pointer; padding: 0; flex: none;
   border-radius: var(--iris-radius-sm); color: var(--iris-semantic-label-neutral);
   transition: background-color .12s ease; }
 .l { width: 48px; height: 48px; }
 .m { width: 40px; height: 40px; }
 .s { width: 32px; height: 32px; border-radius: var(--iris-radius-xs); }
+/* 시각 크기(32~48)와 별개로 최소 터치 영역을 보장한다 — s 32px는 웹 40에 미달 */
+.root::after { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: max(100%, var(--iris-touch-target-min, 40px));
+  height: max(100%, var(--iris-touch-target-min, 40px)); }
+
 .outlined { border: 1px solid var(--iris-semantic-line-solid-neutral); }
 .root:hover:not(:disabled) { background: var(--iris-semantic-interaction-hover); }
 .root:active:not(:disabled) { background: var(--iris-semantic-interaction-pressed); }
