@@ -103,16 +103,15 @@ function useHeroOverlay(active: boolean) {
 
 /**
  * HashRouter는 라우트가 바뀌어도 페이지를 다시 읽지 않는다.
- * GTM 기본 페이지뷰는 최초 로드 1회뿐이라, 문서 페이지 이동이 전혀 집계되지 않는다.
- * 그래서 라우트가 바뀔 때마다 dataLayer에 직접 알린다.
- * GTM 쪽에서는 이 spa_page_view 이벤트를 트리거로 GA4 page_view를 발생시키면 된다.
+ * gtag의 자동 페이지뷰는 최초 로드 1회뿐이라 문서 페이지 이동이 전혀 집계되지 않는다.
+ * 그래서 index.html에서 send_page_view: false로 자동 전송을 끄고,
+ * 라우트가 바뀔 때마다 여기서 직접 page_view를 보낸다(최초 진입 포함).
  */
 function usePageView(pathname: string) {
   useEffect(() => {
-    const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
-    if (!w.dataLayer) return;
-    w.dataLayer.push({
-      event: 'spa_page_view',
+    const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+    if (!w.gtag) return;
+    w.gtag('event', 'page_view', {
       page_path: pathname,
       page_location: window.location.href,
       page_title: document.title,
