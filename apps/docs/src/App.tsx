@@ -59,6 +59,7 @@ import TypographyPage from './pages/TypographyPage';
 import SpacingPage from './pages/SpacingPage';
 import ElevationPage from './pages/ElevationPage';
 import PlatformPage from './pages/PlatformPage';
+import WorkflowPage from './pages/WorkflowPage';
 
 // 컴포넌트 목록은 nav.ts가 단일 소스 (랜딩 인덱스와 공유)
 
@@ -131,7 +132,8 @@ export default function App() {
   const isHome = pathname === '/';
   const heroOver = useHeroOverlay(isHome);
   usePageView(pathname);
-  const section = pathname.startsWith('/behind') ? 'behind'
+  const section = pathname.startsWith('/workflow') ? 'workflow'
+    : pathname.startsWith('/behind') ? 'behind'
     : pathname.startsWith('/foundations') || pathname === '/components/icon' ? 'foundations'
     : pathname === '/utilities' || utilSlugs.some(sl => pathname === `/components/${sl}`) ? 'utilities'
     : 'components';
@@ -154,6 +156,7 @@ export default function App() {
             <NavLink to="/components" className={() => !isHome && section === 'components' ? 'active' : ''}>Components</NavLink>
             <NavLink to="/utilities" className={() => !isHome && section === 'utilities' ? 'active' : ''}>Utilities</NavLink>
             <NavLink to="/behind" className={() => !isHome && section === 'behind' ? 'active' : ''}>Behind</NavLink>
+          <NavLink to="/workflow" className={() => !isHome && section === 'workflow' ? 'active' : ''}>Workflow</NavLink>
           </nav>
           <div className="gnb-right"><ThemeToggle /></div>
         </div>
@@ -183,6 +186,10 @@ export default function App() {
                   ))}
                 </span>
               ))}
+              {section === 'workflow' && <>
+                <div className="nav-group">Guide</div>
+                <NavLink to="/workflow" end className={({ isActive }) => isActive ? 'active' : ''}>Workflow</NavLink>
+              </>}
               {section === 'behind' && <>
                 <div className="nav-group">Behind</div>
                 {posts.map(post => (
@@ -252,6 +259,7 @@ export default function App() {
               <Route path="/foundations/spacing" element={<SpacingPage />} />
               <Route path="/foundations/elevation" element={<ElevationPage />} />
               <Route path="/foundations/platform" element={<PlatformPage />} />
+              <Route path="/workflow" element={<WorkflowPage />} />
               <Route path="/behind" element={<Navigate to={`/behind/${posts[0].slug}`} replace />} />
               <Route path="/behind/two-layer-tokens" element={<TwoLayerTokens />} />
               <Route path="/behind/phosphor-icons" element={<PhosphorIcons />} />

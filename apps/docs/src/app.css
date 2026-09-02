@@ -348,3 +348,60 @@ h1.prose-title { font-size: var(--iris-font-size-display-2); line-height: var(--
   color: var(--iris-semantic-label-normal); }
 .platspec-note { margin: 0; font-size: 13px; color: var(--iris-semantic-label-neutral); }
 .platspec-foot { margin: 12px 0 0; font-size: 12px; color: var(--iris-semantic-label-assistive); }
+
+/* ── Workflow 가이드 ────────────────────────────────────────── */
+.wf-p { font-size: var(--iris-font-size-body-2); line-height: 1.85;
+  color: var(--iris-semantic-label-normal); max-width: 66ch; margin: 0 0 14px; word-break: keep-all; }
+.wf-list { margin: 0 0 14px; padding-left: 20px; max-width: 66ch;
+  font-size: var(--iris-font-size-body-2); line-height: 1.85; color: var(--iris-semantic-label-normal); }
+.wf-list li { margin-bottom: 6px; word-break: keep-all; }
+
+/* 준비 블록 — 나머지 단계의 전제라 시각적으로 먼저 걸리게 */
+.wf-prep { margin: 28px 0 8px; padding: 24px 26px; border-radius: var(--iris-radius-md);
+  background: var(--iris-semantic-fill-primary);
+  border: 1px solid var(--iris-semantic-line-primary-normal); }
+.wf-prep > b { display: block; font-size: 16px; letter-spacing: -.02em; margin-bottom: 6px;
+  color: var(--iris-semantic-label-normal); }
+.wf-prep p { margin: 0 0 12px; font-size: 14px; color: var(--iris-semantic-label-neutral); word-break: keep-all; }
+.wf-prep ol { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8;
+  color: var(--iris-semantic-label-neutral); }
+.wf-prep li { margin-bottom: 4px; word-break: keep-all; }
+
+/* 완료 기준 — 단계마다 확인 가능한 문장 하나 */
+.wf-done { display: flex; gap: 12px; align-items: baseline; max-width: 66ch;
+  margin: 18px 0 0; padding: 12px 16px; border-radius: var(--iris-radius-sm);
+  background: var(--iris-semantic-background-normal-alternative);
+  border-left: 3px solid var(--iris-semantic-primary-normal);
+  font-size: 13.5px; color: var(--iris-semantic-label-neutral); }
+.wf-done b { flex: none; font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--iris-semantic-label-primary); }
+.wf-done span { word-break: keep-all; }
+
+.wf-table { max-width: 560px; margin-bottom: 4px; }
+.wf-table th:not(:first-child), .wf-table td:not(:first-child) {
+  text-align: right; font-variant-numeric: tabular-nums; }
+
+/* 판단 분기 */
+.wf-branch { display: flex; flex-direction: column; gap: 8px; margin: 4px 0 14px; max-width: 760px; }
+.wf-row { display: grid; grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1.2fr);
+  gap: 12px; align-items: center; padding: 12px 16px; font-size: 13.5px;
+  border: 1px solid var(--iris-semantic-line-solid-neutral); border-radius: var(--iris-radius-sm); }
+.wf-row .q { color: var(--iris-semantic-label-normal); word-break: keep-all; }
+.wf-row .arrow { text-align: center; color: var(--iris-semantic-label-primary);
+  font-family: "IBM Plex Mono", monospace; }
+.wf-row .a { color: var(--iris-semantic-label-neutral); word-break: keep-all; }
+.wf-row.stop { background: var(--iris-semantic-background-status-negative);
+  border-color: var(--iris-semantic-line-status-negative); }
+.wf-row.stop .q, .wf-row.stop .a, .wf-row.stop .arrow { color: var(--iris-semantic-status-negative); }
+
+.wf-warn { padding: 20px 24px; border-radius: var(--iris-radius-md); max-width: 70ch;
+  background: var(--iris-semantic-background-status-cautionary);
+  border: 1px solid var(--iris-semantic-line-status-cautionary);
+  font-size: 14px; line-height: 1.8; color: var(--iris-semantic-label-neutral); word-break: keep-all; }
+
+.wf-never { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.wf-never-item { padding: 16px 18px; border-radius: var(--iris-radius-sm);
+  border: 1px solid var(--iris-semantic-line-solid-neutral); }
+.wf-never-item b { display: block; font-size: 14px; margin-bottom: 5px;
+  color: var(--iris-semantic-label-normal); }
+.wf-never-item span { font-size: 13px; color: var(--iris-semantic-label-alternative); word-break: keep-all; }
