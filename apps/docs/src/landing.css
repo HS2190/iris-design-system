@@ -43,7 +43,9 @@
   animation-range: 0 620px;
 }
 .lp-sparks { position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  mix-blend-mode: screen; }
+  mix-blend-mode: screen;
+  /* 알갱이 경계를 지워 빛으로 읽히게 — 후광 스프라이트와 합쳐 블룸처럼 보인다 */
+  filter: blur(1.2px) saturate(1.15); }
 
 /* 상단 스크림 — 내비 글자가 흰 광선 위에 걸쳐도 읽히게 (이미지 자체는 그대로) */
 .lp-hero-media::before {
@@ -71,9 +73,9 @@
 }
 
 /* ── 공통 섹션 ── */
-.lp-sec { padding: 104px 0 0; }
+.lp-sec { padding: 168px 0 0; }
 .lp-sec--alt { background: var(--iris-semantic-background-normal-alternative);
-  padding: 96px 0 104px; margin-top: 104px; }
+  padding: 152px 0 168px; margin-top: 168px; }
 .lp-kicker { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em;
   text-transform: uppercase; color: var(--iris-semantic-label-primary); margin: 0 0 14px; }
 .lp-h2 { font-family: var(--lp-display); font-size: clamp(38px, 4.4vw, 56px); font-weight: 700;
@@ -85,7 +87,7 @@
 .lp-center .lp-lede { margin-left: auto; margin-right: auto; }
 
 /* ── 원칙 (비대칭) ── */
-.lp-principles { margin: 56px 0 0 auto; display: flex; flex-direction: column; gap: 40px; max-width: 620px; }
+.lp-principles { margin: 72px 0 0 auto; display: flex; flex-direction: column; gap: 40px; max-width: 620px; }
 .lp-principle { display: grid; grid-template-columns: 42px 1fr; gap: 16px; }
 .lp-principle:nth-child(2) { margin-left: 40px; }
 .lp-principle:nth-child(3) { margin-left: 80px; }
@@ -95,19 +97,47 @@
   color: var(--iris-semantic-label-normal); }
 .lp-principle p { font-size: 14.5px; line-height: 1.7; color: var(--iris-semantic-label-neutral); margin: 8px 0 0; }
 
-/* ── 잉크 밴드 (스크롤 리빌) ── */
-.lp-band { margin-top: 104px; height: 560px; overflow: hidden;
+/* ── 컴포넌트 밴드 (실물 마퀴) ── */
+.lp-band { margin-top: 168px; padding: 88px 0 96px; overflow: hidden;
   background: var(--iris-semantic-background-normal-alternative); }
-.lp-band-img { width: 100%; height: 100%; background-image: url("./assets/band-prism.jpg");
-  background-size: cover; background-position: center; }
-@keyframes lp-ink-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
-.lp-band-img.scrub { animation: lp-ink-wipe 1s linear both;
-  animation-timeline: view(); animation-range: entry 5% cover 42%; }
-.lp-band-img.io { clip-path: inset(0 100% 0 0); }
-.lp-band-img.io.in { animation: lp-ink-wipe 1500ms var(--ease-out) both; }
+.cb-head { margin-bottom: 56px; }
+.cb-line { margin-top: 14px; max-width: 34em; font-size: 17px; line-height: 1.6;
+  color: var(--iris-semantic-label-neutral); }
+
+.cb-row { overflow: hidden; }
+.cb-row + .cb-row { margin-top: 20px; }
+/* 양끝을 페이드아웃시켜 타일이 잘리지 않고 사라지게 한다 */
+.cb-row { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+
+.cb-track { display: flex; width: max-content; animation-duration: var(--dur);
+  animation-timing-function: linear; animation-iteration-count: infinite; }
+.cb-l { animation-name: cb-drift-l; }
+.cb-r { animation-name: cb-drift-r; }
+@keyframes cb-drift-l { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+@keyframes cb-drift-r { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
+.lp-band:hover .cb-track { animation-play-state: paused; }
+
+.cb-set { display: flex; align-items: center; gap: 20px; padding-right: 20px; }
+.cb-tile { flex: none; display: flex; align-items: center;
+  min-height: 76px; padding: 0 22px; border-radius: 16px;
+  background: var(--iris-semantic-background-elevated-normal);
+  border: 1px solid var(--iris-semantic-line-solid-neutral);
+  /* 실물이지만 조작 대상은 아니다 — 클릭·포커스·낭독에서 뺀다 */
+  pointer-events: none; user-select: none; }
+
+@media (max-width: 720px) {
+  .lp-band { padding: 64px 0 72px; }
+  .cb-head { margin-bottom: 40px; }
+  .cb-tile { min-height: 68px; padding: 0 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cb-track { animation: none; }
+  .cb-r { transform: translate3d(-38%, 0, 0); }
+}
 
 /* ── What's inside ── */
-.lp-inside { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; margin-top: 56px; align-items: start; }
+.lp-inside { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; margin-top: 72px; align-items: start; }
 .lp-stat { display: flex; align-items: baseline; gap: 20px; margin-bottom: 28px; }
 .lp-stat b { font-family: var(--lp-display); font-size: 56px; font-weight: 700; letter-spacing: -.04em;
   line-height: 1; color: var(--iris-semantic-label-primary); font-variant-numeric: tabular-nums; }
@@ -123,7 +153,7 @@
   font-size: 15px; font-weight: 500; color: var(--iris-semantic-label-primary); }
 
 /* ── One source 표 ── */
-.lp-table { max-width: 960px; margin: 44px auto 0; }
+.lp-table { max-width: 960px; margin: 60px auto 0; }
 .lp-trow { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; align-items: center;
   padding: 22px 4px; border-top: 1px solid var(--iris-semantic-line-solid-neutral); }
 .lp-trow:last-child { border-bottom: 1px solid var(--iris-semantic-line-solid-neutral); }
@@ -138,7 +168,7 @@
 /* ── Themeable — 경계를 끌면 같은 화면이 라이트↔다크로 갈린다 ────
    두 층에 같은 Mock을 깔고 위층만 clip-path로 잘라낸다. 컴포넌트는
    양쪽에서 완전히 동일하고, 바뀌는 것은 감싼 요소의 data-theme뿐이다. */
-.lp-split { position: relative; height: 424px; margin-top: 48px; border-radius: 20px; overflow: hidden;
+.lp-split { position: relative; height: 424px; margin-top: 64px; border-radius: 20px; overflow: hidden;
   border: 1px solid var(--iris-semantic-line-solid-neutral); touch-action: none; user-select: none;
   text-align: left; }
 .lp-split-layer { position: absolute; inset: 0; }
@@ -171,7 +201,7 @@
 .lp-mock-t2 { font-size: 12.5px; color: var(--iris-semantic-label-alternative); }
 
 /* ── Get started ── */
-.lp-rows { margin-top: 48px; border-top: 1px solid var(--iris-semantic-line-solid-normal); }
+.lp-rows { margin-top: 64px; border-top: 1px solid var(--iris-semantic-line-solid-normal); }
 .lp-row { display: grid; grid-template-columns: 300px 1fr 40px; align-items: center; gap: 24px;
   padding: 34px 4px; border-bottom: 1px solid var(--iris-semantic-line-solid-normal);
   color: var(--iris-semantic-label-normal);
@@ -185,7 +215,7 @@
   color: var(--iris-semantic-label-assistive); align-self: center; }
 
 /* ── 제작기 ── */
-.lp-posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+.lp-posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 64px; }
 .lp-post { display: block; }
 .lp-post-thumb { position: relative; height: 132px; border-radius: 12px; overflow: hidden;
   border: 1px solid var(--iris-semantic-line-solid-neutral); }
@@ -211,7 +241,7 @@
   font-size: 10.5px; color: var(--iris-semantic-label-assistive); }
 
 /* ── FAQ (2열 · 선택형) ── */
-.lp-faq { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 48px; margin-top: 48px; }
+.lp-faq { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 48px; margin-top: 64px; }
 .lp-faq-q { display: flex; flex-direction: column; align-items: flex-start; }
 .lp-faq-q button { border: none; background: none; padding: 12px 0; cursor: pointer; text-align: left;
   font-family: inherit; font-size: 17px; font-weight: 500; letter-spacing: -.02em;
@@ -226,7 +256,7 @@
 @keyframes lp-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 /* ── 푸터 ── */
-.lp-footer { margin-top: 112px; padding: 32px 0 64px;
+.lp-footer { margin-top: 176px; padding: 40px 0 72px;
   border-top: 1px solid var(--iris-semantic-line-solid-normal);
   display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .lp-footer b { font-family: var(--lp-display); font-size: 16px; letter-spacing: -.02em;
@@ -287,3 +317,22 @@
   [data-rv] { opacity: 1; transform: none; transition: none; }
   .lp-kicker::after { transform: scaleX(1); transition: none; }
 }
+
+/* ═══ 전면 빛 필드 ══════════════════════════════════════════════
+   입자가 screen 블렌드라 어두운 바탕에서만 보인다. 랜딩 전체를 어둡게 두고
+   캔버스는 fixed로 화면에 고정해, 스크롤해도 계속 배경에 깔리게 한다. */
+.lf-canvas {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(1.2px) saturate(1.15);   /* 알갱이 경계를 지워 빛으로 읽히게 */
+}
+/* 콘텐츠만 필드 위로 — 캔버스는 fixed라 이 규칙에서 빠져야 한다 */
+.landing > section, .landing > footer { position: relative; z-index: 1; }
+/* 다크 단일 테마 — 바탕과 네이티브 컨트롤(select·input) 모두 다크로 고정한다 */
+.landing { background: #030306; color-scheme: dark; }
+
+/* 섹션 배경을 걷어 필드가 끝까지 보이게 */
+.lp-sec--alt { background: rgba(255, 255, 255, .022); }
+.lp-hero-media { background: transparent; }
+
+@media (prefers-reduced-motion: reduce) { .lf-canvas { display: none; } }

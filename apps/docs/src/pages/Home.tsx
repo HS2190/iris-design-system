@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { iconNames, Icon, Chip, ContentBadge, Progress, ListCell, Avatar, Button } from '@hs2190.an/iris-react';
+import { iconNames, Icon, Chip, ContentBadge, Progress, ListCell, Avatar, AvatarGroup, Button,
+  Checkbox, Switch, Radio, SegmentedControl, Select, Slider, Tabs, TextField,
+  SectionMessage, IconButton, TextButton } from '@hs2190.an/iris-react';
 import tokens from '@hs2190.an/iris-tokens';
 import { componentGroups, utilityItems, componentCount } from '../nav';
 import { posts } from './behind/posts';
+import { SHOW_BEHIND } from '../flags';
+import LightField from '../components/LightField';
 import PrismSparks from '../components/PrismSparks';
 import '../landing.css';
 
@@ -24,6 +28,7 @@ function HeroMedia() {
     <div className="lp-hero-media" ref={ref}>
       <div className="lp-hero-sink" aria-hidden><div className="lp-hero-img" /></div>
       <PrismSparks />
+
       <div className="lp-hero-copy">
         <h1 className="lp-headline">One core. Infinite expressions.</h1>
         <p className="lp-sub-kr">하나의 근원, 환경마다 다른 표현</p>
@@ -32,22 +37,66 @@ function HeroMedia() {
   );
 }
 
-/* ── 잉크 밴드: 스크롤에 따라 번진다 ── */
-function InkBand() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || reduceMotion()) return;
-    const supportsScrub = typeof CSS !== 'undefined' && !!CSS.supports && CSS.supports('animation-timeline: view()');
-    if (supportsScrub) { el.classList.add('scrub'); return; }
-    el.classList.add('io');
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { el.classList.add('in'); io.disconnect(); }
-    }, { threshold: 0.2 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return <div className="lp-band"><div className="lp-band-img" ref={ref} /></div>;
+/* ── 컴포넌트 밴드: 세는 대신 보여준다 — 실제 Iris 컴포넌트가 흐른다 ──
+   장식이 아니라 실물이라, 문서의 그 컴포넌트를 그대로 렌더한다.
+   스크롤을 붙잡지 않도록 자동 드리프트로만 움직이고, 조작 대상은 아니므로
+   pointer-events·aria에서 빼서 스크린리더가 컨트롤 벽을 읽지 않게 한다. */
+const noop = () => {};
+
+const ROW_A: React.ReactNode[] = [
+  <Button size="s" leadingIcon="lightning">Get started</Button>,
+  <Chip selected>Design</Chip>,
+  <Checkbox label="약관에 동의합니다" defaultChecked />,
+  <SegmentedControl options={['Light', 'Dark'] as const} value="Dark" onChange={noop} aria-label="테마" />,
+  <ContentBadge tone="positive" variant="subtle">Stable</ContentBadge>,
+  <Switch label="알림 받기" defaultChecked />,
+  <AvatarGroup size="s" max={3}>
+    <Avatar size="s" name="안" /><Avatar size="s" name="현" /><Avatar size="s" name="서" /><Avatar size="s" name="K" />
+  </AvatarGroup>,
+  <Progress value={68} max={100} label="Build" showValue style={{ width: 168 }} />,
+  <IconButton icon="heart" size="s" aria-label="좋아요" />,
+];
+
+const ROW_B: React.ReactNode[] = [
+  <Tabs items={['Overview', 'Tokens', 'Code'] as const} value="Tokens" onChange={noop} />,
+  <Radio label="카드 결제" defaultChecked />,
+  <Slider defaultValue={40} formatValue={v => v + '%'} label="투명도" style={{ width: 180 }} />,
+  <ContentBadge tone="cautionary" variant="solid">Beta</ContentBadge>,
+  <TextField placeholder="이메일 주소" style={{ width: 180 }} />,
+  <SectionMessage tone="info">토큰이 갱신되었습니다.</SectionMessage>,
+  <Select options={[{ value: 'web', label: 'Web' }]} defaultValue="web" style={{ width: 132 }} />,
+  <Button size="s" variant="outlined" color="assistive">문서 보기</Button>,
+  <TextButton size="s" trailingIcon="arrow-right">더 보기</TextButton>,
+];
+
+function Marquee({ items, dir, dur }: { items: React.ReactNode[]; dir: 'l' | 'r'; dur: number }) {
+  return (
+    <div className="cb-row" aria-hidden>
+      {/* 같은 세트를 두 벌 이어 붙여 -50%까지만 밀면 이음매 없이 반복된다 */}
+      <div className={`cb-track cb-${dir}`} style={{ ["--dur" as string]: dur + 's' }}>
+        {[0, 1].map(k => (
+          <div className="cb-set" key={k}>
+            {items.map((n, i) => <div className="cb-tile" key={i}>{n}</div>)}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ComponentBand() {
+  return (
+    <div className="lp-band">
+      <div className="lp-wrap cb-head">
+        <p className="lp-kicker" data-rv>Rendered live</p>
+        <p className="cb-line" data-rv style={{ ["--i" as string]: 1 }}>
+          세는 대신 보여드립니다. 아래는 문서에 있는 그 컴포넌트 그대로입니다.
+        </p>
+      </div>
+      <Marquee items={ROW_A} dir="l" dur={26} />
+      <Marquee items={ROW_B} dir="r" dur={32} />
+    </div>
+  );
 }
 
 /* ── 테마 분할 쇼케이스 — 경계를 끌면 같은 화면이 라이트↔다크로 갈린다 ── */
@@ -163,6 +212,8 @@ export default function Home() {
 
   return (
     <>
+      <LightField />
+
       <section className="lp-hero">
         <HeroMedia />
       </section>
@@ -180,7 +231,7 @@ export default function Home() {
         </div>
       </section>
 
-      <InkBand />
+      <ComponentBand />
 
       <section className="lp-sec lp-wrap">
         <p className="lp-kicker" data-rv>What’s Inside</p>
@@ -245,7 +296,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="lp-sec lp-wrap">
+      {SHOW_BEHIND && <section className="lp-sec lp-wrap">
         <p className="lp-kicker" data-rv>Behind</p>
         <h2 className="lp-h2 lp-h2-kr" data-rv style={{ ["--i" as string]: 1 }}>제작기</h2>
         <div className="lp-posts">
@@ -258,7 +309,7 @@ export default function Home() {
             </Link>
           ))}
         </div>
-      </section>
+      </section>}
 
       <section className="lp-sec lp-wrap">
         <p className="lp-kicker" data-rv>FAQ</p>

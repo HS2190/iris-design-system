@@ -21,21 +21,42 @@ interface Spark {
 const MAX_DPR = 2;
 const SPRITE = 32;   // 스프라이트 한 변(px)
 
-/** 광선 색마다 발광 원판을 한 번만 구워 둔다 — 매 프레임 그라디언트 생성 방지 */
-function bakeSprite([r, g, b]: [number, number, number]): HTMLCanvasElement {
+/**
+ * 발광 원판을 한 번만 구워 둔다 — 매 프레임 그라디언트 생성 방지.
+ * core는 또렷한 알갱이, glow는 크게 번지는 후광. 두 장을 겹쳐 그리면
+ * 후처리 블룸 없이도 빛이 번진 느낌이 난다.
+ */
+function bakeSprite([r, g, b]: [number, number, number], soft: boolean): HTMLCanvasElement {
   const c = document.createElement('canvas');
   c.width = c.height = SPRITE;
   const x = c.getContext('2d')!;
   const h = SPRITE / 2;
   const grad = x.createRadialGradient(h, h, 0, h, h, h);
-  grad.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
-  grad.addColorStop(0.35, `rgba(${r}, ${g}, ${b}, 0.55)`);
-  grad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+  if (soft) {
+    // 후광 — 중심도 반투명하게, 가장자리까지 길게 끌어 번지게
+    grad.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0.34)`);
+    grad.addColorStop(0.45, `rgba(${r}, ${g}, ${b}, 0.14)`);
+    grad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+  } else {
+    grad.addColorStop(0, 'rgba(255, 255, 255, 0.72)');
+    grad.addColorStop(0.3, `rgba(${r}, ${g}, ${b}, 0.6)`);
+    grad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+  }
   x.fillStyle = grad;
   x.fillRect(0, 0, SPRITE, SPRITE);
   return c;
 }
-const PER_WEIGHT = 11;   // weight 1.0당 동시 입자 수
+
+/** 광선 고유색을 보라 쪽으로 당긴다 — 파랑·분홍 광선의 입자도 같은 계열로 보이게 */
+const VIOLET: [number, number, number] = [167, 139, 250];   // violet/60
+function violetize([r, g, b]: [number, number, number], k = 0.62): [number, number, number] {
+  return [
+    Math.round(r + (VIOLET[0] - r) * k),
+    Math.round(g + (VIOLET[1] - g) * k),
+    Math.round(b + (VIOLET[2] - b) * k),
+  ];
+}
+const PER_WEIGHT = 20;   // weight 1.0당 동시 입자 수
 
 function makeSpark(ray: Ray): Spark {
   return {
@@ -59,8 +80,13 @@ export default function PrismSparks() {
     const host = canvas.parentElement;
     if (!ctx || !host) return;
 
-    const sprites = new Map<Ray, HTMLCanvasElement>();
-    for (const ray of RAYS) sprites.set(ray, bakeSprite(ray.rgb));
+    const cores = new Map<Ray, HTMLCanvasElement>();
+    const glows = new Map<Ray, HTMLCanvasElement>();
+    for (const ray of RAYS) {
+      const v = violetize(ray.rgb);
+      cores.set(ray, bakeSprite(v, false));
+      glows.set(ray, bakeSprite(v, true));
+    }
 
     const sparks: Spark[] = [];
     for (const ray of RAYS) {
@@ -138,10 +164,13 @@ export default function PrismSparks() {
         const alpha = Math.min(1, edge) * twinkle;
         if (alpha <= 0.015) continue;
 
-        const sprite = sprites.get(ray)!;
         const d = sp.size * 5.4;
+        // 후광을 크게 먼저, 그 위에 또렷한 코어를 작게
+        ctx.globalAlpha = alpha * 0.85;
+        const g = d * 3.6;
+        ctx.drawImage(glows.get(ray)!, x - g / 2, y - g / 2, g, g);
         ctx.globalAlpha = alpha;
-        ctx.drawImage(sprite, x - d / 2, y - d / 2, d, d);
+        ctx.drawImage(cores.get(ray)!, x - d / 2, y - d / 2, d, d);
       }
 
       ctx.globalAlpha = 1;

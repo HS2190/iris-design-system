@@ -6,6 +6,7 @@ import UtilitiesIndexPage from './pages/UtilitiesIndexPage';
 import Toc from './components/Toc';
 import { componentGroups, utilityItems, utilSlugs } from './nav';
 import { posts } from './pages/behind/posts';
+import { SHOW_BEHIND } from './flags';
 import TwoLayerTokens from './pages/behind/TwoLayerTokens';
 import PhosphorIcons from './pages/behind/PhosphorIcons';
 import PlatformTokens from './pages/behind/PlatformTokens';
@@ -63,13 +64,17 @@ import WorkflowPage from './pages/WorkflowPage';
 
 // 컴포넌트 목록은 nav.ts가 단일 소스 (랜딩 인덱스와 공유)
 
-function ThemeToggle() {
+/* 랜딩은 다크 전용이라 컨트롤을 감춘다.
+   다만 컴포넌트를 언마운트하지는 않는다 — data-theme을 <html>에 적용하는 건
+   이 안의 effect라서, 랜딩에서 빠져 문서로 넘어갈 때 저장된 테마가 그대로 이어져야 한다. */
+function ThemeToggle({ hidden }: { hidden?: boolean }) {
   const [theme, setTheme] = useState<string>(() => localStorage.getItem('iris-theme') ?? 'system');
   useEffect(() => {
     if (theme === 'system') document.documentElement.removeAttribute('data-theme');
     else document.documentElement.setAttribute('data-theme', theme);
     try { localStorage.setItem('iris-theme', theme); } catch { /* private mode */ }
   }, [theme]);
+  if (hidden) return null;
   return (
     <div className="control theme-toggle">
       <label>theme</label>
@@ -130,6 +135,7 @@ function usePageView(pathname: string) {
 export default function App() {
   const { pathname } = useLocation();
   const isHome = pathname === '/';
+  // 히어로에 걸쳐 있는 동안만 투명 — 벗어나면 어두운 바가 깔려 본문과 겹치지 않는다
   const heroOver = useHeroOverlay(isHome);
   usePageView(pathname);
   const section = pathname.startsWith('/workflow') ? 'workflow'
@@ -155,14 +161,17 @@ export default function App() {
             <NavLink to="/foundations" className={() => !isHome && section === 'foundations' ? 'active' : ''}>Foundations</NavLink>
             <NavLink to="/components" className={() => !isHome && section === 'components' ? 'active' : ''}>Components</NavLink>
             <NavLink to="/utilities" className={() => !isHome && section === 'utilities' ? 'active' : ''}>Utilities</NavLink>
-            <NavLink to="/behind" className={() => !isHome && section === 'behind' ? 'active' : ''}>Behind</NavLink>
+            {SHOW_BEHIND && <NavLink to="/behind" className={() => !isHome && section === 'behind' ? 'active' : ''}>Behind</NavLink>}
           <NavLink to="/workflow" className={() => !isHome && section === 'workflow' ? 'active' : ''}>Workflow</NavLink>
           </nav>
-          <div className="gnb-right"><ThemeToggle /></div>
+          <div className="gnb-right"><ThemeToggle hidden={isHome} /></div>
         </div>
       </header>
+      {/* 랜딩은 다크 단일 테마 — 히어로가 어두운 사진이고, 파티클이 screen 합성이라
+          밝은 바탕에서는 원리상 보이지 않는다. 테마 전환 주장은 아래
+          'Light, Dark, and Yours' 섹션이 위젯 안에서 직접 증명한다. */}
       {isHome ? (
-        <main className="landing">
+        <main className="landing" data-theme="dark">
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
@@ -190,7 +199,7 @@ export default function App() {
                 <div className="nav-group">Guide</div>
                 <NavLink to="/workflow" end className={({ isActive }) => isActive ? 'active' : ''}>Workflow</NavLink>
               </>}
-              {section === 'behind' && <>
+              {SHOW_BEHIND && section === 'behind' && <>
                 <div className="nav-group">Behind</div>
                 {posts.map(post => (
                   <NavLink key={post.slug} to={`/behind/${post.slug}`} className={({ isActive }) => isActive ? 'active' : ''}>{post.title}</NavLink>
@@ -260,10 +269,12 @@ export default function App() {
               <Route path="/foundations/elevation" element={<ElevationPage />} />
               <Route path="/foundations/platform" element={<PlatformPage />} />
               <Route path="/workflow" element={<WorkflowPage />} />
-              <Route path="/behind" element={<Navigate to={`/behind/${posts[0].slug}`} replace />} />
-              <Route path="/behind/two-layer-tokens" element={<TwoLayerTokens />} />
-              <Route path="/behind/phosphor-icons" element={<PhosphorIcons />} />
-              <Route path="/behind/platform-tokens" element={<PlatformTokens />} />
+              {SHOW_BEHIND ? <>
+                <Route path="/behind" element={<Navigate to={`/behind/${posts[0].slug}`} replace />} />
+                <Route path="/behind/two-layer-tokens" element={<TwoLayerTokens />} />
+                <Route path="/behind/phosphor-icons" element={<PhosphorIcons />} />
+                <Route path="/behind/platform-tokens" element={<PlatformTokens />} />
+              </> : <Route path="/behind/*" element={<Navigate to="/" replace />} />}
             </Routes>
           </main>
           <Toc />
