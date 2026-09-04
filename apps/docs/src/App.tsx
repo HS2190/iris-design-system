@@ -119,16 +119,35 @@ function useHeroOverlay(active: boolean) {
  */
 const isLocal = () => /^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname);
 
+/**
+ * 해시 라우트를 해시 없는 정규 URL로 합성한다.
+ *   "/components/button" → "https://hs2190.github.io/iris-design-system/components/button"
+ *
+ * GA4는 pagePath를 page_location에서 해시를 떼고 만든다. HashRouter의 실제
+ * URL은 ".../iris-design-system/#/components" 라서 해시를 떼면 항상
+ * "/iris-design-system/"가 된다. 실제 경로를 담은 URL을 직접 만들어야 한다.
+ */
+function canonicalUrl(pathname: string): string {
+  const base = window.location.pathname.replace(/index\.html$/, '').replace(/\/$/, '');
+  return `${window.location.origin}${base}${pathname}`;
+}
+
 function usePageView(pathname: string) {
   useEffect(() => {
     if (isLocal()) return;
     const w = window as unknown as { gtag?: (...args: unknown[]) => void };
     if (!w.gtag) return;
-    w.gtag('event', 'page_view', {
+    // page_path를 page_view 이벤트에만 실으면 page_view만 올바른 경로로
+    // 집계되고, user_engagement·scroll 같은 자동 이벤트는 실제 URL(해시 제거)
+    // 로 들어가 한 페이지가 GA에서 두 행으로 쪼개진다. 실제로 GA에
+    // "/iris-design-system/" 행이 페이지뷰 0에 체류시간만 쌓여 있었다.
+    // gtag('set')은 이후 모든 이벤트의 기본값을 바꾸므로 여기서 갈아끼운다.
+    w.gtag('set', {
       page_path: pathname,
-      page_location: window.location.href,
+      page_location: canonicalUrl(pathname),
       page_title: document.title,
     });
+    w.gtag('event', 'page_view');
   }, [pathname]);
 }
 
