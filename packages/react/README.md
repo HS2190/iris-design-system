@@ -35,6 +35,10 @@ Utilities 7개 범주. 전체 목록과 Props는 [문서 사이트](https://hs21
 색은 `currentColor`, 크기는 토큰을 따릅니다. 컴포넌트는 플랫폼을 모르고,
 높이·마진 같은 플랫폼별 값은 `@hs2190.an/iris-tokens`가 정합니다.
 
+이 패키지는 **웹 구현만** 담습니다. iOS·Android용 컴포넌트는 없지만 토큰은
+세 플랫폼 모두 빌드되므로, 네이티브 화면은 `@hs2190.an/iris-tokens`의
+`dist/native/`를 참조해 직접 구현합니다.
+
 ## 라이선스
 
 MIT. 아이콘은 [Phosphor Icons](https://phosphoricons.com)(MIT) 발췌.
