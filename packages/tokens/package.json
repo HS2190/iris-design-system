@@ -6,7 +6,9 @@
   "exports": {
     ".": "./dist/tokens.js",
     "./css": "./dist/iris.css",
-    "./tokens.json": "./dist/tokens.json"
+    "./tokens.json": "./dist/tokens.json",
+    "./native/ios/IrisTokens.swift": "./dist/native/ios/IrisTokens.swift",
+    "./native/*": "./dist/native/*"
   },
   "files": [
     "dist",
@@ -14,7 +16,8 @@
     "README.md"
   ],
   "scripts": {
-    "build": "node build.mjs"
+    "build": "node build.mjs && node verify-native.mjs",
+    "verify": "node verify-native.mjs"
   },
   "description": "Iris Design System — 디자인 토큰 (Figma Variables 단일 소스, Web·iOS·Android 값)",
   "license": "MIT",

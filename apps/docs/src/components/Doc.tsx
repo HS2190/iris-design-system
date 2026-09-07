@@ -136,8 +136,8 @@ export function PlatformSpec({ name }: { name: string }) {
       )}
       <p className="platspec-foot">
         {info.platform.length
-          ? '제공되는 코드는 웹(React + CSS 변수)뿐입니다. iOS·Android는 위 값으로 구현합니다.'
-          : '제공되는 코드는 웹(React + CSS 변수)뿐입니다. 네이티브에서도 같은 수치로 구현합니다.'}
+          ? '컴포넌트 코드는 웹(React + CSS 변수)만 제공합니다. 토큰은 iOS·Android도 함께 빌드되므로, 네이티브 구현은 위 값을 직접 적지 말고 생성된 토큰(Iris.Platform / @dimen)을 참조하세요.'
+          : '컴포넌트 코드는 웹(React + CSS 변수)만 제공합니다. 이 컴포넌트는 세 플랫폼이 같은 수치를 쓰며, 토큰은 iOS·Android도 함께 빌드됩니다.'}
       </p>
     </div>
   );

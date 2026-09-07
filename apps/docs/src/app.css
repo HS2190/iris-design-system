@@ -432,3 +432,11 @@ h1.prose-title { font-size: var(--iris-font-size-display-2); line-height: var(--
 /* 히어로 위 — 배경도 블러도 없앤다(투명 위에 블러가 남으면 사진이 뿌옇게 뭉갠다) */
 .gnb--wrapped.over { background: transparent; border-bottom-color: transparent;
   -webkit-backdrop-filter: none; backdrop-filter: none; }
+
+/* ── 네이티브 산출물 설명줄 (Foundations → Platform) ── */
+.nat-note { margin: 18px 0 8px; font-size: 14px; line-height: 1.7;
+  color: var(--iris-semantic-label-neutral); max-width: 62ch; }
+.nat-note code { font-family: "IBM Plex Mono", monospace; font-size: 12.5px;
+  padding: 1px 5px; border-radius: 5px; background: var(--iris-semantic-fill-normal);
+  color: var(--iris-semantic-label-normal); }
+.nat-note b { color: var(--iris-semantic-label-normal); font-weight: 600; }

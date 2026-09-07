@@ -6,11 +6,12 @@
     "apps/*"
   ],
   "scripts": {
-    "tokens": "node packages/tokens/build.mjs",
+    "tokens": "node packages/tokens/build.mjs && node packages/tokens/verify-native.mjs",
     "dev": "npm run dev -w apps/docs",
     "build": "npm run tokens && npm run build:lib && npm run gen:tokens && npm run build -w apps/docs",
-    "gen:tokens": "node scripts/gen-component-tokens.mjs",
-    "build:lib": "npm run build -w @hs2190.an/iris-react"
+    "gen:tokens": "node scripts/gen-component-tokens.mjs && node scripts/gen-platform-samples.mjs",
+    "build:lib": "npm run build -w @hs2190.an/iris-react",
+    "verify:native": "npm run verify -w @hs2190.an/iris-tokens"
   },
   "devDependencies": {
     "@phosphor-icons/core": "^2.1.1"

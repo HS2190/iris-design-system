@@ -1,6 +1,7 @@
 // @hs2190.an/iris-tokens build — Figma export(src/*.json) → dist/iris.css · tokens.json · tokens.js
 // 규칙: atomic은 --iris-atomic-*, semantic은 --iris-semantic-*(Light가 :root, Dark는 [data-theme=dark] + 시스템 다크 가드)
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { buildNative } from './native.mjs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const R = dirname(fileURLToPath(import.meta.url));
@@ -46,3 +47,7 @@ writeFileSync(join(R, 'dist', 'tokens.json'), JSON.stringify(merged, null, 1));
 writeFileSync(join(R, 'dist', 'tokens.js'), 'export default ' + JSON.stringify(merged) + ';\n');
 const counts = { atomic: Object.keys(atomic).length, semantic: Object.keys(semantic).length, typography: typography.length, elevation: Object.keys(elevation).length };
 console.log('built dist/iris.css', css.length, 'bytes ·', JSON.stringify(counts));
+
+// ── 같은 소스에서 iOS·Android 산출물도 만든다 (native.mjs)
+const native = buildNative(merged, R, new Date().toISOString().slice(0, 10));
+console.log('built dist/native ·', JSON.stringify(native));
