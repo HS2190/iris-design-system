@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { COMPONENT_TOKENS, PLATFORM_VALUES } from '../lib/component-tokens';
+import { TOKEN_REFS } from '../lib/platform-samples';
 
 /** 문서 페이지 공용 빌딩블록 — 모든 컴포넌트 페이지가 같은 형식을 쓰게 한다. */
 
@@ -133,6 +134,21 @@ export function PlatformSpec({ name }: { name: string }) {
         <p className="platspec-note">
           플랫폼에 따라 달라지는 값이 없습니다 — 세 플랫폼에서 같은 수치를 씁니다.
         </p>
+      )}
+      {/* 수치만 주면 네이티브 구현자는 그 값을 하드코딩하게 된다. 무엇을 '참조'해야
+          하는지 이름을 같이 줘야 토큰이 실제로 쓰인다. */}
+      {info.platform.length > 0 && (
+        <div className="platspec-refs">
+          <b>참조할 이름</b>
+          {info.platform.map(t => TOKEN_REFS[t] && (
+            <dl key={t}>
+              <dt>{t}</dt>
+              <dd><span>웹</span><code>{TOKEN_REFS[t].web}</code></dd>
+              <dd><span>iOS</span><code>{TOKEN_REFS[t].ios}</code></dd>
+              <dd><span>Android</span><code>{TOKEN_REFS[t].android}</code></dd>
+            </dl>
+          ))}
+        </div>
       )}
       <p className="platspec-foot">
         {info.platform.length

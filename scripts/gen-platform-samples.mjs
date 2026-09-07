@@ -65,6 +65,22 @@ const walk = (dir, base = '') => readdirSync(join(NAT, dir), { withFileTypes: tr
 });
 const iosFiles = walk('ios', '');
 const androidFiles = walk('android', '');
+/* ── 플랫폼 토큰의 "참조 이름" — 컴포넌트 문서가 그대로 보여줄 문자열.
+      규칙을 여기서 다시 만들지 않고, 만든 뒤 생성물에 실제로 있는지 확인한다.
+      이미터의 명명이 바뀌면 여기서 즉시 터진다(문서만 조용히 어긋나는 걸 막는다). ── */
+const platformSrc = JSON.parse(readFileSync(join(R, 'packages/tokens/src/platform.json'), 'utf8'));
+const swiftSrc = read('ios/IrisTokens.swift');
+const dimensSrc = read('android/values/dimens.xml');
+const tokenRefs = {};
+for (const t of Object.keys(platformSrc)) {
+  const seg = t.split('-');
+  const ios = seg[0] + seg.slice(1).map(w => w[0].toUpperCase() + w.slice(1)).join('');
+  const and = 'iris_' + seg.join('_');
+  if (!swiftSrc.includes(`let ${ios}: CGFloat`)) throw new Error(`Swift에 Iris.Platform.${ios} 없음 — 이미터 명명이 바뀌었는지 확인`);
+  if (!dimensSrc.includes(`name="${and}"`)) throw new Error(`dimens.xml에 ${and} 없음 — 이미터 명명이 바뀌었는지 확인`);
+  tokenRefs[t] = { web: `var(--iris-${t})`, ios: `Iris.Platform.${ios}`, android: `@dimen/${and}` };
+}
+
 const { size: cssBytes } = statSync(join(DIST, 'iris.css'));
 const { size: jsonBytes } = statSync(join(DIST, 'tokens.json'));
 
@@ -83,7 +99,10 @@ const manifest = {
 
 const banner = '// 생성 파일 — 직접 고치지 마세요.\n'
   + '// scripts/gen-platform-samples.mjs 가 packages/tokens/dist/** 에서 발췌합니다.\n';
-const body = `export const PLATFORM_SAMPLES = ${JSON.stringify(samples, null, 1)} as const;\n\n`
+const body = `export interface TokenRef { web: string; ios: string; android: string }\n`
+  + `/** 플랫폼 토큰을 각 플랫폼에서 부르는 이름 — 생성물에 존재하는 것만 담긴다 */\n`
+  + `export const TOKEN_REFS: Record<string, TokenRef> = ${JSON.stringify(tokenRefs, null, 1)};\n\n`
+  + `export const PLATFORM_SAMPLES = ${JSON.stringify(samples, null, 1)} as const;\n\n`
   + `export interface PlatformFile { path: string; bytes: number }\n`
   + `export const PLATFORM_MANIFEST = ${JSON.stringify(manifest, null, 1)} as const;\n`;
 

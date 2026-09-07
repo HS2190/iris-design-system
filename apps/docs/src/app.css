@@ -440,3 +440,16 @@ h1.prose-title { font-size: var(--iris-font-size-display-2); line-height: var(--
   padding: 1px 5px; border-radius: 5px; background: var(--iris-semantic-fill-normal);
   color: var(--iris-semantic-label-normal); }
 .nat-note b { color: var(--iris-semantic-label-normal); font-weight: 600; }
+
+/* ── 컴포넌트 문서 · 플랫폼 토큰 참조 이름 ── */
+.platspec-refs { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--iris-semantic-line-solid-neutral); }
+.platspec-refs > b { display: block; font-size: 12.5px; font-weight: 600;
+  color: var(--iris-semantic-label-neutral); margin-bottom: 10px; }
+.platspec-refs dl { margin: 0 0 10px; }
+.platspec-refs dt { font-family: "IBM Plex Mono", monospace; font-size: 12.5px;
+  color: var(--iris-semantic-label-normal); margin-bottom: 6px; }
+.platspec-refs dd { display: flex; align-items: baseline; gap: 10px; margin: 0 0 3px; }
+.platspec-refs dd span { flex: none; width: 52px; font-size: 11.5px;
+  color: var(--iris-semantic-label-assistive); }
+.platspec-refs dd code { font-family: "IBM Plex Mono", monospace; font-size: 12px;
+  color: var(--iris-semantic-label-primary); word-break: break-all; }

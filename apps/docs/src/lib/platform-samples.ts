@@ -1,5 +1,55 @@
 // 생성 파일 — 직접 고치지 마세요.
 // scripts/gen-platform-samples.mjs 가 packages/tokens/dist/** 에서 발췌합니다.
+export interface TokenRef { web: string; ios: string; android: string }
+/** 플랫폼 토큰을 각 플랫폼에서 부르는 이름 — 생성물에 존재하는 것만 담긴다 */
+export const TOKEN_REFS: Record<string, TokenRef> = {
+ "touch-target-min": {
+  "web": "var(--iris-touch-target-min)",
+  "ios": "Iris.Platform.touchTargetMin",
+  "android": "@dimen/iris_touch_target_min"
+ },
+ "nav-top-height": {
+  "web": "var(--iris-nav-top-height)",
+  "ios": "Iris.Platform.navTopHeight",
+  "android": "@dimen/iris_nav_top_height"
+ },
+ "nav-bottom-height": {
+  "web": "var(--iris-nav-bottom-height)",
+  "ios": "Iris.Platform.navBottomHeight",
+  "android": "@dimen/iris_nav_bottom_height"
+ },
+ "safe-area-top": {
+  "web": "var(--iris-safe-area-top)",
+  "ios": "Iris.Platform.safeAreaTop",
+  "android": "@dimen/iris_safe_area_top"
+ },
+ "safe-area-bottom": {
+  "web": "var(--iris-safe-area-bottom)",
+  "ios": "Iris.Platform.safeAreaBottom",
+  "android": "@dimen/iris_safe_area_bottom"
+ },
+ "font-base-size": {
+  "web": "var(--iris-font-base-size)",
+  "ios": "Iris.Platform.fontBaseSize",
+  "android": "@dimen/iris_font_base_size"
+ },
+ "radius-sheet": {
+  "web": "var(--iris-radius-sheet)",
+  "ios": "Iris.Platform.radiusSheet",
+  "android": "@dimen/iris_radius_sheet"
+ },
+ "input-height": {
+  "web": "var(--iris-input-height)",
+  "ios": "Iris.Platform.inputHeight",
+  "android": "@dimen/iris_input_height"
+ },
+ "page-margin": {
+  "web": "var(--iris-page-margin)",
+  "ios": "Iris.Platform.pageMargin",
+  "android": "@dimen/iris_page_margin"
+ }
+};
+
 export const PLATFORM_SAMPLES = {
  "webColor": "  --iris-semantic-background-normal-normal: var(--iris-atomic-common-100);\n  --iris-semantic-background-normal-alternative: var(--iris-atomic-coolNeutral-99);\n  --iris-semantic-fill-normal: var(--iris-atomic-coolNeutral-50a8);\n  --iris-semantic-inverse-background: var(--iris-atomic-coolNeutral-15);",
  "webDark": "  --iris-semantic-background-normal-normal: var(--iris-atomic-coolNeutral-15);\n  --iris-semantic-background-normal-alternative: var(--iris-atomic-coolNeutral-5);\n  --iris-semantic-fill-normal: var(--iris-atomic-coolNeutral-50a22);\n  --iris-semantic-inverse-background: var(--iris-atomic-common-100);",
