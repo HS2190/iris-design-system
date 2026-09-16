@@ -453,3 +453,75 @@ h1.prose-title { font-size: var(--iris-font-size-display-2); line-height: var(--
   color: var(--iris-semantic-label-assistive); }
 .platspec-refs dd code { font-family: "IBM Plex Mono", monospace; font-size: 12px;
   color: var(--iris-semantic-label-primary); word-break: break-all; }
+
+/* ── Foundations · Writing ────────────────────────────────────
+   두 층(불변 규칙 / 제품 보이스)이 나란히 서야 "무엇을 시스템이 정하고
+   무엇을 제품이 정하는지"가 한눈에 읽힌다. */
+.wr-layers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+.wr-layer { padding: 20px; border-radius: var(--iris-radius-md);
+  border: 1px solid var(--iris-semantic-line-solid-neutral);
+  background: var(--iris-semantic-background-elevated-normal); }
+.wr-layer > b { display: block; font-size: 17px; margin: 8px 0 0;
+  color: var(--iris-semantic-label-normal); }
+.wr-layer > p { margin: 8px 0 14px; font-size: 14px; line-height: 1.7;
+  color: var(--iris-semantic-label-neutral); }
+.wr-layer-tag { font-family: "IBM Plex Mono", monospace; font-size: 11px;
+  letter-spacing: .08em; color: var(--iris-semantic-label-primary); }
+/* 왼쪽(불변)만 강조 — 둘 다 칠하면 위계가 사라진다 */
+.wr-layer:first-child { border-color: var(--iris-semantic-line-primary-normal); }
+
+.wr-note { margin: 18px 0 0; padding: 14px 16px; border-radius: var(--iris-radius-sm);
+  background: var(--iris-semantic-background-normal-alternative);
+  font-size: 14.5px; line-height: 1.8; color: var(--iris-semantic-label-neutral); }
+.wr-note b { color: var(--iris-semantic-label-normal); font-weight: 600; }
+.wr-note code { font-family: "IBM Plex Mono", monospace; font-size: 12.5px;
+  color: var(--iris-semantic-label-normal); }
+
+.wr-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.wr-split-h { display: block; font-size: 15px; color: var(--iris-semantic-label-normal); }
+.wr-split p { margin: 6px 0 10px; font-size: 14px; line-height: 1.7;
+  color: var(--iris-semantic-label-neutral); }
+
+.wr-states { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.wr-state-tag { display: inline-block; font-family: "IBM Plex Mono", monospace;
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--iris-semantic-label-primary); }
+.wr-state p { margin: 7px 0 10px; font-size: 13.5px; line-height: 1.7;
+  color: var(--iris-semantic-label-neutral); }
+/* 3열로 두면 예시 칸이 좁아 FallbackView 제목이 줄바꿈으로 쪼개지고,
+   예시 높이가 제각각이라 세 상태의 시작선도 어긋난다. 세로로 쌓고
+   [설명 | 예시] 2열로 두면 예시가 넓어지고 행마다 높이가 독립한다. */
+.wr-states { grid-template-columns: 1fr; gap: 12px; }
+.wr-state { display: grid; grid-template-columns: 300px 1fr; gap: 24px;
+  align-items: center; padding: 18px 20px; border-radius: var(--iris-radius-md);
+  border: 1px solid var(--iris-semantic-line-solid-neutral); }
+.wr-state-txt p { margin: 7px 0 0; }
+.wr-state .canvas { margin: 0; min-height: 150px; align-items: center; justify-content: center; }
+
+.wr-code { font-family: "IBM Plex Mono", monospace; font-size: 12px;
+  color: var(--iris-semantic-label-neutral); }
+.wr-ex { color: var(--iris-semantic-label-normal); }
+.wr-ban { color: var(--iris-semantic-label-alternative); text-decoration: line-through;
+  text-decoration-thickness: 1px; }
+
+.wr-check { margin: 20px 0 0; padding: 0; list-style: none;
+  border-top: 1px solid var(--iris-semantic-line-solid-neutral); }
+.wr-check li { padding: 12px 4px 12px 30px; position: relative; font-size: 14.5px;
+  line-height: 1.6; color: var(--iris-semantic-label-neutral);
+  border-bottom: 1px solid var(--iris-semantic-line-solid-neutral); }
+.wr-check li::before { content: ""; position: absolute; left: 4px; top: 16px;
+  width: 14px; height: 14px; border-radius: 4px;
+  border: 1.5px solid var(--iris-semantic-line-solid-strong); }
+.wr-check code { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; }
+
+@media (max-width: 860px) {
+  .wr-layers, .wr-split { grid-template-columns: 1fr; }
+  .wr-states { grid-template-columns: 1fr; }
+}
+
+/* Do/Don't를 연달아 쌓는 건 Writing 페이지가 처음이라 .dodont에 세로 여백이
+   없었다. 인접 형제에만 걸어 기존 컴포넌트 문서(각 1개)는 그대로 둔다. */
+.dodont + .dodont,
+.wr-note + .dodont,
+.dodont + .wr-note,
+.wr-split + .wr-note { margin-top: 20px; }

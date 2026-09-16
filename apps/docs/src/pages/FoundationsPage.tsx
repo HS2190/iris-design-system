@@ -15,11 +15,13 @@ const CARDS: [string, string, string, React.ReactNode][] = [
     <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, color: 'var(--iris-semantic-label-assistive)' }}>48 · 48 · 56</span>],
   ['Icon', '/components/icon', 'Phosphor 기반 72종 × line/fill. 색은 currentColor — 글자와 같은 규칙으로 물듭니다.',
     <span style={{ display: 'flex', gap: 8, color: 'var(--iris-semantic-label-neutral)' }}><Icon name="star" size={20} /><Icon name="star" variant="fill" size={20} /><Icon name="bell" size={20} /></span>],
+  ['Writing', '/foundations/writing', '규칙은 시스템이, 목소리는 제품이. 불변 규칙 여섯과 컴포넌트 28종의 슬롯 규칙.',
+    <span style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-.04em', color: 'var(--iris-semantic-label-primary)' }}>“ ”</span>],
 ];
 
 export default function FoundationsPage() {
   return (
-    <Page kicker="Foundations" title="Foundations" desc="모든 컴포넌트가 딛고 서는 원자 단위들입니다. 색·글자·간격·그림자·플랫폼 — 다섯 기반과 아이콘이 같은 소스(Figma Variables)에서 빌드됩니다.">
+    <Page kicker="Foundations" title="Foundations" desc="모든 컴포넌트가 딛고 서는 단위들입니다. 색·글자·간격·그림자·플랫폼은 같은 소스(Figma Variables)에서 빌드되고, 여기에 문구 규칙이 같은 층으로 함께 섭니다.">
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12, marginTop: 24 }}>
         {CARDS.map(([name, path, desc, visual]) => (
           <Link key={path} to={path} className="home-link" style={{ padding: '18px 18px 16px', display: 'flex', flexDirection: 'column', gap: 10 }}>

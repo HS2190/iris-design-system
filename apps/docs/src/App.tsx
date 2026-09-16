@@ -60,6 +60,7 @@ import TypographyPage from './pages/TypographyPage';
 import SpacingPage from './pages/SpacingPage';
 import ElevationPage from './pages/ElevationPage';
 import PlatformPage from './pages/PlatformPage';
+import WritingPage from './pages/WritingPage';
 import WorkflowPage from './pages/WorkflowPage';
 
 // 컴포넌트 목록은 nav.ts가 단일 소스 (랜딩 인덱스와 공유)
@@ -202,7 +203,7 @@ export default function App() {
               {section === 'foundations' && <>
                 <div className="nav-group">Foundations</div>
                 <NavLink to="/foundations" end className={({ isActive }) => isActive ? 'active' : ''}>개요</NavLink>
-                {[['Color', '/foundations/color'], ['Typography', '/foundations/typography'], ['Spacing', '/foundations/spacing'], ['Elevation', '/foundations/elevation'], ['Platform', '/foundations/platform'], ['Icon', '/components/icon']].map(([n, p]) => (
+                {[['Color', '/foundations/color'], ['Typography', '/foundations/typography'], ['Spacing', '/foundations/spacing'], ['Elevation', '/foundations/elevation'], ['Platform', '/foundations/platform'], ['Icon', '/components/icon'], ['Writing', '/foundations/writing']].map(([n, p]) => (
                   <NavLink key={p} to={p} className={({ isActive }) => isActive ? 'active' : ''}>{n}</NavLink>
                 ))}
               </>}
@@ -287,6 +288,7 @@ export default function App() {
               <Route path="/foundations/spacing" element={<SpacingPage />} />
               <Route path="/foundations/elevation" element={<ElevationPage />} />
               <Route path="/foundations/platform" element={<PlatformPage />} />
+              <Route path="/foundations/writing" element={<WritingPage />} />
               <Route path="/workflow" element={<WorkflowPage />} />
               {SHOW_BEHIND ? <>
                 <Route path="/behind" element={<Navigate to={`/behind/${posts[0].slug}`} replace />} />
